@@ -1,0 +1,6 @@
+<%= @title %>:
+  driver    = <%= @driver %>
+<% unless @connect_timeout.nil? -%>
+  connect_timeout = <%= @connect_timeout %>
+<% end -%>
+

@@ -1,0 +1,39 @@
+<%= @title %>:
+  driver     = <%= @driver %>
+<% unless @transport.nil? -%>
+  transport  = <%= @transport %>
+<% end -%>
+<% unless @domains.nil? -%>
+  domains    = <%= @domains %>
+<% end -%>
+<% unless @condition.nil? -%>
+  condition  = <%= @condition %>
+<% end -%>
+<% unless @data.nil? -%>
+  data       = <%= @data %>
+<% end -%>
+<% unless @route_list.nil? -%>
+  route_list = <%= @route_list %>
+<% end -%>
+<% unless @host_find_failed.nil? -%>
+  host_find_failed = <%= @host_find_failed %>
+<% end -%>
+<% unless @same_domain_copy_routing.nil? -%>
+  same_domain_copy_routing = <%= @same_domain_copy_routing %>
+<% end -%>
+<% if @no_more -%>
+  no_more
+<% end -%>
+<% if @no_verify -%>
+  no_verify
+<% end -%>
+<% if @no_address_test -%>
+  no_address_test
+<% end -%>
+<% if @allow_defer -%>
+  allow_defer
+<% end -%>
+<% if @allow_fail -%>
+  allow_fail
+<% end -%>
+

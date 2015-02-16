@@ -1,0 +1,14 @@
+  # <%= @title %>
+<% if @conditions == [] -%>
+  <%=  @action -%>
+<% else -%>
+<%  printacl=@action -%>
+<%  @conditions.each do |option,value| -%>
+<%   if value == [] -%>
+<%=   "  %-7s %s\n" % [printacl,option] -%>
+<%   else -%>
+<%=   "  %-7s %-13s = %s\n" % [printacl,option,value.join(" : ")] %><% printacl="" -%>
+<%   end -%>
+<%  end -%>
+<% end -%>
+

@@ -1,0 +1,27 @@
+
+
+######################################################################
+#                       ACL CONFIGURATION                            #
+#         Specifies access control lists for incoming SMTP mail      #
+######################################################################
+
+<% unless @acl_smtp_connect.nil? -%>
+acl_smtp_connect = <%= @acl_smtp_connect %>
+<% end -%>
+<% unless @acl_smtp_mail.nil? -%>
+acl_smtp_mail    = <%= @acl_smtp_mail %>
+<% end -%>
+<% unless @acl_smtp_rcpt.nil? -%>
+acl_smtp_rcpt    = <%= @acl_smtp_rcpt %>
+<% end -%>
+<% unless @acl_check_auth.nil? -%>
+acl_smtp_auth    = <%= @acl_smtp_auth %>
+<% end -%>
+<% unless @acl_check_message.nil? -%>
+acl_smtp_data    = <%= @acl_smtp_data %>
+<% end -%>
+<% unless @acl_check_mime.nil? -%>
+acl_smtp_mime    = <%= @acl_smtp_mime %>
+<% end -%>
+
+begin acl

@@ -1,0 +1,126 @@
+######################################################################
+#                  Runtime configuration file for Exim               #
+######################################################################
+
+
+####################################################################
+# This config file is managed by puppet. Manual editing of file is #
+# strongly discouraged and might lead to unexpected behaviour!     #
+####################################################################
+
+<% unless @local_interfaces.nil?     -%>local_interfaces           = <; <%= @local_interfaces.join(" ; ") %>
+<% end -%>
+<% unless @daemon_smtp_ports.nil?    -%>daemon_smtp_ports          = <%= @daemon_smtp_ports.join(" : ") %>
+<% end -%>
+<% unless @hosts_treat_as_local.nil? -%>hosts_treat_as_local       = <%= @hosts_treat_as_local.join(" : ") %>
+<% end -%>
+
+# logging
+log_selector               =  <% if @log_smtp_confirmation        == false %>-<% else %>+<% end %>smtp_confirmation \
+                              <% if @log_smtp_connection          == false %>-<% else %>+<% end %>smtp_connection \
+                              <% if @log_smtp_protocol_error      == false %>-<% else %>+<% end %>smtp_protocol_error \
+                              <% if @log_smtp_syntax_error        == false %>-<% else %>+<% end %>smtp_syntax_error \
+                              <% if @log_sender_on_delivery       == false %>-<% else %>+<% end %>sender_on_delivery \
+                              <% if @log_lost_incoming_connection == false %>-<% else %>+<% end %>lost_incoming_connection \
+                              <% if @log_tls_peerdn               == false %>-<% else %>+<% end %>tls_peerdn \
+                              <% if @log_skip_delivery            == false %>-<% else %>+<% end %>skip_delivery \
+                              <% if @log_retry_defer              == false %>-<% else %>+<% end %>retry_defer
+
+<% unless @message_logs                    -%>message_logs               = false
+<% end -%>
+<% unless @log_file_path.nil?              -%>log_file_path              = <%= @log_file_path.join(" : ") %>
+<% end -%>
+<% unless  @syslog_timestamp               -%>syslog_timestamp           = false
+<% end -%>
+<% unless @av_scanner.nil?                 -%>av_scanner                 = <%= @av_scanner %>
+<% end -%>
+<% unless @spamd_address.nil?              -%>spamd_address              = <%= @spamd_address %>
+<% end -%>
+<% unless @system_filter.nil?              -%>system_filter              = <%= @system_filter %>
+<% end -%>
+<% if @split_spool_directory               -%>split_spool_directory      = true
+<% end -%>
+<% unless @check_spool_space.nil?          -%>check_spool_space          = <%= @check_spool_space %>
+<% end -%>
+<% unless @helo_allow_chars.nil?           -%>helo_allow_chars           = <%= @helo_allow_chars %>
+<% end -%>
+<% if @allow_mx_to_ip                      -%>allow_mx_to_ip             = true
+<% end -%>
+<% unless @never_users.nil?                -%>never_users                = <%= @never_users %>
+<% end -%>
+<% unless @trusted_users.nil?              -%>trusted_users              = <%= @trusted_users %>
+<% end -%>
+<% unless @message_size_limit.nil?         -%>message_size_limit         = <%= @message_size_limit %>
+<% end -%>
+<% unless @host_lookup.nil?                -%>host_lookup                = <%= @host_lookup %>
+<% end -%>
+<% unless @rfc1413_hosts.nil?              -%>rfc1413_hosts              = <%= @rfc1413_hosts %>
+<% end -%>
+<% unless @rfc1413_query_timeout.nil?      -%>rfc1413_query_timeout      = <%= @rfc1413_query_timeout %>
+<% end -%>
+<% unless @ignore_bounce_errors_after.nil? -%>ignore_bounce_errors_after = <%= @ignore_bounce_errors_after %>
+<% end -%>
+<% unless @timeout_frozen_after.nil?       -%>timeout_frozen_after       = <%= @timeout_frozen_after %>
+<% end -%>
+<% unless @auto_thaw.nil?                  -%>auto_thaw                  = <%= @auto_thaw %>
+<% end -%>
+<% unless @smtp_banner.nil?                -%>smtp_banner                = <%= @smtp_banner %>
+<% end -%>
+
+received_header_text       = Received: \
+  ${if def:sender_rcvhost {from $sender_rcvhost\n\t}\
+  {${if def:sender_ident \
+  {from ${quote_local_part:$sender_ident} }}\
+  ${if def:sender_helo_name {(helo=$sender_helo_name)\n\t}}}}\
+  by $primary_hostname \
+  ${if def:received_protocol {with $received_protocol}} \
+  ${if def:tls_cipher {($tls_cipher)\n\t}}\
+  (Exim)\n\t\
+  ${if def:sender_address \
+  {(envelope-from <$sender_address>)\n\t}}\
+  id $message_exim_id\
+  ${if def:received_for {\n\tfor $received_for}}
+
+<% unless @errors_reply_to.nil? -%>errors_reply_to            = <%= @errors_reply_to %>
+<% end -%>
+<% unless @qualify_domain.nil?  -%>qualify_domain             = <%= @qualify_domain %>
+<% end -%>
+
+<% unless @tls_certificate.nil? && @tls_privatekey.nil? -%>
+tls_advertise_hosts        = *
+tls_certificate            = <%= @tls_certificate %>
+tls_privatekey             = <%= @tls_privatekey %>
+<% end -%>
+
+<% if @gnutls_compat_mode                        -%>gnutls_compat_mode         = true
+<% end -%>
+<% unless @delay_warning.nil?                    -%>delay_warning              = <%= @delay_warning %>
+<% end -%>
+<% unless @smtp_accept_max_nonmail.nil?          -%>smtp_accept_max_nonmail    = <%= @smtp_accept_max_nonmail %>
+<% end -%>
+<% unless @smtp_accept_max.nil?                  -%>smtp_accept_max            = <%= @smtp_accept_max %>
+<% end -%>
+<% unless @smtp_accept_max_per_connection.nil?   -%>smtp_accept_max_per_connection = <%= @smtp_accept_max_per_connection %>
+<% end -%>
+<% unless @smtp_accept_max_per_host.nil?         -%>smtp_accept_max_per_host   = <%= @smtp_accept_max_per_host %>
+<% end -%>
+<% unless @smtp_accept_queue.nil?                -%>smtp_accept_queue          = <%= @smtp_accept_queue %>
+<% end -%>
+<% unless @smtp_accept_queue_per_connection.nil? -%>smtp_accept_queue_per_connection = <%= @smtp_accept_queue_per_connection %>
+<% end -%>
+<% unless @smtp_accept_reserve.nil?              -%>smtp_accept_reserve        = <%= @smtp_accept_reserve %>
+<% end -%>
+<% unless @smtp_reserve_hosts.nil?               -%>smtp_reserve_hosts         = <%= @smtp_reserve_hosts.join(' : ') %>
+<% end -%>
+<% unless @deliver_queue_load_max.nil?           -%>deliver_queue_load_max     = <%= @deliver_queue_load_max %>
+<% end -%>
+<% unless @queue_only_load.nil?                  -%>queue_only_load            = <%= @queue_only_load %>
+<% end -%>
+<% if @queue_only                                -%>queue_only                 = true
+<% end -%>
+<% unless @remote_max_parallel.nil?              -%>remote_max_parallel        = <%= @remote_max_parallel %>
+<% end -%>
+<% unless @queue_run_max.nil?                    -%>queue_run_max              = <%= @queue_run_max %>
+<% end -%>
+<% unless @callout_domain_positive_expire.nil?   -%>callout_domain_positive_expire = <%= @callout_domain_positive_expire %>
+<% end -%>
