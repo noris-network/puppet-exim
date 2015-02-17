@@ -58,7 +58,7 @@ class exim::config {
     exim::router {'system_aliases':
       order       => 1,
       driver      => 'redirect',
-      domains     => '+local_domains',
+      domains     => '@',
       allow_fail  => true,
       allow_defer => true,
       data        => '${lookup{$local_part}lsearch{/etc/aliases}}',
