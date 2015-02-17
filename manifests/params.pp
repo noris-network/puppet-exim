@@ -1,16 +1,20 @@
+# == class: exim::params
+#
+# This module sets all default parameters
+#
 class exim::params {
   case $::osfamily {
     'debian': {
       $exim_light_package = 'exim4'
       $exim_heavy_package = 'exim4-daemon-heavy'
       $exim_service = 'exim4'
-      $config_path = "/etc/exim4/exim4.conf${test}"
+      $config_path = '/etc/exim4/exim4.conf'
     }
     'redhat': {
       $exim_light_package = 'exim'
       $exim_heavy_package = 'exim'
       $exim_service = 'exim'
-      $config_path = "/etc/exim/exim.conf${test}"
+      $config_path = '/etc/exim/exim.conf'
     }
     default: {
       fail("The ${module_name} module is not supported on ${::osfamily} based systems")

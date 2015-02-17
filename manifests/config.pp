@@ -17,17 +17,17 @@ class exim::config {
     order   => '1000',
   }
   concat::fragment { 'router-header':
-    target => $::exim::config_path,
+    target  => $::exim::config_path,
     content => template("${module_name}/router/router-header.erb"),
     order   => '2000',
   }
   concat::fragment { 'transport-header':
-    target => $::exim::config_path,
+    target  => $::exim::config_path,
     content => template("${module_name}/transport/transport-header.erb"),
     order   => '3000',
   }
   concat::fragment { 'retry-header':
-    target => $::exim::config_path,
+    target  => $::exim::config_path,
     content => template("${module_name}/retry/retry-header.erb"),
     order   => '4000',
   }
@@ -56,18 +56,18 @@ class exim::config {
     }
   
     exim::router {'system_aliases':
-      order           => 1,
-      driver          => 'redirect',
-      domains         => '+local_domains',
-      allow_fail      => true,
-      allow_defer     => true,
-      data            => '${lookup{$local_part}lsearch{/etc/aliases}}',
+      order       => 1,
+      driver      => 'redirect',
+      domains     => '+local_domains',
+      allow_fail  => true,
+      allow_defer => true,
+      data        => '${lookup{$local_part}lsearch{/etc/aliases}}',
     }
     exim::router {'smarthost':
       order                    => 2,
       driver                   => 'manualroute',
       transport                => 'remote_smtp',
-      route_list               => "* mail.${domain} byname",
+      route_list               => "* mail.${::domain} byname",
       host_find_failed         => 'defer',
       same_domain_copy_routing => 'yes',
       no_more                  => true,
@@ -76,6 +76,6 @@ class exim::config {
     exim::transport {'remote_smtp':
       driver          => 'smtp',
     }
-    exim::retry {'*':}   
+    exim::retry {'*':}
   }
 }

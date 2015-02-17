@@ -1,3 +1,7 @@
+# == class: exim::install
+#
+# This class installes the exim package
+#
 class exim::install {
   if ($::exim::heavy) {
     $exim_package = $::exim::params::exim_heavy_package
