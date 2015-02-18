@@ -4,6 +4,9 @@
 #
 
 class exim::config {
+
+  $acl_smtp_rcpt = $::exim::acl_smtp_rcpt
+
   concat { $::exim::config_path:
   }
   concat::fragment { 'main':

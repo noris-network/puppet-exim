@@ -9,7 +9,7 @@
 #     (runs after SMTP "MAIL FROM:" command)
 #   Type: string
 #
-# [*acl_check_rcpt*]
+# [*acl_smtp_rcpt*]
 #   Name of acl used for rcpt checking.
 #     (runs after SMTP "RCPT TO:" command)
 #   Type: string

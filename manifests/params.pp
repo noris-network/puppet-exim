@@ -21,6 +21,7 @@ class exim::params {
     }
   }
 
+  $acl_smtp_rcpt                    = 'acl_check_rcpt'
   $defaults                         = true
   $daemon_smtp_ports                = undef
   $heavy                            = false
