@@ -12,7 +12,8 @@
 define exim::hostlist (
   $hosts=undef,
   ){
-  $list = $hosts
+  $list     = $hosts
+  $listtype = 'hostlist'
   concat::fragment { "hostlist-${title}":
     target  => $::exim::config_path,
     content => template("${module_name}/list.erb"),

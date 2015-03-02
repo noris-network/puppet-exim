@@ -12,7 +12,8 @@
 define exim::domainlist (
   $domains=undef,
   ){
-  $list = $domains
+  $list     = $domains
+  $listtype = 'domainlist'
   concat::fragment { "domainlist-${title}":
     target  => $::exim::config_path,
     content => template("${module_name}/list.erb"),

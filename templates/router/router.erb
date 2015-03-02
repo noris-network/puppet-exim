@@ -21,6 +21,9 @@
 <% unless @same_domain_copy_routing.nil? -%>
   same_domain_copy_routing = <%= @same_domain_copy_routing %>
 <% end -%>
+<% unless @debug_print.nil? -%>
+  debug_print = <%= @debug_print %>
+<% end -%>
 <% if @no_more -%>
   no_more
 <% end -%>

@@ -22,6 +22,9 @@
 # [*data*]
 #  Data source for the rewrite router
 #
+# [*debug_print*]
+#  Used to print debug information
+#
 # [*domains*]
 #  Domains for which this router should be used.
 #
@@ -63,6 +66,7 @@ define exim::router (
   $route_list               = undef,
   $same_domain_copy_routing = undef,
   $transport                = undef,
+  $debug_print              = undef,
   ){
   concat::fragment { "router-${title}":
     target  => $::exim::config_path,
