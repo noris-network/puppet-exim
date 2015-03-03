@@ -23,10 +23,20 @@
 #       ['domains', ['+domainlist']],
 #     ],
 #
-define exim::acl::statement ($acl_id,$order,$action,$conditions){
-  concat::fragment { "acl-${acl_id}-${order}":
-    target  => $::exim::config_path,
-    content => template("${module_name}/acl/statement.erb"),
-    order   => $acl_id * 100 + 1000 + $order,
+# [*disable*]
+#  This option can be used to ignore this acl statement
+#  even if other options are set.
+#  This is usefull if statements are created via
+#  hiera_hash with deep_merge, and you want to
+#  completly disable a statement defined in a lower
+#  hierachy.
+#
+define exim::acl::statement ($acl_id,$order,$action,$conditions,$disable=false){
+  unless $disable {
+    concat::fragment { "acl-${acl_id}-${order}":
+      target  => $::exim::config_path,
+      content => template("${module_name}/acl/statement.erb"),
+      order   => $acl_id * 100 + 1000 + $order,
+    }
   }
 }
