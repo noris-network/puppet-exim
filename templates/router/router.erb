@@ -1,19 +1,52 @@
 <%= @title %>:
-  driver     = <%= @driver %>
-<% unless @transport.nil? -%>
-  transport  = <%= @transport %>
+  driver       = <%= @driver %>
+<% unless @senders.nil? -%>
+  senders      = <%= @senders.join(" : ") %>
 <% end -%>
 <% unless @domains.nil? -%>
-  domains    = <%= @domains %>
+  domains      = <%= @domains.join(" : ") %>
+<% end -%>
+<% unless @local_parts.nil? -%>
+  local_parts  = <%= @local_parts.join(" : ") %>
 <% end -%>
 <% unless @condition.nil? -%>
-  condition  = <%= @condition %>
+  condition    = <%= @condition %>
+<% end -%>
+<% unless @local_part_suffix.nil? -%>
+  local_part_suffix = <%= @local_part_suffix %>
+<% end -%>
+<% if @local_part_suffix_optional -%>
+  local_part_suffix_optional
+<% end -%>
+<% if @allow_defer -%>
+  allow_defer
+<% end -%>
+<% if @allow_fail -%>
+  allow_fail
+<% end -%>
+<% unless @headers_add.nil? -%>
+  headers_add  = <%= @headers_add %>
 <% end -%>
 <% unless @data.nil? -%>
-  data       = <%= @data %>
+  data         = <%= @data %>
+<% end -%>
+<% unless @address_data.nil? -%>
+  address_data = <%= @address_data %>
+<% end -%>
+<% if @qualify_preserve_domain -%>
+  qualify_preserve_domain
+<% end -%>
+<% unless @file_transport.nil? -%>
+  file_transport = <%= @file_transport %>
+<% end -%>
+<% unless @pipe_transport.nil? -%>
+  pipe_transport = <%= @pipe_transport %>
+<% end -%>
+<% unless @route_data.nil? -%>
+  route_data   = <%= @route_data %>
 <% end -%>
 <% unless @route_list.nil? -%>
-  route_list = <%= @route_list %>
+  route_list   = <%= @route_list %>
 <% end -%>
 <% unless @host_find_failed.nil? -%>
   host_find_failed = <%= @host_find_failed %>
@@ -22,10 +55,10 @@
   same_domain_copy_routing = <%= @same_domain_copy_routing %>
 <% end -%>
 <% unless @debug_print.nil? -%>
-  debug_print = <%= @debug_print %>
+  debug_print  = <%= @debug_print %>
 <% end -%>
-<% if @no_more -%>
-  no_more
+<% unless @user.nil? -%>
+  user         = <%= @user %>
 <% end -%>
 <% if @no_verify -%>
   no_verify
@@ -33,10 +66,13 @@
 <% if @no_address_test -%>
   no_address_test
 <% end -%>
-<% if @allow_defer -%>
-  allow_defer
+<% unless @transport.nil? -%>
+  transport    = <%= @transport %>
 <% end -%>
-<% if @allow_fail -%>
-  allow_fail
+<% if @no_more -%>
+  no_more
+<% end -%>
+<% if @unseen -%>
+  unseen
 <% end -%>
 

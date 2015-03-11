@@ -21,10 +21,14 @@ class exim::params {
     }
   }
 
+  $acl_smtp_auth                    = undef
+  $acl_smtp_data                    = undef
   $acl_smtp_rcpt                    = 'acl_check_rcpt'
   $defaults                         = true
   $daemon_smtp_ports                = undef
+  $freeze_tell                      = undef
   $heavy                            = false
+  $local_from_check                 = true
   $log_smtp_confirmation            = true
   $log_smtp_connection              = true
   $log_smtp_protocol_error          = true
@@ -45,7 +49,7 @@ class exim::params {
   $check_spool_space                = undef
   $helo_allow_chars                 = undef
   $allow_mx_to_ip                   = false
-  $never_users                      = 'root'
+  $never_users                      = [ 'root' ]
   $rfc1413_hosts                    = '*'
   $rfc1413_query_timeout            = '5s'
   $ignore_bounce_errors_after       = '2d'
@@ -57,6 +61,7 @@ class exim::params {
   $timeout_frozen_after             = '7d'
   $trusted_users                    = undef
   $qualify_domain                   = undef
+  $tls_advertise_hosts              = '*'
   $tls_certificate                  = undef
   $tls_privatekey                   = undef
   $gnutls_compat_mode               = false

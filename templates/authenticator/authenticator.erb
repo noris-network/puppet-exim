@@ -1,0 +1,9 @@
+<%= @title %>:
+  driver           = <%= @driver %>
+  public_name      = <%= @public_name %>
+  server_condition = <%= @server_condition %>
+  server_set_id    = <%= @server_set_id %>
+<% unless @server_prompts.nil? -%>
+  server_prompts   = <%= @server_prompts %>
+<% end -%>
+

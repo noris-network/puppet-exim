@@ -5,8 +5,6 @@
 
 class exim::config {
 
-  $acl_smtp_rcpt = $::exim::acl_smtp_rcpt
-
   concat { $::exim::config_path:
   }
   concat::fragment { 'main':
@@ -34,6 +32,11 @@ class exim::config {
     content => template("${module_name}/retry/retry-header.erb"),
     order   => '4000',
   }
+  concat::fragment { 'authenticator-header':
+    target  => $::exim::config_path,
+    content => template("${module_name}/authenticator/authenticator-header.erb"),
+    order   => '5000',
+  }
 
   if $::exim::defaults {
     exim::acl {'acl_check_rcpt':
@@ -57,7 +60,7 @@ class exim::config {
       action     => 'deny',
       conditions => [ ['message' , ['relay not permitted']], ]
     }
-  
+
     exim::router {'system_aliases':
       order       => 1,
       driver      => 'redirect',
@@ -75,7 +78,7 @@ class exim::config {
       same_domain_copy_routing => 'yes',
       no_more                  => true,
     }
-  
+
     exim::transport {'remote_smtp':
       driver          => 'smtp',
     }

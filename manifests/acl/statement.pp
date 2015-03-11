@@ -31,7 +31,7 @@
 #  completly disable a statement defined in a lower
 #  hierachy.
 #
-define exim::acl::statement ($acl_id,$order,$action,$conditions,$disable=false){
+define exim::acl::statement ($acl_id,$order,$action,$conditions=undef,$disable=false){
   unless $disable {
     concat::fragment { "acl-${acl_id}-${order}":
       target  => $::exim::config_path,

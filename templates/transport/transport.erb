@@ -1,6 +1,54 @@
 <%= @title %>:
-  driver    = <%= @driver %>
+  driver          = <%= @driver %>
+<% if @delivery_date_add -%>
+  delivery_date_add
+<% end -%>
+<% if @envelope_to_add -%>
+  envelope_to_add
+<% end -%>
+<% if @return_path_add -%>
+  return_path_add
+<% end -%>
+<% unless @command.nil? -%>
+  command         = <%= @command %>
+<% end -%>
+<% if @log_output -%>
+  log_output
+<% end -%>
+<% unless @temp_errors.nil? -%>
+  temp_errors     = <%= @temp_errors.join(' : ') %>
+<% end -%>
+<% if @freeze_exec_fail -%>
+  freeze_exec_fail
+<% end -%>
 <% unless @connect_timeout.nil? -%>
   connect_timeout = <%= @connect_timeout %>
+<% end -%>
+<% unless @file.nil? -%>
+  file = <%= @file %>
+<% end -%>
+<% unless @mode.nil? -%>
+  mode = <%= @mode %>
+<% end -%>
+<% unless @directory_mode.nil? -%>
+  directory_mode  = <%= @directory_mode %>
+<% end -%>
+<% unless @user.nil? -%>
+  user            = <%= @user %>
+<% end -%>
+<% unless @group.nil? -%>
+  group           = <%= @group %>
+<% end -%>
+<% unless @home_directory.nil? -%>
+  home_directory  = <%= @home_directory %>
+<% end -%>
+<% if @initgroups -%>
+  initgroups
+<% end -%>
+<% unless @message_prefix.nil? -%>
+  message_prefix  = <%= @message_prefix %>
+<% end -%>
+<% unless @message_suffix.nil? -%>
+  message_suffix  = <%= @message_suffix %>
 <% end -%>
 

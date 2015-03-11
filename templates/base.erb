@@ -8,6 +8,8 @@
 # strongly discouraged and might lead to unexpected behaviour!     #
 ####################################################################
 
+<% unless @local_from_check          -%>local_from_check           = false
+<% end -%>
 <% unless @local_interfaces.nil?     -%>local_interfaces           = <; <%= @local_interfaces.join(" ; ") %>
 <% end -%>
 <% unless @daemon_smtp_ports.nil?    -%>daemon_smtp_ports          = <%= @daemon_smtp_ports.join(" : ") %>
@@ -26,6 +28,8 @@ log_selector               =  <% if @log_smtp_confirmation        == false %>-<%
                               <% if @log_skip_delivery            == false %>-<% else %>+<% end %>skip_delivery \
                               <% if @log_retry_defer              == false %>-<% else %>+<% end %>retry_defer
 
+<% unless @freeze_tell.nil?                -%>freeze_tell                = <%= @freeze_tell %>
+<% end -%>
 <% unless @message_logs                    -%>message_logs               = false
 <% end -%>
 <% unless @log_file_path.nil?              -%>log_file_path              = <%= @log_file_path.join(" : ") %>
@@ -46,9 +50,9 @@ log_selector               =  <% if @log_smtp_confirmation        == false %>-<%
 <% end -%>
 <% if @allow_mx_to_ip                      -%>allow_mx_to_ip             = true
 <% end -%>
-<% unless @never_users.nil?                -%>never_users                = <%= @never_users %>
+<% unless @never_users.nil?                -%>never_users                = <%= @never_users.join(" : ") %>
 <% end -%>
-<% unless @trusted_users.nil?              -%>trusted_users              = <%= @trusted_users %>
+<% unless @trusted_users.nil?              -%>trusted_users              = <%= @trusted_users.join(" : ") %>
 <% end -%>
 <% unless @message_size_limit.nil?         -%>message_size_limit         = <%= @message_size_limit %>
 <% end -%>
@@ -87,7 +91,7 @@ received_header_text       = Received: \
 <% end -%>
 
 <% unless @tls_certificate.nil? && @tls_privatekey.nil? -%>
-tls_advertise_hosts        = *
+tls_advertise_hosts        = <%= @tls_advertise_hosts %>
 tls_certificate            = <%= @tls_certificate %>
 tls_privatekey             = <%= @tls_privatekey %>
 <% end -%>

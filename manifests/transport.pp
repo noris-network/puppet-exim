@@ -12,7 +12,23 @@
 #
 define exim::transport (
   $driver,
-  $connect_timeout=undef,
+  $command           = undef,
+  $connect_timeout   = undef,
+  $delivery_date_add = false,
+  $directory_mode    = undef,
+  $envelope_to_add   = false,
+  $file              = undef,
+  $freeze_exec_fail  = false,
+  $group             = undef,
+  $home_directory    = undef,
+  $initgroups        = false,
+  $log_output        = undef,
+  $message_prefix    = undef,
+  $message_suffix    = undef,
+  $mode              = undef,
+  $return_path_add   = false,
+  $temp_errors       = undef,
+  $user              = undef,
   ){
   concat::fragment { "transport-${title}":
     target  => $::exim::config_path,

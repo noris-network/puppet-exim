@@ -4,6 +4,15 @@
 #
 # === Parameters
 #
+# [*acl_smtp_auth*]
+#   Name of acl used for auth checking
+#   Type: string
+#
+# [*acl_smtp_data*]
+#   Name of acl used for data checking
+#     (runs after SMTP "." command)
+#   Type: string
+#
 # [*acl_smtp_mail*]
 #   Name of acl used for mail checking
 #     (runs after SMTP "MAIL FROM:" command)
@@ -72,6 +81,9 @@
 #   Type: String
 #   Example: postmaster@example.com
 #
+# [*freeze_tell*]
+#   If a mail gets frozen, send a notification to the address defined here.
+#
 # [*gnutls_compat_mode*]
 #   This controls if gnutls is used in compatiblity mode.
 #   Set this to true to slightly reduce security, but improve compatiblity with older
@@ -90,7 +102,7 @@
 #   Reverse lookup hostname of ips.
 #   Type: Array
 #   Example: '*'
-# 
+#
 # [*hosts_treat_as_local*]
 #   Treat these hosts, as if they where the local host.
 #   default is empty
@@ -99,6 +111,9 @@
 #   Discard undeliverable bounce messages after this time
 #   Type String:
 #   Example: "12d"
+#
+# [*local_from_check*]
+#   Check and correct From: header from local mails to username@qualify-domain
 #
 # [*local_interfaces*]
 #   Specifies the interfaces exim will listen on.
@@ -186,16 +201,16 @@
 #   Maximum number of parrallel connections from a single host
 #
 # [*smtp_accept_queue*]
-#   If the number of simultaneous incoming SMTP connections being handled via the 
-#   listening daemon exceeds this value, messages received by SMTP are just 
+#   If the number of simultaneous incoming SMTP connections being handled via the
+#   listening daemon exceeds this value, messages received by SMTP are just
 #   placed on the queue.
 #
 # [*smtp_accept_queue_per_connection*]
 #   Maximum number of delivery processes spawned for a single smtp connection
 #
 # [*smtp_accept_reserve*]
-#   When smtp_accept_max is set greater than zero, this option specifies a number 
-#   of SMTP connections that are reserved for connections from the hosts that 
+#   When smtp_accept_max is set greater than zero, this option specifies a number
+#   of SMTP connections that are reserved for connections from the hosts that
 #   are specified in smtp_reserve_hosts.
 #
 # [*smtp_banner*]
@@ -220,6 +235,9 @@
 # [*timeout_frozen_after*]
 #   Discard frozen mails after this amount of time.
 #
+# [*tls_advertise_hosts*]
+#   Advertise tls to hosts in this list
+#
 # [*tls_certificate*]
 #   Path to crt file, must be used together with tls_privatekey, default is empty (no tls)
 #
@@ -235,6 +253,8 @@
 #  }
 
 class exim (
+  $acl_smtp_auth                    =$::exim::params::acl_smtp_auth,
+  $acl_smtp_data                    =$::exim::params::acl_smtp_data,
   $acl_smtp_mail                    =$::exim::params::acl_smtp_mail,
   $acl_smtp_rcpt                    =$::exim::params::acl_smtp_rcpt,
   $allow_mx_to_ip                   =$::exim::params::allow_mx_to_ip,
@@ -248,12 +268,14 @@ class exim (
   $delay_warning                    =$::exim::params::delay_warning,
   $deliver_queue_load_max           =$::exim::params::deliver_queue_load_max,
   $errors_reply_to                  =$::exim::params::errors_reply_to,
+  $freeze_tell                      =$::exim::params::freeze_tell,
   $gnutls_compat_mode               =$::exim::params::gnutls_compat_mode,
   $heavy                            =$::exim::params::heavy,
   $helo_allow_chars                 =$::exim::params::helo_allow_chars,
   $host_lookup                      =$::exim::params::host_lookup,
   $hosts_treat_as_local             =$::exim::params::hosts_treat_as_local,
   $ignore_bounce_errors_after       =$::exim::params::ignore_bounce_errors_after,
+  $local_from_check                 =$::exim::params::local_from_check,
   $local_interfaces                 =$::exim::params::local_interfaces,
   $log_file_path                    =$::exim::params::log_file_path,
   $log_lost_incoming_connection     =$::exim::params::log_lost_incoming_connection,
@@ -288,6 +310,7 @@ class exim (
   $syslog_timestamp                 =$::exim::params::syslog_timestamp,
   $system_filter                    =$::exim::params::system_filter,
   $timeout_frozen_after             =$::exim::params::timeout_frozen_after,
+  $tls_advertise_hosts              =$::exim::params::tls_advertise_hosts,
   $tls_certificate                  =$::exim::params::tls_certificate,
   $tls_privatekey                   =$::exim::params::tls_privatekey,
   $trusted_users                    =$::exim::params::trusted_users,

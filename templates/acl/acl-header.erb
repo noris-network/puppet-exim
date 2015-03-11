@@ -14,10 +14,10 @@ acl_smtp_mail    = <%= @acl_smtp_mail %>
 <% unless @acl_smtp_rcpt.nil? -%>
 acl_smtp_rcpt    = <%= @acl_smtp_rcpt %>
 <% end -%>
-<% unless @acl_check_auth.nil? -%>
+<% unless @acl_smtp_auth.nil? -%>
 acl_smtp_auth    = <%= @acl_smtp_auth %>
 <% end -%>
-<% unless @acl_check_message.nil? -%>
+<% unless @acl_smtp_data.nil? -%>
 acl_smtp_data    = <%= @acl_smtp_data %>
 <% end -%>
 <% unless @acl_check_mime.nil? -%>
