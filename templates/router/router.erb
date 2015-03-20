@@ -24,8 +24,11 @@
 <% if @allow_fail -%>
   allow_fail
 <% end -%>
+<% unless @headers_remove.nil? -%>
+  headers_remove  = <%= @headers_remove.join(":") %>
+<% end -%>
 <% unless @headers_add.nil? -%>
-  headers_add  = <%= @headers_add %>
+  headers_add  = "<%= @headers_add.join("\\n") %>"
 <% end -%>
 <% unless @data.nil? -%>
   data         = <%= @data %>

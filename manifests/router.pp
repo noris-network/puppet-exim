@@ -100,6 +100,7 @@ define exim::router (
   $domains                    = undef,
   $file_transport             = undef,
   $headers_add                = undef,
+  $headers_remove             = undef,
   $host_find_failed           = undef,
   $local_parts                = undef,
   $local_part_suffix          = undef,
