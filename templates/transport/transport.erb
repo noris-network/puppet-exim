@@ -51,4 +51,16 @@
 <% unless @message_suffix.nil? -%>
   message_suffix  = <%= @message_suffix %>
 <% end -%>
+<% unless @transport_filter.nil? -%>
+  transport_filter = <%= @transport_filter %>
+<% end -%>
+<% unless @to.nil? -%>
+  to              = <%= @to %>
+<% end -%>
+<% unless @subject.nil? -%>
+  subject         = <%= @subject %>
+<% end -%>
+<% unless @text.nil? -%>
+  text            = <%= @text %>
+<% end -%>
 

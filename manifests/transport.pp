@@ -26,8 +26,12 @@ define exim::transport (
   $message_prefix    = undef,
   $message_suffix    = undef,
   $mode              = undef,
+  $subject           = undef,
   $return_path_add   = false,
   $temp_errors       = undef,
+  $text              = undef,
+  $to                = undef,
+  $transport_filter  = undef,
   $user              = undef,
   ){
   concat::fragment { "transport-${title}":
