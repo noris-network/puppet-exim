@@ -1,3 +1,11 @@
+<% 
+def validate_string(string)
+  unless string.nil? 
+    abort "String may not be empty" if string.empty?
+    return true
+  end
+end 
+-%>
 <%= @title %>:
   driver          = <%= @driver %>
 <% if @delivery_date_add -%>
@@ -9,58 +17,77 @@
 <% if @return_path_add -%>
   return_path_add
 <% end -%>
-<% unless @command.nil? -%>
+<% if validate_string(@command) -%>
   command         = <%= @command %>
 <% end -%>
 <% if @log_output -%>
   log_output
 <% end -%>
-<% unless @temp_errors.nil? -%>
+<% if validate_string (@temp_errors) -%>
   temp_errors     = <%= @temp_errors.join(' : ') %>
 <% end -%>
 <% if @freeze_exec_fail -%>
   freeze_exec_fail
 <% end -%>
-<% unless @connect_timeout.nil? -%>
+<% if validate_string(@connect_timeout) -%>
   connect_timeout = <%= @connect_timeout %>
 <% end -%>
-<% unless @file.nil? -%>
-  file = <%= @file %>
+<% if @maildir_format -%>
+  maildir_format
 <% end -%>
-<% unless @mode.nil? -%>
-  mode = <%= @mode %>
+<% if validate_string(@maildir_tag) -%>
+  maildir_tag     = <%= maildir_tag %>
 <% end -%>
-<% unless @directory_mode.nil? -%>
+<% if validate_string(@directory) -%>
+  directory       = <%= @directory %>
+<% end -%>
+<% if validate_string(@file) -%>
+  file            = <%= @file %>
+<% end -%>
+<% if validate_string(@mode) -%>
+  mode            = <%= @mode %>
+<% end -%>
+<% if validate_string(@directory_mode) -%>
   directory_mode  = <%= @directory_mode %>
 <% end -%>
-<% unless @user.nil? -%>
+<% if validate_string(@socket) -%>
+  socket          = <%= @socket %>
+<% end -%>
+<% unless @batch_max.nil? 
+ abort "could not convert value of batch_max to number greater then 1" if @batch_max.to_i < 1 -%>
+  batch_max       = <%= @batch_max.to_i %>
+<% end -%>
+<% if validate_string(@user) -%>
   user            = <%= @user %>
 <% end -%>
-<% unless @group.nil? -%>
+<% if validate_string(@group) -%>
   group           = <%= @group %>
 <% end -%>
-<% unless @home_directory.nil? -%>
+<% if validate_string(@home_directory) -%>
   home_directory  = <%= @home_directory %>
 <% end -%>
 <% if @initgroups -%>
   initgroups
 <% end -%>
-<% unless @message_prefix.nil? -%>
+<% if @rcpt_include_affixes -%>
+  rcpt_include_affixes
+<% end -%>
+<% if validate_string(@message_prefix) -%>
   message_prefix  = <%= @message_prefix %>
 <% end -%>
-<% unless @message_suffix.nil? -%>
+<% if validate_string(@message_suffix) -%>
   message_suffix  = <%= @message_suffix %>
 <% end -%>
-<% unless @transport_filter.nil? -%>
+<% if validate_string(@transport_filter) -%>
   transport_filter = <%= @transport_filter %>
 <% end -%>
-<% unless @to.nil? -%>
+<% if validate_string(@to) -%>
   to              = <%= @to %>
 <% end -%>
-<% unless @subject.nil? -%>
+<% if validate_string(@subject) -%>
   subject         = <%= @subject %>
 <% end -%>
-<% unless @text.nil? -%>
+<% if validate_string(@text) -%>
   text            = <%= @text %>
 <% end -%>
 
