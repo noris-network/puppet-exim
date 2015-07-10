@@ -12,6 +12,9 @@
 <% unless @condition.nil? -%>
   condition    = <%= @condition %>
 <% end -%>
+<% unless @local_part_prefix.nil? -%>
+  local_part_prefix = <%= @local_part_prefix %>
+<% end -%>
 <% unless @local_part_suffix.nil? -%>
   local_part_suffix = <%= @local_part_suffix %>
 <% end -%>
@@ -25,10 +28,10 @@
   allow_fail
 <% end -%>
 <% unless @headers_remove.nil? -%>
-  headers_remove  = <%= @headers_remove.join(":") %>
+  headers_remove = <%= @headers_remove.join(":") %>
 <% end -%>
 <% unless @headers_add.nil? -%>
-  headers_add  = "<%= @headers_add.join("\\n") %>"
+  headers_add  = <%= @headers_add.join("\\n") %>
 <% end -%>
 <% unless @data.nil? -%>
   data         = <%= @data %>

@@ -44,6 +44,9 @@
 # [*local_parts*]
 #  The router is run only if the local part of the address matches the list.
 #
+# [*local_part_prefix*]
+#  Define a prefix, present on localparts
+#
 # [*local_part_suffix*]
 #  Define a suffix, present on localparts
 #
@@ -103,6 +106,7 @@ define exim::router (
   $headers_remove             = undef,
   $host_find_failed           = undef,
   $local_parts                = undef,
+  $local_part_prefix          = undef,
   $local_part_suffix          = undef,
   $local_part_suffix_optional = false,
   $no_address_test            = false,
