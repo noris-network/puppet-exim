@@ -4,7 +4,6 @@
 #
 
 class exim::config {
-
   concat { $::exim::config_path:
   }
   concat::fragment { 'main':
@@ -64,7 +63,7 @@ class exim::config {
     exim::router {'system_aliases':
       order       => 1,
       driver      => 'redirect',
-      domains     => '@',
+      domains     => ['@'],
       allow_fail  => true,
       allow_defer => true,
       data        => '${lookup{$local_part}lsearch{/etc/aliases}}',
