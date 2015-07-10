@@ -321,6 +321,9 @@ class exim (
   $trusted_users                      =$::exim::params::trusted_users,
   $extract_addresses_remove_arguments =$::exim::params::extract_addresses_remove_arguments,
 ) inherits exim::params {
+
   include exim::install
   include exim::config
+
+  Class['exim::install'] -> Class['exim::config']
 }
