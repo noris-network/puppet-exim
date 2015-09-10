@@ -40,25 +40,25 @@ define exim::transport (
   $user                 = undef,
   $rcpt_include_affixes = false,
   ){
-  if ($directory)        { validate_string($directory) }
-  if ($command)          { validate_string($command) }
-  if ($connect_timeout)  { validate_string($connect_timeout) }
-  if ($directory_mode)   { validate_string($directory_mode) }
-  if ($file)             { validate_string($file) }
-  if ($group)            { validate_string($group) }
-  if ($home_directory)   { validate_string($home_directory) }
-  if ($maildir_tag)      { validate_string($maildir_tag) }
-  if ($message_prefix)   { validate_string($message_prefix) }
-  if ($message_suffix)   { validate_string($message_suffix) }
-  if ($mode)             { validate_string($mode) }
-  if ($socket)           { validate_string($socket) }
-  if ($subject)          { validate_string($subject) }
-  if ($text)             { validate_string($text) }
-  if ($to)               { validate_string($to) }
-  if ($transport_filter) { validate_string($transport_filter) }
-  if ($user)             { validate_string($user) }
-  if ($temp_errors)      { validate_array($temp_errors) }
-  if ($batch_max)        { validate_integer($batch_max) }
+  if ($directory)        { validate_re($directory       ,'^.+$') }
+  if ($command)          { validate_re($command         ,'^.+$') }
+  if ($connect_timeout)  { validate_re($connect_timeout ,'^.+$') }
+  if ($directory_mode)   { validate_re($directory_mode  ,'^.+$') }
+  if ($file)             { validate_re($file            ,'^.+$') }
+  if ($group)            { validate_re($group           ,'^.+$') }
+  if ($home_directory)   { validate_re($home_directory  ,'^.+$') }
+  if ($maildir_tag)      { validate_re($maildir_tag     ,'^.+$') }
+  if ($message_prefix)   { validate_re($message_prefix  ,'^.+$') }
+  if ($message_suffix)   { validate_re($message_suffix  ,'^.+$') }
+  if ($mode)             { validate_re($mode            ,'^.+$') }
+  if ($socket)           { validate_re($socket          ,'^.+$') }
+  if ($subject)          { validate_re($subject         ,'^.+$') }
+  if ($text)             { validate_re($text            ,'^.+$') }
+  if ($to)               { validate_re($to              ,'^.+$') }
+  if ($transport_filter) { validate_re($transport_filter,'^.+$') }
+  if ($user)             { validate_re($user            ,'^.+$') }
+  if ($temp_errors)      { validate_array($temp_errors  ,) }
+  if ($batch_max)        { validate_re("${batch_max}",'^[0-9]+$') }
   validate_bool($delivery_date_add,$envelope_to_add,$freeze_exec_fail,$initgroups,$log_output,$maildir_format,$return_path_add,$rcpt_include_affixes)
 
   concat::fragment { "transport-${title}":

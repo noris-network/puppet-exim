@@ -9,7 +9,7 @@ describe 'exim::transport', :type => :define do
   describe 'driver' do
     context "is unset" do
       let(:params) { { } }
-      it { expect { should contain_concat__fragment('transport-testtransport')  }.to raise_error() }
+      it { expect { should contain_concat__fragment('transport-testtransport')  }.to raise_error(Puppet::Error, /Must pass/) }
     end
   end
 
@@ -25,10 +25,10 @@ describe 'exim::transport', :type => :define do
         let(:params) { { :driver => 'appendfile' } }
         it { should contain_concat__fragment('transport-testtransport').without_content(/^\s+#{parameter}/) }
       end
-      [ 'x','',[],{},true ].each do |badtype|
+      [ 'x','',{},true,[] ].each do |badtype|
         context 'badtype: ' + badtype.class.to_s do
           let(:params) { { parameter => badtype, :driver => 'appendfile' } }
-          it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error() }
+          it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error(Puppet::PreformattedError,/does not match/) }
         end
       end
     end
@@ -50,10 +50,10 @@ describe 'exim::transport', :type => :define do
         let(:params) { { :driver => 'appendfile' } }
         it { should contain_concat__fragment('transport-testtransport').without_content(/^\s+#{parameter}/) }
       end
-      [ '',[],{},true ].each do |badtype|
+      [ [],{},true,'' ].each do |badtype|
         context 'badtype: ' + badtype.class.to_s do
           let(:params) { { parameter => badtype, :driver => 'appendfile' } }
-          it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error() }
+          it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error(Puppet::PreformattedError,/does not match/) }
         end
       end
     end
@@ -75,7 +75,7 @@ describe 'exim::transport', :type => :define do
       [ '','x',{},true ].each do |badtype|
         context 'badtype:' + badtype.class.to_s do
           let(:params) { { parameter => badtype, :driver => 'appendfile' } }
-          it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error() }
+          it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error(Puppet::PreformattedError,/is not an Array/) }
         end
       end
     end
@@ -101,7 +101,7 @@ describe 'exim::transport', :type => :define do
       [ '','x',[],{} ].each do |badtype|
         context 'badtype:' + badtype.class.to_s do
           let(:params) { { parameter => badtype, :driver => 'appendfile' } }
-          it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error() }
+          it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error(Puppet::PreformattedError,/is not a boolean/) }
         end
       end
 
