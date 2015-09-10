@@ -20,7 +20,7 @@ acl_smtp_auth    = <%= @acl_smtp_auth %>
 <% unless @acl_smtp_data.nil? -%>
 acl_smtp_data    = <%= @acl_smtp_data %>
 <% end -%>
-<% unless @acl_check_mime.nil? -%>
+<% unless @acl_smtp_mime.nil? -%>
 acl_smtp_mime    = <%= @acl_smtp_mime %>
 <% end -%>
 

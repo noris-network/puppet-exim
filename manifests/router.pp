@@ -10,6 +10,10 @@
 # [*address_data*]
 #  Set the address_data variable
 #
+# [*comment*]
+#  Comment a router, this will be placed as a comment just above
+#  the router.
+#
 # [*driver*]
 #  Sets the type of router.
 #
@@ -40,6 +44,9 @@
 # [*host_find_failed*]
 #  Relevant to the manualroute router, it determines what shoud
 #  happen if the used host can't be resolved to an IP address.
+#
+# [*ignore_target_hosts*]
+#  remove this host from hostlists gererated by this router
 #
 # [*local_parts*]
 #  The router is run only if the local part of the address matches the list.
@@ -79,6 +86,10 @@
 # [*same_domain_copy_routing*]
 #  This option copys routing information to all mails targeting the same domain.
 #
+# [*self*]
+#  The self option specifies what happens when the first host on the list turns out to be the local host.
+#  See official documentation for more details.
+#
 # [*senders*]
 #  If this option is set, the router is skipped unless the message’s sender address matches something on the list.
 #
@@ -97,6 +108,7 @@ define exim::router (
   $address_data               = undef,
   $allow_defer                = false,
   $allow_fail                 = false,
+  $comment                    = undef,
   $condition                  = undef,
   $data                       = undef,
   $debug_print                = undef,
@@ -105,6 +117,7 @@ define exim::router (
   $headers_add                = undef,
   $headers_remove             = undef,
   $host_find_failed           = undef,
+  $ignore_target_hosts        = undef,
   $local_parts                = undef,
   $local_part_prefix          = undef,
   $local_part_suffix          = undef,
@@ -117,6 +130,7 @@ define exim::router (
   $route_data                 = undef,
   $route_list                 = undef,
   $same_domain_copy_routing   = undef,
+  $self                       = undef,
   $senders                    = undef,
   $transport                  = undef,
   $unseen                     = false,

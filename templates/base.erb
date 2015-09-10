@@ -8,6 +8,12 @@
 # strongly discouraged and might lead to unexpected behaviour!     #
 ####################################################################
 
+<% @macros.each do |k,v| -%>
+<%= k %>=<%= v %>
+<% end -%>
+<% @includes.each do |i| -%>
+.include <%= i %>
+<% end -%>
 <% unless @local_from_check          -%>local_from_check           = false
 <% end -%>
 <% unless @local_interfaces.nil?     -%>local_interfaces           = <; <%= @local_interfaces.join(" ; ") %>

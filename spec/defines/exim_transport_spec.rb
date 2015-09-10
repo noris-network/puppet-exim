@@ -13,7 +13,7 @@ describe 'exim::transport', :type => :define do
     end
   end
 
-  integer_parameter=[ 'batch_max' ]
+  integer_parameter=[ 'batch_max', 'port' ]
 
   integer_parameter.each do |parameter|
     describe parameter do
@@ -59,7 +59,7 @@ describe 'exim::transport', :type => :define do
     end
   end
 
-  array_parameter=[ 'temp_errors' ]
+  array_parameter=[ 'temp_errors', 'hosts' ]
 
   array_parameter.each do |parameter|
 
@@ -81,7 +81,9 @@ describe 'exim::transport', :type => :define do
     end
   end
 
-  bool_parameter=[ 'delivery_date_add', 'envelope_to_add', 'freeze_exec_fail', 'initgroups', 'log_output', 'maildir_format', 'return_path_add', 'rcpt_include_affixes' ]
+  bool_parameter=[ 'delivery_date_add', 'envelope_to_add', 'freeze_exec_fail', 'initgroups',
+                   'log_output', 'maildir_format', 'return_path_add', 'rcpt_include_affixes', 
+                   'allow_localhost', 'return_output' ]
 
   bool_parameter.each do |parameter|
 

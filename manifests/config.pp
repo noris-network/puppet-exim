@@ -4,6 +4,14 @@
 #
 
 class exim::config {
+
+  $macros        = $::exim::macros
+  $includes      = $::exim::includes
+  $acl_smtp_mail = $::exim::acl_smtp_mail
+  $acl_smtp_rcpt = $::exim::acl_smtp_rcpt
+  $acl_smtp_data = $::exim::acl_smtp_data
+  $acl_smtp_mime = $::exim::acl_smtp_mime
+
   concat { $::exim::config_path:
   }
   concat::fragment { 'main':
@@ -39,25 +47,26 @@ class exim::config {
 
   if $::exim::defaults {
     exim::acl {'acl_check_rcpt':
-      acl_id => 1,
-    }
-    exim::acl::statement {'Accept local':
-      acl_id     => 1,
-      order      => 1,
-      action     => 'accept',
-      conditions => [ ['hosts',[':']] ],
-    }
-    exim::acl::statement {'Accept hostlist':
-      acl_id     => 1,
-      order      => 2,
-      action     => 'accept',
-      conditions => [ ['hosts'   , ['@','127.0.0.1']], ]
-    }
-    exim::acl::statement {'deny all':
-      acl_id     => 1,
-      order      => 3,
-      action     => 'deny',
-      conditions => [ ['message' , ['relay not permitted']], ]
+      statements => {
+        'Accept local' => {
+          acl_id     => 1,
+          order      => 1,
+          action     => 'accept',
+          conditions => [ ['hosts',[':']] ],
+        },
+        'Accept hostlist' => {
+          acl_id     => 1,
+          order      => 2,
+          action     => 'accept',
+          conditions => [ ['hosts'   , ['@','127.0.0.1']], ]
+        },
+        'deny all' => {
+          acl_id     => 1,
+          order      => 3,
+          action     => 'deny',
+          conditions => [ ['message' , ['relay not permitted']], ]
+        },
+      }
     }
 
     exim::router {'system_aliases':

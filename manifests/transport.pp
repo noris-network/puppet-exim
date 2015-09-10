@@ -4,14 +4,32 @@
 #
 # === Parameters
 #
+# [*allow_localhost*]
+#   Allow connections to localhost
+#
 # [*driver*]
 #   Type of transport.
 #
 # [*connect_timeout*]
 #   Timeout when connecting to remote Servers.
 #
+# [*hosts*]
+#   The hosts option specifies a list of hosts to be used if the address
+#   being processed does not have any hosts associated with it. The hosts
+#   specified by hosts are also used, whether or not the address has its
+#   own hosts, if hosts_override is set.
+#
+# [*port*]
+#   The port exim connects to on the remote server
+#
+# [*return_output*]
+#   If this option is true, and the command produced any output, the delivery
+#   is deemed to have failed whatever the return code from the command, and
+#   the output is returned in the bounce message
+#
 define exim::transport (
   $driver,
+  $allow_localhost      = false,
   $batch_max            = undef,
   $directory            = undef,
   $command              = undef,
@@ -23,6 +41,7 @@ define exim::transport (
   $freeze_exec_fail     = false,
   $group                = undef,
   $home_directory       = undef,
+  $hosts                = undef,
   $initgroups           = false,
   $log_output           = false,
   $maildir_format       = false,
@@ -30,8 +49,10 @@ define exim::transport (
   $message_prefix       = undef,
   $message_suffix       = undef,
   $mode                 = undef,
+  $port                 = undef,
   $socket               = undef,
   $subject              = undef,
+  $return_output        = false,
   $return_path_add      = false,
   $temp_errors          = undef,
   $text                 = undef,
@@ -57,9 +78,15 @@ define exim::transport (
   if ($to)               { validate_re($to              ,'^.+$') }
   if ($transport_filter) { validate_re($transport_filter,'^.+$') }
   if ($user)             { validate_re($user            ,'^.+$') }
-  if ($temp_errors)      { validate_array($temp_errors  ,) }
+
+  if ($temp_errors)      { validate_array($temp_errors) }
+  if ($hosts)            { validate_array($hosts      ) }
   if ($batch_max)        { validate_re("${batch_max}",'^[0-9]+$') }
-  validate_bool($delivery_date_add,$envelope_to_add,$freeze_exec_fail,$initgroups,$log_output,$maildir_format,$return_path_add,$rcpt_include_affixes)
+  if ($port)             { validate_re("${port}"     ,'^[0-9]+$') }
+
+  validate_bool( $delivery_date_add,$envelope_to_add,$freeze_exec_fail,$initgroups,
+                 $log_output,$maildir_format,$return_path_add,$rcpt_include_affixes,
+                 $allow_localhost,$return_output)
 
   concat::fragment { "transport-${title}":
     target  => $::exim::config_path,

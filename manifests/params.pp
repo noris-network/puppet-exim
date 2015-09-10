@@ -28,6 +28,7 @@ class exim::params {
   $daemon_smtp_ports                  = undef
   $freeze_tell                        = undef
   $heavy                              = false
+  $includes                           = []
   $local_from_check                   = true
   $log_smtp_confirmation              = true
   $log_smtp_connection                = true
@@ -39,6 +40,7 @@ class exim::params {
   $log_skip_delivery                  = true
   $log_retry_defer                    = true
   $local_interfaces                   = undef
+  $macros                             = {}
   $message_logs                       = true
   $log_file_path                      = undef
   $syslog_timestamp                   = true

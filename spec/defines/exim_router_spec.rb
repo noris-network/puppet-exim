@@ -7,14 +7,32 @@ describe 'exim::router', :type => :define do
 
   let(:facts) { {:concat_basedir => '/dne', :osfamily => 'Debian'} }
   let(:pre_condition) {'class { "exim": }' }
+  let(:title) { 'testrouter' }
 
-  
-  describe 'local_part_prefix' do
-     let(:title) { 'testrouter' }
-     let(:params) { { :local_part_prefix => '*-',
+  [ 'local_part_prefix', 'self' ].each do |option|
+    describe option do
+      let(:params) { { option => 'foo',
                       :order => '1',
                       :driver => 'redirect' } }
 
-     it { should contain_concat__fragment('router-testrouter').with_content(/^\s+local_part_prefix\s+=\s\*-/) }
+      it { should contain_concat__fragment('router-testrouter').with_content(/^\s+#{option}\s+=\s+foo$/) }
+    end
+  end
+
+  [ 'ignore_target_hosts' ].each do |option|
+    describe option do
+      let(:params) { { option => ['foo', 'bar'],
+                      :order => '1',
+                      :driver => 'redirect' } }
+
+      it { should contain_concat__fragment('router-testrouter').with_content(/^\s+#{option}\s+=\s+foo : bar$/) }
+    end
+  end
+
+  describe "comment" do
+    let(:params) { { :comment => [ 'foo' ],
+                     :order => '1',
+                     :driver => 'redirect' } }
+    it { should contain_concat__fragment('router-testrouter').with_content(/^# foo$/) }
   end
 end

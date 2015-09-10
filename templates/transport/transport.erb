@@ -1,10 +1,10 @@
-<% 
+<%
 def validate_string(string)
-  unless string.nil? 
+  unless string.nil?
     abort "String may not be empty" if string.empty?
     return true
   end
-end 
+end
 -%>
 <%= @title %>:
   driver          = <%= @driver %>
@@ -22,6 +22,9 @@ end
 <% end -%>
 <% if @log_output -%>
   log_output
+<% end -%>
+<% if @return_output -%>
+  return_output
 <% end -%>
 <% if validate_string (@temp_errors) -%>
   temp_errors     = <%= @temp_errors.join(' : ') %>
@@ -53,7 +56,7 @@ end
 <% if validate_string(@socket) -%>
   socket          = <%= @socket %>
 <% end -%>
-<% unless @batch_max.nil? 
+<% unless @batch_max.nil?
  abort "could not convert value of batch_max to number greater then 1" if @batch_max.to_i < 1 -%>
   batch_max       = <%= @batch_max.to_i %>
 <% end -%>
@@ -81,6 +84,9 @@ end
 <% if validate_string(@transport_filter) -%>
   transport_filter = <%= @transport_filter %>
 <% end -%>
+<% unless @port.nil? -%>
+  port            = <%= @port %>
+<% end -%>
 <% if validate_string(@to) -%>
   to              = <%= @to %>
 <% end -%>
@@ -89,5 +95,11 @@ end
 <% end -%>
 <% if validate_string(@text) -%>
   text            = <%= @text %>
+<% end -%>
+<% unless @hosts.nil? -%>
+  hosts           = <%= @hosts.join(' : ') %>
+<% end -%>
+<% if @allow_localhost -%>
+  allow_localhost
 <% end -%>
 

@@ -1,3 +1,8 @@
+<% unless @comment.nil? -%>
+<% @comment.each do |com| -%>
+# <%= com %>
+<% end -%>
+<% end -%>
 <%= @title %>:
   driver       = <%= @driver %>
 <% unless @senders.nil? -%>
@@ -71,6 +76,12 @@
 <% end -%>
 <% if @no_address_test -%>
   no_address_test
+<% end -%>
+<% unless @self.nil? -%>
+  self         = <%= @self %>
+<% end -%>
+<% unless @ignore_target_hosts.nil? -%>
+  ignore_target_hosts = <%= @ignore_target_hosts.join(" : ") %>
 <% end -%>
 <% unless @transport.nil? -%>
   transport    = <%= @transport %>

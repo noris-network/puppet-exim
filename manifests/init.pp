@@ -18,6 +18,10 @@
 #     (runs after SMTP "MAIL FROM:" command)
 #   Type: string
 #
+# [*acl_smtp_mime*]
+#   Name of acl used for maime checking
+#   Type: string
+#
 # [*acl_smtp_rcpt*]
 #   Name of acl used for rcpt checking.
 #     (runs after SMTP "RCPT TO:" command)
@@ -117,6 +121,10 @@
 #   Type String:
 #   Example: "12d"
 #
+# [*includes*]
+#   Include additional config file snippets, files defined here will be included at
+#   the top of the configuration, but below macros.
+#
 # [*local_from_check*]
 #   Check and correct From: header from local mails to username@qualify-domain
 #
@@ -153,6 +161,10 @@
 #
 # [*log_tls_peerdn*]
 #   TLS peer DN on <= and => lines
+#
+# [*macros*]
+#   Allows you to set Macro definitions, note that macros must
+#   start with an uppercase letter
 #
 # [*message_logs*]
 #   This stores an aditional log file with each message in the spool file
@@ -261,6 +273,7 @@ class exim (
   $acl_smtp_auth                      =$::exim::params::acl_smtp_auth,
   $acl_smtp_data                      =$::exim::params::acl_smtp_data,
   $acl_smtp_mail                      =$::exim::params::acl_smtp_mail,
+  $acl_smtp_mime                      =$::exim::params::acl_smtp_mime,
   $acl_smtp_rcpt                      =$::exim::params::acl_smtp_rcpt,
   $allow_mx_to_ip                     =$::exim::params::allow_mx_to_ip,
   $auto_thaw                          =$::exim::params::auto_thaw,
@@ -280,6 +293,7 @@ class exim (
   $host_lookup                        =$::exim::params::host_lookup,
   $hosts_treat_as_local               =$::exim::params::hosts_treat_as_local,
   $ignore_bounce_errors_after         =$::exim::params::ignore_bounce_errors_after,
+  $includes                           =$::exim::params::includes,
   $local_from_check                   =$::exim::params::local_from_check,
   $local_interfaces                   =$::exim::params::local_interfaces,
   $log_file_path                      =$::exim::params::log_file_path,
@@ -292,6 +306,7 @@ class exim (
   $log_smtp_protocol_error            =$::exim::params::log_smtp_protocol_error,
   $log_smtp_syntax_error              =$::exim::params::log_smtp_syntax_error,
   $log_tls_peerdn                     =$::exim::params::log_tls_peerdn,
+  $macros                             =$::exim::params::macros,
   $message_logs                       =$::exim::params::message_logs,
   $message_size_limit                 =$::exim::params::message_size_limit,
   $never_users                        =$::exim::params::never_users,

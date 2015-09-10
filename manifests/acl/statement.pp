@@ -33,6 +33,7 @@
 #
 define exim::acl::statement ($acl_id,$order,$action,$conditions=undef,$disable=false){
   unless $disable {
+    notice('using exim::acl::statement is depricated please use the statements parameter of exim::acl')
     concat::fragment { "acl-${acl_id}-${order}":
       target  => $::exim::config_path,
       content => template("${module_name}/acl/statement.erb"),
