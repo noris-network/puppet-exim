@@ -81,12 +81,12 @@ define exim::transport (
 
   if ($temp_errors)      { validate_array($temp_errors) }
   if ($hosts)            { validate_array($hosts      ) }
-  if ($batch_max)        { validate_re("${batch_max}",'^[0-9]+$') }
-  if ($port)             { validate_re("${port}"     ,'^[0-9]+$') }
+  if ($batch_max)        { unless is_integer($batch_max) { fail("${batch_max} must be an integer") } }
+  if ($port)             { unless is_integer($port)      { fail("${port} must be an integer") } }
 
-  validate_bool( $delivery_date_add,$envelope_to_add,$freeze_exec_fail,$initgroups,
-                 $log_output,$maildir_format,$return_path_add,$rcpt_include_affixes,
-                 $allow_localhost,$return_output)
+  validate_bool($delivery_date_add,$envelope_to_add,$freeze_exec_fail,$initgroups,
+                $log_output,$maildir_format,$return_path_add,$rcpt_include_affixes,
+                $allow_localhost,$return_output)
 
   concat::fragment { "transport-${title}":
     target  => $::exim::config_path,

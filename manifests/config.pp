@@ -48,7 +48,7 @@ class exim::config {
   if $::exim::defaults {
     exim::acl {'acl_check_rcpt':
       statements => {
-        'Accept local' => {
+        'Accept local'    => {
           acl_id     => 1,
           order      => 1,
           action     => 'accept',
@@ -60,7 +60,7 @@ class exim::config {
           action     => 'accept',
           conditions => [ ['hosts'   , ['@','127.0.0.1']], ]
         },
-        'deny all' => {
+        'deny all'        => {
           acl_id     => 1,
           order      => 3,
           action     => 'deny',
