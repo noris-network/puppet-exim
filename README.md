@@ -1,5 +1,7 @@
 # puppet-exim
 
+[![Build Status](https://api.travis-ci.org/noris-network/puppet-exim.png)](https://travis-ci.org/noris-network/puppet-exim)
+
 The exim puppet module installes and configures exim.
 The goal is to support the most complex configurations and compile them
 into a nice, easy to read, single configuration file.
