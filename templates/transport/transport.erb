@@ -6,6 +6,11 @@ def validate_string(string)
   end
 end
 -%>
+<% unless @comment.nil? -%>
+<% @comment.each do |com| -%>
+# <%= com %>
+<% end -%>
+<% end -%>
 <%= @title %>:
   driver          = <%= @driver %>
 <% if @delivery_date_add -%>
@@ -75,6 +80,12 @@ end
 <% if @rcpt_include_affixes -%>
   rcpt_include_affixes
 <% end -%>
+<% unless @headers_remove.nil? -%>
+  headers_remove  = <%= @headers_remove.join(":") %>
+<% end -%>
+<% unless @headers_add.nil? -%>
+  headers_add     = <%= @headers_add.join("\\n") %>
+<% end -%>
 <% if validate_string(@message_prefix) -%>
   message_prefix  = <%= @message_prefix %>
 <% end -%>
@@ -84,8 +95,17 @@ end
 <% if validate_string(@transport_filter) -%>
   transport_filter = <%= @transport_filter %>
 <% end -%>
+<% unless @tls_dh_min_bits.nil? -%>
+  tls_dh_min_bits = <%= @tls_dh_min_bits %>
+<% end -%>
+<% unless @interface.nil? -%>
+  interface       = <%= @interface %>
+<% end -%>
 <% unless @port.nil? -%>
   port            = <%= @port %>
+<% end -%>
+<% unless @helo_data.nil? -%>
+  helo_data       = <%= @helo_data %>
 <% end -%>
 <% if validate_string(@to) -%>
   to              = <%= @to %>
@@ -98,6 +118,18 @@ end
 <% end -%>
 <% unless @hosts.nil? -%>
   hosts           = <%= @hosts.join(' : ') %>
+<% end -%>
+<% unless @connection_max_messages.nil? -%>
+  connection_max_messages = <%= @connection_max_messages %>
+<% end -%>
+<% unless @hosts_require_tls.nil? -%>
+  hosts_require_tls = <%= @hosts_require_tls.join(' : ') %>
+<% end -%>
+<% unless @tls_verify_certificates.nil? -%>
+  tls_verify_certificates = <%= @tls_verify_certificates %>
+<% end -%>
+<% unless @fallback_hosts.nil? -%>
+  fallback_hosts  = <%= @fallback_hosts.join(' : ') %>
 <% end -%>
 <% if @allow_localhost -%>
   allow_localhost

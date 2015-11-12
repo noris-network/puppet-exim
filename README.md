@@ -30,32 +30,23 @@ Set the acl used for rcpt checking to "acl_check_rcpt" (default, shown for demon
   }
 ```
 
-Create a new, empty acl list named "acl_check_rcpt" and assign an id to it:
+Create a new, acl list named "acl_check_rcpt" :
 ```puppet
   exim::acl {'acl_check_rcpt':
-    acl_id => 1,
-  }
-```
-
-Fill the acl with statements, referencing the id given above:
-```puppet
-  exim::acl::statement {'Accept local':
-    acl_id     => 1,
-    order      => 1,
-    action     => 'accept',
-    conditions => [ ['hosts',[':']] ],
-  }
-  exim::acl::statement {'Accept hostlist':
-    acl_id     => 1,
-    order      => 2,
-    action     => 'accept',
-    conditions => [ ['hosts'   , ['@','127.0.0.1']], ]
-  }
-  exim::acl::statement {'deny all':
-    acl_id     => 1,
-    order      => 3,
-    action     => 'deny',
-    conditions => [ ['message' , ['relay not permitted']], ]
+    statements => {
+      'Accept local' => {
+        action     => 'accept',
+        conditions => [ ['hosts',[':']] ],
+      }
+      'Accept hostlist' => {
+        action     => 'accept',
+        conditions => [ ['hosts'   , ['@','127.0.0.1']], ]
+      }
+      'deny all' => {
+        action     => 'deny',
+        conditions => [ ['message' , ['relay not permitted']], ]
+      }
+    }
   }
 ```
 

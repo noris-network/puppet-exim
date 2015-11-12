@@ -13,7 +13,7 @@ describe 'exim::transport', :type => :define do
     end
   end
 
-  integer_parameter=[ 'batch_max', 'port' ]
+  integer_parameter=[ 'batch_max', 'port', 'connection_max_messages', 'tls_dh_min_bits' ]
 
   integer_parameter.each do |parameter|
     describe parameter do
@@ -25,19 +25,20 @@ describe 'exim::transport', :type => :define do
         let(:params) { { :driver => 'appendfile' } }
         it { should contain_concat__fragment('transport-testtransport').without_content(/^\s+#{parameter}/) }
       end
-      [ 'x','',{},true,[] ].each do |badtype|
+      [ 'x','',true,[],{} ].each do |badtype|
         context 'badtype: ' + badtype.class.to_s do
           let(:params) { { parameter => badtype, :driver => 'appendfile' } }
-          it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error(Puppet::PreformattedError,/must be an integer/) }
+          it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error(Puppet::PreformattedError,/does not match/) }
         end
       end
+
     end
   end
 
-
-  string_parameter=[ 'directory', 'maildir_tag', 'command', 'connect_timeout', 'directory_mode', 
+  string_parameter=[ 'directory', 'maildir_tag', 'command', 'connect_timeout', 'directory_mode',
                      'file', 'group', 'home_directory', 'message_prefix', 'message_suffix',
-                     'mode', 'subject', 'text', 'to', 'transport_filter', 'user', 'socket' ]
+                     'mode', 'subject', 'text', 'to', 'transport_filter', 'user', 'socket',
+                     'interface', 'helo_data' ]
 
   string_parameter.each do |parameter|
 
@@ -50,16 +51,23 @@ describe 'exim::transport', :type => :define do
         let(:params) { { :driver => 'appendfile' } }
         it { should contain_concat__fragment('transport-testtransport').without_content(/^\s+#{parameter}/) }
       end
-      [ [],{},true,'' ].each do |badtype|
+      [ [],{},true ].each do |badtype|
+        context 'badtype: ' + badtype.class.to_s do
+          let(:params) { { parameter => badtype, :driver => 'appendfile' } }
+          it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error(Puppet::PreformattedError,/input needs to be a String/) }
+        end
+      end
+      [ '' ].each do |badtype|
         context 'badtype: ' + badtype.class.to_s do
           let(:params) { { parameter => badtype, :driver => 'appendfile' } }
           it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error(Puppet::PreformattedError,/does not match/) }
         end
       end
+
     end
   end
 
-  array_parameter=[ 'temp_errors', 'hosts' ]
+  array_parameter=[ 'temp_errors', 'hosts', 'headers_remove', 'fallback_hosts', 'hosts_require_tls' ]
 
   array_parameter.each do |parameter|
 
@@ -109,4 +117,29 @@ describe 'exim::transport', :type => :define do
 
     end
   end
+
+  describe "headers_add" do
+    context " is set" do
+      let(:params) { { 'headers_add' => ['foo','bar'], :driver => 'appendfile' } }
+    it { should contain_concat__fragment('transport-testtransport').with_content(/^\s+headers_add\s+=\sfoo\\nbar$/) }
+    end
+    context ' is unset' do
+      let(:params) { { :driver => 'appendfile' } }
+      it { should contain_concat__fragment('transport-testtransport').without_content(/^\s+headers_add/) }
+    end
+    [ '','x',{},true ].each do |badtype|
+      context 'badtype:' + badtype.class.to_s do
+        let(:params) { { "headers_add" => badtype, :driver => 'appendfile' } }
+        it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error(Puppet::PreformattedError,/is not an Array/) }
+      end
+    end
+  end
+
+  describe "comment" do
+    let(:params) { { :comment => [ 'foo' ],
+                     :driver => 'appendfile' } }
+    it { should contain_concat__fragment('transport-testtransport').with_content(/^# foo$/) }
+  end
+
+
 end

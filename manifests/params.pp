@@ -41,7 +41,7 @@ class exim::params {
   $log_retry_defer                    = true
   $local_interfaces                   = undef
   $macros                             = {}
-  $message_logs                       = true
+  $message_logs                       = undef
   $log_file_path                      = undef
   $syslog_timestamp                   = true
   $av_scanner                         = undef
@@ -66,7 +66,7 @@ class exim::params {
   $tls_advertise_hosts                = '*'
   $tls_certificate                    = undef
   $tls_privatekey                     = undef
-  $gnutls_compat_mode                 = false
+  $gnutls_compat_mode                 = undef
   $delay_warning                      = undef
   $smtp_accept_max_nonmail            = undef
   $smtp_accept_max                    = undef

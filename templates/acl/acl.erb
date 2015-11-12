@@ -3,20 +3,22 @@
 
 <% unless @statements.nil? -%>
 <%  @statements.each do |statement,values| -%>
+<%   unless values.has_key?('disable') and values['disable'] == true -%>
   # <%= statement %>
-<%   unless values.has_key?('conditions') -%>
+<%    unless values.has_key?('conditions') -%>
   <%=  values['action'] -%>
-<%   else -%>
-<%    printacl=values['action'] -%>
-<%    values['conditions'].each do |option,value| -%>
-<%     if value.nil? -%>
-<%=     "  %-7s %s\n" % [printacl,option] -%>
-<%     else -%>
-<%=     "  %-7s %-13s = %s\n" % [printacl,option,value.join(" : ")] %><% printacl="" -%>
+<%    else -%>
+<%     printacl=values['action'] -%>
+<%     values['conditions'].each do |option,value| -%>
+<%      if value.nil? -%>
+<%=      "  %-7s %s\n" % [printacl,option] -%>
+<%      else -%>
+<%=      "  %-7s %-13s = %s\n" % [printacl,option,value.join(" : ")] %><% printacl="" -%>
+<%      end -%>
 <%     end -%>
 <%    end -%>
-<%   end -%>
 
+<%   end -%>
 <%  end -%>
 <% end -%>
 

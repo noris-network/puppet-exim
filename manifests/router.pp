@@ -4,6 +4,9 @@
 #
 # === Parameters
 #
+# [*disable*]
+#  If set to true, this router is excluded from the configuration.
+#
 # [*order*]
 #  Order of routers is important, set it here
 #
@@ -103,8 +106,8 @@
 #  When a router queues an address for a transport, and the transport does not specify a user, the user given here is used when running the delivery process.
 #
 define exim::router (
-  $order,
   $driver,
+  $order,
   $address_data               = undef,
   $allow_defer                = false,
   $allow_fail                 = false,
@@ -112,16 +115,17 @@ define exim::router (
   $condition                  = undef,
   $data                       = undef,
   $debug_print                = undef,
+  $disable                    = false,
   $domains                    = undef,
   $file_transport             = undef,
   $headers_add                = undef,
   $headers_remove             = undef,
   $host_find_failed           = undef,
   $ignore_target_hosts        = undef,
-  $local_parts                = undef,
   $local_part_prefix          = undef,
-  $local_part_suffix          = undef,
   $local_part_suffix_optional = false,
+  $local_part_suffix          = undef,
+  $local_parts                = undef,
   $no_address_test            = false,
   $no_more                    = false,
   $no_verify                  = false,
@@ -136,9 +140,11 @@ define exim::router (
   $unseen                     = false,
   $user                       = undef,
   ){
-  concat::fragment { "router-${title}":
-    target  => $::exim::config_path,
-    content => template("${module_name}/router/router.erb"),
-    order   => $order + 2000,
+  unless $disable {
+    concat::fragment { "router-${title}":
+      target  => $::exim::config_path,
+      content => template("${module_name}/router/router.erb"),
+      order   => $order + 2000,
+    }
   }
 }

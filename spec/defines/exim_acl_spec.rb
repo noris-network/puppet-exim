@@ -11,4 +11,9 @@ describe 'exim::acl', :type => :define do
     it { should contain_concat__fragment('acl-testacl').with_content(/accept\s+hosts\s+=/) }
   end
 
+  context "with statements and disable" do
+    let(:params) { { "statements" => { "accept_hosts" => { "action" => "accept", "conditions" => [ ['hosts', ['','']] ], "disable" => true }}} }
+    it { should contain_concat__fragment('acl-testacl').without_content(/accept\s+hosts\s+=/) }
+  end
+
 end

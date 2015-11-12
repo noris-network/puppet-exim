@@ -35,4 +35,11 @@ describe 'exim::router', :type => :define do
                      :driver => 'redirect' } }
     it { should contain_concat__fragment('router-testrouter').with_content(/^# foo$/) }
   end
+
+  describe "disable" do
+    let(:params) { { :order => '1',
+                     :driver => 'redirect',
+                     :disable => true } }
+    it { should_not contain_concat__fragment('router-testrouter') }
+  end
 end

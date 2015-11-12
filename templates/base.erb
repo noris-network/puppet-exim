@@ -36,7 +36,7 @@ log_selector               =  <% if @log_smtp_confirmation        == false %>-<%
 
 <% unless @freeze_tell.nil?                -%>freeze_tell                = <%= @freeze_tell %>
 <% end -%>
-<% unless @message_logs                    -%>message_logs               = false
+<% unless @message_logs.nil?               -%>message_logs               = <%= @message_logs %>
 <% end -%>
 <% unless @log_file_path.nil?              -%>log_file_path              = <%= @log_file_path.join(" : ") %>
 <% end -%>
@@ -102,7 +102,7 @@ tls_certificate            = <%= @tls_certificate %>
 tls_privatekey             = <%= @tls_privatekey %>
 <% end -%>
 
-<% if @gnutls_compat_mode                        -%>gnutls_compat_mode         = true
+<% unless @gnutls_compat_mode.nil?               -%>gnutls_compat_mode         = <%= @gnutls_compat_mode %>
 <% end -%>
 <% unless @delay_warning.nil?                    -%>delay_warning              = <%= @delay_warning %>
 <% end -%>
@@ -136,3 +136,4 @@ tls_privatekey             = <%= @tls_privatekey %>
 <% end -%>
 <% unless @extract_addresses_remove_arguments.nil? -%>extract_addresses_remove_arguments = <%= @extract_addresses_remove_arguments %>
 <% end -%>
+

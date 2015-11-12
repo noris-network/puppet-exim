@@ -62,7 +62,7 @@
 # [*daemon_smtp_ports*]
 #   SMTP ports to listen on
 #   Type: array
-#   Example: ['25','465']
+#   Example: ['25','587']
 #
 # [*defaults*]
 #   Use a default configuration, this creates a simple default config,
@@ -98,6 +98,10 @@
 #   Set this to true to slightly reduce security, but improve compatiblity with older
 #   TLS implementations.
 #   Type: bool
+#
+# [*gnutls_compat_mode*]
+#   This option controls whether GnuTLS is used in compatibility mode in an Exim server.
+#   This reduces security slightly, but improves interworking with older implementations of TLS.
 #
 # [*heavy*]
 #   Install the debian heavy variant, default is false
@@ -288,6 +292,7 @@ class exim (
   $errors_reply_to                    =$::exim::params::errors_reply_to,
   $freeze_tell                        =$::exim::params::freeze_tell,
   $gnutls_compat_mode                 =$::exim::params::gnutls_compat_mode,
+  $gnutls_compat_mode                 =$::exim::params::gnutls_compat_mode,
   $heavy                              =$::exim::params::heavy,
   $helo_allow_chars                   =$::exim::params::helo_allow_chars,
   $host_lookup                        =$::exim::params::host_lookup,
@@ -336,6 +341,13 @@ class exim (
   $trusted_users                      =$::exim::params::trusted_users,
   $extract_addresses_remove_arguments =$::exim::params::extract_addresses_remove_arguments,
 ) inherits exim::params {
+
+  if ($daemon_smtp_ports)  { validate_array($daemon_smtp_ports) }
+
+  if ($gnutls_compat_mode) { validate_bool($gnutls_compat_mode) }
+
+  if ($smtp_accept_max_nonmail)        { validate_re("x${smtp_accept_max_nonmail}"        ,'^x[0-9]+$') }
+  if ($smtp_accept_max_per_connection) { validate_re("x${smtp_accept_max_per_connection}" ,'^x[0-9]+$') }
 
   include exim::install
   include exim::config

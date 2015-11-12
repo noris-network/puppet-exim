@@ -5,12 +5,17 @@
 
 class exim::config {
 
-  $macros        = $::exim::macros
-  $includes      = $::exim::includes
-  $acl_smtp_mail = $::exim::acl_smtp_mail
-  $acl_smtp_rcpt = $::exim::acl_smtp_rcpt
-  $acl_smtp_data = $::exim::acl_smtp_data
-  $acl_smtp_mime = $::exim::acl_smtp_mime
+  $acl_smtp_data                  = $::exim::acl_smtp_data
+  $acl_smtp_mail                  = $::exim::acl_smtp_mail
+  $acl_smtp_mime                  = $::exim::acl_smtp_mime
+  $acl_smtp_rcpt                  = $::exim::acl_smtp_rcpt
+  $daemon_smtp_ports              = $::exim::daemon_smtp_ports
+  $gnutls_compat_mode             = $::exim::gnutls_compat_mode
+  $includes                       = $::exim::includes
+  $macros                         = $::exim::macros
+  $message_logs                   = $::exim::message_logs
+  $smtp_accept_max_nonmail        = $::exim::smtp_accept_max_nonmail
+  $smtp_accept_max_per_connection = $::exim::smtp_accept_max_per_connection
 
   concat { $::exim::config_path:
   }
