@@ -55,4 +55,15 @@ describe 'exim', :type => :class do
     end
   end
 
+  string_parameter = [ 'acl_not_smtp' ]
+  string_parameter.each do |parameter|
+    context parameter + " set to foo" do
+      let(:params) { { parameter => "foo" } }
+      it { should contain_concat__fragment('acl-header').with_content(/^#{parameter}\s+= foo$/) }
+    end
+    context parameter + " not set" do
+      it { should contain_concat__fragment('acl-header').without_content(/^#{parameter}/) }
+    end
+  end
+
 end

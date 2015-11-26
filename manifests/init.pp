@@ -4,6 +4,9 @@
 #
 # === Parameters
 #
+# [*acl_not_smtp*]
+#   Name of acl used for local generated mail. (sendmail)
+#
 # [*acl_smtp_auth*]
 #   Name of acl used for auth checking
 #   Type: string
@@ -274,6 +277,7 @@
 #  }
 
 class exim (
+  $acl_not_smtp                       =$::exim::params::acl_not_smtp,
   $acl_smtp_auth                      =$::exim::params::acl_smtp_auth,
   $acl_smtp_data                      =$::exim::params::acl_smtp_data,
   $acl_smtp_mail                      =$::exim::params::acl_smtp_mail,

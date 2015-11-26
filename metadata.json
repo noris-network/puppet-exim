@@ -2,20 +2,26 @@
   "name": "norisnetwork-exim",
   "version": "0.0.3",
   "author": "Pat",
-  "license": "LGPL-3.0",
   "summary": "A module for configuring exim",
+  "license": "LGPL-3.0",
   "source": "https://github.com/noris-network/puppet-exim",
   "project_page": "https://github.com/noris-network/puppet-exim",
   "issues_url": "https://github.com/noris-network/noris-network-mymodule/issues",
-  "tags": ["exim", "mail"],
+  "dependencies": [
+    {"name":"puppetlabs/stdlib"},
+    {"name":"puppetlabs/concat"}
+  ],
+  "tags": [
+    "exim",
+    "mail"
+  ],
   "operatingsystem_support": [
     {
-    "operatingsystem":"Debian",
-    "operatingsystemrelease":[ "7.0", "8.0" ]
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7.0",
+        "8.0"
+      ]
     }
-   ],
-  "dependencies": [
-    { "name": "puppetlabs/stdlib" },
-    { "name": "puppetlabs/concat" }
   ]
 }

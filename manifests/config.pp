@@ -5,6 +5,7 @@
 
 class exim::config {
 
+  $acl_not_smtp                   = $::exim::acl_not_smtp
   $acl_smtp_data                  = $::exim::acl_smtp_data
   $acl_smtp_mail                  = $::exim::acl_smtp_mail
   $acl_smtp_mime                  = $::exim::acl_smtp_mime

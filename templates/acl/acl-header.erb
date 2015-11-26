@@ -5,6 +5,9 @@
 #         Specifies access control lists for incoming SMTP mail      #
 ######################################################################
 
+<% unless @acl_not_smtp.nil? -%>
+acl_not_smtp     = <%= @acl_not_smtp %>
+<% end -%>
 <% unless @acl_smtp_connect.nil? -%>
 acl_smtp_connect = <%= @acl_smtp_connect %>
 <% end -%>
