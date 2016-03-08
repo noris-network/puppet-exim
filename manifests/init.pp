@@ -102,10 +102,6 @@
 #   TLS implementations.
 #   Type: bool
 #
-# [*gnutls_compat_mode*]
-#   This option controls whether GnuTLS is used in compatibility mode in an Exim server.
-#   This reduces security slightly, but improves interworking with older implementations of TLS.
-#
 # [*heavy*]
 #   Install the debian heavy variant, default is false
 #   does nothing for redhat
@@ -295,7 +291,6 @@ class exim (
   $deliver_queue_load_max             =$::exim::params::deliver_queue_load_max,
   $errors_reply_to                    =$::exim::params::errors_reply_to,
   $freeze_tell                        =$::exim::params::freeze_tell,
-  $gnutls_compat_mode                 =$::exim::params::gnutls_compat_mode,
   $gnutls_compat_mode                 =$::exim::params::gnutls_compat_mode,
   $heavy                              =$::exim::params::heavy,
   $helo_allow_chars                   =$::exim::params::helo_allow_chars,
