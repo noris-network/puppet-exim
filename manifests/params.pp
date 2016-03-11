@@ -41,6 +41,7 @@ class exim::params {
   $log_retry_defer                    = true
   $local_interfaces                   = undef
   $macros                             = {}
+  $manage_service                     = false
   $message_logs                       = undef
   $log_file_path                      = undef
   $syslog_timestamp                   = true

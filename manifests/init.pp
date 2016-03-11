@@ -173,6 +173,9 @@
 #   Allows you to set Macro definitions, note that macros must
 #   start with an uppercase letter
 #
+# [*manage_service*]
+#   Manage exim Service
+#
 # [*message_logs*]
 #   This stores an aditional log file with each message in the spool file
 #   which enables you to instantly get all logs from a message in your
@@ -316,6 +319,7 @@ class exim (
   $log_smtp_syntax_error              =$::exim::params::log_smtp_syntax_error,
   $log_tls_peerdn                     =$::exim::params::log_tls_peerdn,
   $macros                             =$::exim::params::macros,
+  $manage_service                     =$::exim::params::manage_service,
   $message_logs                       =$::exim::params::message_logs,
   $message_size_limit                 =$::exim::params::message_size_limit,
   $never_users                        =$::exim::params::never_users,
@@ -353,8 +357,7 @@ class exim (
   if ($smtp_accept_max_nonmail)        { validate_re("x${smtp_accept_max_nonmail}"        ,'^x[0-9]+$') }
   if ($smtp_accept_max_per_connection) { validate_re("x${smtp_accept_max_per_connection}" ,'^x[0-9]+$') }
 
-  include exim::install
-  include exim::config
-
-  Class['exim::install'] -> Class['exim::config']
+  class {'exim::install':} ->
+  class {'exim::config': } ~>
+  class {'exim::service':}
 }

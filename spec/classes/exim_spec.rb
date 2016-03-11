@@ -22,6 +22,11 @@ describe 'exim', :type => :class do
     it { should contain_concat__fragment('main').with_content(/^daemon_smtp_ports\s+= 25 : 587$/) }
   end
 
+  context "manage_service" do
+    let(:params) { { 'manage_service' => true } }
+    it { should contain_service('exim4') }
+  end
+
   [ 'acl_smtp_mail','acl_smtp_rcpt','acl_smtp_data','acl_smtp_mime' ].each do |acl|
     context acl do
       let(:params) { { acl => 'acl_check' } }
