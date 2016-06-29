@@ -59,6 +59,7 @@ Create 2 routers, one to do aliasing, and one to send mails to a remote smarthos
     domains     => '@',
     allow_fail  => true,
     allow_defer => true,
+    file        => '/etc/exim4/filter',
     data        => '${lookup{$local_part}lsearch{/etc/aliases}}',
   }
   exim::router {'smarthost':
@@ -76,6 +77,20 @@ Create an smtp-transport:
 ```puppet
   exim::transport {'remote_smtp':
     driver          => 'smtp',
+  }
+```
+Create an address-pipe-transport:
+```puppet
+  exim::transport {'address_pipe':
+    driver             => 'pipe',
+    log_output         => true,
+    return_fail_output => true,
+    exim_environment   => [ 
+      { 'USER1'          => 'user1' },
+      { 'USER2'          => 'user2' } ],
+    path               => '/usr/bin:/bin'
+    timeout            => '2h',
+    timeout_defer      => true,
   }
 ```
 Create a default retry rule for all (*) mails:
