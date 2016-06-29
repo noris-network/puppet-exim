@@ -25,8 +25,14 @@ end
 <% if validate_string(@command) -%>
   command         = <%= @command %>
 <% end -%>
+<% unless @exim_environment.nil? -%>
+  environment     = <%= @exim_environment.map {|a| a.to_a.join("=") }.join(" : ") %>
+<% end -%>
 <% if @log_output -%>
   log_output
+<% end -%>
+<% if @return_fail_output -%>
+  return_fail_output
 <% end -%>
 <% if @return_output -%>
   return_output
@@ -101,6 +107,9 @@ end
 <% unless @interface.nil? -%>
   interface       = <%= @interface %>
 <% end -%>
+<% unless @path.nil? -%>
+  path            = <%= @path %>
+<% end -%>
 <% unless @port.nil? -%>
   port            = <%= @port %>
 <% end -%>
@@ -134,4 +143,9 @@ end
 <% if @allow_localhost -%>
   allow_localhost
 <% end -%>
-
+<% unless @timeout.nil? -%>
+  timeout         = <%= @timeout %>
+<% end -%>
+<% if @timeout_defer -%>
+  timeout_defer
+<% end -%>
