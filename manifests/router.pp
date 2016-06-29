@@ -13,6 +13,9 @@
 # [*address_data*]
 #  Set the address_data variable
 #
+# [*caseful_local_part*]
+#  Sets the caseful_local_part option.
+#
 # [*comment*]
 #  Comment a router, this will be placed as a comment just above
 #  the router.
@@ -25,6 +28,9 @@
 #
 # [*allow_fail*]
 #  If set to true, the router can fail messages if needed.
+#
+# [*allow_filter*]
+#  If set to true, filters can be used.
 #
 # [*condition*]
 #  (Advanced) Conditions when this router should be used
@@ -40,6 +46,9 @@
 #
 # [*file_transport*]
 #  Set the file_transport, used if the outcome of the router points to a file
+#
+# [*file*]
+#  Set the file that contains the filter rules.
 #
 # [*headers_add*]
 #  Add these Headers to a message
@@ -111,12 +120,15 @@ define exim::router (
   $address_data               = undef,
   $allow_defer                = false,
   $allow_fail                 = false,
+  $allow_filter               = false,
+  $caseful_local_part         = undef,
   $comment                    = undef,
   $condition                  = undef,
   $data                       = undef,
   $debug_print                = undef,
   $disable                    = false,
   $domains                    = undef,
+  $file                       = undef,
   $file_transport             = undef,
   $headers_add                = undef,
   $headers_remove             = undef,

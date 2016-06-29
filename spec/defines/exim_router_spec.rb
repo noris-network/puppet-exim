@@ -9,7 +9,7 @@ describe 'exim::router', :type => :define do
   let(:pre_condition) {'class { "exim": }' }
   let(:title) { 'testrouter' }
 
-  [ 'local_part_prefix', 'self' ].each do |option|
+  [ 'local_part_prefix', 'self', 'file', 'caseful_local_part' ].each do |option|
     describe option do
       let(:params) { { option => 'foo',
                       :order => '1',
