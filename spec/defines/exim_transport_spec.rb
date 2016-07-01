@@ -38,7 +38,7 @@ describe 'exim::transport', :type => :define do
   string_parameter=[ 'directory', 'maildir_tag', 'command', 'connect_timeout', 'directory_mode',
                      'file', 'group', 'home_directory', 'message_prefix', 'message_suffix',
                      'mode', 'subject', 'text', 'to', 'transport_filter', 'user', 'socket',
-                     'interface', 'helo_data' ]
+                     'interface', 'helo_data', 'timeout', 'path' ]
 
   string_parameter.each do |parameter|
 
@@ -91,7 +91,7 @@ describe 'exim::transport', :type => :define do
 
   bool_parameter=[ 'delivery_date_add', 'envelope_to_add', 'freeze_exec_fail', 'initgroups',
                    'log_output', 'maildir_format', 'return_path_add', 'rcpt_include_affixes', 
-                   'allow_localhost', 'return_output' ]
+                   'allow_localhost', 'return_output', 'return_fail_output', 'timeout_defer' ]
 
   bool_parameter.each do |parameter|
 
@@ -141,5 +141,21 @@ describe 'exim::transport', :type => :define do
     it { should contain_concat__fragment('transport-testtransport').with_content(/^# foo$/) }
   end
 
+  describe "exim_environment" do
+    context " is set" do
+      let(:params) { { "exim_environment" => [ {"a" => "b"}, {"c" => "d"}, {"e" => "f"} ], :driver => 'appendfile' } }
+    it { should contain_concat__fragment('transport-testtransport').with_content(/^\s+environment\s+=\sa=b\s*:\s*c=d\s*:\s*e=f$/) }
+    end
+    context ' is unset' do
+      let(:params) { { :driver => 'appendfile' } }
+      it { should contain_concat__fragment('transport-testtransport').without_content(/^\s+environment/) }
+    end
+    [ '','x',{},true ].each do |badtype|
+      context 'badtype:' + badtype.class.to_s do
+        let(:params) { { "exim_environment" => badtype, :driver => 'appendfile' } }
+        it { expect { should contain_concat__fragment('transport-testtransport') }.to raise_error(Puppet::PreformattedError,/is not an Array/) }
+      end
+    end
+  end
 
 end

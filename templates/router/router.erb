@@ -14,6 +14,9 @@
 <% unless @local_parts.nil? -%>
   local_parts  = <%= @local_parts.join(" : ") %>
 <% end -%>
+<% unless @caseful_local_part.nil? -%>
+  caseful_local_part = <%= @caseful_local_part %>
+<% end -%>
 <% unless @condition.nil? -%>
   condition    = <%= @condition %>
 <% end -%>
@@ -23,6 +26,9 @@
 <% unless @local_part_suffix.nil? -%>
   local_part_suffix = <%= @local_part_suffix %>
 <% end -%>
+<% if @local_part_prefix_optional -%>
+  local_part_prefix_optional
+<% end -%>
 <% if @local_part_suffix_optional -%>
   local_part_suffix_optional
 <% end -%>
@@ -31,6 +37,9 @@
 <% end -%>
 <% if @allow_fail -%>
   allow_fail
+<% end -%>
+<% if @allow_filter -%>
+  allow_filter
 <% end -%>
 <% unless @headers_remove.nil? -%>
   headers_remove = <%= @headers_remove.join(":") %>
@@ -49,6 +58,9 @@
 <% end -%>
 <% unless @file_transport.nil? -%>
   file_transport = <%= @file_transport %>
+<% end -%>
+<% unless @file.nil? -%>
+  file           = <%= @file %>
 <% end -%>
 <% unless @pipe_transport.nil? -%>
   pipe_transport = <%= @pipe_transport %>

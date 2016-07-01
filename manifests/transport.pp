@@ -20,6 +20,9 @@
 # [*connection_max_messages*]
 #   Set the maximum number of messages that can be transfered in a single connection.
 #
+# [*exim_environment*]
+#   This option is used to add additional variables to the environment in which the command runs.
+#
 # [*fallback_hosts*]
 #   If Exim is unable to deliver to any of the hosts for a particular address, and the
 #   errors are not permanent rejections, the address is put on a separate transport
@@ -43,13 +46,26 @@
 # [*hosts_require_tls*]
 #   List of hosts requiring tls, messages are only sent if tls can be established.
 #
+# [*path*]
+#   This option specifies the string that is set up in the
+#   PATH environment variable of the subprocess.
+#
 # [*port*]
 #   The port exim connects to on the remote server
+#
+# [*return_fail_output*]
+#   If set to true, the command output is returned in the bounce message in case of failure.
 #
 # [*return_output*]
 #   If this option is true, and the command produced any output, the delivery
 #   is deemed to have failed whatever the return code from the command, and
 #   the output is returned in the bounce message
+#
+# [*timeout*]
+#   If the command fails to complete within this time, it is killed.
+#
+# [*timeout_defer*]
+#   Set this to true for timeouts to become temporary errors, causing the delivery to be deferred.
 #
 # [*tls_dh_min_bits*]
 #   set the minimum acceptable number of bits in the Diffie-Hellman prime offered by a server,
@@ -82,6 +98,7 @@ define exim::transport (
   $helo_data               = undef,
   $home_directory          = undef,
   $hosts_require_tls       = undef,
+  $exim_environment        = undef,
   $hosts                   = undef,
   $initgroups              = false,
   $interface               = undef,
@@ -91,13 +108,17 @@ define exim::transport (
   $message_prefix          = undef,
   $message_suffix          = undef,
   $mode                    = undef,
+  $path                    = undef,
   $port                    = undef,
   $rcpt_include_affixes    = false,
+  $return_fail_output      = false,
   $return_output           = false,
   $return_path_add         = false,
   $socket                  = undef,
   $subject                 = undef,
   $temp_errors             = undef,
+  $timeout                 = undef,
+  $timeout_defer           = false,
   $text                    = undef,
   $tls_dh_min_bits         = undef,
   $tls_verify_certificates = undef,
@@ -116,11 +137,13 @@ define exim::transport (
   if ($message_prefix)          { validate_re($message_prefix         ,'^.+$') }
   if ($message_suffix)          { validate_re($message_suffix         ,'^.+$') }
   if ($mode)                    { validate_re($mode                   ,'^.+$') }
+  if ($path)                    { validate_re($path                   ,'^.+$') }
   if ($socket)                  { validate_re($socket                 ,'^.+$') }
   if ($subject)                 { validate_re($subject                ,'^.+$') }
   if ($text)                    { validate_re($text                   ,'^.+$') }
   if ($to)                      { validate_re($to                     ,'^.+$') }
   if ($transport_filter)        { validate_re($transport_filter       ,'^.+$') }
+  if ($timeout)                 { validate_re($timeout                ,'^.+$') }
   if ($tls_verify_certificates) { validate_re($tls_verify_certificates,'^.+$') }
   if ($user)                    { validate_re($user                   ,'^.+$') }
   if ($interface)               { validate_re($interface              ,'^.+$') }
@@ -131,6 +154,7 @@ define exim::transport (
   if ($headers_remove)   { validate_array($headers_remove) }
   if ($headers_add)      { validate_array($headers_add   ) }
   if ($fallback_hosts)   { validate_array($fallback_hosts) }
+  if ($exim_environment) { validate_array($exim_environment)}
   if ($hosts_require_tls){ validate_array($hosts_require_tls)}
 
   if ($batch_max)               { validate_re("x${batch_max}"               ,'^x[0-9]+$') }
@@ -140,7 +164,7 @@ define exim::transport (
 
   validate_bool($delivery_date_add,$envelope_to_add,$freeze_exec_fail,$initgroups,
                 $log_output,$maildir_format,$return_path_add,$rcpt_include_affixes,
-                $allow_localhost,$return_output)
+                $allow_localhost,$return_output,$return_fail_output,$timeout_defer)
 
   concat::fragment { "transport-${title}":
     target  => $::exim::config_path,

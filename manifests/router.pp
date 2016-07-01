@@ -13,6 +13,9 @@
 # [*address_data*]
 #  Set the address_data variable
 #
+# [*caseful_local_part*]
+#  Sets the caseful_local_part option.
+#
 # [*comment*]
 #  Comment a router, this will be placed as a comment just above
 #  the router.
@@ -25,6 +28,9 @@
 #
 # [*allow_fail*]
 #  If set to true, the router can fail messages if needed.
+#
+# [*allow_filter*]
+#  If set to true, filters can be used.
 #
 # [*condition*]
 #  (Advanced) Conditions when this router should be used
@@ -40,6 +46,9 @@
 #
 # [*file_transport*]
 #  Set the file_transport, used if the outcome of the router points to a file
+#
+# [*file*]
+#  Set the file that contains the filter rules.
 #
 # [*headers_add*]
 #  Add these Headers to a message
@@ -59,6 +68,9 @@
 #
 # [*local_part_suffix*]
 #  Define a suffix, present on localparts
+#
+# [*local_part_prefix_optional*]
+#  Is the prefix optional?
 #
 # [*local_part_suffix_optional*]
 #  Is the suffix optional?
@@ -111,18 +123,22 @@ define exim::router (
   $address_data               = undef,
   $allow_defer                = false,
   $allow_fail                 = false,
+  $allow_filter               = false,
+  $caseful_local_part         = undef,
   $comment                    = undef,
   $condition                  = undef,
   $data                       = undef,
   $debug_print                = undef,
   $disable                    = false,
   $domains                    = undef,
+  $file                       = undef,
   $file_transport             = undef,
   $headers_add                = undef,
   $headers_remove             = undef,
   $host_find_failed           = undef,
   $ignore_target_hosts        = undef,
   $local_part_prefix          = undef,
+  $local_part_prefix_optional = false,
   $local_part_suffix_optional = false,
   $local_part_suffix          = undef,
   $local_parts                = undef,
@@ -141,6 +157,7 @@ define exim::router (
   $user                       = undef,
   ){
   unless $disable {
+    validate_bool($local_part_prefix_optional, $local_part_suffix_optional)
     concat::fragment { "router-${title}":
       target  => $::exim::config_path,
       content => template("${module_name}/router/router.erb"),
