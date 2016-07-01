@@ -26,6 +26,9 @@
 <% unless @local_part_suffix.nil? -%>
   local_part_suffix = <%= @local_part_suffix %>
 <% end -%>
+<% if @local_part_prefix_optional -%>
+  local_part_prefix_optional
+<% end -%>
 <% if @local_part_suffix_optional -%>
   local_part_suffix_optional
 <% end -%>

@@ -69,6 +69,9 @@
 # [*local_part_suffix*]
 #  Define a suffix, present on localparts
 #
+# [*local_part_prefix_optional*]
+#  Is the prefix optional?
+#
 # [*local_part_suffix_optional*]
 #  Is the suffix optional?
 #
@@ -135,6 +138,7 @@ define exim::router (
   $host_find_failed           = undef,
   $ignore_target_hosts        = undef,
   $local_part_prefix          = undef,
+  $local_part_prefix_optional = false,
   $local_part_suffix_optional = false,
   $local_part_suffix          = undef,
   $local_parts                = undef,
@@ -153,6 +157,7 @@ define exim::router (
   $user                       = undef,
   ){
   unless $disable {
+    validate_bool($local_part_prefix_optional, $local_part_suffix_optional)
     concat::fragment { "router-${title}":
       target  => $::exim::config_path,
       content => template("${module_name}/router/router.erb"),
