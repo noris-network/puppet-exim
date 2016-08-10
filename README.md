@@ -25,8 +25,8 @@ Disable the default config.
 Set the acl used for rcpt checking to "acl_check_rcpt" (default, shown for demonstation)
 ```puppet
   class {'exim':
-    defaults       => false,
-    acl_check_rcpt => 'acl_check_rcpt',
+    defaults      => false,
+    acl_smtp_rcpt => 'acl_check_rcpt',
   }
 ```
 
@@ -37,11 +37,11 @@ Create a new, acl list named "acl_check_rcpt" :
       'Accept local' => {
         action     => 'accept',
         conditions => [ ['hosts',[':']] ],
-      }
+      },
       'Accept hostlist' => {
         action     => 'accept',
         conditions => [ ['hosts'   , ['@','127.0.0.1']], ]
-      }
+      },
       'deny all' => {
         action     => 'deny',
         conditions => [ ['message' , ['relay not permitted']], ]
@@ -56,10 +56,9 @@ Create 2 routers, one to do aliasing, and one to send mails to a remote smarthos
   exim::router {'system_aliases':
     order       => 1,
     driver      => 'redirect',
-    domains     => '@',
+    domains     => ['@'],
     allow_fail  => true,
     allow_defer => true,
-    file        => '/etc/exim4/filter',
     data        => '${lookup{$local_part}lsearch{/etc/aliases}}',
   }
   exim::router {'smarthost':
@@ -88,7 +87,7 @@ Create an address-pipe-transport:
     exim_environment   => [ 
       { 'USER1'          => 'user1' },
       { 'USER2'          => 'user2' } ],
-    path               => '/usr/bin:/bin'
+    path               => '/usr/bin:/bin',
     timeout            => '2h',
     timeout_defer      => true,
   }
