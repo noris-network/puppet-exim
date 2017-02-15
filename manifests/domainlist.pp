@@ -35,6 +35,6 @@ define exim::domainlist (
   concat::fragment { "domainlist-${title}":
     target  => $::exim::config_path,
     content => template("${module_name}/list.erb"),
-    order   => 0002,
+    order   => '0002',
   }
 }
