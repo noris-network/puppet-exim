@@ -17,6 +17,6 @@ define exim::hostlist (
   concat::fragment { "hostlist-${title}":
     target  => $::exim::config_path,
     content => template("${module_name}/list.erb"),
-    order   => 0003,
+    order   => '0003',
   }
 }
