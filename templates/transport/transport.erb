@@ -131,6 +131,12 @@ end
 <% unless @connection_max_messages.nil? -%>
   connection_max_messages = <%= @connection_max_messages %>
 <% end -%>
+<% unless @hosts_require_auth.nil? -%>
+  hosts_require_auth = <%= @hosts_require_auth.join(' : ') %>
+<% end -%>
+<% unless @hosts_try_auth.nil? -%>
+  hosts_try_auth = <%= @hosts_try_auth.join(' : ') %>
+<% end -%>
 <% unless @hosts_require_tls.nil? -%>
   hosts_require_tls = <%= @hosts_require_tls.join(' : ') %>
 <% end -%>
