@@ -43,8 +43,16 @@
 #   specified by hosts are also used, whether or not the address has its
 #   own hosts, if hosts_override is set.
 #
+# [*hosts_require_auth*]
+#   Specifies a list of servers for which authentication must succeed before Exim will try
+#   to transfer a message. If authentication fails for one of these servers, delivery is deferred.
+#
 # [*hosts_require_tls*]
 #   List of hosts requiring tls, messages are only sent if tls can be established.
+#
+# [*hosts_try_auth*]
+#   The host_try_auth option provides a list of hosts to which, provided they announce
+#   authentication support, Exim will attempt to authenticate as a client when it connects.
 #
 # [*path*]
 #   This option specifies the string that is set up in the
@@ -97,7 +105,9 @@ define exim::transport (
   $headers_remove          = undef,
   $helo_data               = undef,
   $home_directory          = undef,
+  $hosts_require_auth      = undef,
   $hosts_require_tls       = undef,
+  $hosts_try_auth          = undef,
   $exim_environment        = undef,
   $hosts                   = undef,
   $initgroups              = false,
@@ -149,13 +159,15 @@ define exim::transport (
   if ($interface)               { validate_re($interface              ,'^.+$') }
   if ($helo_data)               { validate_re($helo_data              ,'^.+$') }
 
-  if ($temp_errors)      { validate_array($temp_errors   ) }
-  if ($hosts)            { validate_array($hosts         ) }
-  if ($headers_remove)   { validate_array($headers_remove) }
-  if ($headers_add)      { validate_array($headers_add   ) }
-  if ($fallback_hosts)   { validate_array($fallback_hosts) }
-  if ($exim_environment) { validate_array($exim_environment)}
-  if ($hosts_require_tls){ validate_array($hosts_require_tls)}
+  if ($temp_errors)       { validate_array($temp_errors       ) }
+  if ($hosts)             { validate_array($hosts             ) }
+  if ($headers_remove)    { validate_array($headers_remove    ) }
+  if ($headers_add)       { validate_array($headers_add       ) }
+  if ($fallback_hosts)    { validate_array($fallback_hosts    ) }
+  if ($exim_environment)  { validate_array($exim_environment  ) }
+  if ($hosts_require_auth){ validate_array($hosts_require_auth) }
+  if ($hosts_require_tls) { validate_array($hosts_require_tls ) }
+  if ($hosts_try_auth)    { validate_array($hosts_try_auth    ) }
 
   if ($batch_max)               { validate_re("x${batch_max}"               ,'^x[0-9]+$') }
   if ($port)                    { validate_re("x${port}"                    ,'^x[0-9]+$') }
