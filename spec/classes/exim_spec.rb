@@ -22,6 +22,11 @@ describe 'exim', :type => :class do
     it { should contain_concat__fragment('main').with_content(/^daemon_smtp_ports\s+= 25 : 587$/) }
   end
 
+  context "ldap_default_servers" do
+    let(:params) { { 'ldap_default_servers' => [ 'ldap1', 'ldap2' ] } }
+    it { should contain_concat__fragment('main').with_content(/^ldap_default_servers\s+= ldap1 : ldap2$/) }
+  end
+
   context "manage_service" do
     let(:params) { { 'manage_service' => true } }
     it { should contain_service('exim4') }

@@ -22,6 +22,7 @@ class exim::config {
   $delay_warning                      =$::exim::delay_warning
   $deliver_queue_load_max             =$::exim::deliver_queue_load_max
   $errors_reply_to                    =$::exim::errors_reply_to
+  $extract_addresses_remove_arguments =$::exim::extract_addresses_remove_arguments
   $freeze_tell                        =$::exim::freeze_tell
   $gnutls_compat_mode                 =$::exim::gnutls_compat_mode
   $heavy                              =$::exim::heavy
@@ -30,6 +31,7 @@ class exim::config {
   $hosts_treat_as_local               =$::exim::hosts_treat_as_local
   $ignore_bounce_errors_after         =$::exim::ignore_bounce_errors_after
   $includes                           =$::exim::includes
+  $ldap_default_servers               =$::exim::ldap_default_servers
   $local_from_check                   =$::exim::local_from_check
   $local_interfaces                   =$::exim::local_interfaces
   $log_file_path                      =$::exim::log_file_path
@@ -71,7 +73,6 @@ class exim::config {
   $tls_certificate                    =$::exim::tls_certificate
   $tls_privatekey                     =$::exim::tls_privatekey
   $trusted_users                      =$::exim::trusted_users
-  $extract_addresses_remove_arguments =$::exim::extract_addresses_remove_arguments
 
   concat { $::exim::config_path:
   }
