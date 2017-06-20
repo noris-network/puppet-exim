@@ -21,6 +21,9 @@ class exim::params {
     }
   }
 
+  $acl_not_smtp                       = undef
+  $acl_smtp_mail                      = undef
+  $acl_smtp_mime                      = undef
   $acl_smtp_auth                      = undef
   $acl_smtp_data                      = undef
   $acl_smtp_rcpt                      = 'acl_check_rcpt'

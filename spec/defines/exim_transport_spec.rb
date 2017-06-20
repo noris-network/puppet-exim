@@ -6,13 +6,6 @@ describe 'exim::transport', :type => :define do
   let(:title) { 'testtransport' }
   let(:pre_condition) {'class { "exim": }' }
 
-  describe 'driver' do
-    context "is unset" do
-      let(:params) { { } }
-      it { expect { should contain_concat__fragment('transport-testtransport')  }.to raise_error(Puppet::Error, /Must pass/) }
-    end
-  end
-
   integer_parameter=[ 'batch_max', 'port', 'connection_max_messages', 'tls_dh_min_bits' ]
 
   integer_parameter.each do |parameter|
