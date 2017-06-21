@@ -353,7 +353,7 @@ class exim (
   if ($smtp_accept_max_nonmail)        { validate_re("x${smtp_accept_max_nonmail}"        ,'^x[0-9]+$') }
   if ($smtp_accept_max_per_connection) { validate_re("x${smtp_accept_max_per_connection}" ,'^x[0-9]+$') }
 
-  class {'exim::install':} ->
-  class {'exim::config': } ~>
-  class {'exim::service':}
+  class {'exim::install':}
+  -> class {'exim::config': }
+  ~> class {'exim::service':}
 }
