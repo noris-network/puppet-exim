@@ -23,5 +23,11 @@
         "8.0"
       ]
     }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.4.0 < 7.0.0"
+    }
   ]
 }
