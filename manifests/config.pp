@@ -120,7 +120,7 @@ class exim::config {
           acl_id     => 1,
           order      => 2,
           action     => 'accept',
-          conditions => [ ['hosts'   , ['@','127.0.0.1']], ]
+          conditions => [ ['hosts'   , ['127.0.0.1','@']], ]
         },
         'deny all'        => {
           acl_id     => 1,
