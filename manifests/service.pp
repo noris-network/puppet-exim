@@ -5,7 +5,7 @@
 class exim::service {
   notice("service: ${::exim::manage_service}")
   if $::exim::manage_service {
-    service{'exim4':
+    service{$::exim::params::exim_service:
       ensure => running,
     }
   }
