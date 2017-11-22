@@ -63,14 +63,6 @@ describe 'exim::router', :type => :define do
                          :driver   => 'redirect' } }
         it { should contain_concat__fragment('router-testrouter').without_content(/^\s+#{parameter}/) }
       end
-      [ '','x',[],{} ].each do |badtype|
-        context 'badtype:' + badtype.class.to_s do
-          let(:params) { { parameter => badtype,
-                           :order    => '1',
-                           :driver   => 'redirect' } }
-          it { expect { should contain_concat__fragment('router-testrouter') }.to raise_error(Puppet::PreformattedError,/is not a boolean/) }
-        end
-      end
 
     end
   end
