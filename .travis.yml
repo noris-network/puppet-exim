@@ -1,0 +1,12 @@
+rvm:
+  - 1.9.3
+  - 2.1.5
+  - 2.3.3
+notifications:
+  email:
+    - micha@noris.net
+env:
+  - PUPPET_VERSION=3.6.2
+  - PUPPET_VERSION=3.7.2
+  - PUPPET_VERSION=3.7.5
+  - PUPPET_VERSION=4.10.4
