@@ -4,6 +4,12 @@
 #
 # === Parameters
 #
+# [*client_send*]
+#  Array of authentication data strings. The first string is send with
+#  the AUTH command. The remaining ones are send in response to prompts
+#  from the server. Circumflex characters ('^') are converted to binary
+#  zero bytes ('\0') by Exim.
+#
 # [*driver*]
 #  driver to use for the authenticator
 #
@@ -21,11 +27,12 @@
 #
 
 define exim::authenticator (
+  $client_send      = undef,
   $driver,
   $public_name,
-  $server_condition,
-  $server_set_id,
-  $server_prompts = undef,
+  $server_condition = undef,
+  $server_set_id    = undef,
+  $server_prompts   = undef,
   ){
   concat::fragment { "authenticator-${title}":
     target  => $::exim::config_path,
