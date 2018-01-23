@@ -165,6 +165,9 @@
 # [*log_tls_peerdn*]
 #   TLS peer DN on <= and => lines
 #
+# [*log_mail_subject*]
+#   Log mail subjects.
+#
 # [*macros*]
 #   Allows you to set Macro definitions, note that macros must
 #   start with an uppercase letter
@@ -315,6 +318,7 @@ class exim (
   $log_smtp_protocol_error            =$::exim::params::log_smtp_protocol_error,
   $log_smtp_syntax_error              =$::exim::params::log_smtp_syntax_error,
   $log_tls_peerdn                     =$::exim::params::log_tls_peerdn,
+  $log_mail_subject                   =$::exim::params::log_mail_subject,
   $macros                             =$::exim::params::macros,
   $manage_service                     =$::exim::params::manage_service,
   $message_logs                       =$::exim::params::message_logs,

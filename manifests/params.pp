@@ -59,6 +59,7 @@ class exim::params {
   $log_smtp_protocol_error            = true
   $log_smtp_syntax_error              = true
   $log_tls_peerdn                     = true
+  $log_mail_subject                   = false
   $macros                             = {}
   $manage_service                     = false
   $message_logs                       = undef
