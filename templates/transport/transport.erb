@@ -122,6 +122,9 @@ end
 <% if validate_string(@subject) -%>
   subject         = <%= @subject %>
 <% end -%>
+<% if validate_string(@from) -%>
+  from            = <%= @from %>
+<% end -%>
 <% if validate_string(@text) -%>
   text            = <%= @text %>
 <% end -%>
