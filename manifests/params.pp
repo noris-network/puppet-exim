@@ -32,6 +32,7 @@ class exim::params {
   $av_scanner                         = undef
   $callout_domain_positive_expire     = undef
   $check_spool_space                  = undef
+  $chunking_advertise_hosts           = undef
   $daemon_smtp_ports                  = undef
   $defaults                           = true
   $delay_warning                      = undef

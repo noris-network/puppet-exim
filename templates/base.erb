@@ -16,16 +16,19 @@ keep_environment =
 <% @includes.each do |i| -%>
 .include <%= i %>
 <% end -%>
-<% unless @local_from_check          -%>local_from_check           = false
+<% unless @local_from_check              -%>local_from_check               = false
 <% end -%>
-<% unless @local_interfaces.nil?     -%>local_interfaces           = <; <%= @local_interfaces.join(" ; ") %>
+<% unless @local_interfaces.nil?         -%>local_interfaces               = <; <%= @local_interfaces.join(" ; ") %>
 <% end -%>
-<% unless @daemon_smtp_ports.nil?    -%>daemon_smtp_ports          = <%= @daemon_smtp_ports.join(" : ") %>
+<% unless @daemon_smtp_ports.nil?        -%>daemon_smtp_ports              = <%= @daemon_smtp_ports.join(" : ") %>
 <% end -%>
-<% unless @hosts_treat_as_local.nil? -%>hosts_treat_as_local       = <%= @hosts_treat_as_local.join(" : ") %>
+<% unless @hosts_treat_as_local.nil?     -%>hosts_treat_as_local           = <%= @hosts_treat_as_local.join(" : ") %>
 <% end -%>
-<% unless @ldap_default_servers.nil? -%>ldap_default_servers       = <%= @ldap_default_servers.join(" : ") %>
+<% unless @ldap_default_servers.nil?     -%>ldap_default_servers           = <%= @ldap_default_servers.join(" : ") %>
 <% end -%>
+<% unless @chunking_advertise_hosts.nil? -%>chunking_advertise_hosts       = <%= @chunking_advertise_hosts.join(" : ") %>
+<% end -%>
+
 
 # logging
 log_selector               =  <% if @log_smtp_confirmation        == false %>-<% else %>+<% end %>smtp_confirmation \

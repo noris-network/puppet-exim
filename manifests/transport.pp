@@ -28,6 +28,9 @@
 #   errors are not permanent rejections, the address is put on a separate transport
 #   queue with its host list replaced by the fallback hosts.
 #
+# [*from*]
+#  sets the from address
+#
 # [*helo_data*]
 #  sets the helo name exim uses when connecting to a remote server.
 #

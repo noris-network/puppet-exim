@@ -56,6 +56,11 @@
 #   Type: string
 #   Example: 1G
 #
+# [*chunink_advertise_hosts*]
+#   advertise CHUNKING to these hosts
+#   Type: array
+#   Example: ['10.0.0.1', '192.168.178.1']
+#
 # [*config_path*]
 #   Path to exims config file, this can be used to create an alternate config file
 #   for testing purposes.
@@ -290,6 +295,7 @@ class exim (
   $av_scanner                         =$::exim::params::av_scanner,
   $callout_domain_positive_expire     =$::exim::params::callout_domain_positive_expire,
   $check_spool_space                  =$::exim::params::check_spool_space,
+  $chunking_advertise_hosts           =$::exim::params::chunking_advertise_hosts,
   $config_path                        =$::exim::params::config_path,
   $daemon_smtp_ports                  =$::exim::params::daemon_smtp_ports,
   $defaults                           =$::exim::params::defaults,
