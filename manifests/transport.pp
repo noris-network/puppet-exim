@@ -208,7 +208,7 @@ define exim::transport (
   if ($hosts_require_auth){ validate_array($hosts_require_auth) }
   if ($hosts_require_tls) { validate_array($hosts_require_tls ) }
   if ($hosts_try_auth)    { validate_array($hosts_try_auth    ) }
-  if ($dkim_domain)       { validate_array($dkim_domain)      ) }
+  if ($dkim_domain)       { validate_array($dkim_domain       ) }
 
   if ($batch_max)               { validate_re("x${batch_max}"               ,'^x[0-9]+$') }
   if ($port)                    { validate_re("x${port}"                    ,'^x[0-9]+$') }
