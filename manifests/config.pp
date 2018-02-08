@@ -16,6 +16,7 @@ class exim::config {
   $av_scanner                         =$::exim::av_scanner
   $callout_domain_positive_expire     =$::exim::callout_domain_positive_expire
   $check_spool_space                  =$::exim::check_spool_space
+  $chunking_advertise_hosts           =$::exim::chunking_advertise_hosts
   $config_path                        =$::exim::config_path
   $daemon_smtp_ports                  =$::exim::daemon_smtp_ports
   $defaults                           =$::exim::defaults

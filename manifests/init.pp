@@ -56,6 +56,11 @@
 #   Type: string
 #   Example: 1G
 #
+# [*chunink_advertise_hosts*]
+#   advertise CHUNKING to these hosts
+#   Type: array
+#   Example: ['10.0.0.1', '192.168.178.1']
+#
 # [*config_path*]
 #   Path to exims config file, this can be used to create an alternate config file
 #   for testing purposes.
@@ -164,6 +169,9 @@
 #
 # [*log_tls_peerdn*]
 #   TLS peer DN on <= and => lines
+#
+# [*log_mail_subject*]
+#   Log mail subjects.
 #
 # [*macros*]
 #   Allows you to set Macro definitions, note that macros must
@@ -287,6 +295,7 @@ class exim (
   $av_scanner                         =$::exim::params::av_scanner,
   $callout_domain_positive_expire     =$::exim::params::callout_domain_positive_expire,
   $check_spool_space                  =$::exim::params::check_spool_space,
+  $chunking_advertise_hosts           =$::exim::params::chunking_advertise_hosts,
   $config_path                        =$::exim::params::config_path,
   $daemon_smtp_ports                  =$::exim::params::daemon_smtp_ports,
   $defaults                           =$::exim::params::defaults,
@@ -315,6 +324,7 @@ class exim (
   $log_smtp_protocol_error            =$::exim::params::log_smtp_protocol_error,
   $log_smtp_syntax_error              =$::exim::params::log_smtp_syntax_error,
   $log_tls_peerdn                     =$::exim::params::log_tls_peerdn,
+  $log_mail_subject                   =$::exim::params::log_mail_subject,
   $macros                             =$::exim::params::macros,
   $manage_service                     =$::exim::params::manage_service,
   $message_logs                       =$::exim::params::message_logs,

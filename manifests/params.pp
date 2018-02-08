@@ -32,6 +32,7 @@ class exim::params {
   $av_scanner                         = undef
   $callout_domain_positive_expire     = undef
   $check_spool_space                  = undef
+  $chunking_advertise_hosts           = undef
   $daemon_smtp_ports                  = undef
   $defaults                           = true
   $delay_warning                      = undef
@@ -59,6 +60,7 @@ class exim::params {
   $log_smtp_protocol_error            = true
   $log_smtp_syntax_error              = true
   $log_tls_peerdn                     = true
+  $log_mail_subject                   = false
   $macros                             = {}
   $manage_service                     = false
   $message_logs                       = undef

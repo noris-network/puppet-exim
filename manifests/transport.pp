@@ -28,6 +28,9 @@
 #   errors are not permanent rejections, the address is put on a separate transport
 #   queue with its host list replaced by the fallback hosts.
 #
+# [*from*]
+#  sets the from address
+#
 # [*helo_data*]
 #  sets the helo name exim uses when connecting to a remote server.
 #
@@ -100,6 +103,7 @@ define exim::transport (
   $fallback_hosts          = undef,
   $file                    = undef,
   $freeze_exec_fail        = false,
+  $from                    = undef,
   $group                   = undef,
   $headers_add             = undef,
   $headers_remove          = undef,
@@ -141,6 +145,7 @@ define exim::transport (
   if ($connect_timeout)         { validate_re($connect_timeout        ,'^.+$') }
   if ($directory_mode)          { validate_re($directory_mode         ,'^.+$') }
   if ($file)                    { validate_re($file                   ,'^.+$') }
+  if ($from)                    { validate_re($from                   ,'^.+$') }
   if ($group)                   { validate_re($group                  ,'^.+$') }
   if ($home_directory)          { validate_re($home_directory         ,'^.+$') }
   if ($maildir_tag)             { validate_re($maildir_tag            ,'^.+$') }
