@@ -215,7 +215,6 @@ define exim::transport (
   if ($connection_max_messages) { validate_re("x${connection_max_messages}" ,'^x[0-9]+$') }
   if ($tls_dh_min_bits)         { validate_re("x${tls_dh_min_bits}"         ,'^x[0-9]+$') }
   if ($dkim_strict)             { validate_re("x${dkim_strict}"             ,'^x[0-9]+$') }
-         }
 
   validate_bool($delivery_date_add,$envelope_to_add,$freeze_exec_fail,$initgroups,
                 $log_output,$maildir_format,$return_path_add,$rcpt_include_affixes,
