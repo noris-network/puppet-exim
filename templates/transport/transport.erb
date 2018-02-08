@@ -159,7 +159,7 @@ end
   timeout_defer
 <% end -%>
 <% if @dkim_domain -%>
-  dkim_domain = <%= @dkim_domain %>
+  dkim_domain = <%= @dkim_domain.join(' : ') %>
 <% end -%>
 <% if @dkim_selector -%>
   dkim_selector = <%= @dkim_selector %>
