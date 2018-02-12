@@ -88,6 +88,32 @@
 # [*interface*]
 #   sets the outgoing ip for smtp transports.
 #
+# [*dkim_domain*]
+#   The domain(s) you want to sign with
+#
+# [*dkim_selector*]
+#   This sets the key selector string.
+#
+# [*dkim_private_key*]
+#    This sets the private key to use. You can use the $dkim_domain and $dkim_selector expansion
+#    variables to determine the private key to use. The result can either
+#     - be a valid RSA private key in ASCII armor, including line breaks.
+#     - start with a slash, in which case it is treated as a file that contains the private key.
+#     - be "0", "false" or the empty string, in which case the message will not be signed. This case will not result in an error, even if dkim_strict is set.
+#
+# [*dkim_canon*]
+#   This option sets the canonicalization method used when signing a message.
+#   The DKIM RFC currently supports two methods: "simple" and "relaxed".
+#   Note: the current implementation only supports using the same canonicalization method for both headers and body.
+#
+# [*dkim_strict*]
+#   This option defines how Exim behaves when signing a message that should be signed fails for some reason.
+#   When the expansion evaluates to either "1" or "true", Exim will defer.
+#   Otherwise Exim will send the message unsigned.
+#   You can use the $dkim_domain and $dkim_selector expansion variables here.
+#
+
+
 define exim::transport (
   $driver,
   $allow_localhost         = false,
@@ -99,6 +125,11 @@ define exim::transport (
   $delivery_date_add       = false,
   $directory_mode          = undef,
   $directory               = undef,
+  $dkim_domain             = undef,
+  $dkim_selector           = undef,
+  $dkim_private_key        = undef,
+  $dkim_canon              = undef,
+  $dkim_strict             = undef,
   $envelope_to_add         = false,
   $fallback_hosts          = undef,
   $file                    = undef,
@@ -163,6 +194,10 @@ define exim::transport (
   if ($user)                    { validate_re($user                   ,'^.+$') }
   if ($interface)               { validate_re($interface              ,'^.+$') }
   if ($helo_data)               { validate_re($helo_data              ,'^.+$') }
+  if ($dkim_selector)           { validate_re($dkim_selector          ,'^.+$') }
+  if ($dkim_private_key)        { validate_re($dkim_private_key       ,'^.+$') }
+  if ($dkim_canon)              { validate_re($dkim_canon             ,'^.+$') }
+
 
   if ($temp_errors)       { validate_array($temp_errors       ) }
   if ($hosts)             { validate_array($hosts             ) }
@@ -173,11 +208,13 @@ define exim::transport (
   if ($hosts_require_auth){ validate_array($hosts_require_auth) }
   if ($hosts_require_tls) { validate_array($hosts_require_tls ) }
   if ($hosts_try_auth)    { validate_array($hosts_try_auth    ) }
+  if ($dkim_domain)       { validate_array($dkim_domain       ) }
 
   if ($batch_max)               { validate_re("x${batch_max}"               ,'^x[0-9]+$') }
   if ($port)                    { validate_re("x${port}"                    ,'^x[0-9]+$') }
   if ($connection_max_messages) { validate_re("x${connection_max_messages}" ,'^x[0-9]+$') }
   if ($tls_dh_min_bits)         { validate_re("x${tls_dh_min_bits}"         ,'^x[0-9]+$') }
+  if ($dkim_strict)             { validate_re("x${dkim_strict}"             ,'^x[0-9]+$') }
 
   validate_bool($delivery_date_add,$envelope_to_add,$freeze_exec_fail,$initgroups,
                 $log_output,$maildir_format,$return_path_add,$rcpt_include_affixes,
