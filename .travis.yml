@@ -19,8 +19,4 @@ matrix:
     env: PUPPET_VERSION=3.7.2
   - rvm: 2.3.3
     env: PUPPET_VERSION=3.6.2
-deploy:
-  provider: puppetforge
-  user: norisnetwork
-  password:
-    secure: hyZlVwLMYl/4gzWxOA+FsZh1WolGV+QyW6NmEBI8d1Vy3/o8lgZMepmZIfABQW3cossyDihFiwCL/+8clVFbp89Sbwwjkha3yeJ3fVcPmhmTtzDuIxCiLxv3pgsG/dq9WvP9lQTf5ZOp+6GxvGz9DRM1F7kjYCxOdbkFuuwxkGU=
+
