@@ -173,6 +173,117 @@
 # [*log_mail_subject*]
 #   Log mail subjects.
 #
+# [*log_8bitmime*] 
+#   received 8BITMIME status
+#
+# [*log_acl_warn_skipped*]
+#   skipped warn statement in ACL
+#
+# [*log_address_rewrite*]           
+#   address rewriting
+#
+# [*log_all_parents*]            
+#   all parents in => lines
+#
+# [*log_arguments*]                
+#   command line arguments
+#
+# [*log_connection_reject*]
+#   connection rejections
+#
+# [*log_delay_delivery*]          
+#   immediate delivery delayed
+#
+# [*log_deliver_time*]             
+#   time taken to perform delivery
+#
+# [*log_delivery_size*]               
+#   add S=nnn to => lines
+#
+# [*log_dnslist_defer*]              
+#   defers of DNS list (aka RBL) lookups
+#
+# [*log_dnssec*]              
+#   DNSSEC secured lookups
+#
+# [*log_etrn*]                     
+#   ETRN commands
+#
+# [*log_host_lookup_failed*]
+#   Log failed host lookup
+#
+# [*log_ident_timeout*]         
+#   timeout for ident connection
+#
+# [*log_incoming_interface*]
+#   local interface on <= and => lines
+#
+# [*log_incoming_port*]         
+#   remote port on <= lines
+#
+# [*log_millisec*]              
+#   millisecond timestamps and QT,DT,D times
+#
+# [*log_outgoing_interface*]
+#   local interface on => lines
+#
+# [*log_outgoing_port*]         
+#   add remote port to => lines
+#
+# [*log_queue_run*]              
+#   start and end queue runs
+#
+# [*log_queue_time*]                  
+#   time on queue for one recipient
+#
+# [*log_queue_time_overall*]
+#   time on queue for whole message
+#
+# [*log_pid*]         
+#   Exim process id
+#
+# [*log_proxy*]
+#   proxy address on <= and => lines
+#
+# [*log_received_recipients*]
+#   recipients on <= lines
+#
+# [*log_received_sender*]        
+#   sender on <= lines
+#
+# [*log_rejected_header*]            
+#   header contents on reject log
+#
+# [*log_return_path_on_delivery*]
+#   put return path on => and ** lines
+#
+# [*log_sender_verify_fail*]    
+#   sender verification failures
+#
+# [*log_size_reject*]         
+#   rejection because too big
+#
+# [*log_smtp_incomplete_transaction*]
+#   incomplete SMTP transactions
+#
+# [*log_smtp_mailauth*]
+#   AUTH argument to MAIL commands
+#
+# [*log_smtp_no_mail*]              
+#   session with no MAIL commands
+#
+# [*log_tls_certificate_verified*]
+#   certificate verification status
+#
+# [*log_tls_cipher*]   
+#   TLS cipher suite on <= and => lines
+#
+# [*log_tls_sni*]                 
+#   TLS SNI on <= lines
+#
+# [*log_unknown_in_list*]
+#   DNS lookup failed in list match
+#
 # [*macros*]
 #   Allows you to set Macro definitions, note that macros must
 #   start with an uppercase letter
@@ -325,6 +436,43 @@ class exim (
   $log_smtp_syntax_error              =$::exim::params::log_smtp_syntax_error,
   $log_tls_peerdn                     =$::exim::params::log_tls_peerdn,
   $log_mail_subject                   =$::exim::params::log_mail_subject,
+  $log_8bitmime                       =$::exim::params::log_8bitmime,
+  $log_acl_warn_skipped               =$::exim::params::log_acl_warn_skipped,
+  $log_address_rewrite                =$::exim::params::log_address_rewrite,
+  $log_all_parents                    =$::exim::params::log_all_parents,
+  $log_arguments                      =$::exim::params::log_arguments,
+  $log_connection_reject              =$::exim::params::log_connection_reject,
+  $log_delay_delivery                 =$::exim::params::log_delay_delivery,
+  $log_deliver_time                   =$::exim::params::log_deliver_time,
+  $log_delivery_size                  =$::exim::params::log_delivery_size,
+  $log_dnslist_defer                  =$::exim::params::log_dnslist_defer,
+  $log_dnssec                         =$::exim::params::log_dnssec,
+  $log_etrn                           =$::exim::params::log_etrn,
+  $log_host_lookup_failed             =$::exim::params::log_host_lookup_failed,
+  $log_ident_timeout                  =$::exim::params::log_ident_timeout,
+  $log_incoming_interface             =$::exim::params::log_incoming_interface,
+  $log_incoming_port                  =$::exim::params::log_incoming_port,
+  $log_millisec                       =$::exim::params::log_millisec,
+  $log_outgoing_interface             =$::exim::params::log_outgoing_interface,
+  $log_outgoing_port                  =$::exim::params::log_outgoing_port,
+  $log_queue_run                      =$::exim::params::log_queue_run,
+  $log_queue_time                     =$::exim::params::log_queue_time,
+  $log_queue_time_overall             =$::exim::params::log_queue_time_overall,
+  $log_pid                            =$::exim::params::log_pid,
+  $log_proxy                          =$::exim::params::log_proxy,
+  $log_received_recipients            =$::exim::params::log_received_recipients,
+  $log_received_sender                =$::exim::params::log_received_sender,
+  $log_rejected_header                =$::exim::params::log_rejected_header,
+  $log_return_path_on_delivery        =$::exim::params::log_return_path_on_delivery,
+  $log_sender_verify_fail             =$::exim::params::log_sender_verify_fail,
+  $log_size_reject                    =$::exim::params::log_size_reject,
+  $log_smtp_incomplete_transaction    =$::exim::params::log_smtp_incomplete_transaction,
+  $log_smtp_mailauth                  =$::exim::params::log_smtp_mailauth,
+  $log_smtp_no_mail                   =$::exim::params::log_smtp_no_mail,
+  $log_tls_certificate_verified       =$::exim::params::log_tls_certificate_verified,
+  $log_tls_cipher                     =$::exim::params::log_tls_cipher,
+  $log_tls_sni                        =$::exim::params::log_tls_sni,
+  $log_unknown_in_list                =$::exim::params::log_unknown_in_list,
   $macros                             =$::exim::params::macros,
   $manage_service                     =$::exim::params::manage_service,
   $message_logs                       =$::exim::params::message_logs,
