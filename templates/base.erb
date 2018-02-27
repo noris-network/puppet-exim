@@ -30,54 +30,53 @@ keep_environment =
 <% end -%>
 
 
-# logging
-log_selector               =  <% if @log_smtp_confirmation           == false %>-<% else %>+<% end %>smtp_confirmation \
-                              <% if @log_smtp_connection             == false %>-<% else %>+<% end %>smtp_connection \
-                              <% if @log_smtp_protocol_error         == false %>-<% else %>+<% end %>smtp_protocol_error \
-                              <% if @log_smtp_syntax_error           == false %>-<% else %>+<% end %>smtp_syntax_error \
-                              <% if @log_sender_on_delivery          == false %>-<% else %>+<% end %>sender_on_delivery \
-                              <% if @log_lost_incoming_connection    == false %>-<% else %>+<% end %>lost_incoming_connection \
-                              <% if @log_tls_peerdn                  == false %>-<% else %>+<% end %>tls_peerdn \
-                              <% if @log_skip_delivery               == false %>-<% else %>+<% end %>skip_delivery \
-                              <% if @log_retry_defer                 == false %>-<% else %>+<% end %>retry_defer \
-                              <% if @log_mail_subject                == false %>-<% else %>+<% end %>subject \
-                              <% if @log_8bitmime                    == false %>-<% else %>+<% end %>8bitmime \
-                              <% if @log_acl_warn_skipped            == false %>-<% else %>+<% end %>log_acl_warn_skipped \
-                              <% if @log_address_rewrite             == false %>-<% else %>+<% end %>address_rewrite \
-                              <% if @log_all_parents                 == false %>-<% else %>+<% end %>log_all_parents \
-                              <% if @log_arguments                   == false %>-<% else %>+<% end %>arguments \
-                              <% if @log_connection_reject           == false %>-<% else %>+<% end %>connection_reject \
-                              <% if @log_delay_delivery              == false %>-<% else %>+<% end %>delay_delivery \
-                              <% if @log_deliver_time                == false %>-<% else %>+<% end %>deliver_time \
-                              <% if @log_delivery_size               == false %>-<% else %>+<% end %>delivery_size \
-                              <% if @log_dnslist_defer               == false %>-<% else %>+<% end %>dnslist_defer \
-                              <% if @log_dnssec                      == false %>-<% else %>+<% end %>dnssec \
-                              <% if @log_etrn                        == false %>-<% else %>+<% end %>etrn \
-                              <% if @log_host_lookup_failed          == false %>-<% else %>+<% end %>host_lookup_failed \
-                              <% if @log_ident_timeout               == false %>-<% else %>+<% end %>ident_timeout \
-                              <% if @log_incoming_interface          == false %>-<% else %>+<% end %>incoming_interface \
-                              <% if @log_incoming_port               == false %>-<% else %>+<% end %>incoming_port \
-                              <% if @log_millisec                    == false %>-<% else %>+<% end %>millisec \
-                              <% if @log_outgoing_interface          == false %>-<% else %>+<% end %>outgoing_interface \
-                              <% if @log_outgoing_port               == false %>-<% else %>+<% end %>outgoing_port \
-                              <% if @log_queue_run                   == false %>-<% else %>+<% end %>queue_run \
-                              <% if @log_queue_time                  == false %>-<% else %>+<% end %>queue_time \
-                              <% if @log_queue_time_overall          == false %>-<% else %>+<% end %>queue_time_overall \
-                              <% if @log_pid                         == false %>-<% else %>+<% end %>pid \
-                              <% if @log_proxy                       == false %>-<% else %>+<% end %>proxy \
-                              <% if @log_received_recipients         == false %>-<% else %>+<% end %>received_recipients \
-                              <% if @log_received_sender             == false %>-<% else %>+<% end %>received_sender \
-                              <% if @log_rejected_header             == false %>-<% else %>+<% end %>rejected_header \
-                              <% if @log_return_path_on_delivery     == false %>-<% else %>+<% end %>return_path_on_delivery \
-                              <% if @log_sender_verify_fail          == false %>-<% else %>+<% end %>sender_verify_fail \
-                              <% if @log_size_reject                 == false %>-<% else %>+<% end %>size_reject \
-                              <% if @log_smtp_incomplete_transaction == false %>-<% else %>+<% end %>smtp_incomplete_transaction \
-                              <% if @log_smtp_mailauth               == false %>-<% else %>+<% end %>smtp_mailauth \
-                              <% if @log_smtp_no_mail                == false %>-<% else %>+<% end %>smtp_no_mail \
-                              <% if @log_tls_certificate_verified    == false %>-<% else %>+<% end %>tls_certificate_verified \
-                              <% if @log_tls_cipher                  == false %>-<% else %>+<% end %>tls_cipher \
-                              <% if @log_tls_sni                     == false %>-<% else %>+<% end %>tls_sni \
-                              <% if @log_unknown_in_list             == false %>-<% else %>+<% end %>unknown_in_list 
+log_selector               = <% if defined?(@log_lost_incoming_connection) && ! @log_lost_incoming_connection.empty? -%><% if @log_lost_incoming_connection == "false" -%> -lost_incoming_connection<% else %> +lost_incoming_connection<% end -%><% end -%>
+<% if defined?(@log_retry_defer) && ! @log_retry_defer.empty? -%><% if @log_retry_defer == "false" -%> -retry_defer<% else %> +retry_defer<% end -%><% end -%>
+<% if defined?(@log_sender_on_delivery) && ! @log_sender_on_delivery.empty? -%><% if @log_sender_on_delivery == "false" -%> -sender_on_delivery<% else %> +sender_on_delivery<% end -%><% end -%>
+<% if defined?(@log_skip_delivery) && ! @log_skip_delivery.empty? -%><% if @log_skip_delivery == "false" -%> -skip_delivery<% else %> +skip_delivery<% end -%><% end -%>
+<% if defined?(@log_smtp_confirmation) && ! @log_smtp_confirmation.empty? -%><% if @log_smtp_confirmation == "false" -%> -smtp_confirmation<% else %> +smtp_confirmation<% end -%><% end -%>
+<% if defined?(@log_smtp_connection) && ! @log_smtp_connection.empty? -%><% if @log_smtp_connection == "false" -%> -smtp_connection<% else %> +smtp_connection<% end -%><% end -%>
+<% if defined?(@log_smtp_protocol_error) && ! @log_smtp_protocol_error.empty? -%><% if @log_smtp_protocol_error == "false" -%> -smtp_protocol_error<% else %> +smtp_protocol_error<% end -%><% end -%>
+<% if defined?(@log_smtp_syntax_error) && ! @log_smtp_syntax_error.empty? -%><% if @log_smtp_syntax_error == "false" -%> -smtp_syntax_error<% else %> +smtp_syntax_error<% end -%><% end -%>
+<% if defined?(@log_tls_peerdn) && ! @log_tls_peerdn.empty? -%><% if @log_tls_peerdn == "false" -%> -tls_peerdn<% else %> +tls_peerdn<% end -%><% end -%>
+<% if defined?(@log_mail_subject) && ! @log_mail_subject.empty? -%><% if @log_mail_subject == "false" -%> -subject<% else %> +subject<% end -%><% end -%>
+<% if defined?(@log_8bitmime) && ! @log_8bitmime.empty? -%><% if @log_8bitmime == "false" -%> -8bitmime<% else %> +8bitmime<% end -%><% end -%>
+<% if defined?(@log_acl_warn_skipped) && ! @log_acl_warn_skipped.empty? -%><% if @log_acl_warn_skipped == "false" -%> -acl_warn_skipped<% else %> +acl_warn_skipped<% end -%><% end -%>
+<% if defined?(@log_address_rewrite) && ! @log_address_rewrite.empty? -%><% if @log_address_rewrite == "false" -%> -address_rewrite<% else %> +address_rewrite<% end -%><% end -%>
+<% if defined?(@log_all_parents) && ! @log_all_parents.empty? -%><% if @log_all_parents == "false" -%> -all_parents<% else %> +all_parents<% end -%><% end -%>
+<% if defined?(@log_arguments) && ! @log_arguments.empty? -%><% if @log_arguments == "false" -%> -arguments<% else %> +arguments<% end -%><% end -%>
+<% if defined?(@log_connection_reject) && ! @log_connection_reject.empty? -%><% if @log_connection_reject == "false" -%> -connection_reject<% else %> +connection_reject<% end -%><% end -%>
+<% if defined?(@log_delay_delivery) && ! @log_delay_delivery.empty? -%><% if @log_delay_delivery == "false" -%> -delay_delivery<% else %> +delay_delivery<% end -%><% end -%>
+<% if defined?(@log_deliver_time) && ! @log_deliver_time.empty? -%><% if @log_deliver_time == "false" -%> -deliver_time<% else %> +deliver_time<% end -%><% end -%>
+<% if defined?(@log_delivery_size) && ! @log_delivery_size.empty? -%><% if @log_delivery_size == "false" -%> -delivery_size<% else %> +delivery_size<% end -%><% end -%>
+<% if defined?(@log_dnslist_defer) && ! @log_dnslist_defer.empty? -%><% if @log_dnslist_defer == "false" -%> -dnslist_defer<% else %> +dnslist_defer<% end -%><% end -%>
+<% if defined?(@log_dnssec) && ! @log_dnssec.empty? -%><% if @log_dnssec == "false" -%> -dnssec<% else %> +dnssec<% end -%><% end -%>
+<% if defined?(@log_etrn) && ! @log_etrn.empty? -%><% if @log_etrn == "false" -%> -etrn<% else %> +etrn<% end -%><% end -%>
+<% if defined?(@log_host_lookup_failed) && ! @log_host_lookup_failed.empty? -%><% if @log_host_lookup_failed == "false" -%> -host_lookup_failed<% else %> +host_lookup_failed<% end -%><% end -%>
+<% if defined?(@log_ident_timeout) && ! @log_ident_timeout.empty? -%><% if @log_ident_timeout == "false" -%> -ident_timeout<% else %> +ident_timeout<% end -%><% end -%>
+<% if defined?(@log_incoming_interface) && ! @log_incoming_interface.empty? -%><% if @log_incoming_interface == "false" -%> -incoming_interface<% else %> +incoming_interface<% end -%><% end -%>
+<% if defined?(@log_incoming_port) && ! @log_incoming_port.empty? -%><% if @log_incoming_port == "false" -%> -incoming_port<% else %> +incoming_port<% end -%><% end -%>
+<% if defined?(@log_millisec) && ! @log_millisec.empty? -%><% if @log_millisec == "false" -%> -millisec<% else %> +millisec<% end -%><% end -%>
+<% if defined?(@log_outgoing_interface) && ! @log_outgoing_interface.empty? -%><% if @log_outgoing_interface == "false" -%> -outgoing_interface<% else %> +outgoing_interface<% end -%><% end -%>
+<% if defined?(@log_outgoing_port) && ! @log_outgoing_port.empty? -%><% if @log_outgoing_port == "false" -%> -outgoing_port<% else %> +outgoing_port<% end -%><% end -%>
+<% if defined?(@log_queue_run) && ! @log_queue_run.empty? -%><% if @log_queue_run == "false" -%> -queue_run<% else %> +queue_run<% end -%><% end -%>
+<% if defined?(@log_queue_time) && ! @log_queue_time.empty? -%><% if @log_queue_time == "false" -%> -queue_time<% else %> +queue_time<% end -%><% end -%>
+<% if defined?(@log_queue_time_overall) && ! @log_queue_time_overall.empty? -%><% if @log_queue_time_overall == "false" -%> -queue_time_overall<% else %> +queue_time_overall<% end -%><% end -%>
+<% if defined?(@log_pid) && ! @log_pid.empty? -%><% if @log_pid == "false" -%> -pid<% else %> +pid<% end -%><% end -%>
+<% if defined?(@log_proxy) && ! @log_proxy.empty? -%><% if @log_proxy == "false" -%> -proxy<% else %> +proxy<% end -%><% end -%>
+<% if defined?(@log_received_recipients) && ! @log_received_recipients.empty? -%><% if @log_received_recipients == "false" -%> -received_recipients<% else %> +received_recipients<% end -%><% end -%>
+<% if defined?(@log_received_sender) && ! @log_received_sender.empty? -%><% if @log_received_sender == "false" -%> -received_sender<% else %> +received_sender<% end -%><% end -%>
+<% if defined?(@log_rejected_header) && ! @log_rejected_header.empty? -%><% if @log_rejected_header == "false" -%> -rejected_header<% else %> +rejected_header<% end -%><% end -%>
+<% if defined?(@log_return_path_on_delivery) && ! @log_return_path_on_delivery.empty? -%><% if @log_return_path_on_delivery == "false" -%> -return_path_on_delivery<% else %> +return_path_on_delivery<% end -%><% end -%>
+<% if defined?(@log_sender_verify_fail) && ! @log_sender_verify_fail.empty? -%><% if @log_sender_verify_fail == "false" -%> -sender_verify_fail<% else %> +sender_verify_fail<% end -%><% end -%>
+<% if defined?(@log_size_reject) && ! @log_size_reject.empty? -%><% if @log_size_reject == "false" -%> -size_reject<% else %> +size_reject<% end -%><% end -%>
+<% if defined?(@log_smtp_incomplete_transaction) && ! @log_smtp_incomplete_transaction.empty? -%><% if @log_smtp_incomplete_transaction == "false" -%> -smtp_incomplete_transaction<% else %> +smtp_incomplete_transaction<% end -%><% end -%>
+<% if defined?(@log_smtp_mailauth) && ! @log_smtp_mailauth.empty? -%><% if @log_smtp_mailauth == "false" -%> -smtp_mailauth<% else %> +smtp_mailauth<% end -%><% end -%>
+<% if defined?(@log_smtp_no_mail) && ! @log_smtp_no_mail.empty? -%><% if @log_smtp_no_mail == "false" -%> -smtp_no_mail<% else %> +smtp_no_mail<% end -%><% end -%>
+<% if defined?(@log_tls_certificate_verified) && ! @log_tls_certificate_verified.empty? -%><% if @log_tls_certificate_verified == "false" -%> -tls_certificate_verified<% else %> +tls_certificate_verified<% end -%><% end -%>
+<% if defined?(@log_tls_cipher) && ! @log_tls_cipher.empty? -%><% if @log_tls_cipher == "false" -%> -tls_cipher<% else %> +tls_cipher<% end -%><% end -%>
+<% if defined?(@log_tls_sni) && ! @log_tls_sni.empty? -%><% if @log_tls_sni == "false" -%> -tls_sni<% else %> +tls_sni<% end -%><% end -%>
+<% if defined?(@log_unknown_in_list) && ! @log_unknown_in_list.empty? -%><% if @log_unknown_in_list == "false" -%> -unknown_in_list<% else %> +unknown_in_list<% end -%><% end -%>
 
 <% unless @freeze_tell.nil?                -%>freeze_tell                = <%= @freeze_tell %>
 <% end -%>
