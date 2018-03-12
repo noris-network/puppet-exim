@@ -173,5 +173,18 @@ end
 <% if @dkim_strict -%>
   dkim_strict = <%= @dkim_strict %>
 <% end -%>
-
-
+<% if @once -%>
+  once            = <%= @once %>
+<% end -%>
+<% if @once_repeat -%>
+  once_repeat     = <%= @once_repeat %>
+<% end -%>
+<% if @once_file_size -%>
+  once_file_size  = <%= @once_file_size %>
+<% end -%>
+<% if @headers -%>
+  headers         = <%= @headers %>
+<% end -%>
+<% if @return_message -%>
+  return_message  = <%= @return_message %>
+<% end -%>

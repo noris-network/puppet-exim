@@ -112,7 +112,25 @@
 #   Otherwise Exim will send the message unsigned.
 #   You can use the $dkim_domain and $dkim_selector expansion variables here.
 #
-
+# [*once*]
+#   Use:autoreply;Type:string;Default:unset; This option names a file or DBM database in which a record of each To: recipient is kept when the message is 
+#   specified by the transport. 
+#
+# [*once_repeat*]
+#   Use:autoreply;Type:time;Default:0s; specifies a maximum time between repeats
+#
+# [*once_file_size*]
+#   Use:autoreply;Type:integer;Default:0; If once_file_size is zero, a DBM database is used to remember recipients, and it is allowed to grow as large as necessary. 
+#   If once_file_size is set greater than zero, it changes the way Exim implements the once option. Instead of using a DBM file to record every recipient it sends 
+#   to, it uses a regular file, whose size will never get larger than the given value. 
+#
+# [*headers*]
+#   Use:autoreply;Type:string;Default:unset; This specifies additional RFC 2822 headers that are to be added to the message when the message is specified by the 
+#   transport. Several can be given by using “\n” to separate them. There is no check on the format.
+#
+# [*return_message*]
+#   Use:autoreply;Type:boolean;Default:false; If this is set, a copy of the original message is returned with the new message, subject to the maximum size set in 
+#   the return_size_limit global configuration option.
 
 define exim::transport (
   $driver,
@@ -170,6 +188,11 @@ define exim::transport (
   $to                      = undef,
   $transport_filter        = undef,
   $user                    = undef,
+  $once                    = undef,
+  $once_repeat             = undef,
+  $once_file_size          = undef,
+  $headers                 = undef,
+  $return_message          = undef,
   ){
   if ($directory)               { validate_re($directory              ,'^.+$') }
   if ($command)                 { validate_re($command                ,'^.+$') }
@@ -197,7 +220,11 @@ define exim::transport (
   if ($dkim_selector)           { validate_re($dkim_selector          ,'^.+$') }
   if ($dkim_private_key)        { validate_re($dkim_private_key       ,'^.+$') }
   if ($dkim_canon)              { validate_re($dkim_canon             ,'^.+$') }
-
+  if ($once                     { validate_re($once                   ,'^.+$') }
+  if ($once_repeat              { validate_re($once_repeat            ,'^.+$') }
+  if ($once_file_size           { validate_re($once_file_size         ,'^.+$') }
+  if ($headers                  { validate_re($headers                ,'^.+$') }
+  if ($return_message           { validate_re($return_message         ,'^.+$') }
 
   if ($temp_errors)       { validate_array($temp_errors       ) }
   if ($hosts)             { validate_array($hosts             ) }
