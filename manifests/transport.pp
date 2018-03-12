@@ -220,11 +220,11 @@ define exim::transport (
   if ($dkim_selector)           { validate_re($dkim_selector          ,'^.+$') }
   if ($dkim_private_key)        { validate_re($dkim_private_key       ,'^.+$') }
   if ($dkim_canon)              { validate_re($dkim_canon             ,'^.+$') }
-  if ($once                     { validate_re($once                   ,'^.+$') }
-  if ($once_repeat              { validate_re($once_repeat            ,'^.+$') }
-  if ($once_file_size           { validate_re($once_file_size         ,'^.+$') }
-  if ($headers                  { validate_re($headers                ,'^.+$') }
-  if ($return_message           { validate_re($return_message         ,'^.+$') }
+  if ($once)                    { validate_re($once                   ,'^.+$') }
+  if ($once_repeat)             { validate_re($once_repeat            ,'^.+$') }
+  if ($once_file_size)          { validate_re($once_file_size         ,'^.+$') }
+  if ($headers)                 { validate_re($headers                ,'^.+$') }
+  if ($return_message)          { validate_re($return_message         ,'^.+$') }
 
   if ($temp_errors)       { validate_array($temp_errors       ) }
   if ($hosts)             { validate_array($hosts             ) }
