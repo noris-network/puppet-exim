@@ -224,7 +224,6 @@ define exim::transport (
   if ($once_repeat)             { validate_re($once_repeat            ,'^.+$') }
   if ($once_file_size)          { validate_re($once_file_size         ,'^.+$') }
   if ($headers)                 { validate_re($headers                ,'^.+$') }
-  if ($return_message)          { validate_re($return_message         ,'^.+$') }
 
   if ($temp_errors)       { validate_array($temp_errors       ) }
   if ($hosts)             { validate_array($hosts             ) }
@@ -245,7 +244,8 @@ define exim::transport (
 
   validate_bool($delivery_date_add,$envelope_to_add,$freeze_exec_fail,$initgroups,
                 $log_output,$maildir_format,$return_path_add,$rcpt_include_affixes,
-                $allow_localhost,$return_output,$return_fail_output,$timeout_defer)
+                $allow_localhost,$return_output,$return_fail_output,$timeout_defer,
+                $return_message)
 
   concat::fragment { "transport-${title}":
     target  => $::exim::config_path,
