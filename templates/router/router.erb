@@ -95,6 +95,9 @@
 <% unless @ignore_target_hosts.nil? -%>
   ignore_target_hosts = <%= @ignore_target_hosts.join(" : ") %>
 <% end -%>
+<% if @errors_to -%>
+  errors_to    = <%= @errors_to %>
+<% end -%>
 <% unless @transport.nil? -%>
   transport    = <%= @transport %>
 <% end -%>

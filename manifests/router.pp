@@ -117,6 +117,9 @@
 # [*user*]
 #  When a router queues an address for a transport, and the transport does not specify a user, the user given here is used when running the delivery process.
 #
+# [*errors_to*]
+# override the destination of a generated bounce message
+#
 define exim::router (
   $driver,
   $order,
@@ -155,6 +158,7 @@ define exim::router (
   $transport                  = undef,
   $unseen                     = false,
   $user                       = undef,
+  $errors_to                  = undef,
   ){
   unless $disable {
     validate_bool($local_part_prefix_optional, $local_part_suffix_optional)
