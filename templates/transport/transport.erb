@@ -159,19 +159,19 @@ end
   timeout_defer
 <% end -%>
 <% if @dkim_domain -%>
-  dkim_domain = <%= @dkim_domain.join(' : ') %>
+  dkim_domain     = <%= @dkim_domain.join(' : ') %>
 <% end -%>
 <% if @dkim_selector -%>
-  dkim_selector = <%= @dkim_selector %>
+  dkim_selector   = <%= @dkim_selector %>
 <% end -%>
 <% if @dkim_private_key -%>
   dkim_private_key = <%= @dkim_private_key %>
 <% end -%>
 <% if @dkim_canon -%>
-  dkim_canon = <%= @dkim_canon %>
+  dkim_canon      = <%= @dkim_canon %>
 <% end -%>
 <% if @dkim_strict -%>
-  dkim_strict = <%= @dkim_strict %>
+  dkim_strict     = <%= @dkim_strict %>
 <% end -%>
 <% if @once -%>
   once            = <%= @once %>
@@ -188,3 +188,4 @@ end
 <% if @return_message -%>
   return_message  = <%= @return_message %>
 <% end -%>
+
