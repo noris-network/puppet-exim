@@ -103,6 +103,8 @@ class exim::params {
   $message_logs                       = undef
   $message_size_limit                 = undef
   $never_users                        = [ 'root' ]
+  $untrusted_set_sender               = undef
+  $print_topbitchars                  = false
   $qualify_domain                     = undef
   $queue_only                         = false
   $queue_only_load                    = undef

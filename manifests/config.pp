@@ -41,6 +41,8 @@ class exim::config {
   $message_logs                       =$::exim::message_logs
   $message_size_limit                 =$::exim::message_size_limit
   $never_users                        =$::exim::never_users
+  $untrusted_set_sender               =$::exim::untrusted_set_sender 
+  $print_topbitchars                  =$::exim::print_topbitchars
   $qualify_domain                     =$::exim::qualify_domain
   $queue_only_load                    =$::exim::queue_only_load
   $queue_run_max                      =$::exim::queue_run_max
