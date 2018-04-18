@@ -390,6 +390,12 @@
 #   Set, to configure exims global config variable trusted_users,
 #   default is empty ('').
 #
+# [*print_topbitchars*]
+#   If this option ist set to true code values of 128 and above are also considered to be printing characters
+#
+# [*untrusted_set_sender*]
+#   This option allows you to permit untrusted users to set other envelope sender addresses in a controlled way.
+#
 # === Examples
 #  class { 'noris_exim':
 #  }
@@ -478,6 +484,8 @@ class exim (
   $message_logs                       =$::exim::params::message_logs,
   $message_size_limit                 =$::exim::params::message_size_limit,
   $never_users                        =$::exim::params::never_users,
+  $untrusted_set_sender               =$::exim::params::untrusted_set_sender,
+  $print_topbitchars                  =$::exim::params::print_topbitchars,
   $qualify_domain                     =$::exim::params::qualify_domain,
   $queue_only_load                    =$::exim::params::queue_only_load,
   $queue_run_max                      =$::exim::params::queue_run_max,

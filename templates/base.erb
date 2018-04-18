@@ -108,6 +108,10 @@ log_selector               = <% if defined?(@log_lost_incoming_connection) && ! 
 <% end -%>
 <% unless @host_lookup.nil?                -%>host_lookup                = <%= @host_lookup %>
 <% end -%>
+<% unless @untrusted_set_sender.nil?                -%>untrusted_set_sender                = <%= @untrusted_set_sender %>
+<% end -%>
+<% unless @print_topbitchars.nil?                -%>print_topbitchars                = <%= @print_topbitchars %>
+<% end -%>
 <% unless @rfc1413_hosts.nil?              -%>rfc1413_hosts              = <%= @rfc1413_hosts %>
 <% end -%>
 <% unless @rfc1413_query_timeout.nil?      -%>rfc1413_query_timeout      = <%= @rfc1413_query_timeout %>
