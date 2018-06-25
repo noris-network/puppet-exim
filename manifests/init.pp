@@ -475,6 +475,7 @@ class exim (
   $log_smtp_incomplete_transaction    =$::exim::params::log_smtp_incomplete_transaction,
   $log_smtp_mailauth                  =$::exim::params::log_smtp_mailauth,
   $log_smtp_no_mail                   =$::exim::params::log_smtp_no_mail,
+  $log_timezone                       =$::exim::params::log_timezone,
   $log_tls_certificate_verified       =$::exim::params::log_tls_certificate_verified,
   $log_tls_cipher                     =$::exim::params::log_tls_cipher,
   $log_tls_sni                        =$::exim::params::log_tls_sni,

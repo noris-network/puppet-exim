@@ -94,6 +94,7 @@ class exim::params {
   $log_smtp_incomplete_transaction    = undef
   $log_smtp_mailauth                  = undef
   $log_smtp_no_mail                   = undef
+  $log_timezone                       = undef
   $log_tls_certificate_verified       = undef
   $log_tls_cipher                     = undef
   $log_tls_sni                        = undef

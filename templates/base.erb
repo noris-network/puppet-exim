@@ -78,6 +78,8 @@ log_selector               = <% if defined?(@log_lost_incoming_connection) && ! 
 <% if defined?(@log_tls_sni) && ! @log_tls_sni.empty? -%><% if @log_tls_sni == "false" -%> -tls_sni<% else %> +tls_sni<% end -%><% end -%>
 <% if defined?(@log_unknown_in_list) && ! @log_unknown_in_list.empty? -%><% if @log_unknown_in_list == "false" -%> -unknown_in_list<% else %> +unknown_in_list<% end -%><% end -%>
 
+<% if defined?(@log_timezone) && ! @log_timezone.empty? -%><% if @log_timezone == "false" -%>no_log_timezone<% else %>log_timezone<% end -%><% end -%>
+
 <% unless @freeze_tell.nil?                -%>freeze_tell                = <%= @freeze_tell %>
 <% end -%>
 <% unless @message_logs.nil?               -%>message_logs               = <%= @message_logs %>
