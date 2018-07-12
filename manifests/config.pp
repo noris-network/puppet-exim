@@ -43,6 +43,7 @@ class exim::config {
   $never_users                        =$::exim::never_users
   $untrusted_set_sender               =$::exim::untrusted_set_sender 
   $print_topbitchars                  =$::exim::print_topbitchars
+  $tls_require_ciphers                =$::exim::tls_require_ciphers
   $qualify_domain                     =$::exim::qualify_domain
   $queue_only_load                    =$::exim::queue_only_load
   $queue_run_max                      =$::exim::queue_run_max

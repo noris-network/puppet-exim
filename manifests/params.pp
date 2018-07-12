@@ -105,6 +105,7 @@ class exim::params {
   $never_users                        = [ 'root' ]
   $untrusted_set_sender               = undef
   $print_topbitchars                  = false
+  $tls_require_ciphers                = undef
   $qualify_domain                     = undef
   $queue_only                         = false
   $queue_only_load                    = undef
