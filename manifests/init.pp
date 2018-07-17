@@ -396,6 +396,9 @@
 # [*untrusted_set_sender*]
 #   This option allows you to permit untrusted users to set other envelope sender addresses in a controlled way.
 #
+# [*tls_require_ciphers*]
+#   This option controls which ciphers can be used for incoming TLS connections.
+#
 # === Examples
 #  class { 'noris_exim':
 #  }
@@ -486,6 +489,7 @@ class exim (
   $never_users                        =$::exim::params::never_users,
   $untrusted_set_sender               =$::exim::params::untrusted_set_sender,
   $print_topbitchars                  =$::exim::params::print_topbitchars,
+  $tls_require_ciphers                =$::exim::params::tls_require_ciphers,
   $qualify_domain                     =$::exim::params::qualify_domain,
   $queue_only_load                    =$::exim::params::queue_only_load,
   $queue_run_max                      =$::exim::params::queue_run_max,

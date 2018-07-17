@@ -98,6 +98,9 @@
 <% if @errors_to -%>
   errors_to    = <%= @errors_to %>
 <% end -%>
+<% if @cannot_route_message -%>
+  cannot_route_message = <%= @cannot_route_message %>
+<% end -%>
 <% unless @transport.nil? -%>
   transport    = <%= @transport %>
 <% end -%>
