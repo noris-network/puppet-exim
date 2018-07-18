@@ -77,7 +77,6 @@ log_selector               = <% if defined?(@log_lost_incoming_connection) && ! 
 <% if defined?(@log_tls_cipher) && ! @log_tls_cipher.empty? -%><% if @log_tls_cipher == "false" -%> -tls_cipher<% else %> +tls_cipher<% end -%><% end -%>
 <% if defined?(@log_tls_sni) && ! @log_tls_sni.empty? -%><% if @log_tls_sni == "false" -%> -tls_sni<% else %> +tls_sni<% end -%><% end -%>
 <% if defined?(@log_unknown_in_list) && ! @log_unknown_in_list.empty? -%><% if @log_unknown_in_list == "false" -%> -unknown_in_list<% else %> +unknown_in_list<% end -%><% end -%>
-<% if defined?(@log_timezone) && ! @log_timezone.empty? -%><% if @log_timezone == "false" -%> -log_timezone<% else %> +log_timezone<% end -%><% end -%>
 
 <% unless @freeze_tell.nil?                -%>freeze_tell                = <%= @freeze_tell %>
 <% end -%>
@@ -125,7 +124,9 @@ log_selector               = <% if defined?(@log_lost_incoming_connection) && ! 
 <% end -%>
 <% unless @smtp_banner.nil?                -%>smtp_banner                = <%= @smtp_banner %>
 <% end -%>
-
+<% if @log_timezone                        -%>log_timezone               = true
+<% end -%>
+                                                                                
 received_header_text       = Received: \
   ${if def:sender_rcvhost {from $sender_rcvhost\n\t}\
   {${if def:sender_ident \
