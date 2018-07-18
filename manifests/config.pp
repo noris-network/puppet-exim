@@ -112,6 +112,7 @@ class exim::config {
   if is_bool($::exim::log_smtp_incomplete_transaction) { $log_smtp_incomplete_transaction = bool2str($::exim::log_smtp_incomplete_transaction) } else { $log_smtp_incomplete_transaction = $::exim::log_smtp_incomplete_transaction }
   if is_bool($::exim::log_smtp_mailauth) { $log_smtp_mailauth = bool2str($::exim::log_smtp_mailauth) } else { $log_smtp_mailauth = $::exim::log_smtp_mailauth }
   if is_bool($::exim::log_smtp_no_mail) { $log_smtp_no_mail = bool2str($::exim::log_smtp_no_mail) } else { $log_smtp_no_mail = $::exim::log_smtp_no_mail }
+  if is_bool($::exim::log_timezone) { $log_timezone = bool2str($::exim::log_timezone) } else { $log_timezone = $::exim::log_timezone }
   if is_bool($::exim::log_tls_certificate_verified) { $log_tls_certificate_verified = bool2str($::exim::log_tls_certificate_verified) } else { $log_tls_certificate_verified = $::exim::log_tls_certificate_verified }
   if is_bool($::exim::log_tls_cipher) { $log_tls_cipher = bool2str($::exim::log_tls_cipher) } else { $log_tls_cipher = $::exim::log_tls_cipher }
   if is_bool($::exim::log_tls_sni) { $log_tls_sni = bool2str($::exim::log_tls_sni) } else { $log_tls_sni = $::exim::log_tls_sni }

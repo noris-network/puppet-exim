@@ -126,7 +126,9 @@ log_selector               = <% if defined?(@log_lost_incoming_connection) && ! 
 <% end -%>
 <% unless @smtp_banner.nil?                -%>smtp_banner                = <%= @smtp_banner %>
 <% end -%>
-
+<% if @log_timezone                        -%>log_timezone               = true
+<% end -%>
+                                                                                
 received_header_text       = Received: \
   ${if def:sender_rcvhost {from $sender_rcvhost\n\t}\
   {${if def:sender_ident \
