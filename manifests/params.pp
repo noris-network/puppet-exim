@@ -41,6 +41,7 @@ class exim::params {
   $extract_addresses_remove_arguments = undef
   $freeze_tell                        = undef
   $gnutls_compat_mode                 = undef
+  $openssl_options                    = undef
   $heavy                              = false
   $helo_allow_chars                   = undef
   $host_lookup                        = '*'
