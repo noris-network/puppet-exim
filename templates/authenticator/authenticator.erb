@@ -4,6 +4,9 @@
 <% unless @client_send.nil? -%>
   client_send      = <%= @client_send %>
 <% end -%>
+<% unless @server_secret.nil? -%>
+  server_secret    = <%= @server_secret %>
+<% end -%>
 <% unless @server_condition.nil? -%>
   server_condition = <%= @server_condition %>
 <% end -%>
