@@ -137,6 +137,7 @@
 
 define exim::transport (
   $driver,
+  $protocol                = undef,
   $allow_localhost         = false,
   $batch_max               = undef,
   $command                 = undef,
