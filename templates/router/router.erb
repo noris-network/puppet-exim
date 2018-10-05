@@ -101,6 +101,9 @@
 <% if @cannot_route_message -%>
   cannot_route_message = <%= @cannot_route_message %>
 <% end -%>
+<% if @require_files -%>
+  require_files = <%= @require_files %> 
+<% end -%>
 <% unless @transport.nil? -%>
   transport    = <%= @transport %>
 <% end -%>

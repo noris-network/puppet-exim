@@ -14,6 +14,9 @@
 # [*driver*]
 #   Type of transport.
 #
+# [*protocol*]
+#   Protocol of transport.
+#
 # [*connect_timeout*]
 #   Timeout when connecting to remote Servers.
 #

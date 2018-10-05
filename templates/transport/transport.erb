@@ -13,6 +13,9 @@ end
 <% end -%>
 <%= @title %>:
   driver          = <%= @driver %>
+<% unless @protocol.nil? -%>
+  protocol        = <%= @protocol %>
+<% end -%>
 <% if @delivery_date_add -%>
   delivery_date_add
 <% end -%>
