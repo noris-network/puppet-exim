@@ -421,6 +421,7 @@ class exim (
   $defaults                           =$::exim::params::defaults,
   $delay_warning                      =$::exim::params::delay_warning,
   $deliver_queue_load_max             =$::exim::params::deliver_queue_load_max,
+  $disable_ipv6                       =$::exim::params::disable_ipv6,
   $errors_reply_to                    =$::exim::params::errors_reply_to,
   $extract_addresses_remove_arguments =$::exim::params::extract_addresses_remove_arguments,
   $freeze_tell                        =$::exim::params::freeze_tell,
