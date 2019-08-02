@@ -14,6 +14,9 @@
 # [*driver*]
 #   Type of transport.
 #
+# [*protocol*]
+#   Protocol of transport.
+#
 # [*connect_timeout*]
 #   Timeout when connecting to remote Servers.
 #
@@ -134,6 +137,7 @@
 
 define exim::transport (
   $driver,
+  $protocol                = undef,
   $allow_localhost         = false,
   $batch_max               = undef,
   $command                 = undef,

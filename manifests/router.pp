@@ -124,6 +124,9 @@
 # specify a text message which is used when an address can not be routed because of no more routers to try. Default 
 # message is "Unroutable address"
 #
+# [*require_files*]
+# dont run this router if specified files does not exist
+#
 define exim::router (
   $driver,
   $order,
@@ -164,6 +167,7 @@ define exim::router (
   $user                       = undef,
   $errors_to                  = undef,
   $cannot_route_message       = undef,
+  $require_files              = undef,
   ){
   unless $disable {
     validate_bool($local_part_prefix_optional, $local_part_suffix_optional)
