@@ -4,7 +4,6 @@ notifications:
 rvm:
 - 2.1.5
 - 2.3.3
-- 2.5.3
 env:
   matrix:
   - PUPPET_VERSION=3.6.2
