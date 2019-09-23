@@ -16,6 +16,10 @@
 # [*public_name*]
 #  How to anounce the authenticator to the outside (PLAIN/LOGIN)
 #
+# [*server_secret*]
+#  For use with cram_md5, server_secret is expanded
+#  to obtain the password for that user.
+#
 # [*server_condition*]
 #  The authentication check
 #
@@ -30,6 +34,7 @@ define exim::authenticator (
   $client_send      = undef,
   $driver,
   $public_name,
+  $server_secret    = undef,
   $server_condition = undef,
   $server_set_id    = undef,
   $server_prompts   = undef,
