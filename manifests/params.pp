@@ -37,6 +37,7 @@ class exim::params {
   $defaults                           = true
   $delay_warning                      = undef
   $deliver_queue_load_max             = undef
+  $disable_ipv6                       = undef
   $errors_reply_to                    = undef
   $extract_addresses_remove_arguments = undef
   $freeze_tell                        = undef

@@ -22,6 +22,7 @@ class exim::config {
   $defaults                           =$::exim::defaults
   $delay_warning                      =$::exim::delay_warning
   $deliver_queue_load_max             =$::exim::deliver_queue_load_max
+  $disable_ipv6                       =$::exim::disable_ipv6
   $errors_reply_to                    =$::exim::errors_reply_to
   $extract_addresses_remove_arguments =$::exim::extract_addresses_remove_arguments
   $freeze_tell                        =$::exim::freeze_tell
@@ -42,7 +43,7 @@ class exim::config {
   $message_logs                       =$::exim::message_logs
   $message_size_limit                 =$::exim::message_size_limit
   $never_users                        =$::exim::never_users
-  $untrusted_set_sender               =$::exim::untrusted_set_sender 
+  $untrusted_set_sender               =$::exim::untrusted_set_sender
   $print_topbitchars                  =$::exim::print_topbitchars
   $tls_require_ciphers                =$::exim::tls_require_ciphers
   $qualify_domain                     =$::exim::qualify_domain
