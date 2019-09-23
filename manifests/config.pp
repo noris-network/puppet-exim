@@ -26,6 +26,7 @@ class exim::config {
   $extract_addresses_remove_arguments =$::exim::extract_addresses_remove_arguments
   $freeze_tell                        =$::exim::freeze_tell
   $gnutls_compat_mode                 =$::exim::gnutls_compat_mode
+  $openssl_options                    =$::exim::openssl_options
   $heavy                              =$::exim::heavy
   $helo_allow_chars                   =$::exim::helo_allow_chars
   $host_lookup                        =$::exim::host_lookup

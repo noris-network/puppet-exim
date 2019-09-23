@@ -107,6 +107,10 @@
 #   TLS implementations.
 #   Type: bool
 #
+# [*openssl_options*]
+#   Adjust OpenSSL compatibility options.
+#   Type: String
+#
 # [*heavy*]
 #   Install the debian heavy variant, default is false
 #   does nothing for redhat
@@ -425,6 +429,7 @@ class exim (
   $extract_addresses_remove_arguments =$::exim::params::extract_addresses_remove_arguments,
   $freeze_tell                        =$::exim::params::freeze_tell,
   $gnutls_compat_mode                 =$::exim::params::gnutls_compat_mode,
+  $openssl_options                    =$::exim::params::openssl_options,
   $heavy                              =$::exim::params::heavy,
   $helo_allow_chars                   =$::exim::params::helo_allow_chars,
   $host_lookup                        =$::exim::params::host_lookup,

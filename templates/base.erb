@@ -156,6 +156,8 @@ tls_privatekey             = <%= @tls_privatekey %>
 
 <% unless @gnutls_compat_mode.nil?               -%>gnutls_compat_mode         = <%= @gnutls_compat_mode %>
 <% end -%>
+<% unless @openssl_options.nil?                  -%>openssl_options            = <%= @openssl_options %>
+<% end -%>
 <% unless @delay_warning.nil?                    -%>delay_warning              = <%= @delay_warning %>
 <% end -%>
 <% unless @smtp_accept_max_nonmail.nil?          -%>smtp_accept_max_nonmail    = <%= @smtp_accept_max_nonmail %>
