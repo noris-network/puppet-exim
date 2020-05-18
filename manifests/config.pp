@@ -152,6 +152,11 @@ class exim::config {
     content => template("${module_name}/authenticator/authenticator-header.erb"),
     order   => '5000',
   }
+  concat::fragment { 'rewrite-header':
+    target  => $::exim::config_path,
+    content => template("${module_name}/rewrite/rewrite-header.erb"),
+    order   => '6000',
+  }
 
   if $::exim::defaults {
     exim::acl {'acl_check_rcpt':
