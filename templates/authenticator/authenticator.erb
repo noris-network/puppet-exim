@@ -1,6 +1,12 @@
 <%= @title %>:
   driver           = <%= @driver %>
   public_name      = <%= @public_name %>
+<% unless @client_name.nil? -%>
+  client_name      = <%= @client_name %>
+<% end -%>
+<% unless @client_secret.nil? -%>
+  client_secret    = <%= @client_secret %>
+<% end -%>
 <% unless @client_send.nil? -%>
   client_send      = <%= @client_send %>
 <% end -%>

@@ -4,6 +4,14 @@
 #
 # === Parameters
 #
+# [*client_name*]
+#   This string is expanded, and the result used as the user name data 
+#   when computing the response to the server’s challenge. 
+# [*client_secret*]
+#   This option must be set for the authenticator to work as a client.
+#   Its value is expanded and the result used as the secret string when
+#   computing the response.
+#
 # [*client_send*]
 #  Array of authentication data strings. The first string is send with
 #  the AUTH command. The remaining ones are send in response to prompts
@@ -31,6 +39,8 @@
 #
 
 define exim::authenticator (
+  $client_name      = undef,
+  $client_secret    = undef,
   $client_send      = undef,
   $driver,
   $public_name,
