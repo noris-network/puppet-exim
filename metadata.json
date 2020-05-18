@@ -1,12 +1,12 @@
 {
   "name": "norisnetwork-exim",
-  "version": "0.2.9",
-  "author": "Pat",
+  "version": "0.3.0",
+  "author": "norisnetwork",
   "summary": "A module for configuring exim",
   "license": "LGPL-3.0",
   "source": "https://github.com/noris-network/puppet-exim",
   "project_page": "https://github.com/noris-network/puppet-exim",
-  "issues_url": "https://github.com/noris-network/noris-network-mymodule/issues",
+  "issues_url": "https://github.com/noris-network/puppet-exim/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 3.0.0 < 6.0.0"},
     {"name":"puppetlabs/concat","version_requirement":">= 3.0.0 < 7.0.0"}
@@ -21,6 +21,12 @@
       "operatingsystemrelease": [
         "7.0",
         "8.0"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+	"18.04"
       ]
     }
   ],
