@@ -63,9 +63,9 @@ class exim::params {
   $log_smtp_syntax_error              = true
   $log_tls_peerdn                     = true
   $log_mail_subject                   = undef
-  $log_8bitmime                       = undef 
-  $log_acl_warn_skipped               = undef 
-  $log_address_rewrite                = undef 
+  $log_8bitmime                       = undef
+  $log_acl_warn_skipped               = undef
+  $log_address_rewrite                = undef
   $log_all_parents                    = undef
   $log_arguments                      = undef
   $log_connection_reject              = undef

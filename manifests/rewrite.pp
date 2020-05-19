@@ -18,10 +18,10 @@
 # to which the rule applies and how the rewriting takes place
 #
 define exim::rewrite (
-  Integer $order=1,
   String $pattern,
   String $replacement,
   Array[Enum['E','F','T','b','c','f','h','r','s','t','Q','q','R','w','S']] $flags,
+  Integer $order=1,
   ){
   concat::fragment { "rewrite-${title}":
     target  => $::exim::config_path,

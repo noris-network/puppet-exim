@@ -39,11 +39,11 @@
 #
 
 define exim::authenticator (
+  $driver,
+  $public_name,
   $client_name      = undef,
   $client_secret    = undef,
   $client_send      = undef,
-  $driver,
-  $public_name,
   $server_secret    = undef,
   $server_condition = undef,
   $server_set_id    = undef,

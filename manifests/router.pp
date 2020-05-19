@@ -115,7 +115,8 @@
 #  When this option is set true, routing does not cease if the router accepts the address.
 #
 # [*user*]
-#  When a router queues an address for a transport, and the transport does not specify a user, the user given here is used when running the delivery process.
+#  When a router queues an address for a transport, and the transport does not specify a user, 
+#  the user given here is used when running the delivery process.
 #
 # [*errors_to*]
 # override the destination of a generated bounce message

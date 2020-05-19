@@ -71,54 +71,246 @@ class exim::config {
   $tls_privatekey                     =$::exim::tls_privatekey
   $trusted_users                      =$::exim::trusted_users
 
-  if is_bool($::exim::log_lost_incoming_connection) { $log_lost_incoming_connection = bool2str($::exim::log_lost_incoming_connection) } else { $log_lost_incoming_connection = $::exim::log_lost_incoming_connection }
-  if is_bool($::exim::log_retry_defer) { $log_retry_defer = bool2str($::exim::log_retry_defer) } else { $log_retry_defer = $::exim::log_retry_defer }
-  if is_bool($::exim::log_sender_on_delivery) { $log_sender_on_delivery = bool2str($::exim::log_sender_on_delivery) } else { $log_sender_on_delivery = $::exim::log_sender_on_delivery }
-  if is_bool($::exim::log_skip_delivery) { $log_skip_delivery = bool2str($::exim::log_skip_delivery) } else { $log_skip_delivery = $::exim::log_skip_delivery }
-  if is_bool($::exim::log_smtp_confirmation) { $log_smtp_confirmation = bool2str($::exim::log_smtp_confirmation) } else { $log_smtp_confirmation = $::exim::log_smtp_confirmation }
-  if is_bool($::exim::log_smtp_connection) { $log_smtp_connection = bool2str($::exim::log_smtp_connection) } else { $log_smtp_connection = $::exim::log_smtp_connection }
-  if is_bool($::exim::log_smtp_protocol_error) { $log_smtp_protocol_error = bool2str($::exim::log_smtp_protocol_error) } else { $log_smtp_protocol_error = $::exim::log_smtp_protocol_error }
-  if is_bool($::exim::log_smtp_syntax_error) { $log_smtp_syntax_error = bool2str($::exim::log_smtp_syntax_error) } else { $log_smtp_syntax_error = $::exim::log_smtp_syntax_error }
-  if is_bool($::exim::log_tls_peerdn) { $log_tls_peerdn = bool2str($::exim::log_tls_peerdn) } else { $log_tls_peerdn = $::exim::log_tls_peerdn }
-  if is_bool($::exim::log_mail_subject) { $log_mail_subject = bool2str($::exim::log_mail_subject) } else { $log_mail_subject = $::exim::log_mail_subject }
-  if is_bool($::exim::log_8bitmime) { $log_8bitmime = bool2str($::exim::log_8bitmime) } else { $log_8bitmime = $::exim::log_8bitmime }
-  if is_bool($::exim::log_acl_warn_skipped) { $log_acl_warn_skipped = bool2str($::exim::log_acl_warn_skipped) } else { $log_acl_warn_skipped = $::exim::log_acl_warn_skipped }
-  if is_bool($::exim::log_address_rewrite) { $log_address_rewrite = bool2str($::exim::log_address_rewrite) } else { $log_address_rewrite = $::exim::log_address_rewrite }
-  if is_bool($::exim::log_all_parents) { $log_all_parents = bool2str($::exim::log_all_parents) } else { $log_all_parents = $::exim::log_all_parents }
-  if is_bool($::exim::log_arguments) { $log_arguments = bool2str($::exim::log_arguments) } else { $log_arguments = $::exim::log_arguments }
-  if is_bool($::exim::log_connection_reject) { $log_connection_reject = bool2str($::exim::log_connection_reject) } else { $log_connection_reject = $::exim::log_connection_reject }
-  if is_bool($::exim::log_delay_delivery) { $log_delay_delivery = bool2str($::exim::log_delay_delivery) } else { $log_delay_delivery = $::exim::log_delay_delivery }
-  if is_bool($::exim::log_deliver_time) { $log_deliver_time = bool2str($::exim::log_deliver_time) } else { $log_deliver_time = $::exim::log_deliver_time }
-  if is_bool($::exim::log_delivery_size) { $log_delivery_size = bool2str($::exim::log_delivery_size) } else { $log_delivery_size = $::exim::log_delivery_size }
-  if is_bool($::exim::log_dnslist_defer) { $log_dnslist_defer = bool2str($::exim::log_dnslist_defer) } else { $log_dnslist_defer = $::exim::log_dnslist_defer }
-  if is_bool($::exim::log_dnssec) { $log_dnssec = bool2str($::exim::log_dnssec) } else { $log_dnssec = $::exim::log_dnssec }
-  if is_bool($::exim::log_etrn) { $log_etrn = bool2str($::exim::log_etrn) } else { $log_etrn = $::exim::log_etrn }
-  if is_bool($::exim::log_host_lookup_failed) { $log_host_lookup_failed = bool2str($::exim::log_host_lookup_failed) } else { $log_host_lookup_failed = $::exim::log_host_lookup_failed }
-  if is_bool($::exim::log_ident_timeout) { $log_ident_timeout = bool2str($::exim::log_ident_timeout) } else { $log_ident_timeout = $::exim::log_ident_timeout }
-  if is_bool($::exim::log_incoming_interface) { $log_incoming_interface = bool2str($::exim::log_incoming_interface) } else { $log_incoming_interface = $::exim::log_incoming_interface }
-  if is_bool($::exim::log_incoming_port) { $log_incoming_port = bool2str($::exim::log_incoming_port) } else { $log_incoming_port = $::exim::log_incoming_port }
-  if is_bool($::exim::log_millisec) { $log_millisec = bool2str($::exim::log_millisec) } else { $log_millisec = $::exim::log_millisec }
-  if is_bool($::exim::log_outgoing_interface) { $log_outgoing_interface = bool2str($::exim::log_outgoing_interface) } else { $log_outgoing_interface = $::exim::log_outgoing_interface }
-  if is_bool($::exim::log_outgoing_port) { $log_outgoing_port = bool2str($::exim::log_outgoing_port) } else { $log_outgoing_port = $::exim::log_outgoing_port }
-  if is_bool($::exim::log_queue_run) { $log_queue_run = bool2str($::exim::log_queue_run) } else { $log_queue_run = $::exim::log_queue_run }
-  if is_bool($::exim::log_queue_time) { $log_queue_time = bool2str($::exim::log_queue_time) } else { $log_queue_time = $::exim::log_queue_time }
-  if is_bool($::exim::log_queue_time_overall) { $log_queue_time_overall = bool2str($::exim::log_queue_time_overall) } else { $log_queue_time_overall = $::exim::log_queue_time_overall }
-  if is_bool($::exim::log_pid) { $log_pid = bool2str($::exim::log_pid) } else { $log_pid = $::exim::log_pid }
-  if is_bool($::exim::log_proxy) { $log_proxy = bool2str($::exim::log_proxy) } else { $log_proxy = $::exim::log_proxy }
-  if is_bool($::exim::log_received_recipients) { $log_received_recipients = bool2str($::exim::log_received_recipients) } else { $log_received_recipients = $::exim::log_received_recipients }
-  if is_bool($::exim::log_received_sender) { $log_received_sender = bool2str($::exim::log_received_sender) } else { $log_received_sender = $::exim::log_received_sender }
-  if is_bool($::exim::log_rejected_header) { $log_rejected_header = bool2str($::exim::log_rejected_header) } else { $log_rejected_header = $::exim::log_rejected_header }
-  if is_bool($::exim::log_return_path_on_delivery) { $log_return_path_on_delivery = bool2str($::exim::log_return_path_on_delivery) } else { $log_return_path_on_delivery = $::exim::log_return_path_on_delivery }
-  if is_bool($::exim::log_sender_verify_fail) { $log_sender_verify_fail = bool2str($::exim::log_sender_verify_fail) } else { $log_sender_verify_fail = $::exim::log_sender_verify_fail }
-  if is_bool($::exim::log_size_reject) { $log_size_reject = bool2str($::exim::log_size_reject) } else { $log_size_reject = $::exim::log_size_reject }
-  if is_bool($::exim::log_smtp_incomplete_transaction) { $log_smtp_incomplete_transaction = bool2str($::exim::log_smtp_incomplete_transaction) } else { $log_smtp_incomplete_transaction = $::exim::log_smtp_incomplete_transaction }
-  if is_bool($::exim::log_smtp_mailauth) { $log_smtp_mailauth = bool2str($::exim::log_smtp_mailauth) } else { $log_smtp_mailauth = $::exim::log_smtp_mailauth }
-  if is_bool($::exim::log_smtp_no_mail) { $log_smtp_no_mail = bool2str($::exim::log_smtp_no_mail) } else { $log_smtp_no_mail = $::exim::log_smtp_no_mail }
-  if is_bool($::exim::log_timezone) { $log_timezone = bool2str($::exim::log_timezone) } else { $log_timezone = $::exim::log_timezone }
-  if is_bool($::exim::log_tls_certificate_verified) { $log_tls_certificate_verified = bool2str($::exim::log_tls_certificate_verified) } else { $log_tls_certificate_verified = $::exim::log_tls_certificate_verified }
-  if is_bool($::exim::log_tls_cipher) { $log_tls_cipher = bool2str($::exim::log_tls_cipher) } else { $log_tls_cipher = $::exim::log_tls_cipher }
-  if is_bool($::exim::log_tls_sni) { $log_tls_sni = bool2str($::exim::log_tls_sni) } else { $log_tls_sni = $::exim::log_tls_sni }
-  if is_bool($::exim::log_unknown_in_list) { $log_unknown_in_list = bool2str($::exim::log_unknown_in_list) } else { $log_unknown_in_list = $::exim::log_unknown_in_list }
+  if is_bool($::exim::log_lost_incoming_connection) {
+    $log_lost_incoming_connection = bool2str($::exim::log_lost_incoming_connection)
+  } else {
+    $log_lost_incoming_connection = $::exim::log_lost_incoming_connection
+  }
+  if is_bool($::exim::log_retry_defer) {
+    $log_retry_defer = bool2str($::exim::log_retry_defer)
+  } else {
+    $log_retry_defer = $::exim::log_retry_defer
+  }
+  if is_bool($::exim::log_sender_on_delivery) {
+    $log_sender_on_delivery = bool2str($::exim::log_sender_on_delivery)
+  } else {
+    $log_sender_on_delivery = $::exim::log_sender_on_delivery
+  }
+  if is_bool($::exim::log_skip_delivery) {
+    $log_skip_delivery = bool2str($::exim::log_skip_delivery)
+  } else {
+    $log_skip_delivery = $::exim::log_skip_delivery
+  }
+  if is_bool($::exim::log_smtp_confirmation) {
+    $log_smtp_confirmation = bool2str($::exim::log_smtp_confirmation)
+  } else {
+    $log_smtp_confirmation = $::exim::log_smtp_confirmation
+  }
+  if is_bool($::exim::log_smtp_connection) {
+    $log_smtp_connection = bool2str($::exim::log_smtp_connection)
+  } else {
+    $log_smtp_connection = $::exim::log_smtp_connection
+  }
+  if is_bool($::exim::log_smtp_protocol_error) {
+    $log_smtp_protocol_error = bool2str($::exim::log_smtp_protocol_error)
+  } else {
+    $log_smtp_protocol_error = $::exim::log_smtp_protocol_error
+  }
+  if is_bool($::exim::log_smtp_syntax_error) {
+    $log_smtp_syntax_error = bool2str($::exim::log_smtp_syntax_error)
+  } else {
+    $log_smtp_syntax_error = $::exim::log_smtp_syntax_error
+  }
+  if is_bool($::exim::log_tls_peerdn) {
+    $log_tls_peerdn = bool2str($::exim::log_tls_peerdn)
+  } else {
+    $log_tls_peerdn = $::exim::log_tls_peerdn
+  }
+  if is_bool($::exim::log_mail_subject) {
+    $log_mail_subject = bool2str($::exim::log_mail_subject)
+  } else {
+    $log_mail_subject = $::exim::log_mail_subject
+  }
+  if is_bool($::exim::log_8bitmime) {
+    $log_8bitmime = bool2str($::exim::log_8bitmime)
+  } else {
+    $log_8bitmime = $::exim::log_8bitmime
+  }
+  if is_bool($::exim::log_acl_warn_skipped) {
+    $log_acl_warn_skipped = bool2str($::exim::log_acl_warn_skipped)
+  } else {
+    $log_acl_warn_skipped = $::exim::log_acl_warn_skipped
+  }
+  if is_bool($::exim::log_address_rewrite) {
+    $log_address_rewrite = bool2str($::exim::log_address_rewrite)
+  } else {
+    $log_address_rewrite = $::exim::log_address_rewrite
+  }
+  if is_bool($::exim::log_all_parents) {
+    $log_all_parents = bool2str($::exim::log_all_parents)
+  } else {
+    $log_all_parents = $::exim::log_all_parents
+  }
+  if is_bool($::exim::log_arguments) {
+    $log_arguments = bool2str($::exim::log_arguments)
+  } else {
+    $log_arguments = $::exim::log_arguments
+  }
+  if is_bool($::exim::log_connection_reject) {
+    $log_connection_reject = bool2str($::exim::log_connection_reject)
+  } else {
+    $log_connection_reject = $::exim::log_connection_reject
+  }
+  if is_bool($::exim::log_delay_delivery) {
+    $log_delay_delivery = bool2str($::exim::log_delay_delivery)
+  } else {
+    $log_delay_delivery = $::exim::log_delay_delivery
+  }
+  if is_bool($::exim::log_deliver_time) {
+    $log_deliver_time = bool2str($::exim::log_deliver_time)
+  } else {
+    $log_deliver_time = $::exim::log_deliver_time
+  }
+  if is_bool($::exim::log_delivery_size) {
+    $log_delivery_size = bool2str($::exim::log_delivery_size)
+  } else {
+    $log_delivery_size = $::exim::log_delivery_size
+  }
+  if is_bool($::exim::log_dnslist_defer) {
+    $log_dnslist_defer = bool2str($::exim::log_dnslist_defer)
+  } else {
+    $log_dnslist_defer = $::exim::log_dnslist_defer
+  }
+  if is_bool($::exim::log_dnssec) {
+    $log_dnssec = bool2str($::exim::log_dnssec)
+  } else {
+    $log_dnssec = $::exim::log_dnssec
+  }
+  if is_bool($::exim::log_etrn) {
+    $log_etrn = bool2str($::exim::log_etrn)
+  } else {
+    $log_etrn = $::exim::log_etrn
+  }
+  if is_bool($::exim::log_host_lookup_failed) {
+    $log_host_lookup_failed = bool2str($::exim::log_host_lookup_failed)
+  } else {
+    $log_host_lookup_failed = $::exim::log_host_lookup_failed
+  }
+  if is_bool($::exim::log_ident_timeout) {
+    $log_ident_timeout = bool2str($::exim::log_ident_timeout)
+  } else {
+    $log_ident_timeout = $::exim::log_ident_timeout
+  }
+  if is_bool($::exim::log_incoming_interface) {
+    $log_incoming_interface = bool2str($::exim::log_incoming_interface)
+  } else {
+    $log_incoming_interface = $::exim::log_incoming_interface
+  }
+  if is_bool($::exim::log_incoming_port) {
+    $log_incoming_port = bool2str($::exim::log_incoming_port)
+  } else {
+    $log_incoming_port = $::exim::log_incoming_port
+  }
+  if is_bool($::exim::log_millisec) {
+    $log_millisec = bool2str($::exim::log_millisec)
+  } else {
+    $log_millisec = $::exim::log_millisec
+  }
+  if is_bool($::exim::log_outgoing_interface) {
+    $log_outgoing_interface = bool2str($::exim::log_outgoing_interface)
+  } else {
+    $log_outgoing_interface = $::exim::log_outgoing_interface
+  }
+  if is_bool($::exim::log_outgoing_port) {
+    $log_outgoing_port = bool2str($::exim::log_outgoing_port)
+  } else {
+    $log_outgoing_port = $::exim::log_outgoing_port
+  }
+  if is_bool($::exim::log_queue_run) {
+    $log_queue_run = bool2str($::exim::log_queue_run)
+  } else {
+    $log_queue_run = $::exim::log_queue_run
+  }
+  if is_bool($::exim::log_queue_time) {
+    $log_queue_time = bool2str($::exim::log_queue_time)
+  } else {
+    $log_queue_time = $::exim::log_queue_time
+  }
+  if is_bool($::exim::log_queue_time_overall) {
+    $log_queue_time_overall = bool2str($::exim::log_queue_time_overall)
+  } else {
+    $log_queue_time_overall = $::exim::log_queue_time_overall
+  }
+  if is_bool($::exim::log_pid) {
+    $log_pid = bool2str($::exim::log_pid)
+  } else {
+    $log_pid = $::exim::log_pid
+  }
+  if is_bool($::exim::log_proxy) {
+    $log_proxy = bool2str($::exim::log_proxy)
+  } else {
+    $log_proxy = $::exim::log_proxy
+  }
+  if is_bool($::exim::log_received_recipients) {
+    $log_received_recipients = bool2str($::exim::log_received_recipients)
+  } else {
+    $log_received_recipients = $::exim::log_received_recipients
+  }
+  if is_bool($::exim::log_received_sender) {
+    $log_received_sender = bool2str($::exim::log_received_sender)
+  } else {
+    $log_received_sender = $::exim::log_received_sender
+  }
+  if is_bool($::exim::log_rejected_header) {
+    $log_rejected_header = bool2str($::exim::log_rejected_header)
+  } else {
+    $log_rejected_header = $::exim::log_rejected_header
+  }
+  if is_bool($::exim::log_return_path_on_delivery) {
+    $log_return_path_on_delivery = bool2str($::exim::log_return_path_on_delivery)
+  } else {
+    $log_return_path_on_delivery = $::exim::log_return_path_on_delivery
+  }
+  if is_bool($::exim::log_sender_verify_fail) {
+    $log_sender_verify_fail = bool2str($::exim::log_sender_verify_fail)
+  } else {
+    $log_sender_verify_fail = $::exim::log_sender_verify_fail
+  }
+  if is_bool($::exim::log_size_reject) {
+    $log_size_reject = bool2str($::exim::log_size_reject)
+  } else {
+    $log_size_reject = $::exim::log_size_reject
+  }
+  if is_bool($::exim::log_smtp_incomplete_transaction) {
+    $log_smtp_incomplete_transaction = bool2str($::exim::log_smtp_incomplete_transaction)
+  } else {
+    $log_smtp_incomplete_transaction = $::exim::log_smtp_incomplete_transaction
+  }
+  if is_bool($::exim::log_smtp_mailauth) {
+    $log_smtp_mailauth = bool2str($::exim::log_smtp_mailauth)
+  } else {
+    $log_smtp_mailauth = $::exim::log_smtp_mailauth
+  }
+  if is_bool($::exim::log_smtp_no_mail) {
+    $log_smtp_no_mail = bool2str($::exim::log_smtp_no_mail)
+  } else {
+    $log_smtp_no_mail = $::exim::log_smtp_no_mail
+  }
+  if is_bool($::exim::log_timezone) {
+    $log_timezone = bool2str($::exim::log_timezone)
+  } else {
+    $log_timezone = $::exim::log_timezone
+  }
+  if is_bool($::exim::log_tls_certificate_verified) {
+    $log_tls_certificate_verified = bool2str($::exim::log_tls_certificate_verified)
+  } else {
+    $log_tls_certificate_verified = $::exim::log_tls_certificate_verified
+  }
+  if is_bool($::exim::log_tls_cipher) {
+    $log_tls_cipher = bool2str($::exim::log_tls_cipher)
+  } else {
+    $log_tls_cipher = $::exim::log_tls_cipher
+  }
+  if is_bool($::exim::log_tls_sni) {
+    $log_tls_sni = bool2str($::exim::log_tls_sni)
+  } else {
+    $log_tls_sni = $::exim::log_tls_sni
+  }
+  if is_bool($::exim::log_unknown_in_list) {
+    $log_unknown_in_list = bool2str($::exim::log_unknown_in_list)
+  } else {
+    $log_unknown_in_list = $::exim::log_unknown_in_list
+  }
 
   concat { $::exim::config_path:
   }
@@ -188,7 +380,7 @@ class exim::config {
       domains     => ['@'],
       allow_fail  => true,
       allow_defer => true,
-      data        => '${lookup{$local_part}lsearch{/etc/aliases}}',
+      data        => "\${lookup{\$local_part}lsearch{/etc/aliases}}",
     }
     exim::router {'smarthost':
       order                    => 2,

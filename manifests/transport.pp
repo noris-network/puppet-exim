@@ -79,10 +79,12 @@
 #   If the command fails to complete within this time, it is killed.
 #
 # [*timeout_defer*]
-#   Set this to true for timeouts to become temporary errors, causing the delivery to be deferred.
+#   Set this to true for timeouts to become temporary errors, causing the 
+#   delivery to be deferred.
 #
 # [*tls_dh_min_bits*]
-#   set the minimum acceptable number of bits in the Diffie-Hellman prime offered by a server,
+#   set the minimum acceptable number of bits in the Diffie-Hellman prime 
+#   offered by a server,
 #   default is 1024
 #
 # [*tls_verify_certificates*]
@@ -98,42 +100,57 @@
 #   This sets the key selector string.
 #
 # [*dkim_private_key*]
-#    This sets the private key to use. You can use the $dkim_domain and $dkim_selector expansion
-#    variables to determine the private key to use. The result can either
+#    This sets the private key to use. You can use the $dkim_domain and
+#    $dkim_selector expansion variables to determine the private key to use.
+#    The result can either
 #     - be a valid RSA private key in ASCII armor, including line breaks.
-#     - start with a slash, in which case it is treated as a file that contains the private key.
-#     - be "0", "false" or the empty string, in which case the message will not be signed. This case will not result in an error, even if dkim_strict is set.
+#     - start with a slash, in which case it is treated as a file that contains
+#       the private key.
+#     - be "0", "false" or the empty string, in which case the message will not
+#       be signed. This case will not result in an error, even if dkim_strict
+#       is set.
 #
 # [*dkim_canon*]
 #   This option sets the canonicalization method used when signing a message.
 #   The DKIM RFC currently supports two methods: "simple" and "relaxed".
-#   Note: the current implementation only supports using the same canonicalization method for both headers and body.
+#   Note: the current implementation only supports using the same
+#   canonicalization method for both headers and body.
 #
 # [*dkim_strict*]
-#   This option defines how Exim behaves when signing a message that should be signed fails for some reason.
+#   This option defines how Exim behaves when signing a message that should be
+#   signed fails for some reason.
 #   When the expansion evaluates to either "1" or "true", Exim will defer.
 #   Otherwise Exim will send the message unsigned.
 #   You can use the $dkim_domain and $dkim_selector expansion variables here.
 #
 # [*once*]
-#   Use:autoreply;Type:string;Default:unset; This option names a file or DBM database in which a record of each To: recipient is kept when the message is 
-#   specified by the transport. 
+#   Use:autoreply;Type:string;Default:unset; This option names a file or DBM
+#   database in which a record of each To: recipient is kept when the message
+#   is specified by the transport. 
 #
 # [*once_repeat*]
-#   Use:autoreply;Type:time;Default:0s; specifies a maximum time between repeats
+#   Use:autoreply;Type:time;Default:0s; specifies a maximum time between
+#   repeats
 #
 # [*once_file_size*]
-#   Use:autoreply;Type:integer;Default:0; If once_file_size is zero, a DBM database is used to remember recipients, and it is allowed to grow as large as necessary. 
-#   If once_file_size is set greater than zero, it changes the way Exim implements the once option. Instead of using a DBM file to record every recipient it sends 
-#   to, it uses a regular file, whose size will never get larger than the given value. 
+#   Use:autoreply;Type:integer;Default:0; If once_file_size is zero, a DBM
+#   database is used to remember recipients, and it is allowed to grow as large
+#   as necessary. If once_file_size is set greater than zero, it changes the
+#   way Exim implements the once option. Instead of using a DBM file to record
+#   every recipient it sends to, it uses a regular file, whose size will never
+#   get larger than the given value. 
 #
 # [*headers*]
-#   Use:autoreply;Type:string;Default:unset; This specifies additional RFC 2822 headers that are to be added to the message when the message is specified by the 
-#   transport. Several can be given by using “\n” to separate them. There is no check on the format.
+#   Use:autoreply;Type:string;Default:unset; This specifies additional RFC 2822
+#   headers that are to be added to the message when the message is specified
+#   by the transport. Several can be given by using “\n” to separate them.
+#   There is no check on the format.
 #
 # [*return_message*]
-#   Use:autoreply;Type:boolean;Default:false; If this is set, a copy of the original message is returned with the new message, subject to the maximum size set in 
-#   the return_size_limit global configuration option.
+#   Use:autoreply;Type:boolean;Default:false; If this is set, a copy of the
+#   original message is returned with the new message, subject to the maximum
+#   size set in the return_size_limit global configuration option.
+#
 
 define exim::transport (
   $driver,
