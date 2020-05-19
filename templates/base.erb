@@ -10,9 +10,9 @@
 
 keep_environment =
 
-<% @macros.each do |k,v| -%>
+<% if @macros -%> <% @macros.each do |k,v| -%>
 <%= k %>=<%= v %>
-<% end -%>
+<% end -%><% end -%>
 <% @includes.each do |i| -%>
 .include <%= i %>
 <% end -%>
