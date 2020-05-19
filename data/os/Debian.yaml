@@ -1,0 +1,6 @@
+---
+exim::exim_light_package: 'exim4'
+exim::exim_heavy_package: 'exim4-daemon-heavy'
+exim::exim_service: 'exim4'
+exim::config_path: '/etc/exim4/exim4.conf'
+...

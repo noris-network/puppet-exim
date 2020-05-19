@@ -9,7 +9,7 @@ describe 'exim::router', type: 'define' do
 
   ['local_part_prefix', 'self', 'file', 'caseful_local_part'].each do |parameter|
     describe parameter do
-      let(:params) { { "#{parameter}": 'foo', order: '1', driver: 'redirect' } }
+      let(:params) { { parameter => 'foo', order: '1', driver: 'redirect' } }
 
       it { is_expected.to contain_concat__fragment('router-testrouter').with_content(%r{^\s+#{parameter}\s+=\s+foo$}) }
     end
@@ -17,7 +17,7 @@ describe 'exim::router', type: 'define' do
 
   ['ignore_target_hosts'].each do |parameter|
     describe parameter do
-      let(:params) { { "#{parameter}": ['foo', 'bar'], order: '1', driver: 'redirect' } }
+      let(:params) { { parameter => ['foo', 'bar'], order: '1', driver: 'redirect' } }
 
       it { is_expected.to contain_concat__fragment('router-testrouter').with_content(%r{^\s+#{parameter}\s+=\s+foo : bar$}) }
     end
@@ -37,17 +37,17 @@ describe 'exim::router', type: 'define' do
 
   ['local_part_prefix_optional', 'local_part_suffix_optional'].each do |parameter|
     describe parameter do
-      context ' is true' do
-        let(:params) { { "#{parameter}": true, order: '1', driver: 'redirect' } }
+      context 'is true' do
+        let(:params) { { parameter => true, order: '1', driver: 'redirect' } }
 
         it { is_expected.to contain_concat__fragment('router-testrouter').with_content(%r{^\s+#{parameter}$}) }
       end
-      context ' is false' do
-        let(:params) { { "#{parameter}": false, order: '1', driver: 'redirect' } }
+      context 'is false' do
+        let(:params) { { parameter => false, order: '1', driver: 'redirect' } }
 
         it { is_expected.to contain_concat__fragment('router-testrouter').without_content(%r{^\s+#{parameter}}) }
       end
-      context ' is unset' do
+      context 'is unset' do
         let(:params) { { order: '1', driver: 'redirect' } }
 
         it { is_expected.to contain_concat__fragment('router-testrouter').without_content(%r{^\s+#{parameter}}) }

@@ -27,4 +27,7 @@ exim::split_spool_directory: false
 exim::syslog_timestamp: true
 exim::timeout_frozen_after: '7d'
 exim::tls_advertise_hosts: '*'
-...
+exim::exim_light_package: 'exim4'
+exim::exim_heavy_package: 'exim4-daemon-heavy'
+exim::exim_service: 'exim4'
+exim::config_path: '/etc/exim4/exim4.conf'

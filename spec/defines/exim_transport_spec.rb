@@ -9,12 +9,12 @@ describe 'exim::transport', type: 'define' do
 
   integer_parameter.each do |parameter|
     describe parameter do
-      context ' is set' do
-        let(:params) { { "#{parameter}": 42, driver: 'appendfile' } }
+      context 'is set' do
+        let(:params) { { parameter => 42, driver: 'appendfile' } }
 
         it { is_expected.to contain_concat__fragment('transport-testtransport').with_content(%r{^\s+#{parameter}\s+=\s42$}) }
       end
-      context ' is unset' do
+      context 'is unset' do
         let(:params) { { driver: 'appendfile' } }
 
         it { is_expected.to contain_concat__fragment('transport-testtransport').without_content(%r{^\s+#{parameter}}) }
@@ -29,12 +29,12 @@ describe 'exim::transport', type: 'define' do
 
   string_parameter.each do |parameter|
     describe parameter do
-      context ' is set' do
-        let(:params) { { "#{parameter}": 'foobar', driver: 'appendfile' } }
+      context 'is set' do
+        let(:params) { { parameter => 'foobar', driver: 'appendfile' } }
 
         it { is_expected.to contain_concat__fragment('transport-testtransport').with_content(%r{^\s+#{parameter}\s+=\sfoobar$}) }
       end
-      context ' is unset' do
+      context 'is unset' do
         let(:params) { { driver: 'appendfile' } }
 
         it { is_expected.to contain_concat__fragment('transport-testtransport').without_content(%r{^\s+#{parameter}}) }
@@ -46,12 +46,12 @@ describe 'exim::transport', type: 'define' do
 
   array_parameter.each do |parameter|
     describe parameter do
-      context ' is set' do
-        let(:params) { { "#{parameter}": ['foo', 'bar'], driver: 'appendfile' } }
+      context 'is set' do
+        let(:params) { { parameter => ['foo', 'bar'], driver: 'appendfile' } }
 
         it { is_expected.to contain_concat__fragment('transport-testtransport').with_content(%r{^\s+#{parameter}\s+=\sfoo\s*:\s*bar$}) }
       end
-      context ' is unset' do
+      context 'is unset' do
         let(:params) { { driver: 'appendfile' } }
 
         it { is_expected.to contain_concat__fragment('transport-testtransport').without_content(%r{^\s+#{parameter}}) }
@@ -65,17 +65,17 @@ describe 'exim::transport', type: 'define' do
 
   bool_parameter.each do |parameter|
     describe parameter do
-      context ' is true' do
-        let(:params) { { "#{parameter}": true, driver: 'appendfile' } }
+      context 'is true' do
+        let(:params) { { parameter => true, driver: 'appendfile' } }
 
         it { is_expected.to contain_concat__fragment('transport-testtransport').with_content(%r{^\s+#{parameter}$}) }
       end
-      context ' is false' do
-        let(:params) { { "#{parameter}": false, driver: 'appendfile' } }
+      context 'is false' do
+        let(:params) { { parameter => false, driver: 'appendfile' } }
 
         it { is_expected.to contain_concat__fragment('transport-testtransport').without_content(%r{^\s+#{parameter}}) }
       end
-      context ' is unset' do
+      context 'is unset' do
         let(:params) { { driver: 'appendfile' } }
 
         it { is_expected.to contain_concat__fragment('transport-testtransport').without_content(%r{^\s+#{parameter}}) }
@@ -84,12 +84,12 @@ describe 'exim::transport', type: 'define' do
   end
 
   describe 'headers_add' do
-    context ' is set' do
+    context 'is set' do
       let(:params) { { headers_add: ['foo', 'bar'], driver: 'appendfile' } }
 
       it { is_expected.to contain_concat__fragment('transport-testtransport').with_content(%r{^\s+headers_add\s+=\sfoo\\nbar$}) }
     end
-    context ' is unset' do
+    context 'is unset' do
       let(:params) { { driver: 'appendfile' } }
 
       it { is_expected.to contain_concat__fragment('transport-testtransport').without_content(%r{^\s+headers_add}) }
@@ -103,12 +103,12 @@ describe 'exim::transport', type: 'define' do
   end
 
   describe 'exim_environment' do
-    context ' is set' do
+    context 'is set' do
       let(:params) { { exim_environment: [{ a: 'b' }, { c: 'd' }, { e: 'f' }], driver: 'appendfile' } }
 
       it { is_expected.to contain_concat__fragment('transport-testtransport').with_content(%r{^\s+environment\s+=\sa=b\s*:\s*c=d\s*:\s*e=f$}) }
     end
-    context ' is unset' do
+    context 'is unset' do
       let(:params) { { driver: 'appendfile' } }
 
       it { is_expected.to contain_concat__fragment('transport-testtransport').without_content(%r{^\s+environment}) }

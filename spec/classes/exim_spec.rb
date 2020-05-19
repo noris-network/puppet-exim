@@ -39,7 +39,7 @@ describe 'exim', type: 'class' do
 
   ['acl_smtp_mail', 'acl_smtp_rcpt', 'acl_smtp_data', 'acl_smtp_mime'].each do |parameter|
     context parameter do
-      let(:params) { { "#{parameter}": 'acl_check' } }
+      let(:params) { { parameter => 'acl_check' } }
 
       it { is_expected.to contain_concat__fragment('acl-header').with_content(%r{^#{parameter}\s+= acl_check$}) }
     end
@@ -48,12 +48,12 @@ describe 'exim', type: 'class' do
   bool_parameter = ['message_logs', 'gnutls_compat_mode']
   bool_parameter.each do |parameter|
     context parameter + ' set to false' do
-      let(:params) { { "#{parameter}": false } }
+      let(:params) { { parameter => false } }
 
       it { is_expected.to contain_concat__fragment('main').with_content(%r{^#{parameter}\s+= false$}) }
     end
     context parameter + ' set to true' do
-      let(:params) { { "#{parameter}": true } }
+      let(:params) { { parameter => true } }
 
       it { is_expected.to contain_concat__fragment('main').with_content(%r{^#{parameter}\s+= true$}) }
     end
@@ -65,7 +65,7 @@ describe 'exim', type: 'class' do
   int_parameter = ['smtp_accept_max_nonmail', 'smtp_accept_max_per_connection']
   int_parameter.each do |parameter|
     context parameter + ' set to 47' do
-      let(:params) { { "#{parameter}": 47 } }
+      let(:params) { { parameter => 47 } }
 
       it { is_expected.to contain_concat__fragment('main').with_content(%r{^#{parameter}\s+= 47$}) }
     end
@@ -77,7 +77,7 @@ describe 'exim', type: 'class' do
   string_parameter = ['acl_not_smtp']
   string_parameter.each do |parameter|
     context parameter + ' set to foo' do
-      let(:params) { { "#{parameter}": 'foo' } }
+      let(:params) { { parameter => 'foo' } }
 
       it { is_expected.to contain_concat__fragment('acl-header').with_content(%r{^#{parameter}\s+= foo$}) }
     end
