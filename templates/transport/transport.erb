@@ -1,11 +1,3 @@
-<%
-def validate_string(string)
-  unless string.nil?
-    abort "String may not be empty" if string.empty?
-    return true
-  end
-end
--%>
 <% unless @comment.nil? -%>
 <% @comment.each do |com| -%>
 # <%= com %>
@@ -25,7 +17,7 @@ end
 <% if @return_path_add -%>
   return_path_add
 <% end -%>
-<% if validate_string(@command) -%>
+<% unless @command.nil? -%>
   command         = <%= @command %>
 <% end -%>
 <% unless @exim_environment.nil? -%>
@@ -40,47 +32,47 @@ end
 <% if @return_output -%>
   return_output
 <% end -%>
-<% if validate_string (@temp_errors) -%>
+<% unless @temp_errors.nil? -%>
   temp_errors     = <%= @temp_errors.join(' : ') %>
 <% end -%>
 <% if @freeze_exec_fail -%>
   freeze_exec_fail
 <% end -%>
-<% if validate_string(@connect_timeout) -%>
+<% unless @connect_timeout.nil? -%>
   connect_timeout = <%= @connect_timeout %>
 <% end -%>
 <% if @maildir_format -%>
   maildir_format
 <% end -%>
-<% if validate_string(@maildir_tag) -%>
+<% unless @maildir_tag.nil? -%>
   maildir_tag     = <%= @maildir_tag %>
 <% end -%>
-<% if validate_string(@directory) -%>
+<% unless @directory.nil? -%>
   directory       = <%= @directory %>
 <% end -%>
-<% if validate_string(@file) -%>
+<% unless @file.nil? -%>
   file            = <%= @file %>
 <% end -%>
-<% if validate_string(@mode) -%>
+<% unless @mode.nil? -%>
   mode            = <%= @mode %>
 <% end -%>
-<% if validate_string(@directory_mode) -%>
+<% unless @directory_mode.nil? -%>
   directory_mode  = <%= @directory_mode %>
 <% end -%>
-<% if validate_string(@socket) -%>
+<% unless @socket.nil? -%>
   socket          = <%= @socket %>
 <% end -%>
 <% unless @batch_max.nil?
  abort "could not convert value of batch_max to number greater then 1" if @batch_max.to_i < 1 -%>
   batch_max       = <%= @batch_max.to_i %>
 <% end -%>
-<% if validate_string(@user) -%>
+<% unless @user.nil? -%>
   user            = <%= @user %>
 <% end -%>
-<% if validate_string(@group) -%>
+<% unless @group.nil? -%>
   group           = <%= @group %>
 <% end -%>
-<% if validate_string(@home_directory) -%>
+<% unless @home_directory.nil? -%>
   home_directory  = <%= @home_directory %>
 <% end -%>
 <% if @initgroups -%>
@@ -95,13 +87,13 @@ end
 <% unless @headers_add.nil? -%>
   headers_add     = <%= @headers_add.join("\\n") %>
 <% end -%>
-<% if validate_string(@message_prefix) -%>
+<% unless @message_prefix.nil? -%>
   message_prefix  = <%= @message_prefix %>
 <% end -%>
-<% if validate_string(@message_suffix) -%>
+<% unless @message_suffix.nil? -%>
   message_suffix  = <%= @message_suffix %>
 <% end -%>
-<% if validate_string(@transport_filter) -%>
+<% unless @transport_filter.nil? -%>
   transport_filter = <%= @transport_filter %>
 <% end -%>
 <% unless @tls_dh_min_bits.nil? -%>
@@ -119,16 +111,16 @@ end
 <% unless @helo_data.nil? -%>
   helo_data       = <%= @helo_data %>
 <% end -%>
-<% if validate_string(@to) -%>
+<% unless @to.nil? -%>
   to              = <%= @to %>
 <% end -%>
-<% if validate_string(@subject) -%>
+<% unless @subject.nil? -%>
   subject         = <%= @subject %>
 <% end -%>
-<% if validate_string(@from) -%>
+<% unless @from.nil? -%>
   from            = <%= @from %>
 <% end -%>
-<% if validate_string(@text) -%>
+<% unless @text.nil? -%>
   text            = <%= @text %>
 <% end -%>
 <% unless @hosts.nil? -%>
