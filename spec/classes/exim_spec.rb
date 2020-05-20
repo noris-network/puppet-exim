@@ -31,12 +31,6 @@ describe 'exim', type: 'class' do
     it { is_expected.to contain_concat__fragment('main').with_content(%r{^ldap_default_servers\s+= ldap1 : ldap2$}) }
   end
 
-  context 'manage_service' do
-    let(:params) { { manage_service: true } }
-
-    it { is_expected.to contain_service('exim4') }
-  end
-
   ['acl_smtp_mail', 'acl_smtp_rcpt', 'acl_smtp_data', 'acl_smtp_mime'].each do |parameter|
     context parameter do
       let(:params) { { parameter => 'acl_check' } }

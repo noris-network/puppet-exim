@@ -2,9 +2,9 @@
 #
 # This class manages the exim service
 #
-class exim::service {
-  if $::exim::manage_service {
-    service{$::exim::exim_service:
+class exim::service inherits exim {
+  if $manage_service {
+    ::service{$exim_service:
       ensure => running,
     }
   }

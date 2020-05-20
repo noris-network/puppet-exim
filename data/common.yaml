@@ -117,4 +117,6 @@ exim::exim_light_package: ~
 exim::exim_heavy_package: ~
 #
 exim::config_path: ~
+#
+exim::exim_service: 'exim'
 ...

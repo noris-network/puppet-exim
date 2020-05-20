@@ -1,16 +1,12 @@
-# == Define: exim::retry
+# @summary This define is used to build retry rules
 #
-# This define is used to build retry rules
-#
-# === Parameters
-#
-# [*order*]
+# @param order
 #   Determines the order, in which retry statements are evaluated
 #
-# [*error*]
+# @param error
 #   Determines on which errors the rule should apply
 #
-# [*retries*]
+# @param retries
 #   Timing information for retries
 #   Type: hash of hashes
 #

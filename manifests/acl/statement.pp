@@ -1,21 +1,19 @@
-# == Define: exim::acl::statement
+# @summary
+#   This define creates one acl statement in exims configuration
 #
-# This define creates one acl statement in exims configuration
-#   http://www.exim.org/exim-html-current/doc/html/spec_html/ch-access_control_lists.html
+# @see http://www.exim.org/exim-html-current/doc/html/spec_html/ch-access_control_lists.html
 #
-# === Parameters
-#
-# [*acl_id*]
+# @param acl_id
 #   Id of parent acl this statement correspondes to.
 #   The acl-statement is part of the acl with id "acl_id".
 #
-# [*order*]
+# @param order
 #   Position of this statement in the acl (acl_id).
 #
-# [*action*]
+# @param action
 #   The outcome of given acl statement (e.g.: accept)
 #
-# [*conditions*]
+# @param conditions
 #   Conditions to "action"
 #   Example:
 #     [
@@ -23,7 +21,7 @@
 #       ['domains', ['+domainlist']],
 #     ],
 #
-# [*disable*]
+# @param disable
 #  This option can be used to ignore this acl statement
 #  even if other options are set.
 #  This is usefull if statements are created via

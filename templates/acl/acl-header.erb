@@ -5,25 +5,26 @@
 #         Specifies access control lists for incoming SMTP mail      #
 ######################################################################
 
-<% unless @acl_not_smtp.nil? -%>
+<% if @acl_not_smtp -%>
 acl_not_smtp     = <%= @acl_not_smtp %>
 <% end -%>
-<% unless @acl_smtp_connect.nil? -%>
+--- <%= @acl_not_smtp %>
+<% if @acl_smtp_connect -%>
 acl_smtp_connect = <%= @acl_smtp_connect %>
 <% end -%>
-<% unless @acl_smtp_mail.nil? -%>
+<% if @acl_smtp_mail -%>
 acl_smtp_mail    = <%= @acl_smtp_mail %>
 <% end -%>
-<% unless @acl_smtp_rcpt.nil? -%>
+<% if @acl_smtp_rcpt -%>
 acl_smtp_rcpt    = <%= @acl_smtp_rcpt %>
 <% end -%>
-<% unless @acl_smtp_auth.nil? -%>
+<% if @acl_smtp_auth -%>
 acl_smtp_auth    = <%= @acl_smtp_auth %>
 <% end -%>
-<% unless @acl_smtp_data.nil? -%>
+<% if @acl_smtp_data -%>
 acl_smtp_data    = <%= @acl_smtp_data %>
 <% end -%>
-<% unless @acl_smtp_mime.nil? -%>
+<% if @acl_smtp_mime -%>
 acl_smtp_mime    = <%= @acl_smtp_mime %>
 <% end -%>
 
