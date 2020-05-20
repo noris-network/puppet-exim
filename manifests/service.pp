@@ -1,6 +1,7 @@
-# == class: exim::service
+#@api private
 #
-# This class manages the exim service
+# @summary
+#   This class manages the exim service
 #
 class exim::service inherits exim {
   if $manage_service {

@@ -1,6 +1,7 @@
-# == class: exim::install
+# @api private
 #
-# This class installes the exim package
+# @summary
+#   This class installes the exim package
 #
 class exim::install {
   if ($::exim::heavy) {

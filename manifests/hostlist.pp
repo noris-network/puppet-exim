@@ -1,5 +1,3 @@
-# == Define: exim::hostlist
-#
 # @summary
 #   This define can be used to create hostlists, which can be referenced later
 # 

@@ -8,12 +8,12 @@
 _Public Classes_
 
 * [`exim`](#exim): This module configures exim
-* [`exim::install`](#eximinstall): == class: exim::install  This class installes the exim package
-* [`exim::service`](#eximservice): == class: exim::service  This class manages the exim service
 
 _Private Classes_
 
 * `exim::config`: 
+* `exim::install`: This class installes the exim package
+* `exim::service`: This class manages the exim service
 
 **Defined types**
 
@@ -812,18 +812,6 @@ Data type: `Optional[String]`
 
 Name of the service
 
-### exim::install
-
-== class: exim::install
-
-This class installes the exim package
-
-### exim::service
-
-== class: exim::service
-
-This class manages the exim service
-
 ## Defined types
 
 ### exim::acl
@@ -1024,7 +1012,7 @@ Default value: `undef`
 
 ### exim::hostlist
 
-== Define: exim::hostlist
+This define can be used to create hostlists, which can be referenced later
 
 * **See also**
 http://www.exim.org/exim-html-current/doc/html/spec_html/ch-domain_host_address_and_local_part_lists.html
