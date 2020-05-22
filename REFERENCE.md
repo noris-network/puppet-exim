@@ -31,8 +31,7 @@ _Private Classes_
 
 ### exim
 
-[*log_file_path*']
-  Type: string
+This module configures exim
 
 #### Examples
 
@@ -281,6 +280,12 @@ Check and correct From: header from local mails to username@qualify-domain
 Data type: `Optional[Array[String]]`
 
 Specifies the interfaces exim will listen on.
+
+##### `log_file_path`
+
+Data type: `Optional[Array[String]]`
+
+Type: string
 
 ##### `log_lost_incoming_connection`
 
@@ -572,8 +577,6 @@ Data type: `Optional[Boolean]`
 Timezone
 
 ##### `log_file_path`
-
-Data type: `Optional[Array[String]]`
 
 File path
 
