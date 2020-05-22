@@ -143,7 +143,7 @@
 # @param local_interfaces
 #   Specifies the interfaces exim will listen on.
 #
-# [*log_file_path*']
+# @param log_file_path
 #   Type: string
 #
 # @param log_lost_incoming_connection
