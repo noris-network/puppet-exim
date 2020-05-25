@@ -5,7 +5,6 @@ exim::heavy: false
 exim::host_lookup: '*'
 exim::ignore_bounce_errors_after: '2d'
 exim::includes: []
-exim::local_from_check: false
 exim::log_lost_incoming_connection: true
 exim::log_retry_defer: true
 exim::log_sender_on_delivery: true
@@ -49,6 +48,7 @@ exim::gnutls_compat_mode: ~
 exim::helo_allow_chars: ~
 exim::hosts_treat_as_local: ~
 exim::ldap_default_servers: ~
+exim::local_from_check: ~
 exim::local_interfaces: ~
 exim::log_8bitmime: ~
 exim::log_acl_warn_skipped: ~
