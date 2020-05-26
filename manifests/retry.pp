@@ -11,6 +11,7 @@
 #   Type: hash of hashes
 #
 define exim::retry (
+  $domain=$title,
   $order=1,
   $error='*',
   $retries=[['F','4h','5m'],['G','16h','1h','1.5'],['F','4d','6h']]
