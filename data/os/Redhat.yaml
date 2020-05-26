@@ -1,0 +1,6 @@
+---
+exim::exim_light_package: 'exim'
+exim::exim_heavy_package: 'exim'
+exim::exim_service: 'exim'
+exim::config_path: '/etc/exim/exim.conf'
+...

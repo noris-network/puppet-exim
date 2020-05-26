@@ -1,19 +1,16 @@
-# == Define: exim::domainlist
+# @summary
+#   This define can be used to create domainlists, which can be referenced later
 #
-# This define can be used to create domainlists, which can be referenced later
-#   http://www.exim.org/exim-html-current/doc/html/spec_html/ch-domain_host_address_and_local_part_lists.html
+# @see http://www.exim.org/exim-html-current/doc/html/spec_html/ch-domain_host_address_and_local_part_lists.html
 #
-# === Parameters
-#
-# [*domains*]
+# @param domains
 #   Array containing a list of domains
 #
-# [*path*]
+# @param path
 #   If path is set, domains are listed in a file located in this path, the main config will recieve
 #   a reference to this file.
 #   If path is not set, domains are written directly into the config file instead.
 #
-
 define exim::domainlist (
   $domains=undef,
   $path=undef,

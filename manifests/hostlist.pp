@@ -1,14 +1,11 @@
-# == Define: exim::hostlist
+# @summary
+#   This define can be used to create hostlists, which can be referenced later
+# 
+# @see http://www.exim.org/exim-html-current/doc/html/spec_html/ch-domain_host_address_and_local_part_lists.html
 #
-# This define can be used to create hostlists, which can be referenced later
-#   http://www.exim.org/exim-html-current/doc/html/spec_html/ch-domain_host_address_and_local_part_lists.html
-#
-# === Parameters
-#
-# [*hosts*]
+# @param hosts
 #   Array containing a list of hosts
 #
-
 define exim::hostlist (
   $hosts=undef,
   ){

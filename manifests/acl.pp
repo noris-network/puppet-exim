@@ -1,11 +1,8 @@
-# == Define: exim::acl
+# @summary This define creates a new acl
+# 
+# @see  http://www.exim.org/exim-html-current/doc/html/spec_html/ch-access_control_lists.html
 #
-# This define creates a new acl
-#   http://www.exim.org/exim-html-current/doc/html/spec_html/ch-access_control_lists.html
-#
-# === Parameters
-#
-# [*acl_id*]
+# @param acl_id
 #   Id of this acl, this is needed for acl statements to reference 
 #   this acl.
 #
