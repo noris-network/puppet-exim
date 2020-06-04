@@ -36,7 +36,7 @@ define exim::acl::statement (
   $order,
   $action,
   $conditions      = undef,
-  Boolean $disable = false
+  $disable         = false
 ){
   unless $disable {
     notice('using exim::acl::statement is depricated please use the statements parameter of exim::acl')
