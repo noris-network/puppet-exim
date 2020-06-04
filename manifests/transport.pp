@@ -148,6 +148,10 @@
 #   original message is returned with the new message, subject to the maximum
 #   size set in the return_size_limit global configuration option.
 #
+# @param debug_print
+#  Used to print debug information
+#
+#
 define exim::transport (
   $driver,
   $protocol                        = undef,
@@ -204,6 +208,7 @@ define exim::transport (
   $tls_verify_certificates         = undef,
   $to                              = undef,
   $transport_filter                = undef,
+  $debug_print                     = undef,
   $user                            = undef,
   $once                    = undef,
   $once_repeat             = undef,

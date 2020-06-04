@@ -57,6 +57,11 @@
 #   Type: array
 #   Example: ['10.0.0.1', '192.168.178.1']
 #
+# @param queue_smtp_domains
+#   no immediaste SMTP delivery for these domains
+#   Type: array
+#   Example: ['10.0.0.1', '192.168.178.1']
+#
 # @param config_path
 #   Path to exims config file, this can be used to create an alternate config file
 #   for testing purposes.
@@ -437,6 +442,7 @@ class exim (
   Optional[String] $callout_domain_positive_expire,
   Optional[String] $check_spool_space,
   Optional[Array[String]] $chunking_advertise_hosts,
+  Optional[Array[String]] $queue_smtp_domains,
   $config_path,
   Optional[Array[Integer]] $daemon_smtp_ports,
   $defaults,

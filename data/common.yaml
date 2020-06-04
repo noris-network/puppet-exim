@@ -35,6 +35,7 @@ exim::av_scanner: ~
 exim::callout_domain_positive_expire: ~
 exim::check_spool_space: ~
 exim::chunking_advertise_hosts: ~
+exim::config_path: ~
 exim::daemon_smtp_ports: ~
 exim::delay_warning: ~
 exim::deliver_queue_load_max: ~
@@ -96,6 +97,7 @@ exim::openssl_options: ~
 exim::qualify_domain: ~
 exim::queue_only_load: ~
 exim::queue_run_max: ~
+exim::queue_smtp_domains: ~
 exim::remote_max_parallel: ~
 exim::smtp_accept_max: ~
 exim::smtp_accept_max_nonmail: ~
@@ -115,8 +117,6 @@ exim::tls_privatekey: ~
 exim::tls_require_ciphers: ~
 exim::trusted_users: ~
 exim::untrusted_set_sender: ~
-#
-exim::config_path: ~
 #
 exim::exim_service: 'exim'
 ...
