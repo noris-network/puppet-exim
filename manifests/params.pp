@@ -134,4 +134,5 @@ class exim::params {
   $tls_certificate                    = undef
   $tls_privatekey                     = undef
   $trusted_users                      = undef
+  $queue_smtp_domains                 = undef
 }

@@ -30,6 +30,8 @@ keep_environment =
 <% end -%>
 <% unless @chunking_advertise_hosts.nil? -%>chunking_advertise_hosts       = <%= @chunking_advertise_hosts.join(" : ") %>
 <% end -%>
+<% unless @queue_smtp_domains.nil?       -%>queue_smtp_domains             = <%= @queue_smtp_domains.join(" : ") %>
+<% end -%>
 
 
 log_selector               = <% if defined?(@log_lost_incoming_connection) && ! @log_lost_incoming_connection.empty? -%><% if @log_lost_incoming_connection == "false" -%> -lost_incoming_connection<% else %> +lost_incoming_connection<% end -%><% end -%>

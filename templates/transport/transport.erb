@@ -74,6 +74,9 @@ end
  abort "could not convert value of batch_max to number greater then 1" if @batch_max.to_i < 1 -%>
   batch_max       = <%= @batch_max.to_i %>
 <% end -%>
+<% unless @debug_print.nil? -%>
+  debug_print  = <%= @debug_print %>
+<% end -%>
 <% if validate_string(@user) -%>
   user            = <%= @user %>
 <% end -%>

@@ -191,6 +191,7 @@ define exim::transport (
   $tls_verify_certificates         = undef,
   $to                              = undef,
   $transport_filter                = undef,
+  $debug_print                     = undef,
   $user                            = undef,
   $once                    = undef,
   $once_repeat             = undef,

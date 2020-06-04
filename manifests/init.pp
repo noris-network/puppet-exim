@@ -424,6 +424,7 @@ class exim (
   $callout_domain_positive_expire     =$::exim::params::callout_domain_positive_expire,
   $check_spool_space                  =$::exim::params::check_spool_space,
   $chunking_advertise_hosts           =$::exim::params::chunking_advertise_hosts,
+  $queue_smtp_domains                 =$::exim::params::queue_smtp_domains,
   $config_path                        =$::exim::params::config_path,
   $daemon_smtp_ports                  =$::exim::params::daemon_smtp_ports,
   $defaults                           =$::exim::params::defaults,
