@@ -12,9 +12,12 @@
 #   If path is not set, domains are written directly into the config file instead.
 #
 define exim::domainlist (
-  $domains=undef,
-  $path=undef,
+  Array $domains,
+  Optional[String] $path = undef,
   ){
+
+  include exim
+
   $listtype = 'domainlist'
 
   if $path {

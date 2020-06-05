@@ -20,6 +20,9 @@ define exim::rewrite (
   Array[Enum['E','F','T','b','c','f','h','r','s','t','Q','q','R','w','S']] $flags,
   Integer $order=1,
   ){
+
+  include exim
+
   concat::fragment { "rewrite-${title}":
     target  => $::exim::config_path,
     content => template("${module_name}/rewrite/rewrite.erb"),

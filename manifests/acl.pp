@@ -7,6 +7,8 @@
 #   this acl.
 #
 define exim::acl ($acl_id=undef,$statements=undef){
+  include exim
+
   if $statements {
     concat::fragment { "acl-${title}":
       target  => $::exim::config_path,

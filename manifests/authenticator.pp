@@ -44,6 +44,9 @@ define exim::authenticator (
   $server_set_id    = undef,
   $server_prompts   = undef,
   ){
+
+  include exim
+
   concat::fragment { "authenticator-${title}":
     target  => $::exim::config_path,
     content => template("${module_name}/authenticator/authenticator.erb"),

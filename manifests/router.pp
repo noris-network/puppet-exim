@@ -130,7 +130,7 @@
 #
 define exim::router (
   $driver,
-  $order,
+  Optional[Integer] $order            = 0,
   $address_data                       = undef,
   Boolean $allow_defer                = false,
   Boolean $allow_fail                 = false,
@@ -169,7 +169,10 @@ define exim::router (
   $errors_to                  = undef,
   $cannot_route_message       = undef,
   $require_files              = undef,
-  ){
+  ) {
+
+  include exim
+
   unless $disable {
     concat::fragment { "router-${title}":
       target  => $::exim::config_path,

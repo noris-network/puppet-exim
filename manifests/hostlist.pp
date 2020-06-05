@@ -7,8 +7,11 @@
 #   Array containing a list of hosts
 #
 define exim::hostlist (
-  $hosts=undef,
+  Array[String] $hosts,
   ){
+
+  include exim
+
   $list     = $hosts
   $listtype = 'hostlist'
   concat::fragment { "hostlist-${title}":

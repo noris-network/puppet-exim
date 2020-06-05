@@ -3,7 +3,7 @@
 # @summary
 #   This class installes the exim package
 #
-class exim::install {
+class exim::install inherits exim {
   if ($::exim::heavy) {
     $exim_package = $::exim::exim_heavy_package
   }

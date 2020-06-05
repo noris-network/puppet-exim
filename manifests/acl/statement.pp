@@ -36,6 +36,9 @@ define exim::acl::statement (
   $conditions      = undef,
   Boolean $disable = false
 ){
+
+  include exim
+
   unless $disable {
     notice('using exim::acl::statement is deprecated please use the statements parameter of exim::acl')
     concat::fragment { "acl-${acl_id}-${order}":

@@ -1,6 +1,0 @@
----
-os:
-  family: 'Debian'
-networking:
-  domain: 'local'
-...
