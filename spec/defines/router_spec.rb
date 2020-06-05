@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe 'exim::router', type: 'define' do
-  Puppet::Util::Log.level = :info
-  Puppet::Util::Log.newdestination(:console)
-  let(:facts) { { concat_basedir: '/dne', osfamily: 'Debian' } }
   let(:pre_condition) { 'class { "exim": }' }
   let(:title) { 'testrouter' }
 

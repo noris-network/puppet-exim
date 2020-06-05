@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'exim::transport', type: 'define' do
-  let(:facts) { { concat_basedir: '/dne', osfamily: 'Debian' } }
   let(:title) { 'testtransport' }
   let(:pre_condition) { 'class { "exim": }' }
 

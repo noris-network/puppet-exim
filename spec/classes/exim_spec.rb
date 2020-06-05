@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'exim', type: 'class' do
-  let(:facts) { { osfamily: 'Debian', concat_basedir: '/dne' } }
 
   it { is_expected.to create_class('exim') }
   it { is_expected.to contain_class('exim') }

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'exim::acl', type: 'define' do
-  let(:facts) { { concat_basedir: '/dne', osfamily: 'Debian' } }
   let(:pre_condition) { 'class { "exim": }' }
   let(:title) { 'testacl' }
 

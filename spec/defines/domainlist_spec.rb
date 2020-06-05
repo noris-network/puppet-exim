@@ -1,11 +1,7 @@
 require 'spec_helper'
 
 describe 'exim::domainlist', type: 'define' do
-  Puppet::Util::Log.level = :info
-  Puppet::Util::Log.newdestination(:console)
-
   let(:pre_condition) { 'class { "exim": }' }
-  let(:facts) { { concat_basedir: '/dne', osfamily: 'Debian' } }
   let(:title) { 'testdomainlist' }
 
   describe 'Path set' do
