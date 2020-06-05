@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'exim', type: 'class' do
-
   it { is_expected.to create_class('exim') }
   it { is_expected.to contain_class('exim') }
   it { is_expected.to contain_class('exim::install').that_comes_before('Class[exim::config]') }

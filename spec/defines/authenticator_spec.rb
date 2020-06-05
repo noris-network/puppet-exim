@@ -6,7 +6,7 @@ describe 'exim::authenticator' do
   let(:title) { 'namevar' }
   let(:params) do
     { driver: 'cram_md5',
-      public_name: 'PLAIN'}
+      public_name: 'PLAIN' }
   end
 
   on_supported_os.each do |os, os_facts|
