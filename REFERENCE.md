@@ -19,6 +19,7 @@ _Private Classes_
 
 * [`exim::acl`](#eximacl): This define creates a new acl
 * [`exim::acl::statement`](#eximaclstatement): This define creates one acl statement in exims configuration
+* [`exim::addresslist`](#eximaddresslist): 
 * [`exim::authenticator`](#eximauthenticator): This module configures a single authenticator in exims configuration
 * [`exim::domainlist`](#eximdomainlist): This define can be used to create domainlists, which can be referenced later
 * [`exim::hostlist`](#eximhostlist): This define can be used to create hostlists, which can be referenced later
@@ -135,6 +136,14 @@ Example: 1G
 Data type: `Optional[Array[String]]`
 
 advertise CHUNKING to these hosts
+Type: array
+Example: ['10.0.0.1', '192.168.178.1']
+
+##### `queue_smtp_domains`
+
+Data type: `Optional[Array[String]]`
+
+no immediaste SMTP delivery for these domains
 Type: array
 Example: ['10.0.0.1', '192.168.178.1']
 
@@ -901,6 +910,22 @@ hierachy.
 
 Default value: `false`
 
+### exim::addresslist
+
+The exim::addresslist class.
+
+#### Parameters
+
+The following parameters are available in the `exim::addresslist` defined type.
+
+##### `addresses`
+
+Data type: `Any`
+
+
+
+Default value: `undef`
+
 ### exim::authenticator
 
 This module configures a single authenticator in exims configuration
@@ -1064,6 +1089,14 @@ Timing information for retries
 Type: hash of hashes
 
 Default value: [['F','4h','5m'],['G','16h','1h','1.5'],['F','4d','6h']]
+
+##### `domain`
+
+Data type: `Any`
+
+
+
+Default value: $title
 
 ### exim::rewrite
 
@@ -1760,6 +1793,14 @@ Data type: `Any`
 Use:autoreply;Type:boolean;Default:false; If this is set, a copy of the
 original message is returned with the new message, subject to the maximum
 size set in the return_size_limit global configuration option.
+
+Default value: `undef`
+
+##### `debug_print`
+
+Data type: `Any`
+
+Used to print debug information
 
 Default value: `undef`
 
