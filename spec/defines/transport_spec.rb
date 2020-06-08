@@ -6,6 +6,7 @@ describe 'exim::transport', type: 'define' do
 
   describe 'define test' do
     let(:params) { { driver: 'accept' } }
+
     it { is_expected.to contain_concat__fragment('transport-header') }
   end
 
