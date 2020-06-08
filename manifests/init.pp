@@ -126,7 +126,7 @@
 #
 # @param host_lookup
 #   Reverse lookup hostname of ips.
-#   Type: Array
+#   Type: String
 #   Example: '*'
 #
 # @param hosts_treat_as_local
@@ -435,17 +435,17 @@ class exim (
   Optional[String] $acl_smtp_data,
   Optional[String] $acl_smtp_mail,
   Optional[String] $acl_smtp_mime,
-  $acl_smtp_rcpt,
-  $allow_mx_to_ip,
+  Optional[String] $acl_smtp_rcpt,
+  Optional[Boolean] $allow_mx_to_ip,
   Optional[String] $auto_thaw,
   Optional[String] $av_scanner,
   Optional[String] $callout_domain_positive_expire,
   Optional[String] $check_spool_space,
   Optional[Array[String]] $chunking_advertise_hosts,
   Optional[Array[String]] $queue_smtp_domains,
-  $config_path,
+  String $config_path,
   Optional[Array[Integer]] $daemon_smtp_ports,
-  $defaults,
+  Optional[Boolean] $defaults,
   Optional[Array[String]] $delay_warning,
   Optional[Integer] $deliver_queue_load_max,
   Optional[Boolean] $disable_ipv6,
@@ -456,12 +456,12 @@ class exim (
   Optional[String] $openssl_options,
   Optional[Boolean] $heavy,
   Optional[String] $helo_allow_chars,
-  $host_lookup,
+  Optional[String] $host_lookup,
   Optional[Array[String]] $hosts_treat_as_local,
-  $ignore_bounce_errors_after,
-  $includes,
+  Optional[String] $ignore_bounce_errors_after,
+  Optional[Array] $includes,
   Optional[Array[String]] $ldap_default_servers,
-  $local_from_check,
+  Optional[Boolean] $local_from_check,
   Optional[Array[String]] $local_interfaces,
   Optional[Array[String]] $log_file_path,
   Optional[Boolean] $log_lost_incoming_connection,
@@ -524,8 +524,8 @@ class exim (
   Optional[Integer] $queue_only_load,
   Optional[Integer] $queue_run_max,
   Optional[Integer] $remote_max_parallel,
-  $rfc1413_hosts,
-  $rfc1413_query_timeout,
+  Optional[String] $rfc1413_hosts,
+  Optional[String] $rfc1413_query_timeout,
   Optional[Integer] $smtp_accept_max,
   Optional[Integer] $smtp_accept_max_nonmail,
   Optional[Integer] $smtp_accept_max_per_connection,

@@ -5,7 +5,7 @@ common:
 spec/spec_helper.rb:
   mock_with: ":rspec"
   coverage_report: true
-# strict_level: ":error"
+  #  strict_level: ":error"
 
 Rakefile:
   github_user: mleiner

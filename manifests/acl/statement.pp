@@ -30,11 +30,11 @@
 #  hierachy.
 #
 define exim::acl::statement (
-  $acl_id,
-  $order,
-  $action,
-  $conditions      = undef,
-  Boolean $disable = false
+  Integer $acl_id,
+  Integer $order,
+  String $action,
+  Optional[Array] $conditions      = undef,
+  Optional[Boolean] $disable = false
 ){
 
   include exim

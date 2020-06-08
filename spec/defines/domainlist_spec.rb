@@ -8,5 +8,6 @@ describe 'exim::domainlist', type: 'define' do
     let(:params) { { path: '/etc/exim/testdomainlist', domains: ['test.de'] } }
 
     it { is_expected.to contain_file('/etc/exim/testdomainlist').with_content(%r{test\.de}) }
+    it { is_expected.to contain_concat__fragment('domainlist-testdomainlist') }
   end
 end

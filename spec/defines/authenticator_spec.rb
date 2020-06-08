@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe 'exim::authenticator' do
-  let(:title) { 'namevar' }
+  let(:title) { 'testauthenticator' }
   let(:params) do
     { driver: 'cram_md5',
       public_name: 'PLAIN' }
@@ -14,6 +14,8 @@ describe 'exim::authenticator' do
       let(:facts) { os_facts }
 
       it { is_expected.to compile }
+      it { is_expected.to create_concat__fragment('authenticator-header') }
+      it { is_expected.to create_concat__fragment('authenticator-testauthenticator') }
     end
   end
 end

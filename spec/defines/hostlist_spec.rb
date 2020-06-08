@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe 'exim::hostlist' do
-  let(:title) { 'namevar' }
+  let(:title) { 'testhostlist' }
   let(:params) do
     { hosts: ['*'] }
   end
@@ -13,6 +13,7 @@ describe 'exim::hostlist' do
       let(:facts) { os_facts }
 
       it { is_expected.to compile }
+      it { is_expected.to create_concat__fragment('hostlist-testhostlist') }
     end
   end
 end

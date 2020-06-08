@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe 'exim::retry' do
-  let(:title) { 'namevar' }
+  let(:title) { 'testretry' }
   let(:params) do
     {}
   end
@@ -13,6 +13,8 @@ describe 'exim::retry' do
       let(:facts) { os_facts }
 
       it { is_expected.to compile }
+      it { is_expected.to create_concat__fragment('retry-header') }
+      it { is_expected.to create_concat__fragment('retry-testretry') }
     end
   end
 end

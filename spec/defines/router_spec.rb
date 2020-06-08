@@ -4,7 +4,22 @@ describe 'exim::router', type: 'define' do
   let(:pre_condition) { 'class { "exim": }' }
   let(:title) { 'testrouter' }
 
-  ['local_part_prefix', 'self', 'file', 'caseful_local_part'].each do |parameter|
+  describe 'define test' do
+    let(:params) { { driver: 'accept' } }
+
+    it { is_expected.to contain_exim__router('testrouter') }
+    it { is_expected.to contain_concat__fragment('router-header') }
+    it { is_expected.to contain_concat__fragment('router-testrouter') }
+  end
+
+  ['caseful_local_part'].each do |parameter|
+    describe parameter do
+      let(:params) { { parameter => true, order: 1, driver: 'redirect' } }
+
+      it { is_expected.to contain_concat__fragment('router-testrouter').with_content(%r{^\s+#{parameter}\s+=\s+true$}) }
+    end
+  end
+  ['local_part_prefix', 'local_part_suffix', 'self', 'file'].each do |parameter|
     describe parameter do
       let(:params) { { parameter => 'foo', order: 1, driver: 'redirect' } }
 

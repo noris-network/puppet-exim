@@ -4,6 +4,11 @@ describe 'exim::transport', type: 'define' do
   let(:title) { 'testtransport' }
   let(:pre_condition) { 'class { "exim": }' }
 
+  describe 'define test' do
+    let(:params) { { driver: 'accept' } }
+    it { is_expected.to contain_concat__fragment('transport-header') }
+  end
+
   integer_parameter = ['batch_max', 'port', 'connection_max_messages', 'tls_dh_min_bits']
 
   integer_parameter.each do |parameter|

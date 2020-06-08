@@ -77,7 +77,7 @@ class exim::config inherits exim {
       transport                => 'remote_smtp',
       route_list               => "* mail.${facts['networking']['domain']} byname",
       host_find_failed         => 'defer',
-      same_domain_copy_routing => 'yes',
+      same_domain_copy_routing => true,
       no_more                  => true,
     }
 

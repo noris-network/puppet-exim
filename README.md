@@ -65,9 +65,9 @@ Create 2 routers, one to do aliasing, and one to send mails to a remote smarthos
     order                    => 2,
     driver                   => 'manualroute',
     transport                => 'remote_smtp',
-    route_list               => "* mail.${::domain} byname",
+    route_list               => "* mail.${facts['networking']['domain']} byname",
     host_find_failed         => 'defer',
-    same_domain_copy_routing => 'yes',
+    same_domain_copy_routing => true,
     no_more                  => true,
   }
 ```

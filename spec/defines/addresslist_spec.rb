@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe 'exim::addresslist' do
-  let(:title) { 'namevar' }
+  let(:title) { 'testaddresslist' }
   let(:params) do
     { addresses: ['*'] }
   end
@@ -13,6 +13,7 @@ describe 'exim::addresslist' do
       let(:facts) { os_facts }
 
       it { is_expected.to compile }
+      it { is_expected.to create_concat__fragment('addresslist-testaddresslist') }
     end
   end
 end

@@ -8,13 +8,13 @@
 #
 # @param retries
 #   Timing information for retries
-#   Type: hash of hashes
+#   Type: array of arrays
 #
 define exim::retry (
-  $domain=$title,
-  $order=1,
-  $error='*',
-  $retries=[['F','4h','5m'],['G','16h','1h','1.5'],['F','4d','6h']]
+  Optional[String]  $domain=$title,
+  Optional[Integer] $order=1,
+  Optional[String]  $error='*',
+  Optional[Array]   $retries=[['F','4h','5m'],['G','16h','1h','1.5'],['F','4d','6h']],
   ){
 
   include exim

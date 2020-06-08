@@ -34,15 +34,15 @@
 #  Promt used in the smtp session to ask for data  (User: Password:)
 #
 define exim::authenticator (
-  $driver,
-  $public_name,
-  $client_name      = undef,
-  $client_secret    = undef,
-  $client_send      = undef,
-  $server_secret    = undef,
-  $server_condition = undef,
-  $server_set_id    = undef,
-  $server_prompts   = undef,
+  String $driver,
+  String $public_name,
+  Optional[String] $client_name      = undef,
+  Optional[String] $client_secret    = undef,
+  Optional[String] $client_send      = undef,
+  Optional[String] $server_secret    = undef,
+  Optional[String] $server_condition = undef,
+  Optional[String] $server_set_id    = undef,
+  Optional[String] $server_prompts   = undef,
   ){
 
   include exim

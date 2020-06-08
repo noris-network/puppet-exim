@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe 'exim::rewrite' do
-  let(:title) { 'namevar' }
+  let(:title) { 'testrewrite' }
   let(:params) do
     { pattern: 'test@example.com',
       replacement: '*',
@@ -15,6 +15,8 @@ describe 'exim::rewrite' do
       let(:facts) { os_facts }
 
       it { is_expected.to compile }
+      it { is_expected.to contain_concat__fragment('rewrite-header') }
+      it { is_expected.to contain_concat__fragment('rewrite-testrewrite') }
     end
   end
 end
