@@ -1,9 +1,9 @@
 # @summary This define creates a new acl
-# 
+#
 # @see  http://www.exim.org/exim-html-current/doc/html/spec_html/ch-access_control_lists.html
 #
 # @param acl_id
-#   Id of this acl, this is needed for acl statements to reference 
+#   Id of this acl, this is needed for acl statements to reference
 #   this acl.
 #
 define exim::acl ($acl_id=undef,$statements=undef){

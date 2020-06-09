@@ -22,12 +22,12 @@
 #     ],
 #
 # @param disable
-#  This option can be used to ignore this acl statement
-#  even if other options are set.
-#  This is usefull if statements are created via
-#  hiera_hash with deep_merge, and you want to
-#  completly disable a statement defined in a lower
-#  hierachy.
+#   This option can be used to ignore this acl statement
+#   even if other options are set.
+#   This is usefull if statements are created via
+#   hiera_hash with deep_merge, and you want to
+#   completly disable a statement defined in a lower
+#   hierachy.
 #
 define exim::acl::statement (
   Integer $acl_id,

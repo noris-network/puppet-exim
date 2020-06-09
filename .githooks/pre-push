@@ -1,0 +1,20 @@
+#!/bin/sh
+
+echo "=== Syntax validation"
+if ! pdk validate ; then
+	echo
+	exit 1
+else
+	echo
+fi
+echo
+
+echo "=== unit tests"
+pdk test unit || exit 1
+echo
+
+echo "=== Generating strings"
+puppet strings generate || exit 1
+echo
+
+exit 0

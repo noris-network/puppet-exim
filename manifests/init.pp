@@ -182,73 +182,73 @@
 # @param log_mail_subject
 #   Log mail subjects.
 #
-# @param log_8bitmime 
+# @param log_8bitmime
 #   received 8BITMIME status
 #
 # @param log_acl_warn_skipped
 #   skipped warn statement in ACL
 #
-# @param log_address_rewrite           
+# @param log_address_rewrite
 #   address rewriting
 #
-# @param log_all_parents            
+# @param log_all_parents
 #   all parents in => lines
 #
-# @param log_arguments                
+# @param log_arguments
 #   command line arguments
 #
 # @param log_connection_reject
 #   connection rejections
 #
-# @param log_delay_delivery          
+# @param log_delay_delivery
 #   immediate delivery delayed
 #
-# @param log_deliver_time             
+# @param log_deliver_time
 #   time taken to perform delivery
 #
-# @param log_delivery_size               
+# @param log_delivery_size
 #   add S=nnn to => lines
 #
-# @param log_dnslist_defer              
+# @param log_dnslist_defer
 #   defers of DNS list (aka RBL) lookups
 #
-# @param log_dnssec              
+# @param log_dnssec
 #   DNSSEC secured lookups
 #
-# @param log_etrn                     
+# @param log_etrn
 #   ETRN commands
 #
 # @param log_host_lookup_failed
 #   Log failed host lookup
 #
-# @param log_ident_timeout         
+# @param log_ident_timeout
 #   timeout for ident connection
 #
 # @param log_incoming_interface
 #   local interface on <= and => lines
 #
-# @param log_incoming_port         
+# @param log_incoming_port
 #   remote port on <= lines
 #
-# @param log_millisec              
+# @param log_millisec
 #   millisecond timestamps and QT,DT,D times
 #
 # @param log_outgoing_interface
 #   local interface on => lines
 #
-# @param log_outgoing_port         
+# @param log_outgoing_port
 #   add remote port to => lines
 #
-# @param log_queue_run              
+# @param log_queue_run
 #   start and end queue runs
 #
-# @param log_queue_time                  
+# @param log_queue_time
 #   time on queue for one recipient
 #
 # @param log_queue_time_overall
 #   time on queue for whole message
 #
-# @param log_pid         
+# @param log_pid
 #   Exim process id
 #
 # @param log_proxy
@@ -257,19 +257,19 @@
 # @param log_received_recipients
 #   recipients on <= lines
 #
-# @param log_received_sender        
+# @param log_received_sender
 #   sender on <= lines
 #
-# @param log_rejected_header            
+# @param log_rejected_header
 #   header contents on reject log
 #
 # @param log_return_path_on_delivery
 #   put return path on => and ** lines
 #
-# @param log_sender_verify_fail    
+# @param log_sender_verify_fail
 #   sender verification failures
 #
-# @param log_size_reject         
+# @param log_size_reject
 #   rejection because too big
 #
 # @param log_smtp_incomplete_transaction
@@ -278,16 +278,16 @@
 # @param log_smtp_mailauth
 #   AUTH argument to MAIL commands
 #
-# @param log_smtp_no_mail              
+# @param log_smtp_no_mail
 #   session with no MAIL commands
 #
 # @param log_tls_certificate_verified
 #   certificate verification status
 #
-# @param log_tls_cipher   
+# @param log_tls_cipher
 #   TLS cipher suite on <= and => lines
 #
-# @param log_tls_sni                 
+# @param log_tls_sni
 #   TLS SNI on <= lines
 #
 # @param log_unknown_in_list
