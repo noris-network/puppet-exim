@@ -995,9 +995,15 @@ Default value: `undef`
 
 ##### `server_advertise_condition`
 
-Data type: `Any`
+Data type: `String`
 
 The condition under which to advertise this authenticator
+
+##### `server_debug_print`
+
+Data type: `String`
+
+Debug print when authentication debugging is enabled
 
 Default value: `undef`
 

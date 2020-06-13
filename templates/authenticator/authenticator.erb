@@ -19,6 +19,9 @@
 <% unless @server_advertise_condition.nil? -%>
   server_advertise_condition = <%= @server_advertise_condition %>
 <% end -%>
+<% unless @server_debug_print.nil? -%>
+  server_debug_print = <%= @server_debug_print %>
+<% end -%>
 <% unless @server_set_id.nil? -%>
   server_set_id    = <%= @server_set_id %>
 <% end -%>
