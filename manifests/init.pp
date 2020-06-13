@@ -12,6 +12,11 @@
 #     (runs after SMTP "." command)
 #   Type: string
 #
+# @param acl_smtp_predata
+#   Name of acl used for checking after DATA command
+#     (runs after SMTP "DATA" but before actual data)
+#   Type: string
+#
 # @param acl_smtp_mail
 #   Name of acl used for mail checking
 #     (runs after SMTP "MAIL FROM:" command)
@@ -438,6 +443,7 @@ class exim (
   Optional[String] $acl_not_smtp,
   Optional[String] $acl_smtp_auth,
   Optional[String] $acl_smtp_data,
+  Optional[String] $acl_smtp_predata,
   Optional[String] $acl_smtp_mail,
   Optional[String] $acl_smtp_mime,
   Optional[String] $acl_smtp_rcpt,

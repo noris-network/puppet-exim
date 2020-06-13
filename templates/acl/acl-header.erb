@@ -24,6 +24,9 @@ acl_smtp_auth    = <%= @acl_smtp_auth %>
 <% if @acl_smtp_data -%>
 acl_smtp_data    = <%= @acl_smtp_data %>
 <% end -%>
+<% if @acl_smtp_predata -%>
+acl_smtp_predata = <%= @acl_smtp_predata %>
+<% end -%>
 <% if @acl_smtp_mime -%>
 acl_smtp_mime    = <%= @acl_smtp_mime %>
 <% end -%>
