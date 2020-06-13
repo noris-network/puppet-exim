@@ -71,7 +71,12 @@
 # @param daemon_smtp_ports
 #   SMTP ports to listen on
 #   Type: array of integers
-#   Example: [25,587]
+#   Example: [25,465,587]
+#
+# @param tls_on_connect_ports
+#   Ports on which to enable TLs on connect
+#   Type: array of integers
+#   Example: [465]
 #
 # @param defaults
 #   Use a default configuration, this creates a simple default config,
@@ -445,6 +450,7 @@ class exim (
   Optional[Array[String]] $queue_smtp_domains,
   String $config_path,
   Optional[Array[Integer]] $daemon_smtp_ports,
+  Optional[Array[Integer]] $tls_on_connect_ports,
   Optional[Boolean] $defaults,
   Optional[Array[String]] $delay_warning,
   Optional[Integer] $deliver_queue_load_max,

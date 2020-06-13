@@ -26,6 +26,8 @@ keep_environment =
 <% end -%>
 <% unless @daemon_smtp_ports.nil?                  -%>daemon_smtp_ports                  = <%= @daemon_smtp_ports.join(" : ") %>
 <% end -%>
+<% unless @tls_on_connect_ports.nil?               -%>tls_on_connect_ports               = <%= @tls_on_connect_ports.join(" : ") %>
+<% end -%>
 <% unless @disable_ipv6.nil?                       -%>disable_ipv6                       = <%= @disable_ipv6 %>
 <% end -%>
 <% unless @hosts_treat_as_local.nil?               -%>hosts_treat_as_local               = <%= @hosts_treat_as_local.join(" : ") %>
