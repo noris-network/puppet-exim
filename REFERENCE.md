@@ -662,6 +662,12 @@ Data type: `Optional[Integer]`
 Limits the number of queue runners to run in parrallel.
 Type: integer
 
+##### `received_header_text`
+
+Data type: `Optional[String]`
+
+Override Received header added to messages.
+
 ##### `remote_max_parallel`
 
 Data type: `Optional[Integer]`

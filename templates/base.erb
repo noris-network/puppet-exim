@@ -141,6 +141,7 @@ log_selector               = <% unless @log_lost_incoming_connection.nil? -%><% 
 <% unless @log_timezone.nil?                       -%>log_timezone                       = <%= @log_timezone %>
 <% end -%>
 
+<%- if @received_header_text.nil? -%>
 received_header_text       = Received: \
   ${if def:sender_rcvhost {from $sender_rcvhost\n\t}\
   {${if def:sender_ident \
@@ -154,6 +155,9 @@ received_header_text       = Received: \
   {(envelope-from <$sender_address>)\n\t}}\
   id $message_exim_id\
   ${if def:received_for {\n\tfor $received_for}}
+<%- else -%>
+received_header_text       = <%= @received_header_text %>
+<%- end -%>
 
 <% unless @errors_reply_to.nil?                    -%>errors_reply_to                    = <%= @errors_reply_to %>
 <% end -%>

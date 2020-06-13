@@ -100,6 +100,7 @@ exim::qualify_domain: ~
 exim::queue_only_load: ~
 exim::queue_run_max: ~
 exim::queue_smtp_domains: ~
+exim::received_header_text: ~
 exim::remote_max_parallel: ~
 exim::smtp_accept_max: ~
 exim::smtp_accept_max_nonmail: ~

@@ -383,6 +383,9 @@
 # @param smtp_banner
 #   Initial response to SMTP connections.
 #
+# @param received_header_text
+#   Override Received header added to each message.
+#
 # @param smtp_receive_timeout
 #   Timeout for SMTP activity.
 #
@@ -538,6 +541,7 @@ class exim (
   Optional[String] $qualify_domain,
   Optional[Integer] $queue_only_load,
   Optional[Integer] $queue_run_max,
+  Optional[String] $received_header_text,
   Optional[Integer] $remote_max_parallel,
   Optional[String] $rfc1413_hosts,
   Optional[String] $rfc1413_query_timeout,
