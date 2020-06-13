@@ -1974,6 +1974,14 @@ Data type: `Any`
 
 Default value: `undef`
 
+##### `message_size_limit`
+
+Data type: `String`
+
+The string specified here is expanded and determines the maximum size of the message
+
+Default value: `undef`
+
 ##### `mode`
 
 Data type: `Any`
