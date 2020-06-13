@@ -96,6 +96,9 @@
 <% unless @message_suffix.nil? -%>
   message_suffix  = <%= @message_suffix %>
 <% end -%>
+<% unless @message_size_limit.nil? -%>
+  message_size_limit = <%= @message_size_limit %>
+<% end -%>
 <% unless @transport_filter.nil? -%>
   transport_filter = <%= @transport_filter %>
 <% end -%>

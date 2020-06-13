@@ -30,7 +30,7 @@ describe 'exim::transport', type: 'define' do
   string_parameter = ['directory', 'maildir_tag', 'command', 'connect_timeout', 'directory_mode',
                       'file', 'group', 'home_directory', 'message_prefix', 'message_suffix',
                       'mode', 'subject', 'text', 'to', 'transport_filter', 'user', 'socket',
-                      'interface', 'helo_data', 'timeout', 'path', 'from']
+                      'interface', 'helo_data', 'timeout', 'path', 'from', 'message_size_limit']
 
   string_parameter.each do |parameter|
     describe parameter do
