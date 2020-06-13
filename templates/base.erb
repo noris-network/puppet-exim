@@ -136,6 +136,8 @@ log_selector               = <% unless @log_lost_incoming_connection.nil? -%><% 
 <% end -%>
 <% unless @smtp_banner.nil?                        -%>smtp_banner                        = <%= @smtp_banner %>
 <% end -%>
+<% unless @smtp_receive_timeout.nil?               -%>smtp_receive_timeout                = <%= @smtp_receive_timeout %>
+<% end -%>
 <% unless @log_timezone.nil?                       -%>log_timezone                       = <%= @log_timezone %>
 <% end -%>
 
