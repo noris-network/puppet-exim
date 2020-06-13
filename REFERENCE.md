@@ -736,6 +736,12 @@ Data type: `Optional[String]`
 
 Initial response to SMTP connections.
 
+##### `smtp_receive_timeout`
+
+Data type: `Optional[String]`
+
+Timeout for SMTP activity.
+
 ##### `smtp_reserve_hosts`
 
 Data type: `Optional[Array[String]]`

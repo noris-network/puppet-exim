@@ -383,6 +383,9 @@
 # @param smtp_banner
 #   Initial response to SMTP connections.
 #
+# @param smtp_receive_timeout
+#   Timeout for SMTP activity.
+#
 # @param smtp_reserve_hosts
 #   See "smtp_accept_reserve"
 #
@@ -546,6 +549,7 @@ class exim (
   Optional[Integer] $smtp_accept_queue_per_connection,
   Optional[Integer] $smtp_accept_reserve,
   Optional[String] $smtp_banner,
+  Optional[String] $smtp_receive_timeout,
   Optional[Array[String]] $smtp_reserve_hosts,
   Optional[String] $spamd_address,
   Optional[Boolean] $split_spool_directory,
