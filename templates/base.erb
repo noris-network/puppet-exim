@@ -159,7 +159,7 @@ received_header_text       = Received: \
 <% end -%>
 
 <% unless @tls_certificate.nil? && @tls_privatekey.nil? -%>
-tls_advertise_hosts                = <%= @tls_advertise_hosts %>
+tls_advertise_hosts                = <%= @tls_advertise_hosts.join(" : ") %>
 tls_certificate                    = <%= @tls_certificate %>
 tls_privatekey                     = <%= @tls_privatekey %>
 <% end -%>
