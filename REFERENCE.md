@@ -67,6 +67,14 @@ Name of acl used for data checking
   (runs after SMTP "." command)
 Type: string
 
+##### `acl_smtp_predata`
+
+Data type: `Optional[String]`
+
+Name of acl used for checking after DATA command
+  (runs after SMTP "DATA" but before actual data)
+Type: string
+
 ##### `acl_smtp_mail`
 
 Data type: `Optional[String]`

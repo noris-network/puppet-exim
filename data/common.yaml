@@ -27,6 +27,7 @@ exim::tls_advertise_hosts: [ '*' ]
 exim::acl_not_smtp: ~
 exim::acl_smtp_auth: ~
 exim::acl_smtp_data: ~
+exim::acl_smtp_predata: ~
 exim::acl_smtp_mail: ~
 exim::acl_smtp_mime: ~
 exim::allow_mx_to_ip: ~
