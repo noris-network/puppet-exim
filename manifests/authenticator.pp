@@ -28,6 +28,9 @@
 # @param server_condition
 #   The authentication check
 #
+# @param server_advertise_condition
+#   The condition under which to advertise this authenticator
+#
 # @param server_set_id
 #   Set the $authenticated_id variable for later use
 #
@@ -42,6 +45,7 @@ define exim::authenticator (
   Optional[String] $client_send      = undef,
   Optional[String] $server_secret    = undef,
   Optional[String] $server_condition = undef,
+  Optional[String] $server_advertise_condition = undef,
   Optional[String] $server_set_id    = undef,
   Optional[String] $server_prompts   = undef,
   ){

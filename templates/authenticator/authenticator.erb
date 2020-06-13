@@ -16,6 +16,9 @@
 <% unless @server_condition.nil? -%>
   server_condition = <%= @server_condition %>
 <% end -%>
+<% unless @server_advertise_condition.nil? -%>
+  server_advertise_condition = <%= @server_advertise_condition %>
+<% end -%>
 <% unless @server_set_id.nil? -%>
   server_set_id    = <%= @server_set_id %>
 <% end -%>
