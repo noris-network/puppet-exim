@@ -38,6 +38,7 @@ exim::check_spool_space: ~
 exim::chunking_advertise_hosts: ~
 exim::config_path: ~
 exim::daemon_smtp_ports: ~
+exim::tls_on_connect_ports: ~
 exim::delay_warning: ~
 exim::deliver_queue_load_max: ~
 exim::disable_ipv6: ~
@@ -108,6 +109,7 @@ exim::smtp_accept_queue: ~
 exim::smtp_accept_queue_per_connection: ~
 exim::smtp_accept_reserve: ~
 exim::smtp_banner: ~
+exim::smtp_receive_timeout: ~
 exim::smtp_reserve_hosts: ~
 exim::spamd_address: ~
 exim::split_spool_directory: ~
