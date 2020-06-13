@@ -162,7 +162,15 @@ Data type: `Optional[Array[Integer]]`
 
 SMTP ports to listen on
 Type: array
-Example: [25, 587]
+Example: [25, 465, 587]
+
+##### `tls_on_connect_ports`
+
+Data type: `Optional[Array[Integer]]`
+
+Ports on which to start TLS on connect
+Type: array
+Example: [465]
 
 ##### `defaults`
 
