@@ -993,6 +993,14 @@ The authentication check
 
 Default value: `undef`
 
+##### `server_advertise_condition`
+
+Data type: `Any`
+
+The condition under which to advertise this authenticator
+
+Default value: `undef`
+
 ##### `server_set_id`
 
 Data type: `Any`
