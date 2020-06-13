@@ -162,7 +162,7 @@ Data type: `Optional[Array[Integer]]`
 
 SMTP ports to listen on
 Type: array
-Example: ['25','587']
+Example: [25, 587]
 
 ##### `defaults`
 

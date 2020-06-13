@@ -70,8 +70,8 @@
 #
 # @param daemon_smtp_ports
 #   SMTP ports to listen on
-#   Type: array
-#   Example: ['25','587']
+#   Type: array of integers
+#   Example: [25,587]
 #
 # @param defaults
 #   Use a default configuration, this creates a simple default config,
