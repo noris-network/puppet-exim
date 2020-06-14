@@ -22,7 +22,7 @@ exim::queue_only: false
 exim::rfc1413_hosts: '*'
 exim::rfc1413_query_timeout: '5s'
 exim::timeout_frozen_after: '7d'
-exim::tls_advertise_hosts: [ '*' ]
+exim::tls_advertise_hosts: ~
 #
 exim::acl_not_smtp: ~
 exim::acl_smtp_auth: ~
