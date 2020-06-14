@@ -164,8 +164,10 @@ received_header_text       = <%= @received_header_text %>
 <% unless @qualify_domain.nil?                     -%>qualify_domain                     = <%= @qualify_domain %>
 <% end -%>
 
-<% unless @tls_certificate.nil? && @tls_privatekey.nil? -%>
+<% unless @tls_advertise_hosts.nil? -%>
 tls_advertise_hosts                = <%= @tls_advertise_hosts.join(" : ") %>
+<% end -%>
+<% unless @tls_certificate.nil? && @tls_privatekey.nil? -%>
 tls_certificate                    = <%= @tls_certificate %>
 tls_privatekey                     = <%= @tls_privatekey %>
 <% end -%>
