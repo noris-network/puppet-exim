@@ -29,6 +29,9 @@
 # @param quota_warn_message
 #   Quota warning message
 #
+# @param quota_is_inclusive
+#   Whether quota is inclusive
+#
 # @param maildir_use_size_file
 #   Use maildir size file for quota
 #
@@ -347,6 +350,7 @@ define exim::transport (
   Optional[String[1]]     $quota                     = undef,
   Optional[String[1]]     $quota_warn_threshold      = undef,
   Optional[String[1]]     $quota_warn_message        = undef,
+  Boolean                 $quota_is_inclusive        = true,
   Boolean                 $maildir_use_size_file     = false,
   Optional[String[1]]     $return_message            = undef,
   Optional[String[1]]     $socket                    = undef,
