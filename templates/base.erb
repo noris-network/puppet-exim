@@ -208,7 +208,5 @@ tls_privatekey                     = <%= @tls_privatekey %>
 <% end -%>
 <% unless @extract_addresses_remove_arguments.nil? -%>extract_addresses_remove_arguments = <%= @extract_addresses_remove_arguments %>
 <% end -%>
-
-<% unless @mysql_servers.nil?                       -%>mysql_servers                     = <%= @mysql_servers.map{|i| i.gsub(':', '::')}.join(" : ") %>
-
+<% unless @mysql_servers.nil?                       -%>hide mysql_servers                = <%= @mysql_servers.map{|i| i.gsub(':', '::')}.join(" : ") %>
 <% end -%>
