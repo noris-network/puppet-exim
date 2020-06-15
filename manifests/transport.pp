@@ -20,6 +20,18 @@
 # @param protocol
 #   Protocol of transport
 #
+# @param quota
+#   Quota
+#
+# @param quota_warn_threshold
+#   Quota warning threshold
+#
+# @param quota_warn_message
+#   Quota warning message
+#
+# @param maildir_use_size_file
+#   Use maildir size file for quota
+#
 # @param connect_timeout
 #   Timeout when connecting to remote Servers
 #
@@ -332,6 +344,10 @@ define exim::transport (
   Optional[String[1]]     $once_repeat               = undef,
   Optional[String[1]]     $path                      = undef,
   Optional[String[1]]     $protocol                  = undef,
+  Optional[String[1]]     $quota                     = undef,
+  Optional[String[1]]     $quota_warn_threshold      = undef,
+  Optional[String[1]]     $quota_warn_message        = undef,
+  Boolean                 $maildir_use_size_file     = false,
   Optional[String[1]]     $return_message            = undef,
   Optional[String[1]]     $socket                    = undef,
   Optional[String[1]]     $subject                   = undef,
