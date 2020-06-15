@@ -17,6 +17,7 @@ exim::log_tls_peerdn: true
 exim::macros: {}
 exim::manage_service: false
 exim::never_users: [ 'root' ]
+exim::mysql_servers: ~
 exim::print_topbitchars: false
 exim::queue_only: false
 exim::rfc1413_hosts: '*'
