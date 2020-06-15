@@ -633,6 +633,13 @@ Data type: `Optional[String]`
 Max size allowed for mails, default is empty
 Example: 100M
 
+##### `mysql_servers`
+
+Data type: `Optional[Array[String]]`
+
+MySQL servers to connect to
+Type: array
+
 ##### `never_users`
 
 Data type: `Optional[Array[String]]`

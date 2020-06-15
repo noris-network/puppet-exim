@@ -325,6 +325,10 @@
 #   Max size allowed for mails, default is empty
 #   Example: 100M
 #
+# @param mysql_servers
+#   MySQL servers to connect to
+#   Type: array
+#
 # @param never_users
 #   Do not run deliverys as these users
 #   Type: array
@@ -534,6 +538,7 @@ class exim (
   Boolean $manage_service,
   Optional[Boolean] $message_logs,
   Optional[String] $message_size_limit,
+  Optional[Array[String]] $mysql_servers,
   Optional[Array[String]] $never_users,
   Optional[Boolean] $untrusted_set_sender,
   Optional[Boolean] $print_topbitchars,
