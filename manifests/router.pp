@@ -13,6 +13,9 @@
 # @param caseful_local_part
 #   Sets the caseful_local_part option.
 #
+# @param retry_use_local_part
+#   Sets the retry_use_local_part option.
+#
 # @param comment
 #   Comment a router, this will be placed as a comment just above
 #   the router.
@@ -136,6 +139,7 @@ define exim::router (
   Optional[Boolean] $allow_fail                 = false,
   Optional[Boolean] $allow_filter               = false,
   Optional[Boolean] $caseful_local_part                 = undef,
+  Optional[Boolean] $retry_use_local_part                 = undef,
   Optional[Array[String]] $comment                            = undef,
   Optional[String] $condition                          = undef,
   Optional[String] $data                               = undef,

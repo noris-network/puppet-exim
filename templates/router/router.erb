@@ -17,6 +17,9 @@
 <% unless @caseful_local_part.nil? -%>
   caseful_local_part = <%= @caseful_local_part %>
 <% end -%>
+<% unless @retry_use_local_part.nil? -%>
+  retry_use_local_part = <%= @retry_use_local_part %>
+<% end -%>
 <% unless @condition.nil? -%>
   condition    = <%= @condition %>
 <% end -%>

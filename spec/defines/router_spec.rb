@@ -12,7 +12,7 @@ describe 'exim::router', type: 'define' do
     it { is_expected.to contain_concat__fragment('router-testrouter') }
   end
 
-  ['caseful_local_part'].each do |parameter|
+  ['caseful_local_part', 'retry_use_local_part'].each do |parameter|
     describe parameter do
       let(:params) { { parameter => true, order: 1, driver: 'redirect' } }
 

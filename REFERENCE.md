@@ -1225,6 +1225,14 @@ Sets the caseful_local_part option.
 
 Default value: `undef`
 
+##### `retry_use_local_part`
+
+Data type: `Any`
+
+Sets the retry_use_local_part option.
+
+Default value: `undef`
+
 ##### `comment`
 
 Data type: `Any`
