@@ -91,6 +91,9 @@
 # @param pipe_transport
 #   Set the pipe_transport, used if the outcome of the router points to a pipe
 #
+# @param reply_transport
+#   Set the reply_transport, used if the outcome of the router points to mail or vacation
+#
 # @param qualify_preserve_domain
 #   For redirect routers
 #   If an unqualified address (one without a domain) is generated, it is qualified with the domain of the parent address.
@@ -161,6 +164,7 @@ define exim::router (
   Optional[Boolean] $no_more                    = false,
   Optional[Boolean] $no_verify                  = false,
   Optional[String] $pipe_transport                     = undef,
+  Optional[String] $reply_transport                    = undef,
   Optional[Boolean] $qualify_preserve_domain    = false,
   Optional[String] $route_data                         = undef,
   Optional[String] $route_list                         = undef,

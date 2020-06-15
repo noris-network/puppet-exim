@@ -1424,6 +1424,12 @@ Data type: `Any`
 
 Set the pipe_transport, used if the outcome of the router points to a pipe
 
+##### `reply_transport`
+
+Data type: `Any`
+
+Set the reply_transport, used if the outcome of the router points to mail or vacation
+
 Default value: `undef`
 
 ##### `qualify_preserve_domain`
