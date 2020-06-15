@@ -189,4 +189,16 @@
 <% if @return_message -%>
   return_message  = <%= @return_message %>
 <% end -%>
+<% unless @quota.nil? -%>
+  quota                 = <%= @quota %>
+<% end -%>
+<% unless @quota_warn_threshold.nil? -%>
+  quota_warn_threshold  = <%= @quota_warn_threshold %>
+<% end -%>
+<% unless @quota_warn_message.nil? -%>
+  quota_warn_message    = <%= @quota_warn_message %>
+<% end -%>
+<% if @maildir_use_size_file -%>
+  maildir_use_size_file
+<% end -%>
 

@@ -1562,6 +1562,38 @@ Protocol of transport.
 
 Default value: `undef`
 
+##### `quota`
+
+Data type: `String`
+
+Quota
+
+Default value: `undef`
+
+##### `quota_warn_threshold`
+
+Data type: `String`
+
+Quota warning threshold
+
+Default value: `undef`
+
+##### `quota_warn_message`
+
+Data type: `String`
+
+Quota warning message
+
+Default value: `undef`
+
+##### `maildir_use_size_file`
+
+Data type: `Boolean`
+
+Use Maildir size file for quota
+
+Default value: `false`
+
 ##### `connect_timeout`
 
 Data type: `Any`
