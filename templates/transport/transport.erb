@@ -198,6 +198,9 @@
 <% unless @quota_warn_message.nil? -%>
   quota_warn_message    = <%= @quota_warn_message %>
 <% end -%>
+<% unless @quota_is_inclusive -%>
+  quota_is_inclusive    = false
+<% end -%>
 <% if @maildir_use_size_file -%>
   maildir_use_size_file
 <% end -%>
