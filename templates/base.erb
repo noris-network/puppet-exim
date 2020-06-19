@@ -194,6 +194,8 @@ tls_privatekey                     = <%= @tls_privatekey %>
 <% end -%>
 <% unless @smtp_reserve_hosts.nil?                 -%>smtp_reserve_hosts                 = <%= @smtp_reserve_hosts.join(' : ') %>
 <% end -%>
+<% unless @smtp_return_error_details.nil?          -%>smtp_return_error_details          = <%= @smtp_return_error_details %>
+<% end -%>
 <% unless @deliver_queue_load_max.nil?             -%>deliver_queue_load_max             = <%= @deliver_queue_load_max %>
 <% end -%>
 <% unless @queue_only_load.nil?                    -%>queue_only_load                    = <%= @queue_only_load %>
