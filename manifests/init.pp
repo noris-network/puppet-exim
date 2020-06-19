@@ -396,6 +396,9 @@
 # @param smtp_reserve_hosts
 #   See "smtp_accept_reserve"
 #
+# @param smtp_return_error_details
+#   Return more detailed SMTP error messages.
+#
 # @param spamd_address
 #   Configure a spamd socket here.
 #
@@ -560,6 +563,7 @@ class exim (
   Optional[String] $smtp_banner,
   Optional[String] $smtp_receive_timeout,
   Optional[Array[String]] $smtp_reserve_hosts,
+  Optional[Boolean] $smtp_return_error_details,
   Optional[String] $spamd_address,
   Optional[Boolean] $split_spool_directory,
   Optional[Boolean] $syslog_timestamp,
