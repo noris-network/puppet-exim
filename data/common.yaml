@@ -26,6 +26,7 @@ exim::timeout_frozen_after: '7d'
 exim::tls_advertise_hosts: ~
 #
 exim::acl_not_smtp: ~
+exim::acl_smtp_connect: ~
 exim::acl_smtp_auth: ~
 exim::acl_smtp_data: ~
 exim::acl_smtp_predata: ~
