@@ -22,6 +22,11 @@ describe 'exim', type: 'class' do
 
     it { is_expected.to contain_concat__fragment('main').with_content(%r{^daemon_smtp_ports\s+= 25 : 587$}) }
   end
+  context 'tls_on_connect_ports' do
+    let(:params) { { tls_on_connect_ports: [25, 587] } }
+
+    it { is_expected.to contain_concat__fragment('main').with_content(%r{^tls_on_connect_ports\s+= 25 : 587$}) }
+  end
 
   context 'ldap_default_servers' do
     let(:params) { { ldap_default_servers: ['ldap1', 'ldap2'] } }
