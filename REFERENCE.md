@@ -52,6 +52,13 @@ Data type: `Optional[String]`
 
 Name of acl used for local generated mail. (sendmail)
 
+##### `acl_smtp_connect`
+
+Data type: `Optional[String]`
+
+Name of acl used on smtp connect
+Type: string
+
 ##### `acl_smtp_auth`
 
 Data type: `Optional[String]`
@@ -1224,6 +1231,14 @@ Default value: `undef`
 Data type: `Optional[Boolean]`
 
 Sets the caseful_local_part option.
+
+Default value: `undef`
+
+##### `retry_use_local_part`
+
+Data type: `Optional[Boolean]`
+
+Sets the retry_use_local_part option.
 
 Default value: `undef`
 

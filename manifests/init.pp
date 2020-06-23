@@ -3,6 +3,10 @@
 # @param acl_not_smtp
 #   Name of acl used for local generated mail. (sendmail)
 #
+# @param acl_smtp_connect
+#   Name of acl used on smtp connect
+#   Type: string
+#
 # @param acl_smtp_auth
 #   Name of acl used for auth checking
 #   Type: string
@@ -454,6 +458,7 @@
 #
 class exim (
   Optional[String] $acl_not_smtp,
+  Optional[String] $acl_smtp_connect,
   Optional[String] $acl_smtp_auth,
   Optional[String] $acl_smtp_data,
   Optional[String] $acl_smtp_predata,
