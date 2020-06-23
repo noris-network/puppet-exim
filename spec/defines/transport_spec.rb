@@ -30,7 +30,7 @@ describe 'exim::transport', type: 'define' do
   string_parameter = ['directory', 'maildir_tag', 'command', 'connect_timeout', 'directory_mode',
                       'file', 'group', 'home_directory', 'message_prefix', 'message_suffix',
                       'mode', 'subject', 'text', 'to', 'transport_filter', 'user', 'socket',
-                      'interface', 'helo_data', 'timeout', 'path', 'from']
+                      'interface', 'helo_data', 'timeout', 'path', 'from', 'message_size_limit']
 
   string_parameter.each do |parameter|
     describe parameter do
@@ -66,7 +66,8 @@ describe 'exim::transport', type: 'define' do
 
   bool_parameter = ['delivery_date_add', 'envelope_to_add', 'freeze_exec_fail', 'initgroups',
                     'log_output', 'maildir_format', 'return_path_add', 'rcpt_include_affixes',
-                    'allow_localhost', 'return_output', 'return_fail_output', 'timeout_defer']
+                    'allow_localhost', 'return_output', 'return_fail_output', 'timeout_defer',
+                    'maildir_use_size_file']
 
   bool_parameter.each do |parameter|
     describe parameter do

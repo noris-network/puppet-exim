@@ -22,6 +22,11 @@ describe 'exim', type: 'class' do
 
     it { is_expected.to contain_concat__fragment('main').with_content(%r{^daemon_smtp_ports\s+= 25 : 587$}) }
   end
+  context 'tls_on_connect_ports' do
+    let(:params) { { tls_on_connect_ports: [25, 587] } }
+
+    it { is_expected.to contain_concat__fragment('main').with_content(%r{^tls_on_connect_ports\s+= 25 : 587$}) }
+  end
 
   context 'ldap_default_servers' do
     let(:params) { { ldap_default_servers: ['ldap1', 'ldap2'] } }
@@ -29,15 +34,7 @@ describe 'exim', type: 'class' do
     it { is_expected.to contain_concat__fragment('main').with_content(%r{^ldap_default_servers\s+= ldap1 : ldap2$}) }
   end
 
-  ['acl_smtp_mail', 'acl_smtp_rcpt', 'acl_smtp_data', 'acl_smtp_mime'].each do |parameter|
-    context parameter do
-      let(:params) { { parameter => 'acl_check' } }
-
-      it { is_expected.to contain_concat__fragment('acl-header').with_content(%r{^#{parameter}\s+= acl_check$}) }
-    end
-  end
-
-  bool_parameter = ['message_logs', 'gnutls_compat_mode']
+  bool_parameter = ['message_logs', 'gnutls_compat_mode', 'smtp_return_error_details']
   bool_parameter.each do |parameter|
     context parameter + ' set to false' do
       let(:params) { { parameter => false } }
@@ -65,16 +62,45 @@ describe 'exim', type: 'class' do
       it { is_expected.to contain_concat__fragment('main').without_content(%r{^#{parameter}}) }
     end
   end
-
-  string_parameter = ['acl_not_smtp']
+  string_parameter = ['smtp_receive_timeout']
   string_parameter.each do |parameter|
-    context parameter + ' set to foo' do
+    context parameter + ' set to bar foo' do
       let(:params) { { parameter => 'foo' } }
 
-      it { is_expected.to contain_concat__fragment('acl-header').with_content(%r{^#{parameter}\s+= foo$}) }
+      it { is_expected.to contain_concat__fragment('main').with_content(%r{^#{parameter}\s+= foo$}) }
     end
     context parameter + ' not set' do
-      it { is_expected.to contain_concat__fragment('acl-header').without_content(%r{^#{parameter}}) }
+      it { is_expected.to contain_concat__fragment('main').without_content(%r{^#{parameter}}) }
+    end
+  end
+  string_parameter_setonly = ['received_header_text']
+  string_parameter_setonly.each do |parameter|
+    context parameter + ' set to bar foo' do
+      let(:params) { { parameter => 'foo' } }
+
+      it { is_expected.to contain_concat__fragment('main').with_content(%r{^#{parameter}\s+= foo$}) }
+    end
+  end
+  array_string_parameter = []
+  array_string_parameter.each do |parameter|
+    context parameter + ' set to bar foo' do
+      let(:params) { { parameter => ['foo', 'bar'] } }
+
+      it { is_expected.to contain_concat__fragment('main').with_content(%r{^#{parameter}\s+= foo : bar$}) }
+    end
+    context parameter + ' not set' do
+      it { is_expected.to contain_concat__fragment('main').without_content(%r{^#{parameter}}) }
+    end
+  end
+  hide_array_string_parameter = ['mysql_servers']
+  hide_array_string_parameter.each do |parameter|
+    context parameter + ' set to bar foo' do
+      let(:params) { { parameter => ['foo', 'bar'] } }
+
+      it { is_expected.to contain_concat__fragment('main').with_content(%r{^hide #{parameter}\s+= foo : bar$}) }
+    end
+    context parameter + ' not set' do
+      it { is_expected.to contain_concat__fragment('main').without_content(%r{^hide #{parameter}}) }
     end
   end
 end

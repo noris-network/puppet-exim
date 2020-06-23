@@ -96,6 +96,9 @@
 <% unless @message_suffix.nil? -%>
   message_suffix  = <%= @message_suffix %>
 <% end -%>
+<% unless @message_size_limit.nil? -%>
+  message_size_limit = <%= @message_size_limit %>
+<% end -%>
 <% unless @transport_filter.nil? -%>
   transport_filter = <%= @transport_filter %>
 <% end -%>
@@ -185,5 +188,20 @@
 <% end -%>
 <% if @return_message -%>
   return_message  = <%= @return_message %>
+<% end -%>
+<% unless @quota.nil? -%>
+  quota                 = <%= @quota %>
+<% end -%>
+<% unless @quota_warn_threshold.nil? -%>
+  quota_warn_threshold  = <%= @quota_warn_threshold %>
+<% end -%>
+<% unless @quota_warn_message.nil? -%>
+  quota_warn_message    = <%= @quota_warn_message %>
+<% end -%>
+<% unless @quota_is_inclusive -%>
+  quota_is_inclusive    = false
+<% end -%>
+<% if @maildir_use_size_file -%>
+  maildir_use_size_file
 <% end -%>
 

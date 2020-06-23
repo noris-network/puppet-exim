@@ -26,6 +26,8 @@ keep_environment =
 <% end -%>
 <% unless @daemon_smtp_ports.nil?                  -%>daemon_smtp_ports                  = <%= @daemon_smtp_ports.join(" : ") %>
 <% end -%>
+<% unless @tls_on_connect_ports.nil?               -%>tls_on_connect_ports               = <%= @tls_on_connect_ports.join(" : ") %>
+<% end -%>
 <% unless @disable_ipv6.nil?                       -%>disable_ipv6                       = <%= @disable_ipv6 %>
 <% end -%>
 <% unless @hosts_treat_as_local.nil?               -%>hosts_treat_as_local               = <%= @hosts_treat_as_local.join(" : ") %>
@@ -134,9 +136,12 @@ log_selector               = <% unless @log_lost_incoming_connection.nil? -%><% 
 <% end -%>
 <% unless @smtp_banner.nil?                        -%>smtp_banner                        = <%= @smtp_banner %>
 <% end -%>
+<% unless @smtp_receive_timeout.nil?               -%>smtp_receive_timeout                = <%= @smtp_receive_timeout %>
+<% end -%>
 <% unless @log_timezone.nil?                       -%>log_timezone                       = <%= @log_timezone %>
 <% end -%>
 
+<%- if @received_header_text.nil? -%>
 received_header_text       = Received: \
   ${if def:sender_rcvhost {from $sender_rcvhost\n\t}\
   {${if def:sender_ident \
@@ -150,14 +155,19 @@ received_header_text       = Received: \
   {(envelope-from <$sender_address>)\n\t}}\
   id $message_exim_id\
   ${if def:received_for {\n\tfor $received_for}}
+<%- else -%>
+received_header_text       = <%= @received_header_text %>
+<%- end -%>
 
 <% unless @errors_reply_to.nil?                    -%>errors_reply_to                    = <%= @errors_reply_to %>
 <% end -%>
 <% unless @qualify_domain.nil?                     -%>qualify_domain                     = <%= @qualify_domain %>
 <% end -%>
 
+<% unless @tls_advertise_hosts.nil? -%>
+tls_advertise_hosts                = <%= @tls_advertise_hosts.join(" : ") %>
+<% end -%>
 <% unless @tls_certificate.nil? && @tls_privatekey.nil? -%>
-tls_advertise_hosts                = <%= @tls_advertise_hosts %>
 tls_certificate                    = <%= @tls_certificate %>
 tls_privatekey                     = <%= @tls_privatekey %>
 <% end -%>
@@ -184,6 +194,8 @@ tls_privatekey                     = <%= @tls_privatekey %>
 <% end -%>
 <% unless @smtp_reserve_hosts.nil?                 -%>smtp_reserve_hosts                 = <%= @smtp_reserve_hosts.join(' : ') %>
 <% end -%>
+<% unless @smtp_return_error_details.nil?          -%>smtp_return_error_details          = <%= @smtp_return_error_details %>
+<% end -%>
 <% unless @deliver_queue_load_max.nil?             -%>deliver_queue_load_max             = <%= @deliver_queue_load_max %>
 <% end -%>
 <% unless @queue_only_load.nil?                    -%>queue_only_load                    = <%= @queue_only_load %>
@@ -198,4 +210,5 @@ tls_privatekey                     = <%= @tls_privatekey %>
 <% end -%>
 <% unless @extract_addresses_remove_arguments.nil? -%>extract_addresses_remove_arguments = <%= @extract_addresses_remove_arguments %>
 <% end -%>
-
+<% unless @mysql_servers.nil?                       -%>hide mysql_servers                = <%= @mysql_servers.map{|i| i.gsub(':', '::')}.join(" : ") %>
+<% end -%>

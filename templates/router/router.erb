@@ -65,6 +65,9 @@
 <% unless @pipe_transport.nil? -%>
   pipe_transport = <%= @pipe_transport %>
 <% end -%>
+<% unless @reply_transport.nil? -%>
+  reply_transport = <%= @reply_transport %>
+<% end -%>
 <% unless @route_data.nil? -%>
   route_data   = <%= @route_data %>
 <% end -%>

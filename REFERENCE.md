@@ -19,7 +19,7 @@ _Private Classes_
 
 * [`exim::acl`](#eximacl): This define creates a new acl
 * [`exim::acl::statement`](#eximaclstatement): This define creates one acl statement in exims configuration
-* [`exim::addresslist`](#eximaddresslist): 
+* [`exim::addresslist`](#eximaddresslist): This define can be used to create addresslists, which can be referenced later
 * [`exim::authenticator`](#eximauthenticator): This module configures a single authenticator in exims configuration
 * [`exim::domainlist`](#eximdomainlist): This define can be used to create domainlists, which can be referenced later
 * [`exim::hostlist`](#eximhostlist): This define can be used to create hostlists, which can be referenced later
@@ -67,6 +67,14 @@ Name of acl used for data checking
   (runs after SMTP "." command)
 Type: string
 
+##### `acl_smtp_predata`
+
+Data type: `Optional[String]`
+
+Name of acl used for checking after DATA command
+  (runs after SMTP "DATA" but before actual data)
+Type: string
+
 ##### `acl_smtp_mail`
 
 Data type: `Optional[String]`
@@ -84,7 +92,7 @@ Type: string
 
 ##### `acl_smtp_rcpt`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Name of acl used for rcpt checking.
   (runs after SMTP "RCPT TO:" command)
@@ -92,7 +100,7 @@ Type: string
 
 ##### `allow_mx_to_ip`
 
-Data type: `Any`
+Data type: `Optional[Boolean]`
 
 Using an ip instead of an fqdn in DNS MX records violates the RFC,
 this option allows sending mails to these domains anyways.
@@ -149,7 +157,7 @@ Example: ['10.0.0.1', '192.168.178.1']
 
 ##### `config_path`
 
-Data type: `Any`
+Data type: `String`
 
 Path to exims config file, this can be used to create an alternate config file
 for testing purposes.
@@ -161,12 +169,20 @@ Example: "/etc/exim4/exim4.conf_test"
 Data type: `Optional[Array[Integer]]`
 
 SMTP ports to listen on
-Type: array
-Example: ['25','587']
+Type: array of integers
+Example: [25,465,587]
+
+##### `tls_on_connect_ports`
+
+Data type: `Optional[Array[Integer]]`
+
+Ports on which to enable TLs on connect
+Type: array of integers
+Example: [465]
 
 ##### `defaults`
 
-Data type: `Any`
+Data type: `Optional[Boolean]`
 
 Use a default configuration, this creates a simple default config,
 which accepts local mails and forwards it to mail.<domain of your server>
@@ -250,10 +266,10 @@ Type: string
 
 ##### `host_lookup`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Reverse lookup hostname of ips.
-Type: Array
+Type: String
 Example: '*'
 
 ##### `hosts_treat_as_local`
@@ -265,7 +281,7 @@ default is empty
 
 ##### `ignore_bounce_errors_after`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Discard undeliverable bounce messages after this time
 Type String:
@@ -273,14 +289,14 @@ Example: "12d"
 
 ##### `includes`
 
-Data type: `Any`
+Data type: `Optional[Array]`
 
 Include additional config file snippets, files defined here will be included at
 the top of the configuration, but below macros.
 
 ##### `local_from_check`
 
-Data type: `Any`
+Data type: `Optional[Boolean]`
 
 Check and correct From: header from local mails to username@qualify-domain
 
@@ -617,6 +633,13 @@ Data type: `Optional[String]`
 Max size allowed for mails, default is empty
 Example: 100M
 
+##### `mysql_servers`
+
+Data type: `Optional[Array[String]]`
+
+MySQL servers to connect to
+Type: array
+
 ##### `never_users`
 
 Data type: `Optional[Array[String]]`
@@ -655,14 +678,14 @@ deliveries in parallel.
 
 ##### `rfc1413_hosts`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 use identd callback on these hosts.
 Type: array
 
 ##### `rfc1413_query_timeout`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Timeout for identd callback
 
@@ -720,11 +743,29 @@ Data type: `Optional[String]`
 
 Initial response to SMTP connections.
 
+##### `received_header_text`
+
+Data type: `Optional[String]`
+
+Override Received header added to each message.
+
+##### `smtp_receive_timeout`
+
+Data type: `Optional[String]`
+
+Timeout for SMTP activity.
+
 ##### `smtp_reserve_hosts`
 
 Data type: `Optional[Array[String]]`
 
 See "smtp_accept_reserve"
+
+##### `smtp_return_error_details`
+
+Data type: `Optional[Boolean]`
+
+Return more detailed SMTP error messages.
 
 ##### `spamd_address`
 
@@ -867,26 +908,26 @@ The following parameters are available in the `exim::acl::statement` defined typ
 
 ##### `acl_id`
 
-Data type: `Any`
+Data type: `Integer`
 
 Id of parent acl this statement correspondes to.
 The acl-statement is part of the acl with id "acl_id".
 
 ##### `order`
 
-Data type: `Any`
+Data type: `Integer`
 
 Position of this statement in the acl (acl_id).
 
 ##### `action`
 
-Data type: `Any`
+Data type: `String`
 
 The outcome of given acl statement (e.g.: accept)
 
 ##### `conditions`
 
-Data type: `Any`
+Data type: `Optional[Array]`
 
 Conditions to "action"
 Example:
@@ -899,7 +940,7 @@ Default value: `undef`
 
 ##### `disable`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 This option can be used to ignore this acl statement
 even if other options are set.
@@ -912,7 +953,10 @@ Default value: `false`
 
 ### exim::addresslist
 
-The exim::addresslist class.
+This define can be used to create addresslists, which can be referenced later
+
+* **See also**
+http://www.exim.org/exim-html-current/doc/html/spec_html/ch-domain_host_address_and_local_part_lists.html
 
 #### Parameters
 
@@ -920,11 +964,9 @@ The following parameters are available in the `exim::addresslist` defined type.
 
 ##### `addresses`
 
-Data type: `Any`
+Data type: `Array[String]`
 
-
-
-Default value: `undef`
+Array containing a list of hosts
 
 ### exim::authenticator
 
@@ -936,7 +978,7 @@ The following parameters are available in the `exim::authenticator` defined type
 
 ##### `client_name`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 This string is expanded, and the result used as the user name data
 when computing the response to the server’s challenge.
@@ -945,7 +987,7 @@ Default value: `undef`
 
 ##### `client_secret`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 This option must be set for the authenticator to work as a client.
 Its value is expanded and the result used as the secret string when
@@ -955,7 +997,7 @@ Default value: `undef`
 
 ##### `client_send`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Array of authentication data strings. The first string is send with
 the AUTH command. The remaining ones are send in response to prompts
@@ -966,19 +1008,19 @@ Default value: `undef`
 
 ##### `driver`
 
-Data type: `Any`
+Data type: `String`
 
 driver to use for the authenticator
 
 ##### `public_name`
 
-Data type: `Any`
+Data type: `String`
 
 How to anounce the authenticator to the outside (PLAIN/LOGIN)
 
 ##### `server_secret`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 For use with cram_md5, server_secret is expanded
 to obtain the password for that user.
@@ -987,15 +1029,31 @@ Default value: `undef`
 
 ##### `server_condition`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 The authentication check
 
 Default value: `undef`
 
+##### `server_advertise_condition`
+
+Data type: `Optional[String]`
+
+The condition under which to advertise this authenticator
+
+Default value: `undef`
+
+##### `server_debug_print`
+
+Data type: `Optional[String]`
+
+Debug print when authentication debugging is enabled
+
+Default value: `undef`
+
 ##### `server_set_id`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Set the $authenticated_id variable for later use
 
@@ -1003,7 +1061,7 @@ Default value: `undef`
 
 ##### `server_prompts`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Promt used in the smtp session to ask for data  (User: Password:)
 
@@ -1022,15 +1080,13 @@ The following parameters are available in the `exim::domainlist` defined type.
 
 ##### `domains`
 
-Data type: `Any`
+Data type: `Array[String]`
 
 Array containing a list of domains
 
-Default value: `undef`
-
 ##### `path`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 If path is set, domains are listed in a file located in this path, the main config will recieve
 a reference to this file.
@@ -1051,11 +1107,9 @@ The following parameters are available in the `exim::hostlist` defined type.
 
 ##### `hosts`
 
-Data type: `Any`
+Data type: `Array[String]`
 
 Array containing a list of hosts
-
-Default value: `undef`
 
 ### exim::retry
 
@@ -1067,7 +1121,7 @@ The following parameters are available in the `exim::retry` defined type.
 
 ##### `order`
 
-Data type: `Any`
+Data type: `Optional[Integer]`
 
 Determines the order, in which retry statements are evaluated
 
@@ -1075,7 +1129,7 @@ Default value: 1
 
 ##### `error`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Determines on which errors the rule should apply
 
@@ -1083,16 +1137,16 @@ Default value: '*'
 
 ##### `retries`
 
-Data type: `Any`
+Data type: `Optional[Array]`
 
 Timing information for retries
-Type: hash of hashes
+Type: array of arrays
 
 Default value: [['F','4h','5m'],['G','16h','1h','1.5'],['F','4d','6h']]
 
 ##### `domain`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 
 
@@ -1135,12 +1189,7 @@ to which the rule applies and how the rewriting takes place
 
 ### exim::router
 
-override the destination of a generated bounce message
-
-specify a text message which is used when an address can not be routed because of no more routers to try. Default
-message is "Unroutable address"
-
-dont run this router if specified files does not exist
+This module configures a single router in exims configuration
 
 #### Parameters
 
@@ -1148,7 +1197,7 @@ The following parameters are available in the `exim::router` defined type.
 
 ##### `disable`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 If set to true, this router is excluded from the configuration.
 
@@ -1156,13 +1205,15 @@ Default value: `false`
 
 ##### `order`
 
-Data type: `Any`
+Data type: `Optional[Integer]`
 
 Order of routers is important, set it here
 
+Default value: 0
+
 ##### `address_data`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Set the address_data variable
 
@@ -1170,7 +1221,7 @@ Default value: `undef`
 
 ##### `caseful_local_part`
 
-Data type: `Any`
+Data type: `Optional[Boolean]`
 
 Sets the caseful_local_part option.
 
@@ -1178,7 +1229,7 @@ Default value: `undef`
 
 ##### `comment`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 Comment a router, this will be placed as a comment just above
 the router.
@@ -1187,13 +1238,13 @@ Default value: `undef`
 
 ##### `driver`
 
-Data type: `Any`
+Data type: `String`
 
 Sets the type of router.
 
 ##### `allow_defer`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 If set to true, the router can defer messages if needed.
 
@@ -1201,7 +1252,7 @@ Default value: `false`
 
 ##### `allow_fail`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 If set to true, the router can fail messages if needed.
 
@@ -1209,7 +1260,7 @@ Default value: `false`
 
 ##### `allow_filter`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 If set to true, filters can be used.
 
@@ -1217,7 +1268,7 @@ Default value: `false`
 
 ##### `condition`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 (Advanced) Conditions when this router should be used
 
@@ -1225,7 +1276,7 @@ Default value: `undef`
 
 ##### `data`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Data source for the rewrite router
 
@@ -1233,7 +1284,7 @@ Default value: `undef`
 
 ##### `debug_print`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Used to print debug information
 
@@ -1241,7 +1292,7 @@ Default value: `undef`
 
 ##### `domains`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 Domains for which this router should be used.
 
@@ -1249,7 +1300,7 @@ Default value: `undef`
 
 ##### `file_transport`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Set the file_transport, used if the outcome of the router points to a file
 
@@ -1257,7 +1308,7 @@ Default value: `undef`
 
 ##### `file`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Set the file that contains the filter rules.
 
@@ -1265,7 +1316,7 @@ Default value: `undef`
 
 ##### `headers_add`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 Add these Headers to a message
 
@@ -1273,7 +1324,7 @@ Default value: `undef`
 
 ##### `headers_remove`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 Remove these Headers to a message
 
@@ -1281,7 +1332,7 @@ Default value: `undef`
 
 ##### `host_find_failed`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Relevant to the manualroute router, it determines what shoud
 happen if the used host can't be resolved to an IP address.
@@ -1290,7 +1341,7 @@ Default value: `undef`
 
 ##### `ignore_target_hosts`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 remove this host from hostlists gererated by this router
 
@@ -1298,7 +1349,7 @@ Default value: `undef`
 
 ##### `local_parts`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 The router is run only if the local part of the address matches the list.
 
@@ -1306,7 +1357,7 @@ Default value: `undef`
 
 ##### `local_part_prefix`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Define a prefix, present on localparts
 
@@ -1314,7 +1365,7 @@ Default value: `undef`
 
 ##### `local_part_suffix`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Define a suffix, present on localparts
 
@@ -1322,7 +1373,7 @@ Default value: `undef`
 
 ##### `local_part_prefix_optional`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 Is the prefix optional?
 
@@ -1330,7 +1381,7 @@ Default value: `false`
 
 ##### `local_part_suffix_optional`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 Is the suffix optional?
 
@@ -1338,7 +1389,7 @@ Default value: `false`
 
 ##### `no_address_test`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 Skip this router in address testing mode (exim -bt)
 
@@ -1346,7 +1397,7 @@ Default value: `false`
 
 ##### `no_more`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 If conditions are met for this router, but the router can't process
 this mail, the address fails instead of handeld down to the next router.
@@ -1355,7 +1406,7 @@ Default value: `false`
 
 ##### `no_verify`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 Skip this router when verifying addresses.
 
@@ -1363,15 +1414,23 @@ Default value: `false`
 
 ##### `pipe_transport`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Set the pipe_transport, used if the outcome of the router points to a pipe
 
 Default value: `undef`
 
+##### `reply_transport`
+
+Data type: `Optional[String]`
+
+Set the reply_transport, used if the outcome of the router points to mail or vacation
+
+Default value: `undef`
+
 ##### `qualify_preserve_domain`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 For redirect routers
 If an unqualified address (one without a domain) is generated, it is qualified with the domain of the parent address.
@@ -1380,7 +1439,7 @@ Default value: `false`
 
 ##### `route_data`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 If this option is set, it must expand to yield the data part of a routing rule.
 
@@ -1388,7 +1447,7 @@ Default value: `undef`
 
 ##### `route_list`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Target server used by manualroute router.
 
@@ -1396,7 +1455,7 @@ Default value: `undef`
 
 ##### `same_domain_copy_routing`
 
-Data type: `Any`
+Data type: `Optional[Boolean]`
 
 This option copys routing information to all mails targeting the same domain.
 
@@ -1404,7 +1463,7 @@ Default value: `undef`
 
 ##### `self`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 The self option specifies what happens when the first host on the list turns out to be the local host.
 See official documentation for more details.
@@ -1413,7 +1472,7 @@ Default value: `undef`
 
 ##### `senders`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 If this option is set, the router is skipped unless the message’s sender address matches something on the list.
 
@@ -1421,7 +1480,7 @@ Default value: `undef`
 
 ##### `transport`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 Which transport should be used to send mails.
 
@@ -1429,7 +1488,7 @@ Default value: `undef`
 
 ##### `unseen`
 
-Data type: `Boolean`
+Data type: `Optional[Boolean]`
 
 When this option is set true, routing does not cease if the router accepts the address.
 
@@ -1437,7 +1496,7 @@ Default value: `false`
 
 ##### `user`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
 When a router queues an address for a transport, and the transport does not specify a user,
 the user given here is used when running the delivery process.
@@ -1446,31 +1505,37 @@ Default value: `undef`
 
 ##### `errors_to`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
-
+override the destination of a generated bounce message
 
 Default value: `undef`
 
 ##### `cannot_route_message`
 
-Data type: `Any`
+Data type: `Optional[String]`
 
-
+specify a text message which is used when an address can not be routed because of no more routers to try. Default
+message is "Unroutable address"
 
 Default value: `undef`
 
 ##### `require_files`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
-
+dont run this router if specified files does not exist
 
 Default value: `undef`
 
 ### exim::transport
 
 This module configures a single transport in exims configuration
+
+* **TODO** The transport class is a catch all and provides options for different
+transports. This is not optimal. I suggest refactoring into several
+subclasses with specific options and validating THIS class' type maybe
+Volunteers, step up!
 
 #### Parameters
 
@@ -1486,64 +1551,106 @@ Default value: `false`
 
 ##### `comment`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 Comment a router, this will be placed as a comment just above
-the router.
+the router
 
 Default value: `undef`
 
 ##### `driver`
 
-Data type: `Any`
+Data type: `String[1]`
 
-Type of transport.
-
-##### `protocol`
-
-Data type: `Any`
-
-Protocol of transport.
+Type of transport
 
 Default value: `undef`
 
+##### `protocol`
+
+Data type: `Optional[String[1]]`
+
+Protocol of transport
+
+Default value: `undef`
+
+##### `quota`
+
+Data type: `Optional[String[1]]`
+
+Quota
+
+Default value: `undef`
+
+##### `quota_warn_threshold`
+
+Data type: `Optional[String[1]]`
+
+Quota warning threshold
+
+Default value: `undef`
+
+##### `quota_warn_message`
+
+Data type: `Optional[String[1]]`
+
+Quota warning message
+
+Default value: `undef`
+
+##### `quota_is_inclusive`
+
+Data type: `Boolean`
+
+Whether quota is inclusive
+
+Default value: `true`
+
+##### `maildir_use_size_file`
+
+Data type: `Boolean`
+
+Use maildir size file for quota
+
+Default value: `false`
+
 ##### `connect_timeout`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-Timeout when connecting to remote Servers.
+Timeout when connecting to remote Servers
 
 Default value: `undef`
 
 ##### `connection_max_messages`
 
-Data type: `Any`
+Data type: `Optional[Integer]`
 
-Set the maximum number of messages that can be transfered in a single connection.
+Set the maximum number of messages that can be transfered in a single connection
 
 Default value: `undef`
 
 ##### `exim_environment`
 
-Data type: `Any`
+Data type: `Optional[Tuple]`
 
-This option is used to add additional variables to the environment in which the command runs.
+This option is used to add additional variables to the environment in which the command runs
 
 Default value: `undef`
 
 ##### `fallback_hosts`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 If Exim is unable to deliver to any of the hosts for a particular address, and the
 errors are not permanent rejections, the address is put on a separate transport
-queue with its host list replaced by the fallback hosts.
+queue with its host list replaced by the fallback hosts
 
 Default value: `undef`
 
 ##### `from`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
 sets the from address
 
@@ -1551,77 +1658,77 @@ Default value: `undef`
 
 ##### `helo_data`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-sets the helo name exim uses when connecting to a remote server.
+sets the helo name exim uses when connecting to a remote server
 
 Default value: `undef`
 
 ##### `headers_remove`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
-list of headers to remove.
+list of headers to remove
 
 Default value: `undef`
 
 ##### `headers_add`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
-list of headers to add.
+list of headers to add
 
 Default value: `undef`
 
 ##### `hosts`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 The hosts option specifies a list of hosts to be used if the address
 being processed does not have any hosts associated with it. The hosts
 specified by hosts are also used, whether or not the address has its
-own hosts, if hosts_override is set.
+own hosts, if hosts_override is set
 
 Default value: `undef`
 
 ##### `hosts_require_auth`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 Specifies a list of servers for which authentication must succeed before Exim will try
-to transfer a message. If authentication fails for one of these servers, delivery is deferred.
+to transfer a message. If authentication fails for one of these servers, delivery is deferred
 
 Default value: `undef`
 
 ##### `hosts_require_tls`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
-List of hosts requiring tls, messages are only sent if tls can be established.
+List of hosts requiring tls, messages are only sent if tls can be established
 
 Default value: `undef`
 
 ##### `hosts_try_auth`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 The host_try_auth option provides a list of hosts to which, provided they announce
-authentication support, Exim will attempt to authenticate as a client when it connects.
+authentication support, Exim will attempt to authenticate as a client when it connects
 
 Default value: `undef`
 
 ##### `path`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
 This option specifies the string that is set up in the
-PATH environment variable of the subprocess.
+PATH environment variable of the subprocess
 
 Default value: `undef`
 
 ##### `port`
 
-Data type: `Any`
+Data type: `Optional[Integer]`
 
 The port exim connects to on the remote server
 
@@ -1631,7 +1738,7 @@ Default value: `undef`
 
 Data type: `Boolean`
 
-If set to true, the command output is returned in the bounce message in case of failure.
+If set to true, the command output is returned in the bounce message in case of failure
 
 Default value: `false`
 
@@ -1647,9 +1754,9 @@ Default value: `false`
 
 ##### `timeout`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-If the command fails to complete within this time, it is killed.
+If the command fails to complete within this time, it is killed
 
 Default value: `undef`
 
@@ -1658,13 +1765,13 @@ Default value: `undef`
 Data type: `Boolean`
 
 Set this to true for timeouts to become temporary errors, causing the
-delivery to be deferred.
+delivery to be deferred
 
 Default value: `false`
 
 ##### `tls_dh_min_bits`
 
-Data type: `Any`
+Data type: `Optional[Integer]`
 
 set the minimum acceptable number of bits in the Diffie-Hellman prime
 offered by a server,
@@ -1674,23 +1781,23 @@ Default value: `undef`
 
 ##### `tls_verify_certificates`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-Give a path to certificates agains which connections are verified.
+Give a path to certificates agains which connections are verified
 
 Default value: `undef`
 
 ##### `interface`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-sets the outgoing ip for smtp transports.
+sets the outgoing ip for smtp transports
 
 Default value: `undef`
 
 ##### `dkim_domain`
 
-Data type: `Any`
+Data type: `Optional[Array[String]]`
 
 The domain(s) you want to sign with
 
@@ -1698,64 +1805,64 @@ Default value: `undef`
 
 ##### `dkim_selector`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-This sets the key selector string.
+This sets the key selector string
 
 Default value: `undef`
 
 ##### `dkim_private_key`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
 This sets the private key to use. You can use the $dkim_domain and
-$dkim_selector expansion variables to determine the private key to use.
+$dkim_selector expansion variables to determine the private key to use
 The result can either
- - be a valid RSA private key in ASCII armor, including line breaks.
+ - be a valid RSA private key in ASCII armor, including line breaks
  - start with a slash, in which case it is treated as a file that contains
-   the private key.
+ the private key
  - be "0", "false" or the empty string, in which case the message will not
-   be signed. This case will not result in an error, even if dkim_strict
-   is set.
+ be signed. This case will not result in an error, even if dkim_strict
+ is set
 
 Default value: `undef`
 
 ##### `dkim_canon`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-This option sets the canonicalization method used when signing a message.
-The DKIM RFC currently supports two methods: "simple" and "relaxed".
+This option sets the canonicalization method used when signing a message
+The DKIM RFC currently supports two methods: "simple" and "relaxed"
 Note: the current implementation only supports using the same
-canonicalization method for both headers and body.
+canonicalization method for both headers and body
 
 Default value: `undef`
 
 ##### `dkim_strict`
 
-Data type: `Any`
+Data type: `Optional[Integer]`
 
 This option defines how Exim behaves when signing a message that should be
-signed fails for some reason.
-When the expansion evaluates to either "1" or "true", Exim will defer.
-Otherwise Exim will send the message unsigned.
-You can use the $dkim_domain and $dkim_selector expansion variables here.
+signed fails for some reason
+When the expansion evaluates to either "1" or "true", Exim will defer
+Otherwise Exim will send the message unsigned
+You can use the $dkim_domain and $dkim_selector expansion variables here
 
 Default value: `undef`
 
 ##### `once`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
 Use:autoreply;Type:string;Default:unset; This option names a file or DBM
 database in which a record of each To: recipient is kept when the message
-is specified by the transport.
+is specified by the transport
 
 Default value: `undef`
 
 ##### `once_repeat`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
 Use:autoreply;Type:time;Default:0s; specifies a maximum time between
 repeats
@@ -1764,59 +1871,43 @@ Default value: `undef`
 
 ##### `once_file_size`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
 Use:autoreply;Type:integer;Default:0; If once_file_size is zero, a DBM
 database is used to remember recipients, and it is allowed to grow as large
 as necessary. If once_file_size is set greater than zero, it changes the
 way Exim implements the once option. Instead of using a DBM file to record
 every recipient it sends to, it uses a regular file, whose size will never
-get larger than the given value.
+get larger than the given value
 
 Default value: `undef`
 
 ##### `headers`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
 Use:autoreply;Type:string;Default:unset; This specifies additional RFC 2822
 headers that are to be added to the message when the message is specified
-by the transport. Several can be given by using “\n” to separate them.
-There is no check on the format.
+by the transport. Several can be given by using “\n” to separate them
+There is no check on the format
 
 Default value: `undef`
 
 ##### `return_message`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
 Use:autoreply;Type:boolean;Default:false; If this is set, a copy of the
 original message is returned with the new message, subject to the maximum
-size set in the return_size_limit global configuration option.
+size set in the return_size_limit global configuration option
 
 Default value: `undef`
 
 ##### `debug_print`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
 Used to print debug information
-
-Default value: `undef`
-
-##### `batch_max`
-
-Data type: `Any`
-
-
-
-Default value: `undef`
-
-##### `command`
-
-Data type: `Any`
-
-
 
 Default value: `undef`
 
@@ -1824,71 +1915,48 @@ Default value: `undef`
 
 Data type: `Boolean`
 
-
+If this option is true, a Delivery-date: header is added to the message
+This gives the actual time the delivery was made. As this is not a
+standard header, Exim has a configuration option (delivery_date_remove)
+which requests its removal from incoming messages, so that delivered
+messages can safely be resent to other recipients
 
 Default value: `false`
-
-##### `directory_mode`
-
-Data type: `Any`
-
-
-
-Default value: `undef`
-
-##### `directory`
-
-Data type: `Any`
-
-
-
-Default value: `undef`
 
 ##### `envelope_to_add`
 
 Data type: `Boolean`
 
-
+If this option is true, an Envelope-to: header is added to the message
+This gives the original address(es) in the incoming envelope that caused
+this delivery to happen. More than one address may be present if batch or
+bsmtp is set on transports that support them, or if more than one original
+address was aliased or forwarded to the same final address. As this is not
+a standard header, Exim has a configuration option (envelope_to_remove)
+which requests its removal from incoming messages, so that delivered
+messages can safely be resent to other recipients
 
 Default value: `false`
-
-##### `file`
-
-Data type: `Any`
-
-
-
-Default value: `undef`
 
 ##### `freeze_exec_fail`
 
 Data type: `Boolean`
 
-
+Failure to exec the command in a pipe transport is by default treated like
+any other failure while running the command. However, if freeze_exec_fail
+is set, failure to exec is treated specially, and causes the message to be
+frozen, whatever the setting of ignore_status
 
 Default value: `false`
-
-##### `group`
-
-Data type: `Any`
-
-
-
-Default value: `undef`
-
-##### `home_directory`
-
-Data type: `Any`
-
-
-
-Default value: `undef`
 
 ##### `initgroups`
 
 Data type: `Boolean`
 
-
+If this option is true and the uid for the delivery process is provided by
+the transport, the initgroups() function is called when running the
+transport to ensure that any additional groups associated with the uid are
+set up
 
 Default value: `false`
 
@@ -1896,7 +1964,8 @@ Default value: `false`
 
 Data type: `Boolean`
 
-
+This limits the number of addresses that can be handled in a single
+delivery. See the description of local delivery batching in chapter 25
 
 Default value: `false`
 
@@ -1904,47 +1973,18 @@ Default value: `false`
 
 Data type: `Boolean`
 
-
+If this option is set with the directory option, the delivery is into a
+new file, in the “maildir” format that is used by other mail software
 
 Default value: `false`
-
-##### `maildir_tag`
-
-Data type: `Any`
-
-
-
-Default value: `undef`
-
-##### `message_prefix`
-
-Data type: `Any`
-
-
-
-Default value: `undef`
-
-##### `message_suffix`
-
-Data type: `Any`
-
-
-
-Default value: `undef`
-
-##### `mode`
-
-Data type: `Any`
-
-
-
-Default value: `undef`
 
 ##### `rcpt_include_affixes`
 
 Data type: `Boolean`
 
-
+When this option is false (the default), and an address that has had any
+affixes (prefixes or suffixes) removed from the local part is delivered
+by any form of SMTP or LMTP, the affixes are not included
 
 Default value: `false`
 
@@ -1952,63 +1992,179 @@ Default value: `false`
 
 Data type: `Boolean`
 
-
+If this option is true, a Return-path: header is added to the message
+Although the return path is normally available in the prefix line of BSD
+mailboxes, this is commonly not displayed by MUAs, and so the user does not
+have easy access to it
 
 Default value: `false`
 
+##### `temp_errors`
+
+Data type: `Optional[Array[String]]`
+
+This option contains either a colon-separated list of numbers, or a
+single asterisk
+
+Default value: `undef`
+
+##### `batch_max`
+
+Data type: `Optional[Integer]`
+
+This limits the number of addresses that can be handled in a single
+delivery. See the description of local delivery batching in chapter 25
+
+Default value: `undef`
+
+##### `command`
+
+Data type: `Optional[String[1]]`
+
+This option need not be set when pipe is being used to deliver to pipes
+obtained from address expansions
+
+Default value: `undef`
+
+##### `directory`
+
+Data type: `Optional[String[1]]`
+
+When directory is set, the string is expanded, and the message is delivered
+into a new file or files in or below the given directory, instead of being
+appended to a single mailbox file
+
+Default value: `undef`
+
+##### `directory_mode`
+
+Data type: `Optional[String[1]]`
+
+If appendfile creates any directories as a result of the create_directory
+option, their mode is specified by this option
+
+Default value: `undef`
+
+##### `file`
+
+Data type: `Optional[String[1]]`
+
+The file option specifies a single file, to which the message is appended
+
+Default value: `undef`
+
+##### `group`
+
+Data type: `Optional[String[1]]`
+
+This option specifies a gid for running the transport process
+
+Default value: `undef`
+
+##### `home_directory`
+
+Data type: `Optional[String[1]]`
+
+This option specifies a home directory setting for a local transport
+
+Default value: `undef`
+
+##### `maildir_tag`
+
+Data type: `Optional[String[1]]`
+
+This option applies only to deliveries in maildir format, and is described
+in section 26.5 below
+
+Default value: `undef`
+
+##### `message_prefix`
+
+Data type: `Optional[String[1]]`
+
+The string specified here is expanded and output at the start of every
+message
+
+Default value: `undef`
+
+##### `message_suffix`
+
+Data type: `Optional[String[1]]`
+
+The string specified here is expanded and output at the end of every
+message
+
+Default value: `undef`
+
+##### `message_size_limit`
+
+Data type: `Optional[String[1]]`
+
+The string specified here is expanded and determines the maximum size of the message
+
+Default value: `undef`
+
+##### `mode`
+
+Data type: `Optional[String[1]]`
+
+If the output file is created, it is given this mode
+
+Default value: `undef`
+
 ##### `socket`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-
+This option must be set if command is not set. The result of expansion must
+be the name of a Unix domain socket
 
 Default value: `undef`
 
 ##### `subject`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-
-
-Default value: `undef`
-
-##### `temp_errors`
-
-Data type: `Any`
-
-
+This specifies the contents of the Subject: header when the message is
+specified by the transport
 
 Default value: `undef`
 
 ##### `text`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-
+This specifies a single string to be used as the body of the message when
+the message is specified by the transport. If both text and file are set,
+the text comes first
 
 Default value: `undef`
 
 ##### `to`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-
+This specifies recipients of the message and the contents of the To: header
+when the message is specified by the transport
 
 Default value: `undef`
 
 ##### `transport_filter`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-
+This option sets up a filtering (in the Unix shell sense) process for
+messages at transport time. It should not be confused with mail filtering
+as set up by individual users or via a system filter
 
 Default value: `undef`
 
 ##### `user`
 
-Data type: `Any`
+Data type: `Optional[String[1]]`
 
-
+This option specifies the user under whose uid the delivery process is to
+be run
 
 Default value: `undef`
 

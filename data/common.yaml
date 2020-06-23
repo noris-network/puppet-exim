@@ -17,16 +17,18 @@ exim::log_tls_peerdn: true
 exim::macros: {}
 exim::manage_service: false
 exim::never_users: [ 'root' ]
+exim::mysql_servers: ~
 exim::print_topbitchars: false
 exim::queue_only: false
 exim::rfc1413_hosts: '*'
 exim::rfc1413_query_timeout: '5s'
 exim::timeout_frozen_after: '7d'
-exim::tls_advertise_hosts: [ '*' ]
+exim::tls_advertise_hosts: ~
 #
 exim::acl_not_smtp: ~
 exim::acl_smtp_auth: ~
 exim::acl_smtp_data: ~
+exim::acl_smtp_predata: ~
 exim::acl_smtp_mail: ~
 exim::acl_smtp_mime: ~
 exim::allow_mx_to_ip: ~
@@ -37,6 +39,7 @@ exim::check_spool_space: ~
 exim::chunking_advertise_hosts: ~
 exim::config_path: ~
 exim::daemon_smtp_ports: ~
+exim::tls_on_connect_ports: ~
 exim::delay_warning: ~
 exim::deliver_queue_load_max: ~
 exim::disable_ipv6: ~
@@ -98,6 +101,7 @@ exim::qualify_domain: ~
 exim::queue_only_load: ~
 exim::queue_run_max: ~
 exim::queue_smtp_domains: ~
+exim::received_header_text: ~
 exim::remote_max_parallel: ~
 exim::smtp_accept_max: ~
 exim::smtp_accept_max_nonmail: ~
@@ -107,7 +111,9 @@ exim::smtp_accept_queue: ~
 exim::smtp_accept_queue_per_connection: ~
 exim::smtp_accept_reserve: ~
 exim::smtp_banner: ~
+exim::smtp_receive_timeout: ~
 exim::smtp_reserve_hosts: ~
+exim::smtp_return_error_details: ~
 exim::spamd_address: ~
 exim::split_spool_directory: ~
 exim::syslog_timestamp: ~

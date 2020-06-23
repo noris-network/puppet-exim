@@ -12,7 +12,7 @@ define exim::hostlist (
 
   include exim
 
-  $list     = $hosts
+  $list     = regsubst($hosts, ':', '::', 'G')
   $listtype = 'hostlist'
   concat::fragment { "hostlist-${title}":
     target  => $::exim::config_path,

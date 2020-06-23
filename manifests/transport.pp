@@ -20,6 +20,21 @@
 # @param protocol
 #   Protocol of transport
 #
+# @param quota
+#   Quota
+#
+# @param quota_warn_threshold
+#   Quota warning threshold
+#
+# @param quota_warn_message
+#   Quota warning message
+#
+# @param quota_is_inclusive
+#   Whether quota is inclusive
+#
+# @param maildir_use_size_file
+#   Use maildir size file for quota
+#
 # @param connect_timeout
 #   Timeout when connecting to remote Servers
 #
@@ -247,6 +262,9 @@
 #   The string specified here is expanded and output at the end of every
 #   message
 #
+# @param message_size_limit
+#   The string specified here is expanded and determines the maximum size of the message
+#
 # @param mode
 #   If the output file is created, it is given this mode
 #
@@ -322,12 +340,18 @@ define exim::transport (
   Optional[String[1]]     $maildir_tag               = undef,
   Optional[String[1]]     $message_prefix            = undef,
   Optional[String[1]]     $message_suffix            = undef,
+  Optional[String[1]]     $message_size_limit        = undef,
   Optional[String[1]]     $mode                      = undef,
   Optional[String[1]]     $once                      = undef,
   Optional[String[1]]     $once_file_size            = undef,
   Optional[String[1]]     $once_repeat               = undef,
   Optional[String[1]]     $path                      = undef,
   Optional[String[1]]     $protocol                  = undef,
+  Optional[String[1]]     $quota                     = undef,
+  Optional[String[1]]     $quota_warn_threshold      = undef,
+  Optional[String[1]]     $quota_warn_message        = undef,
+  Boolean                 $quota_is_inclusive        = true,
+  Boolean                 $maildir_use_size_file     = false,
   Optional[String[1]]     $return_message            = undef,
   Optional[String[1]]     $socket                    = undef,
   Optional[String[1]]     $subject                   = undef,

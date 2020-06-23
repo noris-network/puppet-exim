@@ -12,6 +12,11 @@
 #     (runs after SMTP "." command)
 #   Type: string
 #
+# @param acl_smtp_predata
+#   Name of acl used for checking after DATA command
+#     (runs after SMTP "DATA" but before actual data)
+#   Type: string
+#
 # @param acl_smtp_mail
 #   Name of acl used for mail checking
 #     (runs after SMTP "MAIL FROM:" command)
@@ -70,8 +75,13 @@
 #
 # @param daemon_smtp_ports
 #   SMTP ports to listen on
-#   Type: array
-#   Example: ['25','587']
+#   Type: array of integers
+#   Example: [25,465,587]
+#
+# @param tls_on_connect_ports
+#   Ports on which to enable TLs on connect
+#   Type: array of integers
+#   Example: [465]
 #
 # @param defaults
 #   Use a default configuration, this creates a simple default config,
@@ -315,6 +325,10 @@
 #   Max size allowed for mails, default is empty
 #   Example: 100M
 #
+# @param mysql_servers
+#   MySQL servers to connect to
+#   Type: array
+#
 # @param never_users
 #   Do not run deliverys as these users
 #   Type: array
@@ -373,8 +387,17 @@
 # @param smtp_banner
 #   Initial response to SMTP connections.
 #
+# @param received_header_text
+#   Override Received header added to each message.
+#
+# @param smtp_receive_timeout
+#   Timeout for SMTP activity.
+#
 # @param smtp_reserve_hosts
 #   See "smtp_accept_reserve"
+#
+# @param smtp_return_error_details
+#   Return more detailed SMTP error messages.
 #
 # @param spamd_address
 #   Configure a spamd socket here.
@@ -433,6 +456,7 @@ class exim (
   Optional[String] $acl_not_smtp,
   Optional[String] $acl_smtp_auth,
   Optional[String] $acl_smtp_data,
+  Optional[String] $acl_smtp_predata,
   Optional[String] $acl_smtp_mail,
   Optional[String] $acl_smtp_mime,
   Optional[String] $acl_smtp_rcpt,
@@ -445,6 +469,7 @@ class exim (
   Optional[Array[String]] $queue_smtp_domains,
   String $config_path,
   Optional[Array[Integer]] $daemon_smtp_ports,
+  Optional[Array[Integer]] $tls_on_connect_ports,
   Optional[Boolean] $defaults,
   Optional[Array[String]] $delay_warning,
   Optional[Integer] $deliver_queue_load_max,
@@ -516,6 +541,7 @@ class exim (
   Boolean $manage_service,
   Optional[Boolean] $message_logs,
   Optional[String] $message_size_limit,
+  Optional[Array[String]] $mysql_servers,
   Optional[Array[String]] $never_users,
   Optional[Boolean] $untrusted_set_sender,
   Optional[Boolean] $print_topbitchars,
@@ -523,6 +549,7 @@ class exim (
   Optional[String] $qualify_domain,
   Optional[Integer] $queue_only_load,
   Optional[Integer] $queue_run_max,
+  Optional[String] $received_header_text,
   Optional[Integer] $remote_max_parallel,
   Optional[String] $rfc1413_hosts,
   Optional[String] $rfc1413_query_timeout,
@@ -534,7 +561,9 @@ class exim (
   Optional[Integer] $smtp_accept_queue_per_connection,
   Optional[Integer] $smtp_accept_reserve,
   Optional[String] $smtp_banner,
+  Optional[String] $smtp_receive_timeout,
   Optional[Array[String]] $smtp_reserve_hosts,
+  Optional[Boolean] $smtp_return_error_details,
   Optional[String] $spamd_address,
   Optional[Boolean] $split_spool_directory,
   Optional[Boolean] $syslog_timestamp,
