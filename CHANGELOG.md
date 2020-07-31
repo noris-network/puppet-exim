@@ -65,6 +65,7 @@ All notable changes to this project will be documented in this file. The format 
 
 - add new options cannot\_route\_message, tls\_require\_ciphers [\#21](https://github.com/noris-network/puppet-exim/pull/21) ([kroeckelein](https://github.com/kroeckelein))
 - Support log\_timezone configuration parameter [\#20](https://github.com/noris-network/puppet-exim/pull/20) ([lorenzbausch](https://github.com/lorenzbausch))
+- Dkim [\#14](https://github.com/noris-network/puppet-exim/pull/14) ([jvetter83](https://github.com/jvetter83))
 
 ## [v0.2.7](https://github.com/noris-network/puppet-exim/tree/v0.2.7) (2018-04-18)
 
@@ -105,7 +106,6 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
-- Dkim [\#14](https://github.com/noris-network/puppet-exim/pull/14) ([jvetter83](https://github.com/jvetter83))
 - added support for log\_selector subject, added support for from in transports, added support for chunking\_advertise\_hosts  [\#13](https://github.com/noris-network/puppet-exim/pull/13) ([jvetter83](https://github.com/jvetter83))
 - Add client support for authenticators [\#8](https://github.com/noris-network/puppet-exim/pull/8) ([mark0n](https://github.com/mark0n))
 - Add support for auth to transport.pp [\#7](https://github.com/noris-network/puppet-exim/pull/7) ([mark0n](https://github.com/mark0n))
