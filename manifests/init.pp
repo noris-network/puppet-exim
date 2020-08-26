@@ -581,6 +581,7 @@ class exim (
   Optional[String] $exim_light_package,
   Optional[String] $exim_heavy_package,
   Optional[String] $exim_service,
+  Optional[Boolean] $ensure_resources,
 ) {
 
   include ::exim::install
@@ -590,4 +591,23 @@ class exim (
   Class['exim::install']
   -> Class['exim::config']
   ~> Class['exim::service']
+
+  if ($ensure_resources == true) {
+    ensure_resources('exim::acl',
+      lookup('exim::acl',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::acl::statement',
+      lookup('exim::acl::statement',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::router',
+      lookup('exim::router',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::transport',
+      lookup('exim::transport',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::retry',
+      lookup('exim::retry',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::hostlist',
+      lookup('exim::hostlist',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::domainlist',
+      lookup('exim::domainlist',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::authenticator',
+      lookup('exim::authenticator',Optional[Hash], 'deep', {}))
+  }
 }

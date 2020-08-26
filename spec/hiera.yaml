@@ -2,7 +2,7 @@
 version: 5
 
 defaults:
-  datadir: 'data'
+  datadir: '../data'
   data_hash: 'yaml_data'
 
 hierarchy:
@@ -14,3 +14,6 @@ hierarchy:
 
   - name: 'common'
     path: 'common.yaml'
+
+  - name: 'spec_tests'
+    path: 'spec_tests.yaml'
