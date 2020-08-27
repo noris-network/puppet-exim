@@ -1,6 +1,7 @@
 ---
 exim::acl_smtp_rcpt: 'acl_check_rcpt'
 exim::defaults: true
+exim::ensure_resources: false
 exim::heavy: false
 exim::host_lookup: '*'
 exim::ignore_bounce_errors_after: '2d'
@@ -17,21 +18,19 @@ exim::log_tls_peerdn: true
 exim::macros: {}
 exim::manage_service: false
 exim::never_users: [ 'root' ]
-exim::mysql_servers: ~
 exim::print_topbitchars: false
 exim::queue_only: false
 exim::rfc1413_hosts: '*'
 exim::rfc1413_query_timeout: '5s'
 exim::timeout_frozen_after: '7d'
-exim::tls_advertise_hosts: ~
 #
 exim::acl_not_smtp: ~
-exim::acl_smtp_connect: ~
 exim::acl_smtp_auth: ~
+exim::acl_smtp_connect: ~
 exim::acl_smtp_data: ~
-exim::acl_smtp_predata: ~
 exim::acl_smtp_mail: ~
 exim::acl_smtp_mime: ~
+exim::acl_smtp_predata: ~
 exim::allow_mx_to_ip: ~
 exim::auto_thaw: ~
 exim::av_scanner: ~
@@ -40,7 +39,6 @@ exim::check_spool_space: ~
 exim::chunking_advertise_hosts: ~
 exim::config_path: ~
 exim::daemon_smtp_ports: ~
-exim::tls_on_connect_ports: ~
 exim::delay_warning: ~
 exim::deliver_queue_load_max: ~
 exim::disable_ipv6: ~
@@ -97,6 +95,7 @@ exim::log_tls_sni: ~
 exim::log_unknown_in_list: ~
 exim::message_logs: ~
 exim::message_size_limit: ~
+exim::mysql_servers: ~
 exim::openssl_options: ~
 exim::qualify_domain: ~
 exim::queue_only_load: ~
@@ -119,7 +118,9 @@ exim::spamd_address: ~
 exim::split_spool_directory: ~
 exim::syslog_timestamp: ~
 exim::system_filter: ~
+exim::tls_advertise_hosts: ~
 exim::tls_certificate: ~
+exim::tls_on_connect_ports: ~
 exim::tls_privatekey: ~
 exim::tls_require_ciphers: ~
 exim::trusted_users: ~
