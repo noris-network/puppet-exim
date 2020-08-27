@@ -7,23 +7,23 @@ exim::defaults::acls:
         order:  1
         action: 'accept'
         conditions:
-          - hosts:
-            - ':'
+          hosts:
+          - ':'
       'Accept hostlist':
         acl_id: 1
         order:  2
         action: 'accept'
         conditions:
-          - hosts:
-            - '127.0.0.1'
-            - '@'
+          hosts:
+          - '127.0.0.1'
+          - '@'
       'deny all':
         acl_id: 1
         order:  3
         action: 'deny'
         conditions:
-          - message:
-            - 'relay not permitted'
+          message:
+          - 'relay not permitted'
 
 exim::defaults::routers:
   'system_aliases':
@@ -33,7 +33,7 @@ exim::defaults::routers:
       - '@'
     allow_fail: true
     allow_defer: true
-    data: '\${lookup{\$local_part}lsearch{/etc/aliases}}'
+    data: '${lookup{$local_part}lsearch{/etc/aliases}}'
   'smarthost':
     order: 2
     driver: 'manualroute'
