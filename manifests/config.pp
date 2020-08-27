@@ -40,21 +40,21 @@ class exim::config inherits exim {
   }
   if ($::exim::defaults == true) {
     ensure_resources('exim::acl',
-      lookup('exim::::defaults::acls',Optional[Hash], 'deep', {}))
+      lookup('exim::defaults::acls',Optional[Hash], 'deep', {}))
     ensure_resources('exim::acl::statement',
-      lookup('exim::::defaults::acl::statements',Optional[Hash], 'deep', {}))
+      lookup('exim::defaults::acl::statements',Optional[Hash], 'deep', {}))
     ensure_resources('exim::router',
-      lookup('exim::::defaults::routers',Optional[Hash], 'deep', {}))
+      lookup('exim::defaults::routers',Optional[Hash], 'deep', {}))
     ensure_resources('exim::transport',
-      lookup('exim::::defaults::transports',Optional[Hash], 'deep', {}))
+      lookup('exim::defaults::transports',Optional[Hash], 'deep', {}))
     ensure_resources('exim::retry',
-      lookup('exim::::defaults::retries',Optional[Hash], 'deep', {}))
+      lookup('exim::defaults::retries',Optional[Hash], 'deep', {}))
     ensure_resources('exim::hostlist',
-      lookup('exim::::defaults::hostlists',Optional[Hash], 'deep', {}))
+      lookup('exim::defaults::hostlists',Optional[Hash], 'deep', {}))
     ensure_resources('exim::domainlist',
-      lookup('exim::::defaults::domainlists',Optional[Hash], 'deep', {}))
+      lookup('exim::defaults::domainlists',Optional[Hash], 'deep', {}))
     ensure_resources('exim::authenticator',
-      lookup('exim::::defaults::authenticators',Optional[Hash], 'deep', {}))
+      lookup('exim::defaults::authenticators',Optional[Hash], 'deep', {}))
   }
   if ($::exim::ensure_resources == true) {
     ensure_resources('exim::acl',

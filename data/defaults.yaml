@@ -27,18 +27,18 @@ exim::defaults::acls:
 
 exim::defaults::routers:
   'system_aliases':
-    order: 1,
-    driver: 'redirect',
+    order: 1
+    driver: 'redirect'
     domains:
       - '@'
     allow_fail: true
     allow_defer: true
     data: '\${lookup{\$local_part}lsearch{/etc/aliases}}'
   'smarthost':
-    order: 2,
-    driver: 'manualroute',
-    transport: 'remote_smtp',
-    route_list: '* mail.%{facts[networking][domain]} byname', #TODO
+    order: 2
+    driver: 'manualroute'
+    transport: 'remote_smtp'
+    route_list: '* mail.%{facts[networking][domain]} byname'
     host_find_failed: 'defer'
     same_domain_copy_routing: true
     no_more: true
@@ -47,5 +47,5 @@ exim::defaults::transports:
   'remote_smtp':
     driver: 'smtp'
 
-exim::defaults::retries':
+exim::defaults::retries:
   '*': {}
