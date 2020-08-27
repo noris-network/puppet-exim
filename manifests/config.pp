@@ -38,52 +38,40 @@ class exim::config inherits exim {
     content => template("${module_name}/rewrite/rewrite-header.erb"),
     order   => '6000',
   }
-
-  if $::exim::defaults {
-    exim::acl {'acl_check_rcpt':
-      statements => {
-        'Accept local'    => {
-          acl_id     => 1,
-          order      => 1,
-          action     => 'accept',
-          conditions => [ ['hosts',[':']] ],
-        },
-        'Accept hostlist' => {
-          acl_id     => 1,
-          order      => 2,
-          action     => 'accept',
-          conditions => [ ['hosts'   , ['127.0.0.1','@']], ]
-        },
-        'deny all'        => {
-          acl_id     => 1,
-          order      => 3,
-          action     => 'deny',
-          conditions => [ ['message' , ['relay not permitted']], ]
-        },
-      }
-    }
-
-    exim::router {'system_aliases':
-      order       => 1,
-      driver      => 'redirect',
-      domains     => ['@'],
-      allow_fail  => true,
-      allow_defer => true,
-      data        => "\${lookup{\$local_part}lsearch{/etc/aliases}}",
-    }
-    exim::router {'smarthost':
-      order                    => 2,
-      driver                   => 'manualroute',
-      transport                => 'remote_smtp',
-      route_list               => "* mail.${facts['networking']['domain']} byname",
-      host_find_failed         => 'defer',
-      same_domain_copy_routing => true,
-      no_more                  => true,
-    }
-
-    exim::transport {'remote_smtp':
-      driver          => 'smtp',
-    }
-    exim::retry {'*':}
+  if ($::exim::defaults == true) {
+    ensure_resources('exim::acl',
+      lookup('exim::::defaults::acls',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::acl::statement',
+      lookup('exim::::defaults::acl::statements',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::router',
+      lookup('exim::::defaults::routers',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::transport',
+      lookup('exim::::defaults::transports',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::retry',
+      lookup('exim::::defaults::retries',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::hostlist',
+      lookup('exim::::defaults::hostlists',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::domainlist',
+      lookup('exim::::defaults::domainlists',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::authenticator',
+      lookup('exim::::defaults::authenticators',Optional[Hash], 'deep', {}))
+  }
+  if ($::exim::ensure_resources == true) {
+    ensure_resources('exim::acl',
+      lookup('exim::acls',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::acl::statement',
+      lookup('exim::acl::statements',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::router',
+      lookup('exim::routers',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::transport',
+      lookup('exim::transports',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::retry',
+      lookup('exim::retries',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::hostlist',
+      lookup('exim::hostlists',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::domainlist',
+      lookup('exim::domainlists',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::authenticator',
+      lookup('exim::authenticators',Optional[Hash], 'deep', {}))
   }
 }
