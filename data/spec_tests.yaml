@@ -1,3 +1,5 @@
 ---
+exim::defaults: true
+
 exim::retries:
-  'ensureresource': {} 
+  'ensureresource': {}

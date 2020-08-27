@@ -1,0 +1,51 @@
+---
+exim::defaults::acls:
+  'acl_check_rcpt':
+    statements:
+      'Accept local':
+        acl_id: 1
+        order:  1
+        action: 'accept'
+        conditions:
+          hosts:
+          - ':'
+      'Accept hostlist':
+        acl_id: 1
+        order:  2
+        action: 'accept'
+        conditions:
+          hosts:
+          - '127.0.0.1'
+          - '@'
+      'deny all':
+        acl_id: 1
+        order:  3
+        action: 'deny'
+        conditions:
+          message:
+          - 'relay not permitted'
+
+exim::defaults::routers:
+  'system_aliases':
+    order: 1
+    driver: 'redirect'
+    domains:
+      - '@'
+    allow_fail: true
+    allow_defer: true
+    data: '${lookup{$local_part}lsearch{/etc/aliases}}'
+  'smarthost':
+    order: 2
+    driver: 'manualroute'
+    transport: 'remote_smtp'
+    route_list: '* mail.%{facts.networking.domain} byname'
+    host_find_failed: 'defer'
+    same_domain_copy_routing: true
+    no_more: true
+
+exim::defaults::transports:
+  'remote_smtp':
+    driver: 'smtp'
+
+exim::defaults::retries:
+  '*': {}

@@ -873,6 +873,12 @@ Data type: `Optional[String]`
 
 Name of the service
 
+##### `ensure_resources`
+
+Data type: `Optional[Boolean]`
+
+
+
 ## Defined types
 
 ### `exim::acl`

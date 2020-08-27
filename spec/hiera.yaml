@@ -15,5 +15,8 @@ hierarchy:
   - name: 'common'
     path: 'common.yaml'
 
+  - name: 'defaults'
+    path: 'defaults.yaml'
+
   - name: 'spec_tests'
     path: 'spec_tests.yaml'
