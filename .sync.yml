@@ -6,7 +6,6 @@ spec/spec_helper.rb:
   mock_with: ":rspec"
   default_facter_version: '3.6.9'
   coverage_report: true
-  #strict_level: ":error"
 
 Rakefile:
   github_user: mleiner
