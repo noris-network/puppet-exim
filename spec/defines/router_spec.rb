@@ -66,4 +66,14 @@ describe 'exim::router', type: 'define' do
       end
     end
   end
+  describe 'require_files is set' do
+    let(:params) { { require_files: ['foo', '/bar'], order: 1, driver: 'redirect' } }
+
+    it { is_expected.to contain_concat__fragment('router-testrouter').with_content(%r{^\s+require_files\s*=\s*foo:/bar$}) }
+  end
+  describe 'require_files is unset' do
+    let(:params) { { order: 1, driver: 'redirect' } }
+
+    it { is_expected.to contain_concat__fragment('router-testrouter').without_content(%r{^\s+require_files\s*=}) }
+  end
 end
