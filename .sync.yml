@@ -22,3 +22,8 @@ spec/default_facts.yml:
           'family': 'Debian'
         'networking':
           'domain': 'localnet'
+
+.travis.yml:
+  branches:
+    - master
+    - /^v\d/
