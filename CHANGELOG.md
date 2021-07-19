@@ -2,7 +2,20 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [v1.1.0](https://github.com/noris-network/puppet-exim/tree/v1.1.0) (2020-08-27)
+## [v1.1.1](https://github.com/noris-network/puppet-exim/tree/v1.1.1) (2020-09-22)
+
+[Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.1.0...v1.1.1)
+
+### Added
+
+- ISSUE-51: Put require\_files array in correct formatting \(spec test\) [\#53](https://github.com/noris-network/puppet-exim/pull/53) ([mleiner](https://github.com/mleiner))
+
+### Fixed
+
+- ISSUE-51: Put require\_files array in correct formatting [\#52](https://github.com/noris-network/puppet-exim/pull/52) ([mleiner](https://github.com/mleiner))
+- ISSUE-49: Get rid of FacterDB facter version incompats [\#50](https://github.com/noris-network/puppet-exim/pull/50) ([mleiner](https://github.com/mleiner))
+
+## [v1.1.0](https://github.com/noris-network/puppet-exim/tree/v1.1.0) (2020-08-28)
 
 [Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.0.1...v1.1.0)
 
