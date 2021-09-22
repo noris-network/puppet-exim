@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v1.1.4](https://github.com/noris-network/puppet-exim/tree/v1.1.4) (2021-09-22)
+
+[Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.1.2...v1.1.4)
+
 ## [v1.1.2](https://github.com/noris-network/puppet-exim/tree/v1.1.2) (2021-07-19)
 
 [Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.1.1...v1.1.2)
