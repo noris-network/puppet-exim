@@ -316,6 +316,7 @@ define exim::transport (
   Optional[Array[String]] $hosts_require_tls         = undef,
   Optional[Array[String]] $hosts_try_auth            = undef,
   Optional[Array[String]] $temp_errors               = undef,
+  Optional[Array[String]] $serialize_hosts           = undef,
   Optional[Integer]       $batch_max                 = undef,
   Optional[Integer]       $connection_max_messages   = undef,
   Optional[Integer]       $dkim_strict               = undef,

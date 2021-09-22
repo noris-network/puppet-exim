@@ -47,7 +47,7 @@ describe 'exim::transport', type: 'define' do
     end
   end
 
-  array_parameter = ['temp_errors', 'hosts', 'headers_remove', 'fallback_hosts', 'hosts_require_tls']
+  array_parameter = ['temp_errors', 'hosts', 'headers_remove', 'fallback_hosts', 'serialize_hosts', 'hosts_require_tls']
 
   array_parameter.each do |parameter|
     describe parameter do

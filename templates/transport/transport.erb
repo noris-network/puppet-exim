@@ -150,6 +150,9 @@
 <% unless @fallback_hosts.nil? -%>
   fallback_hosts  = <%= @fallback_hosts.join(' : ') %>
 <% end -%>
+<% unless @serialize_hosts.nil? -%>
+  serialize_hosts  = <%= @serialize_hosts.join(' : ') %>
+<% end -%>
 <% if @allow_localhost -%>
   allow_localhost
 <% end -%>
