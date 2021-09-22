@@ -1839,6 +1839,7 @@ The following parameters are available in the `exim::transport` defined type:
 * [`to`](#to)
 * [`transport_filter`](#transport_filter)
 * [`user`](#user)
+* [`serialize_hosts`](#serialize_hosts)
 
 ##### <a name="allow_localhost"></a>`allow_localhost`
 
@@ -2464,6 +2465,14 @@ Data type: `Optional[String[1]]`
 
 This option specifies the user under whose uid the delivery process is to
 be run
+
+Default value: ``undef``
+
+##### <a name="serialize_hosts"></a>`serialize_hosts`
+
+Data type: `Optional[Array[String]]`
+
+
 
 Default value: ``undef``
 
