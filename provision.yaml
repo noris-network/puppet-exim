@@ -1,0 +1,12 @@
+---
+vagrant:
+  provisioner: vagrant
+  images:
+    - generic/centos7
+    - generic/debian10
+    - generic/debian11
+    - generic/debian9
+    - generic/ubuntu1804
+    - generic/ubuntu2004
+  params:
+    vagrant_provider: libvirt

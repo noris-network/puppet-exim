@@ -16,6 +16,7 @@ Gemfile:
       - gem: 'github_changelog_generator'
         version: '~> 1.15'
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
+
 spec/default_facts.yml:
     extra_facts:
         'os':
@@ -23,7 +24,11 @@ spec/default_facts.yml:
         'networking':
           'domain': 'localnet'
 
+.gitlab-ci.yml:
+  use_litmus: true
+
 .travis.yml:
+  use_litmus: true
   branches:
     - master
     - /^v\d/

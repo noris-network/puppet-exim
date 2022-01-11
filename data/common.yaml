@@ -127,4 +127,7 @@ exim::trusted_users: ~
 exim::untrusted_set_sender: ~
 #
 exim::exim_service: 'exim'
+#
+exim::service_ensure: running
+exim::service_enable: true
 ...
