@@ -25,7 +25,11 @@ spec/default_facts.yml:
           'domain': 'localnet'
 
 .gitlab-ci.yml:
-  use_litmus: true
+  custom:
+    use_litmus: true
+    litmus:
+      provision_list: [centos7, debian9, debian10, debian11, ubuntu1804, ubuntu2004]
+      puppet_collection: [puppet6, puppet7]
 
 .travis.yml:
   use_litmus: true
