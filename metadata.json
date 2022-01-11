@@ -1,6 +1,6 @@
 {
   "name": "norisnetwork-exim",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "author": "noris-network",
   "summary": "A module for configuring exim",
   "license": "LGPL-3.0",
@@ -21,22 +21,29 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "7.0",
-        "8.0",
-        "9.0"
+        "9.0",
+        "10.0",
+        "11.0"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "18.04"
+        "18.04",
+        "20.04"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
       ]
     }
   ],
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 4.4.0 < 7.0.0"
+      "version_requirement": ">= 4.4.0 < 8.0.0"
     }
   ],
   "tags": [
