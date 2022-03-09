@@ -173,6 +173,8 @@ The following parameters are available in the `exim` class:
 * [`exim_light_package`](#exim_light_package)
 * [`exim_service`](#exim_service)
 * [`ensure_resources`](#ensure_resources)
+* [`service_enable`](#service_enable)
+* [`service_ensure`](#service_ensure)
 
 ##### <a name="acl_not_smtp"></a>`acl_not_smtp`
 
@@ -1003,6 +1005,18 @@ Name of the service
 ##### <a name="ensure_resources"></a>`ensure_resources`
 
 Data type: `Optional[Boolean]`
+
+
+
+##### <a name="service_enable"></a>`service_enable`
+
+Data type: `Optional[Boolean]`
+
+
+
+##### <a name="service_ensure"></a>`service_ensure`
+
+Data type: `Optional`
 
 
 
