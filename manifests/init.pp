@@ -582,6 +582,8 @@ class exim (
   Optional[String] $exim_heavy_package,
   Optional[String] $exim_service,
   Optional[Boolean] $ensure_resources,
+  Optional[Boolean] $service_enable,
+  Optional $service_ensure
 ) {
 
   include ::exim::install
