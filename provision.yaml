@@ -1,4 +1,14 @@
 ---
+docker:
+  provisioner: docker
+  images:
+  - litmusimage/rockylinux:8
+  - litmusimage/centos:7
+  - litmusimage/debian:10
+  - litmusimage/debian:11
+  - litmusimage/debian:9
+  - litmusimage/ubuntu:18.04
+  - litmusimage/ubuntu:20.04
 vagrant:
   provisioner: vagrant
   images:
