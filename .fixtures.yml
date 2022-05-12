@@ -8,3 +8,6 @@ fixtures:
       ref: "4.0.0"
     stdlib:
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    epel:
+      repo: "https://github.com/voxpupuli/puppet-epel"
+      ref: "v4.1.0"
