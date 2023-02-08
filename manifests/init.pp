@@ -609,5 +609,7 @@ class exim (
       lookup('exim::domainlists',Optional[Hash], 'deep', {}))
     ensure_resources('exim::authenticator',
       lookup('exim::authenticators',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::rewrite',
+      lookup('exim::rewrites',Optional[Hash], 'deep', {}))
   }
 }
