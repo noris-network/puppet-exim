@@ -78,6 +78,10 @@
 #   The host_try_auth option provides a list of hosts to which, provided they announce
 #   authentication support, Exim will attempt to authenticate as a client when it connects
 #
+# @param hosts_avoid_pipelining
+#   Exim will not use the ESMTP PIPELINING extension when delivering to any host that matches this list,
+#   even if the server host advertises PIPELINING support.
+#
 # @param path
 #   This option specifies the string that is set up in the
 #   PATH environment variable of the subprocess
@@ -315,6 +319,7 @@ define exim::transport (
   Optional[Array[String]] $hosts_require_auth        = undef,
   Optional[Array[String]] $hosts_require_tls         = undef,
   Optional[Array[String]] $hosts_try_auth            = undef,
+  Optional[Array[String]] $hosts_avoid_pipelining    = undef,
   Optional[Array[String]] $temp_errors               = undef,
   Optional[Array[String]] $serialize_hosts           = undef,
   Optional[Integer]       $batch_max                 = undef,
