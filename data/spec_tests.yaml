@@ -3,3 +3,10 @@ exim::defaults: true
 
 exim::retries:
   'ensureresource': {}
+
+exim::rewrites:
+  'ensureresource':
+    pattern: 'test@example.com'
+    replacement: '*'
+    flags:
+      - 'f'

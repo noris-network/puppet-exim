@@ -108,11 +108,17 @@ describe 'exim', type: 'class' do
 
     it { is_expected.to contain_exim__retry('ensureresource') }
     it { is_expected.to contain_concat__fragment('retry-ensureresource') }
+
+    it { is_expected.to contain_exim__rewrite('ensureresource') }
+    it { is_expected.to contain_concat__fragment('rewrite-ensureresource') }
   end
   context 'ensure_resources=false and data' do
     let(:params) { { 'ensure_resources' => false } }
 
     it { is_expected.not_to contain_exim__retry('ensureresource') }
     it { is_expected.not_to contain_concat__fragment('retry-ensureresource') }
+
+    it { is_expected.not_to contain_exim__rewrite('ensureresource') }
+    it { is_expected.not_to contain_concat__fragment('rewrite-ensureresource') }
   end
 end
