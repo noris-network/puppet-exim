@@ -2,6 +2,7 @@
 stages:
   - syntax
   - unit
+  - acceptance
 
 default:
   cache:
@@ -51,3 +52,199 @@ parallel_spec-Ruby 2.7.2-Puppet ~> 7:
   variables:
     PUPPET_GEM_VERSION: '~> 7'
 
+litmus-centos7-puppet6:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[centos7]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet6]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-debian9-puppet6:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[debian9]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet6]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-debian10-puppet6:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[debian10]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet6]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-debian11-puppet6:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[debian11]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet6]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-ubuntu1804-puppet6:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[ubuntu1804]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet6]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-ubuntu2004-puppet6:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[ubuntu2004]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet6]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-ubuntu2204-puppet6:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[ubuntu2204]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet6]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-centos7-puppet7:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[centos7]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet7]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-debian9-puppet7:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[debian9]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet7]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-debian10-puppet7:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[debian10]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet7]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-debian11-puppet7:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[debian11]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet7]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-ubuntu1804-puppet7:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[ubuntu1804]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet7]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-ubuntu2004-puppet7:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[ubuntu2004]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet7]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
+litmus-ubuntu2204-puppet7:
+  stage: acceptance
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:dind
+  before_script:
+    - *before_script
+    - "bundle exec rake 'litmus:provision_list[ubuntu2204]'"
+    - "bundle exec bolt command run 'apt-get install wget -y' --inventoryfile inventory.yaml --nodes='localhost*'"
+    - "bundle exec rake 'litmus:install_agent[puppet7]'"
+    - "bundle exec rake litmus:install_module"
+  script:
+    - "bundle exec rake litmus:acceptance:parallel"
