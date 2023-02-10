@@ -60,7 +60,7 @@
     "exim",
     "mail"
   ],
-  "pdk-version": "2.4.0",
-  "template-url": "pdk-default#2.4.0",
-  "template-ref": "tags/2.4.0-0-gfa6b6d2"
+  "pdk-version": "2.6.1",
+  "template-url": "pdk-default#2.7.1",
+  "template-ref": "tags/2.7.1-0-g9a16c87"
 }
