@@ -1,6 +1,6 @@
 {
   "name": "norisnetwork-exim",
-  "version": "1.2.0",
+  "version": "1.3.1",
   "author": "noris-network",
   "summary": "A module for configuring exim",
   "license": "LGPL-3.0",
@@ -10,11 +10,11 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 3.0.0 < 8.2.0"
+      "version_requirement": ">= 3.0.0 < 8.6.0"
     },
     {
       "name": "puppetlabs/concat",
-      "version_requirement": ">= 3.0.0 < 7.2.0"
+      "version_requirement": ">= 3.0.0 < 7.4.0"
     },
     {
       "name": "puppet/epel",

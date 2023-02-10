@@ -18,16 +18,16 @@
 
 ### Defined types
 
-* [`exim::acl`](#eximacl): This define creates a new acl
-* [`exim::acl::statement`](#eximaclstatement): This define creates one acl statement in exims configuration
-* [`exim::addresslist`](#eximaddresslist): This define can be used to create addresslists, which can be referenced later
-* [`exim::authenticator`](#eximauthenticator): This module configures a single authenticator in exims configuration
-* [`exim::domainlist`](#eximdomainlist): This define can be used to create domainlists, which can be referenced later
-* [`exim::hostlist`](#eximhostlist): This define can be used to create hostlists, which can be referenced later
-* [`exim::retry`](#eximretry): This define is used to build retry rules
-* [`exim::rewrite`](#eximrewrite): This define is used to build rewrite rules
-* [`exim::router`](#eximrouter): This module configures a single router in exims configuration
-* [`exim::transport`](#eximtransport): This module configures a single transport in exims configuration
+* [`exim::acl`](#exim--acl): This define creates a new acl
+* [`exim::acl::statement`](#exim--acl--statement): This define creates one acl statement in exims configuration
+* [`exim::addresslist`](#exim--addresslist): This define can be used to create addresslists, which can be referenced later
+* [`exim::authenticator`](#exim--authenticator): This module configures a single authenticator in exims configuration
+* [`exim::domainlist`](#exim--domainlist): This define can be used to create domainlists, which can be referenced later
+* [`exim::hostlist`](#exim--hostlist): This define can be used to create hostlists, which can be referenced later
+* [`exim::retry`](#exim--retry): This define is used to build retry rules
+* [`exim::rewrite`](#exim--rewrite): This define is used to build rewrite rules
+* [`exim::router`](#exim--router): This module configures a single router in exims configuration
+* [`exim::transport`](#exim--transport): This module configures a single transport in exims configuration
 
 ## Classes
 
@@ -47,156 +47,155 @@ include ::exim
 
 The following parameters are available in the `exim` class:
 
-* [`acl_not_smtp`](#acl_not_smtp)
-* [`acl_smtp_connect`](#acl_smtp_connect)
-* [`acl_smtp_auth`](#acl_smtp_auth)
-* [`acl_smtp_data`](#acl_smtp_data)
-* [`acl_smtp_predata`](#acl_smtp_predata)
-* [`acl_smtp_mail`](#acl_smtp_mail)
-* [`acl_smtp_mime`](#acl_smtp_mime)
-* [`acl_smtp_rcpt`](#acl_smtp_rcpt)
-* [`allow_mx_to_ip`](#allow_mx_to_ip)
-* [`auto_thaw`](#auto_thaw)
-* [`av_scanner`](#av_scanner)
-* [`callout_domain_positive_expire`](#callout_domain_positive_expire)
-* [`check_spool_space`](#check_spool_space)
-* [`chunking_advertise_hosts`](#chunking_advertise_hosts)
-* [`queue_smtp_domains`](#queue_smtp_domains)
-* [`config_path`](#config_path)
-* [`daemon_smtp_ports`](#daemon_smtp_ports)
-* [`tls_on_connect_ports`](#tls_on_connect_ports)
-* [`defaults`](#defaults)
-* [`delay_warning`](#delay_warning)
-* [`deliver_queue_load_max`](#deliver_queue_load_max)
-* [`disable_ipv6`](#disable_ipv6)
-* [`errors_reply_to`](#errors_reply_to)
-* [`extract_addresses_remove_arguments`](#extract_addresses_remove_arguments)
-* [`freeze_tell`](#freeze_tell)
-* [`gnutls_compat_mode`](#gnutls_compat_mode)
-* [`openssl_options`](#openssl_options)
-* [`heavy`](#heavy)
-* [`helo_allow_chars`](#helo_allow_chars)
-* [`host_lookup`](#host_lookup)
-* [`hosts_treat_as_local`](#hosts_treat_as_local)
-* [`ignore_bounce_errors_after`](#ignore_bounce_errors_after)
-* [`includes`](#includes)
-* [`local_from_check`](#local_from_check)
-* [`local_interfaces`](#local_interfaces)
-* [`log_file_path`](#log_file_path)
-* [`log_lost_incoming_connection`](#log_lost_incoming_connection)
-* [`log_retry_defer`](#log_retry_defer)
-* [`log_sender_on_delivery`](#log_sender_on_delivery)
-* [`log_skip_delivery`](#log_skip_delivery)
-* [`log_smtp_confirmation`](#log_smtp_confirmation)
-* [`log_smtp_connection`](#log_smtp_connection)
-* [`log_smtp_protocol_error`](#log_smtp_protocol_error)
-* [`log_smtp_syntax_error`](#log_smtp_syntax_error)
-* [`log_tls_peerdn`](#log_tls_peerdn)
-* [`log_mail_subject`](#log_mail_subject)
-* [`log_8bitmime`](#log_8bitmime)
-* [`log_acl_warn_skipped`](#log_acl_warn_skipped)
-* [`log_address_rewrite`](#log_address_rewrite)
-* [`log_all_parents`](#log_all_parents)
-* [`log_arguments`](#log_arguments)
-* [`log_connection_reject`](#log_connection_reject)
-* [`log_delay_delivery`](#log_delay_delivery)
-* [`log_deliver_time`](#log_deliver_time)
-* [`log_delivery_size`](#log_delivery_size)
-* [`log_dnslist_defer`](#log_dnslist_defer)
-* [`log_dnssec`](#log_dnssec)
-* [`log_etrn`](#log_etrn)
-* [`log_host_lookup_failed`](#log_host_lookup_failed)
-* [`log_ident_timeout`](#log_ident_timeout)
-* [`log_incoming_interface`](#log_incoming_interface)
-* [`log_incoming_port`](#log_incoming_port)
-* [`log_millisec`](#log_millisec)
-* [`log_outgoing_interface`](#log_outgoing_interface)
-* [`log_outgoing_port`](#log_outgoing_port)
-* [`log_queue_run`](#log_queue_run)
-* [`log_queue_time`](#log_queue_time)
-* [`log_queue_time_overall`](#log_queue_time_overall)
-* [`log_pid`](#log_pid)
-* [`log_proxy`](#log_proxy)
-* [`log_received_recipients`](#log_received_recipients)
-* [`log_received_sender`](#log_received_sender)
-* [`log_rejected_header`](#log_rejected_header)
-* [`log_return_path_on_delivery`](#log_return_path_on_delivery)
-* [`log_sender_verify_fail`](#log_sender_verify_fail)
-* [`log_size_reject`](#log_size_reject)
-* [`log_smtp_incomplete_transaction`](#log_smtp_incomplete_transaction)
-* [`log_smtp_mailauth`](#log_smtp_mailauth)
-* [`log_smtp_no_mail`](#log_smtp_no_mail)
-* [`log_tls_certificate_verified`](#log_tls_certificate_verified)
-* [`log_tls_cipher`](#log_tls_cipher)
-* [`log_tls_sni`](#log_tls_sni)
-* [`log_unknown_in_list`](#log_unknown_in_list)
-* [`log_timezone`](#log_timezone)
-* [`log_file_path`](#log_file_path)
-* [`macros`](#macros)
-* [`manage_service`](#manage_service)
-* [`message_logs`](#message_logs)
-* [`message_size_limit`](#message_size_limit)
-* [`mysql_servers`](#mysql_servers)
-* [`never_users`](#never_users)
-* [`qualify_domain`](#qualify_domain)
-* [`queue_only_load`](#queue_only_load)
-* [`queue_run_max`](#queue_run_max)
-* [`remote_max_parallel`](#remote_max_parallel)
-* [`rfc1413_hosts`](#rfc1413_hosts)
-* [`rfc1413_query_timeout`](#rfc1413_query_timeout)
-* [`smtp_accept_max`](#smtp_accept_max)
-* [`smtp_accept_max_nonmail`](#smtp_accept_max_nonmail)
-* [`smtp_accept_max_per_connection`](#smtp_accept_max_per_connection)
-* [`smtp_accept_max_per_host`](#smtp_accept_max_per_host)
-* [`smtp_accept_queue`](#smtp_accept_queue)
-* [`smtp_accept_queue_per_connection`](#smtp_accept_queue_per_connection)
-* [`smtp_accept_reserve`](#smtp_accept_reserve)
-* [`smtp_banner`](#smtp_banner)
-* [`received_header_text`](#received_header_text)
-* [`smtp_receive_timeout`](#smtp_receive_timeout)
-* [`smtp_reserve_hosts`](#smtp_reserve_hosts)
-* [`smtp_return_error_details`](#smtp_return_error_details)
-* [`spamd_address`](#spamd_address)
-* [`split_spool_directory`](#split_spool_directory)
-* [`syslog_timestamp`](#syslog_timestamp)
-* [`system_filter`](#system_filter)
-* [`timeout_frozen_after`](#timeout_frozen_after)
-* [`tls_advertise_hosts`](#tls_advertise_hosts)
-* [`tls_certificate`](#tls_certificate)
-* [`tls_privatekey`](#tls_privatekey)
-* [`trusted_users`](#trusted_users)
-* [`print_topbitchars`](#print_topbitchars)
-* [`untrusted_set_sender`](#untrusted_set_sender)
-* [`tls_require_ciphers`](#tls_require_ciphers)
-* [`ldap_default_servers`](#ldap_default_servers)
-* [`exim_heavy_package`](#exim_heavy_package)
-* [`exim_light_package`](#exim_light_package)
-* [`exim_service`](#exim_service)
-* [`ensure_resources`](#ensure_resources)
-* [`service_enable`](#service_enable)
-* [`service_ensure`](#service_ensure)
+* [`acl_not_smtp`](#-exim--acl_not_smtp)
+* [`acl_smtp_connect`](#-exim--acl_smtp_connect)
+* [`acl_smtp_auth`](#-exim--acl_smtp_auth)
+* [`acl_smtp_data`](#-exim--acl_smtp_data)
+* [`acl_smtp_predata`](#-exim--acl_smtp_predata)
+* [`acl_smtp_mail`](#-exim--acl_smtp_mail)
+* [`acl_smtp_mime`](#-exim--acl_smtp_mime)
+* [`acl_smtp_rcpt`](#-exim--acl_smtp_rcpt)
+* [`allow_mx_to_ip`](#-exim--allow_mx_to_ip)
+* [`auto_thaw`](#-exim--auto_thaw)
+* [`av_scanner`](#-exim--av_scanner)
+* [`callout_domain_positive_expire`](#-exim--callout_domain_positive_expire)
+* [`check_spool_space`](#-exim--check_spool_space)
+* [`chunking_advertise_hosts`](#-exim--chunking_advertise_hosts)
+* [`queue_smtp_domains`](#-exim--queue_smtp_domains)
+* [`config_path`](#-exim--config_path)
+* [`daemon_smtp_ports`](#-exim--daemon_smtp_ports)
+* [`tls_on_connect_ports`](#-exim--tls_on_connect_ports)
+* [`defaults`](#-exim--defaults)
+* [`delay_warning`](#-exim--delay_warning)
+* [`deliver_queue_load_max`](#-exim--deliver_queue_load_max)
+* [`disable_ipv6`](#-exim--disable_ipv6)
+* [`errors_reply_to`](#-exim--errors_reply_to)
+* [`extract_addresses_remove_arguments`](#-exim--extract_addresses_remove_arguments)
+* [`freeze_tell`](#-exim--freeze_tell)
+* [`gnutls_compat_mode`](#-exim--gnutls_compat_mode)
+* [`openssl_options`](#-exim--openssl_options)
+* [`heavy`](#-exim--heavy)
+* [`helo_allow_chars`](#-exim--helo_allow_chars)
+* [`host_lookup`](#-exim--host_lookup)
+* [`hosts_treat_as_local`](#-exim--hosts_treat_as_local)
+* [`ignore_bounce_errors_after`](#-exim--ignore_bounce_errors_after)
+* [`includes`](#-exim--includes)
+* [`local_from_check`](#-exim--local_from_check)
+* [`local_interfaces`](#-exim--local_interfaces)
+* [`log_lost_incoming_connection`](#-exim--log_lost_incoming_connection)
+* [`log_retry_defer`](#-exim--log_retry_defer)
+* [`log_sender_on_delivery`](#-exim--log_sender_on_delivery)
+* [`log_skip_delivery`](#-exim--log_skip_delivery)
+* [`log_smtp_confirmation`](#-exim--log_smtp_confirmation)
+* [`log_smtp_connection`](#-exim--log_smtp_connection)
+* [`log_smtp_protocol_error`](#-exim--log_smtp_protocol_error)
+* [`log_smtp_syntax_error`](#-exim--log_smtp_syntax_error)
+* [`log_tls_peerdn`](#-exim--log_tls_peerdn)
+* [`log_mail_subject`](#-exim--log_mail_subject)
+* [`log_8bitmime`](#-exim--log_8bitmime)
+* [`log_acl_warn_skipped`](#-exim--log_acl_warn_skipped)
+* [`log_address_rewrite`](#-exim--log_address_rewrite)
+* [`log_all_parents`](#-exim--log_all_parents)
+* [`log_arguments`](#-exim--log_arguments)
+* [`log_connection_reject`](#-exim--log_connection_reject)
+* [`log_delay_delivery`](#-exim--log_delay_delivery)
+* [`log_deliver_time`](#-exim--log_deliver_time)
+* [`log_delivery_size`](#-exim--log_delivery_size)
+* [`log_dnslist_defer`](#-exim--log_dnslist_defer)
+* [`log_dnssec`](#-exim--log_dnssec)
+* [`log_etrn`](#-exim--log_etrn)
+* [`log_host_lookup_failed`](#-exim--log_host_lookup_failed)
+* [`log_ident_timeout`](#-exim--log_ident_timeout)
+* [`log_incoming_interface`](#-exim--log_incoming_interface)
+* [`log_incoming_port`](#-exim--log_incoming_port)
+* [`log_millisec`](#-exim--log_millisec)
+* [`log_outgoing_interface`](#-exim--log_outgoing_interface)
+* [`log_outgoing_port`](#-exim--log_outgoing_port)
+* [`log_queue_run`](#-exim--log_queue_run)
+* [`log_queue_time`](#-exim--log_queue_time)
+* [`log_queue_time_overall`](#-exim--log_queue_time_overall)
+* [`log_pid`](#-exim--log_pid)
+* [`log_proxy`](#-exim--log_proxy)
+* [`log_received_recipients`](#-exim--log_received_recipients)
+* [`log_received_sender`](#-exim--log_received_sender)
+* [`log_rejected_header`](#-exim--log_rejected_header)
+* [`log_return_path_on_delivery`](#-exim--log_return_path_on_delivery)
+* [`log_sender_verify_fail`](#-exim--log_sender_verify_fail)
+* [`log_size_reject`](#-exim--log_size_reject)
+* [`log_smtp_incomplete_transaction`](#-exim--log_smtp_incomplete_transaction)
+* [`log_smtp_mailauth`](#-exim--log_smtp_mailauth)
+* [`log_smtp_no_mail`](#-exim--log_smtp_no_mail)
+* [`log_tls_certificate_verified`](#-exim--log_tls_certificate_verified)
+* [`log_tls_cipher`](#-exim--log_tls_cipher)
+* [`log_tls_sni`](#-exim--log_tls_sni)
+* [`log_unknown_in_list`](#-exim--log_unknown_in_list)
+* [`log_timezone`](#-exim--log_timezone)
+* [`log_file_path`](#-exim--log_file_path)
+* [`macros`](#-exim--macros)
+* [`manage_service`](#-exim--manage_service)
+* [`message_logs`](#-exim--message_logs)
+* [`message_size_limit`](#-exim--message_size_limit)
+* [`mysql_servers`](#-exim--mysql_servers)
+* [`never_users`](#-exim--never_users)
+* [`qualify_domain`](#-exim--qualify_domain)
+* [`queue_only_load`](#-exim--queue_only_load)
+* [`queue_run_max`](#-exim--queue_run_max)
+* [`remote_max_parallel`](#-exim--remote_max_parallel)
+* [`rfc1413_hosts`](#-exim--rfc1413_hosts)
+* [`rfc1413_query_timeout`](#-exim--rfc1413_query_timeout)
+* [`smtp_accept_max`](#-exim--smtp_accept_max)
+* [`smtp_accept_max_nonmail`](#-exim--smtp_accept_max_nonmail)
+* [`smtp_accept_max_per_connection`](#-exim--smtp_accept_max_per_connection)
+* [`smtp_accept_max_per_host`](#-exim--smtp_accept_max_per_host)
+* [`smtp_accept_queue`](#-exim--smtp_accept_queue)
+* [`smtp_accept_queue_per_connection`](#-exim--smtp_accept_queue_per_connection)
+* [`smtp_accept_reserve`](#-exim--smtp_accept_reserve)
+* [`smtp_banner`](#-exim--smtp_banner)
+* [`received_header_text`](#-exim--received_header_text)
+* [`smtp_receive_timeout`](#-exim--smtp_receive_timeout)
+* [`smtp_reserve_hosts`](#-exim--smtp_reserve_hosts)
+* [`smtp_return_error_details`](#-exim--smtp_return_error_details)
+* [`spamd_address`](#-exim--spamd_address)
+* [`split_spool_directory`](#-exim--split_spool_directory)
+* [`syslog_timestamp`](#-exim--syslog_timestamp)
+* [`system_filter`](#-exim--system_filter)
+* [`timeout_frozen_after`](#-exim--timeout_frozen_after)
+* [`tls_advertise_hosts`](#-exim--tls_advertise_hosts)
+* [`tls_certificate`](#-exim--tls_certificate)
+* [`tls_privatekey`](#-exim--tls_privatekey)
+* [`trusted_users`](#-exim--trusted_users)
+* [`print_topbitchars`](#-exim--print_topbitchars)
+* [`untrusted_set_sender`](#-exim--untrusted_set_sender)
+* [`tls_require_ciphers`](#-exim--tls_require_ciphers)
+* [`ldap_default_servers`](#-exim--ldap_default_servers)
+* [`exim_heavy_package`](#-exim--exim_heavy_package)
+* [`exim_light_package`](#-exim--exim_light_package)
+* [`exim_service`](#-exim--exim_service)
+* [`ensure_resources`](#-exim--ensure_resources)
+* [`service_enable`](#-exim--service_enable)
+* [`service_ensure`](#-exim--service_ensure)
 
-##### <a name="acl_not_smtp"></a>`acl_not_smtp`
+##### <a name="-exim--acl_not_smtp"></a>`acl_not_smtp`
 
 Data type: `Optional[String]`
 
 Name of acl used for local generated mail. (sendmail)
 
-##### <a name="acl_smtp_connect"></a>`acl_smtp_connect`
+##### <a name="-exim--acl_smtp_connect"></a>`acl_smtp_connect`
 
 Data type: `Optional[String]`
 
 Name of acl used on smtp connect
 Type: string
 
-##### <a name="acl_smtp_auth"></a>`acl_smtp_auth`
+##### <a name="-exim--acl_smtp_auth"></a>`acl_smtp_auth`
 
 Data type: `Optional[String]`
 
 Name of acl used for auth checking
 Type: string
 
-##### <a name="acl_smtp_data"></a>`acl_smtp_data`
+##### <a name="-exim--acl_smtp_data"></a>`acl_smtp_data`
 
 Data type: `Optional[String]`
 
@@ -204,7 +203,7 @@ Name of acl used for data checking
   (runs after SMTP "." command)
 Type: string
 
-##### <a name="acl_smtp_predata"></a>`acl_smtp_predata`
+##### <a name="-exim--acl_smtp_predata"></a>`acl_smtp_predata`
 
 Data type: `Optional[String]`
 
@@ -212,7 +211,7 @@ Name of acl used for checking after DATA command
   (runs after SMTP "DATA" but before actual data)
 Type: string
 
-##### <a name="acl_smtp_mail"></a>`acl_smtp_mail`
+##### <a name="-exim--acl_smtp_mail"></a>`acl_smtp_mail`
 
 Data type: `Optional[String]`
 
@@ -220,14 +219,14 @@ Name of acl used for mail checking
   (runs after SMTP "MAIL FROM:" command)
 Type: string
 
-##### <a name="acl_smtp_mime"></a>`acl_smtp_mime`
+##### <a name="-exim--acl_smtp_mime"></a>`acl_smtp_mime`
 
 Data type: `Optional[String]`
 
 Name of acl used for maime checking
 Type: string
 
-##### <a name="acl_smtp_rcpt"></a>`acl_smtp_rcpt`
+##### <a name="-exim--acl_smtp_rcpt"></a>`acl_smtp_rcpt`
 
 Data type: `Optional[String]`
 
@@ -235,7 +234,7 @@ Name of acl used for rcpt checking.
   (runs after SMTP "RCPT TO:" command)
 Type: string
 
-##### <a name="allow_mx_to_ip"></a>`allow_mx_to_ip`
+##### <a name="-exim--allow_mx_to_ip"></a>`allow_mx_to_ip`
 
 Data type: `Optional[Boolean]`
 
@@ -243,7 +242,7 @@ Using an ip instead of an fqdn in DNS MX records violates the RFC,
 this option allows sending mails to these domains anyways.
 Type: bool
 
-##### <a name="auto_thaw"></a>`auto_thaw`
+##### <a name="-exim--auto_thaw"></a>`auto_thaw`
 
 Data type: `Optional[String]`
 
@@ -251,7 +250,7 @@ Thaw frozen mails in our mailq after this time
 Type: string
 Example: "5d"
 
-##### <a name="av_scanner"></a>`av_scanner`
+##### <a name="-exim--av_scanner"></a>`av_scanner`
 
 Data type: `Optional[String]`
 
@@ -259,7 +258,7 @@ Configure your av-scanner here
 Type: string
 Example: "clamd:/var/run/clamav/clamd.ctl"
 
-##### <a name="callout_domain_positive_expire"></a>`callout_domain_positive_expire`
+##### <a name="-exim--callout_domain_positive_expire"></a>`callout_domain_positive_expire`
 
 Data type: `Optional[String]`
 
@@ -268,7 +267,7 @@ callout is deleted from the cache.
 Type: string
 Example: "4h"
 
-##### <a name="check_spool_space"></a>`check_spool_space`
+##### <a name="-exim--check_spool_space"></a>`check_spool_space`
 
 Data type: `Optional[String]`
 
@@ -276,7 +275,7 @@ Don't accept mails, if spool space falls below this watermark.
 Type: string
 Example: 1G
 
-##### <a name="chunking_advertise_hosts"></a>`chunking_advertise_hosts`
+##### <a name="-exim--chunking_advertise_hosts"></a>`chunking_advertise_hosts`
 
 Data type: `Optional[Array[String]]`
 
@@ -284,7 +283,7 @@ advertise CHUNKING to these hosts
 Type: array
 Example: ['10.0.0.1', '192.168.178.1']
 
-##### <a name="queue_smtp_domains"></a>`queue_smtp_domains`
+##### <a name="-exim--queue_smtp_domains"></a>`queue_smtp_domains`
 
 Data type: `Optional[Array[String]]`
 
@@ -292,7 +291,7 @@ no immediaste SMTP delivery for these domains
 Type: array
 Example: ['10.0.0.1', '192.168.178.1']
 
-##### <a name="config_path"></a>`config_path`
+##### <a name="-exim--config_path"></a>`config_path`
 
 Data type: `String`
 
@@ -301,7 +300,7 @@ for testing purposes.
 Type: string
 Example: "/etc/exim4/exim4.conf_test"
 
-##### <a name="daemon_smtp_ports"></a>`daemon_smtp_ports`
+##### <a name="-exim--daemon_smtp_ports"></a>`daemon_smtp_ports`
 
 Data type: `Optional[Array[Integer]]`
 
@@ -309,7 +308,7 @@ SMTP ports to listen on
 Type: array of integers
 Example: [25,465,587]
 
-##### <a name="tls_on_connect_ports"></a>`tls_on_connect_ports`
+##### <a name="-exim--tls_on_connect_ports"></a>`tls_on_connect_ports`
 
 Data type: `Optional[Array[Integer]]`
 
@@ -317,7 +316,7 @@ Ports on which to enable TLs on connect
 Type: array of integers
 Example: [465]
 
-##### <a name="defaults"></a>`defaults`
+##### <a name="-exim--defaults"></a>`defaults`
 
 Data type: `Optional[Boolean]`
 
@@ -327,7 +326,7 @@ You probably want to set this to false, and build your own config.
 Type: bool
 Default: true
 
-##### <a name="delay_warning"></a>`delay_warning`
+##### <a name="-exim--delay_warning"></a>`delay_warning`
 
 Data type: `Optional[Array[String]]`
 
@@ -335,21 +334,21 @@ Send a warning Mail to the sender, if mails are delayed for this long:
 Type: Array
 Example: ['4h','8h','24h']
 
-##### <a name="deliver_queue_load_max"></a>`deliver_queue_load_max`
+##### <a name="-exim--deliver_queue_load_max"></a>`deliver_queue_load_max`
 
 Data type: `Optional[Integer]`
 
 Stop running the queue if load is higher than this value
 Type: integer
 
-##### <a name="disable_ipv6"></a>`disable_ipv6`
+##### <a name="-exim--disable_ipv6"></a>`disable_ipv6`
 
 Data type: `Optional[Boolean]`
 
 Do no IPv6 processing
 Type: bool
 
-##### <a name="errors_reply_to"></a>`errors_reply_to`
+##### <a name="-exim--errors_reply_to"></a>`errors_reply_to`
 
 Data type: `Optional[String]`
 
@@ -357,7 +356,7 @@ This sets a mail-address to be used in the reply-to header of bounce-messages.
 Type: String
 Example: postmaster@example.com
 
-##### <a name="extract_addresses_remove_arguments"></a>`extract_addresses_remove_arguments`
+##### <a name="-exim--extract_addresses_remove_arguments"></a>`extract_addresses_remove_arguments`
 
 Data type: `Optional[Boolean]`
 
@@ -365,13 +364,13 @@ When using exims -t option, rcpts from the Mail-Headers are used, and rcpts give
 on the command-line are substracted, setting this to false will add the rcpts instead
 of substracting them
 
-##### <a name="freeze_tell"></a>`freeze_tell`
+##### <a name="-exim--freeze_tell"></a>`freeze_tell`
 
 Data type: `Optional[String]`
 
 If a mail gets frozen, send a notification to the address defined here.
 
-##### <a name="gnutls_compat_mode"></a>`gnutls_compat_mode`
+##### <a name="-exim--gnutls_compat_mode"></a>`gnutls_compat_mode`
 
 Data type: `Optional[Boolean]`
 
@@ -380,28 +379,28 @@ Set this to true to slightly reduce security, but improve compatiblity with olde
 TLS implementations.
 Type: bool
 
-##### <a name="openssl_options"></a>`openssl_options`
+##### <a name="-exim--openssl_options"></a>`openssl_options`
 
 Data type: `Optional[String]`
 
 Adjust OpenSSL compatibility options.
 Type: String
 
-##### <a name="heavy"></a>`heavy`
+##### <a name="-exim--heavy"></a>`heavy`
 
 Data type: `Optional[Boolean]`
 
 Install the debian heavy variant, default is false
 does nothing for redhat
 
-##### <a name="helo_allow_chars"></a>`helo_allow_chars`
+##### <a name="-exim--helo_allow_chars"></a>`helo_allow_chars`
 
 Data type: `Optional[String]`
 
 Allow additional characters in remote HELO strings.
 Type: string
 
-##### <a name="host_lookup"></a>`host_lookup`
+##### <a name="-exim--host_lookup"></a>`host_lookup`
 
 Data type: `Optional[String]`
 
@@ -409,14 +408,14 @@ Reverse lookup hostname of ips.
 Type: String
 Example: '*'
 
-##### <a name="hosts_treat_as_local"></a>`hosts_treat_as_local`
+##### <a name="-exim--hosts_treat_as_local"></a>`hosts_treat_as_local`
 
 Data type: `Optional[Array[String]]`
 
 Treat these hosts, as if they where the local host.
 default is empty
 
-##### <a name="ignore_bounce_errors_after"></a>`ignore_bounce_errors_after`
+##### <a name="-exim--ignore_bounce_errors_after"></a>`ignore_bounce_errors_after`
 
 Data type: `Optional[String]`
 
@@ -424,338 +423,334 @@ Discard undeliverable bounce messages after this time
 Type String:
 Example: "12d"
 
-##### <a name="includes"></a>`includes`
+##### <a name="-exim--includes"></a>`includes`
 
 Data type: `Optional[Array]`
 
 Include additional config file snippets, files defined here will be included at
 the top of the configuration, but below macros.
 
-##### <a name="local_from_check"></a>`local_from_check`
+##### <a name="-exim--local_from_check"></a>`local_from_check`
 
 Data type: `Optional[Boolean]`
 
 Check and correct From: header from local mails to username@qualify-domain
 
-##### <a name="local_interfaces"></a>`local_interfaces`
+##### <a name="-exim--local_interfaces"></a>`local_interfaces`
 
 Data type: `Optional[Array[String]]`
 
 Specifies the interfaces exim will listen on.
 
-##### <a name="log_file_path"></a>`log_file_path`
-
-Data type: `Optional[Array[String]]`
-
-Type: string
-
-##### <a name="log_lost_incoming_connection"></a>`log_lost_incoming_connection`
+##### <a name="-exim--log_lost_incoming_connection"></a>`log_lost_incoming_connection`
 
 Data type: `Optional[Boolean]`
 
 Configures the log_selector to log timeouting incomming connections
 
-##### <a name="log_retry_defer"></a>`log_retry_defer`
+##### <a name="-exim--log_retry_defer"></a>`log_retry_defer`
 
 Data type: `Optional[Boolean]`
 
 Configures the log_selector to log if the queue runner skips a mail
 because it's retry time is not yet reached.
 
-##### <a name="log_sender_on_delivery"></a>`log_sender_on_delivery`
+##### <a name="-exim--log_sender_on_delivery"></a>`log_sender_on_delivery`
 
 Data type: `Optional[Boolean]`
 
 add sender to => lines
 
-##### <a name="log_skip_delivery"></a>`log_skip_delivery`
+##### <a name="-exim--log_skip_delivery"></a>`log_skip_delivery`
 
 Data type: `Optional[Boolean]`
 
 delivery skipped in a queue run
 
-##### <a name="log_smtp_confirmation"></a>`log_smtp_confirmation`
+##### <a name="-exim--log_smtp_confirmation"></a>`log_smtp_confirmation`
 
 Data type: `Optional[Boolean]`
 
 SMTP confirmation on => lines
 
-##### <a name="log_smtp_connection"></a>`log_smtp_connection`
+##### <a name="-exim--log_smtp_connection"></a>`log_smtp_connection`
 
 Data type: `Optional[Boolean]`
 
 Log SMTP connections.
 
-##### <a name="log_smtp_protocol_error"></a>`log_smtp_protocol_error`
+##### <a name="-exim--log_smtp_protocol_error"></a>`log_smtp_protocol_error`
 
 Data type: `Optional[Boolean]`
 
 Log SMTP protocol errors.
 
-##### <a name="log_smtp_syntax_error"></a>`log_smtp_syntax_error`
+##### <a name="-exim--log_smtp_syntax_error"></a>`log_smtp_syntax_error`
 
 Data type: `Optional[Boolean]`
 
 Log SMTP syntax errors.
 
-##### <a name="log_tls_peerdn"></a>`log_tls_peerdn`
+##### <a name="-exim--log_tls_peerdn"></a>`log_tls_peerdn`
 
 Data type: `Optional[Boolean]`
 
 TLS peer DN on <= and => lines
 
-##### <a name="log_mail_subject"></a>`log_mail_subject`
+##### <a name="-exim--log_mail_subject"></a>`log_mail_subject`
 
 Data type: `Optional[Boolean]`
 
 Log mail subjects.
 
-##### <a name="log_8bitmime"></a>`log_8bitmime`
+##### <a name="-exim--log_8bitmime"></a>`log_8bitmime`
 
 Data type: `Optional[Boolean]`
 
 received 8BITMIME status
 
-##### <a name="log_acl_warn_skipped"></a>`log_acl_warn_skipped`
+##### <a name="-exim--log_acl_warn_skipped"></a>`log_acl_warn_skipped`
 
 Data type: `Optional[Boolean]`
 
 skipped warn statement in ACL
 
-##### <a name="log_address_rewrite"></a>`log_address_rewrite`
+##### <a name="-exim--log_address_rewrite"></a>`log_address_rewrite`
 
 Data type: `Optional[Boolean]`
 
 address rewriting
 
-##### <a name="log_all_parents"></a>`log_all_parents`
+##### <a name="-exim--log_all_parents"></a>`log_all_parents`
 
 Data type: `Optional[Boolean]`
 
 all parents in => lines
 
-##### <a name="log_arguments"></a>`log_arguments`
+##### <a name="-exim--log_arguments"></a>`log_arguments`
 
 Data type: `Optional[Boolean]`
 
 command line arguments
 
-##### <a name="log_connection_reject"></a>`log_connection_reject`
+##### <a name="-exim--log_connection_reject"></a>`log_connection_reject`
 
 Data type: `Optional[Boolean]`
 
 connection rejections
 
-##### <a name="log_delay_delivery"></a>`log_delay_delivery`
+##### <a name="-exim--log_delay_delivery"></a>`log_delay_delivery`
 
 Data type: `Optional[Boolean]`
 
 immediate delivery delayed
 
-##### <a name="log_deliver_time"></a>`log_deliver_time`
+##### <a name="-exim--log_deliver_time"></a>`log_deliver_time`
 
 Data type: `Optional[Boolean]`
 
 time taken to perform delivery
 
-##### <a name="log_delivery_size"></a>`log_delivery_size`
+##### <a name="-exim--log_delivery_size"></a>`log_delivery_size`
 
 Data type: `Optional[Boolean]`
 
 add S=nnn to => lines
 
-##### <a name="log_dnslist_defer"></a>`log_dnslist_defer`
+##### <a name="-exim--log_dnslist_defer"></a>`log_dnslist_defer`
 
 Data type: `Optional[Boolean]`
 
 defers of DNS list (aka RBL) lookups
 
-##### <a name="log_dnssec"></a>`log_dnssec`
+##### <a name="-exim--log_dnssec"></a>`log_dnssec`
 
 Data type: `Optional[Boolean]`
 
 DNSSEC secured lookups
 
-##### <a name="log_etrn"></a>`log_etrn`
+##### <a name="-exim--log_etrn"></a>`log_etrn`
 
 Data type: `Optional[Boolean]`
 
 ETRN commands
 
-##### <a name="log_host_lookup_failed"></a>`log_host_lookup_failed`
+##### <a name="-exim--log_host_lookup_failed"></a>`log_host_lookup_failed`
 
 Data type: `Optional[Boolean]`
 
 Log failed host lookup
 
-##### <a name="log_ident_timeout"></a>`log_ident_timeout`
+##### <a name="-exim--log_ident_timeout"></a>`log_ident_timeout`
 
 Data type: `Optional[Boolean]`
 
 timeout for ident connection
 
-##### <a name="log_incoming_interface"></a>`log_incoming_interface`
+##### <a name="-exim--log_incoming_interface"></a>`log_incoming_interface`
 
 Data type: `Optional[Boolean]`
 
 local interface on <= and => lines
 
-##### <a name="log_incoming_port"></a>`log_incoming_port`
+##### <a name="-exim--log_incoming_port"></a>`log_incoming_port`
 
 Data type: `Optional[Boolean]`
 
 remote port on <= lines
 
-##### <a name="log_millisec"></a>`log_millisec`
+##### <a name="-exim--log_millisec"></a>`log_millisec`
 
 Data type: `Optional[Boolean]`
 
 millisecond timestamps and QT,DT,D times
 
-##### <a name="log_outgoing_interface"></a>`log_outgoing_interface`
+##### <a name="-exim--log_outgoing_interface"></a>`log_outgoing_interface`
 
 Data type: `Optional[Boolean]`
 
 local interface on => lines
 
-##### <a name="log_outgoing_port"></a>`log_outgoing_port`
+##### <a name="-exim--log_outgoing_port"></a>`log_outgoing_port`
 
 Data type: `Optional[Boolean]`
 
 add remote port to => lines
 
-##### <a name="log_queue_run"></a>`log_queue_run`
+##### <a name="-exim--log_queue_run"></a>`log_queue_run`
 
 Data type: `Optional[Boolean]`
 
 start and end queue runs
 
-##### <a name="log_queue_time"></a>`log_queue_time`
+##### <a name="-exim--log_queue_time"></a>`log_queue_time`
 
 Data type: `Optional[Boolean]`
 
 time on queue for one recipient
 
-##### <a name="log_queue_time_overall"></a>`log_queue_time_overall`
+##### <a name="-exim--log_queue_time_overall"></a>`log_queue_time_overall`
 
 Data type: `Optional[Boolean]`
 
 time on queue for whole message
 
-##### <a name="log_pid"></a>`log_pid`
+##### <a name="-exim--log_pid"></a>`log_pid`
 
 Data type: `Optional[Boolean]`
 
 Exim process id
 
-##### <a name="log_proxy"></a>`log_proxy`
+##### <a name="-exim--log_proxy"></a>`log_proxy`
 
 Data type: `Optional[Boolean]`
 
 proxy address on <= and => lines
 
-##### <a name="log_received_recipients"></a>`log_received_recipients`
+##### <a name="-exim--log_received_recipients"></a>`log_received_recipients`
 
 Data type: `Optional[Boolean]`
 
 recipients on <= lines
 
-##### <a name="log_received_sender"></a>`log_received_sender`
+##### <a name="-exim--log_received_sender"></a>`log_received_sender`
 
 Data type: `Optional[Boolean]`
 
 sender on <= lines
 
-##### <a name="log_rejected_header"></a>`log_rejected_header`
+##### <a name="-exim--log_rejected_header"></a>`log_rejected_header`
 
 Data type: `Optional[Boolean]`
 
 header contents on reject log
 
-##### <a name="log_return_path_on_delivery"></a>`log_return_path_on_delivery`
+##### <a name="-exim--log_return_path_on_delivery"></a>`log_return_path_on_delivery`
 
 Data type: `Optional[Boolean]`
 
 put return path on => and ** lines
 
-##### <a name="log_sender_verify_fail"></a>`log_sender_verify_fail`
+##### <a name="-exim--log_sender_verify_fail"></a>`log_sender_verify_fail`
 
 Data type: `Optional[Boolean]`
 
 sender verification failures
 
-##### <a name="log_size_reject"></a>`log_size_reject`
+##### <a name="-exim--log_size_reject"></a>`log_size_reject`
 
 Data type: `Optional[Boolean]`
 
 rejection because too big
 
-##### <a name="log_smtp_incomplete_transaction"></a>`log_smtp_incomplete_transaction`
+##### <a name="-exim--log_smtp_incomplete_transaction"></a>`log_smtp_incomplete_transaction`
 
 Data type: `Optional[Boolean]`
 
 incomplete SMTP transactions
 
-##### <a name="log_smtp_mailauth"></a>`log_smtp_mailauth`
+##### <a name="-exim--log_smtp_mailauth"></a>`log_smtp_mailauth`
 
 Data type: `Optional[Boolean]`
 
 AUTH argument to MAIL commands
 
-##### <a name="log_smtp_no_mail"></a>`log_smtp_no_mail`
+##### <a name="-exim--log_smtp_no_mail"></a>`log_smtp_no_mail`
 
 Data type: `Optional[Boolean]`
 
 session with no MAIL commands
 
-##### <a name="log_tls_certificate_verified"></a>`log_tls_certificate_verified`
+##### <a name="-exim--log_tls_certificate_verified"></a>`log_tls_certificate_verified`
 
 Data type: `Optional[Boolean]`
 
 certificate verification status
 
-##### <a name="log_tls_cipher"></a>`log_tls_cipher`
+##### <a name="-exim--log_tls_cipher"></a>`log_tls_cipher`
 
 Data type: `Optional[Boolean]`
 
 TLS cipher suite on <= and => lines
 
-##### <a name="log_tls_sni"></a>`log_tls_sni`
+##### <a name="-exim--log_tls_sni"></a>`log_tls_sni`
 
 Data type: `Optional[Boolean]`
 
 TLS SNI on <= lines
 
-##### <a name="log_unknown_in_list"></a>`log_unknown_in_list`
+##### <a name="-exim--log_unknown_in_list"></a>`log_unknown_in_list`
 
 Data type: `Optional[Boolean]`
 
 DNS lookup failed in list match
 
-##### <a name="log_timezone"></a>`log_timezone`
+##### <a name="-exim--log_timezone"></a>`log_timezone`
 
 Data type: `Optional[Boolean]`
 
 Timezone
 
-##### <a name="log_file_path"></a>`log_file_path`
+##### <a name="-exim--log_file_path"></a>`log_file_path`
+
+Data type: `Optional[Array[String]]`
 
 File path
 
-##### <a name="macros"></a>`macros`
+##### <a name="-exim--macros"></a>`macros`
 
 Data type: `Optional[Hash]`
 
 Allows you to set Macro definitions, note that macros must
 start with an uppercase letter
 
-##### <a name="manage_service"></a>`manage_service`
+##### <a name="-exim--manage_service"></a>`manage_service`
 
 Data type: `Boolean`
 
 Manage exim Service
 
-##### <a name="message_logs"></a>`message_logs`
+##### <a name="-exim--message_logs"></a>`message_logs`
 
 Data type: `Optional[Boolean]`
 
@@ -763,28 +758,28 @@ This stores an aditional log file with each message in the spool file
 which enables you to instantly get all logs from a message in your
 queue by using the exim -Mvl option.
 
-##### <a name="message_size_limit"></a>`message_size_limit`
+##### <a name="-exim--message_size_limit"></a>`message_size_limit`
 
 Data type: `Optional[String]`
 
 Max size allowed for mails, default is empty
 Example: 100M
 
-##### <a name="mysql_servers"></a>`mysql_servers`
+##### <a name="-exim--mysql_servers"></a>`mysql_servers`
 
 Data type: `Optional[Array[String]]`
 
 MySQL servers to connect to
 Type: array
 
-##### <a name="never_users"></a>`never_users`
+##### <a name="-exim--never_users"></a>`never_users`
 
 Data type: `Optional[Array[String]]`
 
 Do not run deliverys as these users
 Type: array
 
-##### <a name="qualify_domain"></a>`qualify_domain`
+##### <a name="-exim--qualify_domain"></a>`qualify_domain`
 
 Data type: `Optional[String]`
 
@@ -792,67 +787,67 @@ configure the domain, which is automatically added to email addresses
 without a domain part. Default is empty, which exim treats as the
 primary hostname.
 
-##### <a name="queue_only_load"></a>`queue_only_load`
+##### <a name="-exim--queue_only_load"></a>`queue_only_load`
 
 Data type: `Optional[Integer]`
 
 Do not run imediate deliveries if load is above this threshhold.
 Type: integer
 
-##### <a name="queue_run_max"></a>`queue_run_max`
+##### <a name="-exim--queue_run_max"></a>`queue_run_max`
 
 Data type: `Optional[Integer]`
 
 Limits the number of queue runners to run in parrallel.
 Type: integer
 
-##### <a name="remote_max_parallel"></a>`remote_max_parallel`
+##### <a name="-exim--remote_max_parallel"></a>`remote_max_parallel`
 
 Data type: `Optional[Integer]`
 
 If one message with multiple recipients is delivered, run at max these
 deliveries in parallel.
 
-##### <a name="rfc1413_hosts"></a>`rfc1413_hosts`
+##### <a name="-exim--rfc1413_hosts"></a>`rfc1413_hosts`
 
 Data type: `Optional[String]`
 
 use identd callback on these hosts.
 Type: array
 
-##### <a name="rfc1413_query_timeout"></a>`rfc1413_query_timeout`
+##### <a name="-exim--rfc1413_query_timeout"></a>`rfc1413_query_timeout`
 
 Data type: `Optional[String]`
 
 Timeout for identd callback
 
-##### <a name="smtp_accept_max"></a>`smtp_accept_max`
+##### <a name="-exim--smtp_accept_max"></a>`smtp_accept_max`
 
 Data type: `Optional[Integer]`
 
 Limit on incomming connections
 Type: integer
 
-##### <a name="smtp_accept_max_nonmail"></a>`smtp_accept_max_nonmail`
+##### <a name="-exim--smtp_accept_max_nonmail"></a>`smtp_accept_max_nonmail`
 
 Data type: `Optional[Integer]`
 
 Limit the amount of non-mail commands in smtp dialog
 Type: integer
 
-##### <a name="smtp_accept_max_per_connection"></a>`smtp_accept_max_per_connection`
+##### <a name="-exim--smtp_accept_max_per_connection"></a>`smtp_accept_max_per_connection`
 
 Data type: `Optional[Integer]`
 
 Maximum number of Mails accepted in a single connection.
 
-##### <a name="smtp_accept_max_per_host"></a>`smtp_accept_max_per_host`
+##### <a name="-exim--smtp_accept_max_per_host"></a>`smtp_accept_max_per_host`
 
 Data type: `Optional[Integer]`
 
 Maximum number of parrallel connections from a single host
 
-##### <a name="smtp_accept_queue"></a>`smtp_accept_queue`
+##### <a name="-exim--smtp_accept_queue"></a>`smtp_accept_queue`
 
 Data type: `Optional[Integer]`
 
@@ -860,13 +855,13 @@ If the number of simultaneous incoming SMTP connections being handled via the
 listening daemon exceeds this value, messages received by SMTP are just
 placed on the queue.
 
-##### <a name="smtp_accept_queue_per_connection"></a>`smtp_accept_queue_per_connection`
+##### <a name="-exim--smtp_accept_queue_per_connection"></a>`smtp_accept_queue_per_connection`
 
 Data type: `Optional[Integer]`
 
 Maximum number of delivery processes spawned for a single smtp connection
 
-##### <a name="smtp_accept_reserve"></a>`smtp_accept_reserve`
+##### <a name="-exim--smtp_accept_reserve"></a>`smtp_accept_reserve`
 
 Data type: `Optional[Integer]`
 
@@ -874,155 +869,155 @@ When smtp_accept_max is set greater than zero, this option specifies a number
 of SMTP connections that are reserved for connections from the hosts that
 are specified in smtp_reserve_hosts.
 
-##### <a name="smtp_banner"></a>`smtp_banner`
+##### <a name="-exim--smtp_banner"></a>`smtp_banner`
 
 Data type: `Optional[String]`
 
 Initial response to SMTP connections.
 
-##### <a name="received_header_text"></a>`received_header_text`
+##### <a name="-exim--received_header_text"></a>`received_header_text`
 
 Data type: `Optional[String]`
 
 Override Received header added to each message.
 
-##### <a name="smtp_receive_timeout"></a>`smtp_receive_timeout`
+##### <a name="-exim--smtp_receive_timeout"></a>`smtp_receive_timeout`
 
 Data type: `Optional[String]`
 
 Timeout for SMTP activity.
 
-##### <a name="smtp_reserve_hosts"></a>`smtp_reserve_hosts`
+##### <a name="-exim--smtp_reserve_hosts"></a>`smtp_reserve_hosts`
 
 Data type: `Optional[Array[String]]`
 
 See "smtp_accept_reserve"
 
-##### <a name="smtp_return_error_details"></a>`smtp_return_error_details`
+##### <a name="-exim--smtp_return_error_details"></a>`smtp_return_error_details`
 
 Data type: `Optional[Boolean]`
 
 Return more detailed SMTP error messages.
 
-##### <a name="spamd_address"></a>`spamd_address`
+##### <a name="-exim--spamd_address"></a>`spamd_address`
 
 Data type: `Optional[String]`
 
 Configure a spamd socket here.
 
-##### <a name="split_spool_directory"></a>`split_spool_directory`
+##### <a name="-exim--split_spool_directory"></a>`split_spool_directory`
 
 Data type: `Optional[Boolean]`
 
 Use split spool configuration
 Type: bool
 
-##### <a name="syslog_timestamp"></a>`syslog_timestamp`
+##### <a name="-exim--syslog_timestamp"></a>`syslog_timestamp`
 
 Data type: `Optional[Boolean]`
 
 Don't send timestamps to syslog.
 
-##### <a name="system_filter"></a>`system_filter`
+##### <a name="-exim--system_filter"></a>`system_filter`
 
 Data type: `Optional[String]`
 
 Configure a system filter file here.
 
-##### <a name="timeout_frozen_after"></a>`timeout_frozen_after`
+##### <a name="-exim--timeout_frozen_after"></a>`timeout_frozen_after`
 
 Data type: `Optional[String]`
 
 Discard frozen mails after this amount of time.
 
-##### <a name="tls_advertise_hosts"></a>`tls_advertise_hosts`
+##### <a name="-exim--tls_advertise_hosts"></a>`tls_advertise_hosts`
 
 Data type: `Optional[Array[String]]`
 
 Advertise tls to hosts in this list
 
-##### <a name="tls_certificate"></a>`tls_certificate`
+##### <a name="-exim--tls_certificate"></a>`tls_certificate`
 
 Data type: `Optional[String]`
 
 Path to crt file, must be used together with tls_privatekey, default is empty (no tls)
 
-##### <a name="tls_privatekey"></a>`tls_privatekey`
+##### <a name="-exim--tls_privatekey"></a>`tls_privatekey`
 
 Data type: `Optional[String]`
 
 Path to key file, must be used together with tls_certificate, default is empty (no tls)
 
-##### <a name="trusted_users"></a>`trusted_users`
+##### <a name="-exim--trusted_users"></a>`trusted_users`
 
 Data type: `Optional[Array[String]]`
 
 Set, to configure exims global config variable trusted_users,
 default is empty ('').
 
-##### <a name="print_topbitchars"></a>`print_topbitchars`
+##### <a name="-exim--print_topbitchars"></a>`print_topbitchars`
 
 Data type: `Optional[Boolean]`
 
 If this option ist set to true code values of 128 and above are also considered to be printing characters
 
-##### <a name="untrusted_set_sender"></a>`untrusted_set_sender`
+##### <a name="-exim--untrusted_set_sender"></a>`untrusted_set_sender`
 
 Data type: `Optional[Boolean]`
 
 This option allows you to permit untrusted users to set other envelope sender addresses in a controlled way.
 
-##### <a name="tls_require_ciphers"></a>`tls_require_ciphers`
+##### <a name="-exim--tls_require_ciphers"></a>`tls_require_ciphers`
 
 Data type: `Optional[String]`
 
 This option controls which ciphers can be used for incoming TLS connections.
 
-##### <a name="ldap_default_servers"></a>`ldap_default_servers`
+##### <a name="-exim--ldap_default_servers"></a>`ldap_default_servers`
 
 Data type: `Optional[Array[String]]`
 
 Array of LDAP servers (fqdn)
 
-##### <a name="exim_heavy_package"></a>`exim_heavy_package`
+##### <a name="-exim--exim_heavy_package"></a>`exim_heavy_package`
 
 Data type: `Optional[String]`
 
 Name of the Debian exim-heavy package
 
-##### <a name="exim_light_package"></a>`exim_light_package`
+##### <a name="-exim--exim_light_package"></a>`exim_light_package`
 
 Data type: `Optional[String]`
 
 Name of the Debian exim-light package
 
-##### <a name="exim_service"></a>`exim_service`
+##### <a name="-exim--exim_service"></a>`exim_service`
 
 Data type: `Optional[String]`
 
 Name of the service
 
-##### <a name="ensure_resources"></a>`ensure_resources`
+##### <a name="-exim--ensure_resources"></a>`ensure_resources`
 
 Data type: `Optional[Boolean]`
 
+Boolean: Wether to explicitely ensure exim::$param lookups and resources
 
-
-##### <a name="service_enable"></a>`service_enable`
+##### <a name="-exim--service_enable"></a>`service_enable`
 
 Data type: `Optional[Boolean]`
 
+Boolean: desired state of the system service enable/disable
 
-
-##### <a name="service_ensure"></a>`service_ensure`
+##### <a name="-exim--service_ensure"></a>`service_ensure`
 
 Data type: `Optional`
 
-
+Boolean: desired state of the system service running/stopped/...
 
 ## Defined types
 
-### <a name="eximacl"></a>`exim::acl`
+### <a name="exim--acl"></a>`exim::acl`
 
 This define creates a new acl
 
@@ -1033,27 +1028,27 @@ This define creates a new acl
 
 The following parameters are available in the `exim::acl` defined type:
 
-* [`acl_id`](#acl_id)
-* [`statements`](#statements)
+* [`acl_id`](#-exim--acl--acl_id)
+* [`statements`](#-exim--acl--statements)
 
-##### <a name="acl_id"></a>`acl_id`
+##### <a name="-exim--acl--acl_id"></a>`acl_id`
 
-Data type: `Any`
+Data type: `Optional[Integer]`
 
 Id of this acl, this is needed for acl statements to reference
 this acl.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="statements"></a>`statements`
+##### <a name="-exim--acl--statements"></a>`statements`
 
-Data type: `Any`
+Data type: `Optional`
 
+Array of valid ACL statements
 
+Default value: `undef`
 
-Default value: ``undef``
-
-### <a name="eximaclstatement"></a>`exim::acl::statement`
+### <a name="exim--acl--statement"></a>`exim::acl::statement`
 
 This define creates one acl statement in exims configuration
 
@@ -1064,32 +1059,32 @@ This define creates one acl statement in exims configuration
 
 The following parameters are available in the `exim::acl::statement` defined type:
 
-* [`acl_id`](#acl_id)
-* [`order`](#order)
-* [`action`](#action)
-* [`conditions`](#conditions)
-* [`disable`](#disable)
+* [`acl_id`](#-exim--acl--statement--acl_id)
+* [`order`](#-exim--acl--statement--order)
+* [`action`](#-exim--acl--statement--action)
+* [`conditions`](#-exim--acl--statement--conditions)
+* [`disable`](#-exim--acl--statement--disable)
 
-##### <a name="acl_id"></a>`acl_id`
+##### <a name="-exim--acl--statement--acl_id"></a>`acl_id`
 
 Data type: `Integer`
 
 Id of parent acl this statement correspondes to.
 The acl-statement is part of the acl with id "acl_id".
 
-##### <a name="order"></a>`order`
+##### <a name="-exim--acl--statement--order"></a>`order`
 
 Data type: `Integer`
 
 Position of this statement in the acl (acl_id).
 
-##### <a name="action"></a>`action`
+##### <a name="-exim--acl--statement--action"></a>`action`
 
 Data type: `String`
 
 The outcome of given acl statement (e.g.: accept)
 
-##### <a name="conditions"></a>`conditions`
+##### <a name="-exim--acl--statement--conditions"></a>`conditions`
 
 Data type: `Optional[Array]`
 
@@ -1100,11 +1095,11 @@ Example:
     ['domains', ['+domainlist']],
   ],
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="disable"></a>`disable`
+##### <a name="-exim--acl--statement--disable"></a>`disable`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 This option can be used to ignore this acl statement
 even if other options are set.
@@ -1113,9 +1108,9 @@ hiera_hash with deep_merge, and you want to
 completly disable a statement defined in a lower
 hierachy.
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="eximaddresslist"></a>`exim::addresslist`
+### <a name="exim--addresslist"></a>`exim::addresslist`
 
 This define can be used to create addresslists, which can be referenced later
 
@@ -1126,15 +1121,15 @@ This define can be used to create addresslists, which can be referenced later
 
 The following parameters are available in the `exim::addresslist` defined type:
 
-* [`addresses`](#addresses)
+* [`addresses`](#-exim--addresslist--addresses)
 
-##### <a name="addresses"></a>`addresses`
+##### <a name="-exim--addresslist--addresses"></a>`addresses`
 
 Data type: `Array[String]`
 
 Array containing a list of hosts
 
-### <a name="eximauthenticator"></a>`exim::authenticator`
+### <a name="exim--authenticator"></a>`exim::authenticator`
 
 This module configures a single authenticator in exims configuration
 
@@ -1142,28 +1137,28 @@ This module configures a single authenticator in exims configuration
 
 The following parameters are available in the `exim::authenticator` defined type:
 
-* [`client_name`](#client_name)
-* [`client_secret`](#client_secret)
-* [`client_send`](#client_send)
-* [`driver`](#driver)
-* [`public_name`](#public_name)
-* [`server_secret`](#server_secret)
-* [`server_condition`](#server_condition)
-* [`server_advertise_condition`](#server_advertise_condition)
-* [`server_debug_print`](#server_debug_print)
-* [`server_set_id`](#server_set_id)
-* [`server_prompts`](#server_prompts)
+* [`client_name`](#-exim--authenticator--client_name)
+* [`client_secret`](#-exim--authenticator--client_secret)
+* [`client_send`](#-exim--authenticator--client_send)
+* [`driver`](#-exim--authenticator--driver)
+* [`public_name`](#-exim--authenticator--public_name)
+* [`server_secret`](#-exim--authenticator--server_secret)
+* [`server_condition`](#-exim--authenticator--server_condition)
+* [`server_advertise_condition`](#-exim--authenticator--server_advertise_condition)
+* [`server_debug_print`](#-exim--authenticator--server_debug_print)
+* [`server_set_id`](#-exim--authenticator--server_set_id)
+* [`server_prompts`](#-exim--authenticator--server_prompts)
 
-##### <a name="client_name"></a>`client_name`
+##### <a name="-exim--authenticator--client_name"></a>`client_name`
 
 Data type: `Optional[String]`
 
 This string is expanded, and the result used as the user name data
 when computing the response to the server’s challenge.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="client_secret"></a>`client_secret`
+##### <a name="-exim--authenticator--client_secret"></a>`client_secret`
 
 Data type: `Optional[String]`
 
@@ -1171,9 +1166,9 @@ This option must be set for the authenticator to work as a client.
 Its value is expanded and the result used as the secret string when
 computing the response.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="client_send"></a>`client_send`
+##### <a name="-exim--authenticator--client_send"></a>`client_send`
 
 Data type: `Optional[String]`
 
@@ -1182,70 +1177,70 @@ the AUTH command. The remaining ones are send in response to prompts
 from the server. Circumflex characters ('^') are converted to binary
 zero bytes ('\0') by Exim.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="driver"></a>`driver`
+##### <a name="-exim--authenticator--driver"></a>`driver`
 
 Data type: `String`
 
 driver to use for the authenticator
 
-##### <a name="public_name"></a>`public_name`
+##### <a name="-exim--authenticator--public_name"></a>`public_name`
 
 Data type: `String`
 
 How to anounce the authenticator to the outside (PLAIN/LOGIN)
 
-##### <a name="server_secret"></a>`server_secret`
+##### <a name="-exim--authenticator--server_secret"></a>`server_secret`
 
 Data type: `Optional[String]`
 
 For use with cram_md5, server_secret is expanded
 to obtain the password for that user.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="server_condition"></a>`server_condition`
+##### <a name="-exim--authenticator--server_condition"></a>`server_condition`
 
 Data type: `Optional[String]`
 
 The authentication check
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="server_advertise_condition"></a>`server_advertise_condition`
+##### <a name="-exim--authenticator--server_advertise_condition"></a>`server_advertise_condition`
 
 Data type: `Optional[String]`
 
 The condition under which to advertise this authenticator
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="server_debug_print"></a>`server_debug_print`
+##### <a name="-exim--authenticator--server_debug_print"></a>`server_debug_print`
 
 Data type: `Optional[String]`
 
 Debug print when authentication debugging is enabled
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="server_set_id"></a>`server_set_id`
+##### <a name="-exim--authenticator--server_set_id"></a>`server_set_id`
 
 Data type: `Optional[String]`
 
 Set the $authenticated_id variable for later use
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="server_prompts"></a>`server_prompts`
+##### <a name="-exim--authenticator--server_prompts"></a>`server_prompts`
 
 Data type: `Optional[String]`
 
 Promt used in the smtp session to ask for data  (User: Password:)
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="eximdomainlist"></a>`exim::domainlist`
+### <a name="exim--domainlist"></a>`exim::domainlist`
 
 This define can be used to create domainlists, which can be referenced later
 
@@ -1256,16 +1251,16 @@ This define can be used to create domainlists, which can be referenced later
 
 The following parameters are available in the `exim::domainlist` defined type:
 
-* [`domains`](#domains)
-* [`path`](#path)
+* [`domains`](#-exim--domainlist--domains)
+* [`path`](#-exim--domainlist--path)
 
-##### <a name="domains"></a>`domains`
+##### <a name="-exim--domainlist--domains"></a>`domains`
 
 Data type: `Array[String]`
 
 Array containing a list of domains
 
-##### <a name="path"></a>`path`
+##### <a name="-exim--domainlist--path"></a>`path`
 
 Data type: `Optional[String]`
 
@@ -1273,9 +1268,9 @@ If path is set, domains are listed in a file located in this path, the main conf
 a reference to this file.
 If path is not set, domains are written directly into the config file instead.
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="eximhostlist"></a>`exim::hostlist`
+### <a name="exim--hostlist"></a>`exim::hostlist`
 
 This define can be used to create hostlists, which can be referenced later
 
@@ -1286,15 +1281,15 @@ This define can be used to create hostlists, which can be referenced later
 
 The following parameters are available in the `exim::hostlist` defined type:
 
-* [`hosts`](#hosts)
+* [`hosts`](#-exim--hostlist--hosts)
 
-##### <a name="hosts"></a>`hosts`
+##### <a name="-exim--hostlist--hosts"></a>`hosts`
 
 Data type: `Array[String]`
 
 Array containing a list of hosts
 
-### <a name="eximretry"></a>`exim::retry`
+### <a name="exim--retry"></a>`exim::retry`
 
 This define is used to build retry rules
 
@@ -1302,58 +1297,12 @@ This define is used to build retry rules
 
 The following parameters are available in the `exim::retry` defined type:
 
-* [`order`](#order)
-* [`error`](#error)
-* [`retries`](#retries)
-* [`domain`](#domain)
+* [`order`](#-exim--retry--order)
+* [`error`](#-exim--retry--error)
+* [`retries`](#-exim--retry--retries)
+* [`domain`](#-exim--retry--domain)
 
-##### <a name="order"></a>`order`
-
-Data type: `Optional[Integer]`
-
-Determines the order, in which retry statements are evaluated
-
-Default value: `1`
-
-##### <a name="error"></a>`error`
-
-Data type: `Optional[String]`
-
-Determines on which errors the rule should apply
-
-Default value: `'*'`
-
-##### <a name="retries"></a>`retries`
-
-Data type: `Optional[Array]`
-
-Timing information for retries
-Type: array of arrays
-
-Default value: `[['F','4h','5m'],['G','16h','1h','1.5'],['F','4d','6h']]`
-
-##### <a name="domain"></a>`domain`
-
-Data type: `Optional[String]`
-
-
-
-Default value: `$title`
-
-### <a name="eximrewrite"></a>`exim::rewrite`
-
-This define is used to build rewrite rules
-
-#### Parameters
-
-The following parameters are available in the `exim::rewrite` defined type:
-
-* [`order`](#order)
-* [`pattern`](#pattern)
-* [`replacement`](#replacement)
-* [`flags`](#flags)
-
-##### <a name="order"></a>`order`
+##### <a name="-exim--retry--order"></a>`order`
 
 Data type: `Integer`
 
@@ -1361,26 +1310,72 @@ Determines the order, in which retry statements are evaluated
 
 Default value: `1`
 
-##### <a name="pattern"></a>`pattern`
+##### <a name="-exim--retry--error"></a>`error`
+
+Data type: `String`
+
+Determines on which errors the rule should apply
+
+Default value: `'*'`
+
+##### <a name="-exim--retry--retries"></a>`retries`
+
+Data type: `Array`
+
+Timing information for retries
+Type: array of arrays
+
+Default value: `[['F', '4h', '5m'], ['G', '16h', '1h', '1.5'], ['F', '4d', '6h']]`
+
+##### <a name="-exim--retry--domain"></a>`domain`
+
+Data type: `Optional[String]`
+
+Domain for which to define retries (default: $title)
+
+Default value: `$title`
+
+### <a name="exim--rewrite"></a>`exim::rewrite`
+
+This define is used to build rewrite rules
+
+#### Parameters
+
+The following parameters are available in the `exim::rewrite` defined type:
+
+* [`order`](#-exim--rewrite--order)
+* [`pattern`](#-exim--rewrite--pattern)
+* [`replacement`](#-exim--rewrite--replacement)
+* [`flags`](#-exim--rewrite--flags)
+
+##### <a name="-exim--rewrite--order"></a>`order`
+
+Data type: `Integer`
+
+Determines the order, in which retry statements are evaluated
+
+Default value: `1`
+
+##### <a name="-exim--rewrite--pattern"></a>`pattern`
 
 Data type: `String`
 
 Matches those addresses that are to be rewriten by rule
 
-##### <a name="replacement"></a>`replacement`
+##### <a name="-exim--rewrite--replacement"></a>`replacement`
 
 Data type: `String`
 
 the replacement string for matching pattern
 
-##### <a name="flags"></a>`flags`
+##### <a name="-exim--rewrite--flags"></a>`flags`
 
 Data type: `Array[Enum['E','F','T','b','c','f','h','r','s','t','Q','q','R','w','S']]`
 
 The flags are single characters which indicates the address location
 to which the rule applies and how the rewriting takes place
 
-### <a name="eximrouter"></a>`exim::router`
+### <a name="exim--router"></a>`exim::router`
 
 This module configures a single router in exims configuration
 
@@ -1388,391 +1383,391 @@ This module configures a single router in exims configuration
 
 The following parameters are available in the `exim::router` defined type:
 
-* [`disable`](#disable)
-* [`order`](#order)
-* [`address_data`](#address_data)
-* [`caseful_local_part`](#caseful_local_part)
-* [`retry_use_local_part`](#retry_use_local_part)
-* [`comment`](#comment)
-* [`driver`](#driver)
-* [`allow_defer`](#allow_defer)
-* [`allow_fail`](#allow_fail)
-* [`allow_filter`](#allow_filter)
-* [`condition`](#condition)
-* [`data`](#data)
-* [`debug_print`](#debug_print)
-* [`domains`](#domains)
-* [`file_transport`](#file_transport)
-* [`file`](#file)
-* [`headers_add`](#headers_add)
-* [`headers_remove`](#headers_remove)
-* [`host_find_failed`](#host_find_failed)
-* [`ignore_target_hosts`](#ignore_target_hosts)
-* [`local_parts`](#local_parts)
-* [`local_part_prefix`](#local_part_prefix)
-* [`local_part_suffix`](#local_part_suffix)
-* [`local_part_prefix_optional`](#local_part_prefix_optional)
-* [`local_part_suffix_optional`](#local_part_suffix_optional)
-* [`no_address_test`](#no_address_test)
-* [`no_more`](#no_more)
-* [`no_verify`](#no_verify)
-* [`pipe_transport`](#pipe_transport)
-* [`reply_transport`](#reply_transport)
-* [`qualify_preserve_domain`](#qualify_preserve_domain)
-* [`route_data`](#route_data)
-* [`route_list`](#route_list)
-* [`same_domain_copy_routing`](#same_domain_copy_routing)
-* [`self`](#self)
-* [`senders`](#senders)
-* [`transport`](#transport)
-* [`unseen`](#unseen)
-* [`user`](#user)
-* [`errors_to`](#errors_to)
-* [`cannot_route_message`](#cannot_route_message)
-* [`require_files`](#require_files)
+* [`disable`](#-exim--router--disable)
+* [`order`](#-exim--router--order)
+* [`address_data`](#-exim--router--address_data)
+* [`caseful_local_part`](#-exim--router--caseful_local_part)
+* [`retry_use_local_part`](#-exim--router--retry_use_local_part)
+* [`comment`](#-exim--router--comment)
+* [`driver`](#-exim--router--driver)
+* [`allow_defer`](#-exim--router--allow_defer)
+* [`allow_fail`](#-exim--router--allow_fail)
+* [`allow_filter`](#-exim--router--allow_filter)
+* [`condition`](#-exim--router--condition)
+* [`data`](#-exim--router--data)
+* [`debug_print`](#-exim--router--debug_print)
+* [`domains`](#-exim--router--domains)
+* [`file_transport`](#-exim--router--file_transport)
+* [`file`](#-exim--router--file)
+* [`headers_add`](#-exim--router--headers_add)
+* [`headers_remove`](#-exim--router--headers_remove)
+* [`host_find_failed`](#-exim--router--host_find_failed)
+* [`ignore_target_hosts`](#-exim--router--ignore_target_hosts)
+* [`local_parts`](#-exim--router--local_parts)
+* [`local_part_prefix`](#-exim--router--local_part_prefix)
+* [`local_part_suffix`](#-exim--router--local_part_suffix)
+* [`local_part_prefix_optional`](#-exim--router--local_part_prefix_optional)
+* [`local_part_suffix_optional`](#-exim--router--local_part_suffix_optional)
+* [`no_address_test`](#-exim--router--no_address_test)
+* [`no_more`](#-exim--router--no_more)
+* [`no_verify`](#-exim--router--no_verify)
+* [`pipe_transport`](#-exim--router--pipe_transport)
+* [`reply_transport`](#-exim--router--reply_transport)
+* [`qualify_preserve_domain`](#-exim--router--qualify_preserve_domain)
+* [`route_data`](#-exim--router--route_data)
+* [`route_list`](#-exim--router--route_list)
+* [`same_domain_copy_routing`](#-exim--router--same_domain_copy_routing)
+* [`self`](#-exim--router--self)
+* [`senders`](#-exim--router--senders)
+* [`transport`](#-exim--router--transport)
+* [`unseen`](#-exim--router--unseen)
+* [`user`](#-exim--router--user)
+* [`errors_to`](#-exim--router--errors_to)
+* [`cannot_route_message`](#-exim--router--cannot_route_message)
+* [`require_files`](#-exim--router--require_files)
 
-##### <a name="disable"></a>`disable`
+##### <a name="-exim--router--disable"></a>`disable`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 If set to true, this router is excluded from the configuration.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="order"></a>`order`
+##### <a name="-exim--router--order"></a>`order`
 
-Data type: `Optional[Integer]`
+Data type: `Integer`
 
 Order of routers is important, set it here
 
 Default value: `0`
 
-##### <a name="address_data"></a>`address_data`
+##### <a name="-exim--router--address_data"></a>`address_data`
 
 Data type: `Optional[String]`
 
 Set the address_data variable
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="caseful_local_part"></a>`caseful_local_part`
+##### <a name="-exim--router--caseful_local_part"></a>`caseful_local_part`
 
 Data type: `Optional[Boolean]`
 
 Sets the caseful_local_part option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="retry_use_local_part"></a>`retry_use_local_part`
+##### <a name="-exim--router--retry_use_local_part"></a>`retry_use_local_part`
 
 Data type: `Optional[Boolean]`
 
 Sets the retry_use_local_part option.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="comment"></a>`comment`
+##### <a name="-exim--router--comment"></a>`comment`
 
 Data type: `Optional[Array[String]]`
 
 Comment a router, this will be placed as a comment just above
 the router.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="driver"></a>`driver`
+##### <a name="-exim--router--driver"></a>`driver`
 
 Data type: `String`
 
 Sets the type of router.
 
-##### <a name="allow_defer"></a>`allow_defer`
+##### <a name="-exim--router--allow_defer"></a>`allow_defer`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 If set to true, the router can defer messages if needed.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="allow_fail"></a>`allow_fail`
+##### <a name="-exim--router--allow_fail"></a>`allow_fail`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 If set to true, the router can fail messages if needed.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="allow_filter"></a>`allow_filter`
+##### <a name="-exim--router--allow_filter"></a>`allow_filter`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 If set to true, filters can be used.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="condition"></a>`condition`
+##### <a name="-exim--router--condition"></a>`condition`
 
 Data type: `Optional[String]`
 
 (Advanced) Conditions when this router should be used
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="data"></a>`data`
+##### <a name="-exim--router--data"></a>`data`
 
 Data type: `Optional[String]`
 
 Data source for the rewrite router
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="debug_print"></a>`debug_print`
+##### <a name="-exim--router--debug_print"></a>`debug_print`
 
 Data type: `Optional[String]`
 
 Used to print debug information
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="domains"></a>`domains`
+##### <a name="-exim--router--domains"></a>`domains`
 
 Data type: `Optional[Array[String]]`
 
 Domains for which this router should be used.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="file_transport"></a>`file_transport`
+##### <a name="-exim--router--file_transport"></a>`file_transport`
 
 Data type: `Optional[String]`
 
 Set the file_transport, used if the outcome of the router points to a file
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="file"></a>`file`
+##### <a name="-exim--router--file"></a>`file`
 
 Data type: `Optional[String]`
 
 Set the file that contains the filter rules.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="headers_add"></a>`headers_add`
+##### <a name="-exim--router--headers_add"></a>`headers_add`
 
 Data type: `Optional[Array[String]]`
 
 Add these Headers to a message
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="headers_remove"></a>`headers_remove`
+##### <a name="-exim--router--headers_remove"></a>`headers_remove`
 
 Data type: `Optional[Array[String]]`
 
 Remove these Headers to a message
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="host_find_failed"></a>`host_find_failed`
+##### <a name="-exim--router--host_find_failed"></a>`host_find_failed`
 
 Data type: `Optional[String]`
 
 Relevant to the manualroute router, it determines what shoud
 happen if the used host can't be resolved to an IP address.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="ignore_target_hosts"></a>`ignore_target_hosts`
+##### <a name="-exim--router--ignore_target_hosts"></a>`ignore_target_hosts`
 
 Data type: `Optional[Array[String]]`
 
 remove this host from hostlists gererated by this router
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="local_parts"></a>`local_parts`
+##### <a name="-exim--router--local_parts"></a>`local_parts`
 
 Data type: `Optional[Array[String]]`
 
 The router is run only if the local part of the address matches the list.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="local_part_prefix"></a>`local_part_prefix`
+##### <a name="-exim--router--local_part_prefix"></a>`local_part_prefix`
 
 Data type: `Optional[String]`
 
 Define a prefix, present on localparts
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="local_part_suffix"></a>`local_part_suffix`
+##### <a name="-exim--router--local_part_suffix"></a>`local_part_suffix`
 
 Data type: `Optional[String]`
 
 Define a suffix, present on localparts
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="local_part_prefix_optional"></a>`local_part_prefix_optional`
+##### <a name="-exim--router--local_part_prefix_optional"></a>`local_part_prefix_optional`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 Is the prefix optional?
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="local_part_suffix_optional"></a>`local_part_suffix_optional`
+##### <a name="-exim--router--local_part_suffix_optional"></a>`local_part_suffix_optional`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 Is the suffix optional?
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="no_address_test"></a>`no_address_test`
+##### <a name="-exim--router--no_address_test"></a>`no_address_test`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 Skip this router in address testing mode (exim -bt)
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="no_more"></a>`no_more`
+##### <a name="-exim--router--no_more"></a>`no_more`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 If conditions are met for this router, but the router can't process
 this mail, the address fails instead of handeld down to the next router.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="no_verify"></a>`no_verify`
+##### <a name="-exim--router--no_verify"></a>`no_verify`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 Skip this router when verifying addresses.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="pipe_transport"></a>`pipe_transport`
+##### <a name="-exim--router--pipe_transport"></a>`pipe_transport`
 
 Data type: `Optional[String]`
 
 Set the pipe_transport, used if the outcome of the router points to a pipe
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="reply_transport"></a>`reply_transport`
+##### <a name="-exim--router--reply_transport"></a>`reply_transport`
 
 Data type: `Optional[String]`
 
 Set the reply_transport, used if the outcome of the router points to mail or vacation
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="qualify_preserve_domain"></a>`qualify_preserve_domain`
+##### <a name="-exim--router--qualify_preserve_domain"></a>`qualify_preserve_domain`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 For redirect routers
 If an unqualified address (one without a domain) is generated, it is qualified with the domain of the parent address.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="route_data"></a>`route_data`
+##### <a name="-exim--router--route_data"></a>`route_data`
 
 Data type: `Optional[String]`
 
 If this option is set, it must expand to yield the data part of a routing rule.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="route_list"></a>`route_list`
+##### <a name="-exim--router--route_list"></a>`route_list`
 
 Data type: `Optional[String]`
 
 Target server used by manualroute router.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="same_domain_copy_routing"></a>`same_domain_copy_routing`
+##### <a name="-exim--router--same_domain_copy_routing"></a>`same_domain_copy_routing`
 
 Data type: `Optional[Boolean]`
 
 This option copys routing information to all mails targeting the same domain.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="self"></a>`self`
+##### <a name="-exim--router--self"></a>`self`
 
 Data type: `Optional[String]`
 
 The self option specifies what happens when the first host on the list turns out to be the local host.
 See official documentation for more details.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="senders"></a>`senders`
+##### <a name="-exim--router--senders"></a>`senders`
 
 Data type: `Optional[Array[String]]`
 
 If this option is set, the router is skipped unless the message’s sender address matches something on the list.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="transport"></a>`transport`
+##### <a name="-exim--router--transport"></a>`transport`
 
 Data type: `Optional[String]`
 
 Which transport should be used to send mails.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="unseen"></a>`unseen`
+##### <a name="-exim--router--unseen"></a>`unseen`
 
-Data type: `Optional[Boolean]`
+Data type: `Boolean`
 
 When this option is set true, routing does not cease if the router accepts the address.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="user"></a>`user`
+##### <a name="-exim--router--user"></a>`user`
 
 Data type: `Optional[String]`
 
 When a router queues an address for a transport, and the transport does not specify a user,
 the user given here is used when running the delivery process.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="errors_to"></a>`errors_to`
+##### <a name="-exim--router--errors_to"></a>`errors_to`
 
 Data type: `Optional[String]`
 
 override the destination of a generated bounce message
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="cannot_route_message"></a>`cannot_route_message`
+##### <a name="-exim--router--cannot_route_message"></a>`cannot_route_message`
 
 Data type: `Optional[String]`
 
 specify a text message which is used when an address can not be routed because of no more routers to try. Default
 message is "Unroutable address"
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="require_files"></a>`require_files`
+##### <a name="-exim--router--require_files"></a>`require_files`
 
 Data type: `Optional[Array[String]]`
 
 dont run this router if specified files does not exist
 
-Default value: ``undef``
+Default value: `undef`
 
-### <a name="eximtransport"></a>`exim::transport`
+### <a name="exim--transport"></a>`exim::transport`
 
 This module configures a single transport in exims configuration
 
@@ -1785,174 +1780,175 @@ Volunteers, step up!
 
 The following parameters are available in the `exim::transport` defined type:
 
-* [`allow_localhost`](#allow_localhost)
-* [`comment`](#comment)
-* [`driver`](#driver)
-* [`protocol`](#protocol)
-* [`quota`](#quota)
-* [`quota_warn_threshold`](#quota_warn_threshold)
-* [`quota_warn_message`](#quota_warn_message)
-* [`quota_is_inclusive`](#quota_is_inclusive)
-* [`maildir_use_size_file`](#maildir_use_size_file)
-* [`connect_timeout`](#connect_timeout)
-* [`connection_max_messages`](#connection_max_messages)
-* [`exim_environment`](#exim_environment)
-* [`fallback_hosts`](#fallback_hosts)
-* [`from`](#from)
-* [`helo_data`](#helo_data)
-* [`headers_remove`](#headers_remove)
-* [`headers_add`](#headers_add)
-* [`hosts`](#hosts)
-* [`hosts_require_auth`](#hosts_require_auth)
-* [`hosts_require_tls`](#hosts_require_tls)
-* [`hosts_try_auth`](#hosts_try_auth)
-* [`path`](#path)
-* [`port`](#port)
-* [`return_fail_output`](#return_fail_output)
-* [`return_output`](#return_output)
-* [`timeout`](#timeout)
-* [`timeout_defer`](#timeout_defer)
-* [`tls_dh_min_bits`](#tls_dh_min_bits)
-* [`tls_verify_certificates`](#tls_verify_certificates)
-* [`interface`](#interface)
-* [`dkim_domain`](#dkim_domain)
-* [`dkim_selector`](#dkim_selector)
-* [`dkim_private_key`](#dkim_private_key)
-* [`dkim_canon`](#dkim_canon)
-* [`dkim_strict`](#dkim_strict)
-* [`once`](#once)
-* [`once_repeat`](#once_repeat)
-* [`once_file_size`](#once_file_size)
-* [`headers`](#headers)
-* [`return_message`](#return_message)
-* [`debug_print`](#debug_print)
-* [`delivery_date_add`](#delivery_date_add)
-* [`envelope_to_add`](#envelope_to_add)
-* [`freeze_exec_fail`](#freeze_exec_fail)
-* [`initgroups`](#initgroups)
-* [`log_output`](#log_output)
-* [`maildir_format`](#maildir_format)
-* [`rcpt_include_affixes`](#rcpt_include_affixes)
-* [`return_path_add`](#return_path_add)
-* [`temp_errors`](#temp_errors)
-* [`batch_max`](#batch_max)
-* [`command`](#command)
-* [`directory`](#directory)
-* [`directory_mode`](#directory_mode)
-* [`file`](#file)
-* [`group`](#group)
-* [`home_directory`](#home_directory)
-* [`maildir_tag`](#maildir_tag)
-* [`message_prefix`](#message_prefix)
-* [`message_suffix`](#message_suffix)
-* [`message_size_limit`](#message_size_limit)
-* [`mode`](#mode)
-* [`socket`](#socket)
-* [`subject`](#subject)
-* [`text`](#text)
-* [`to`](#to)
-* [`transport_filter`](#transport_filter)
-* [`user`](#user)
-* [`serialize_hosts`](#serialize_hosts)
+* [`allow_localhost`](#-exim--transport--allow_localhost)
+* [`comment`](#-exim--transport--comment)
+* [`driver`](#-exim--transport--driver)
+* [`protocol`](#-exim--transport--protocol)
+* [`quota`](#-exim--transport--quota)
+* [`quota_warn_threshold`](#-exim--transport--quota_warn_threshold)
+* [`quota_warn_message`](#-exim--transport--quota_warn_message)
+* [`quota_is_inclusive`](#-exim--transport--quota_is_inclusive)
+* [`maildir_use_size_file`](#-exim--transport--maildir_use_size_file)
+* [`connect_timeout`](#-exim--transport--connect_timeout)
+* [`connection_max_messages`](#-exim--transport--connection_max_messages)
+* [`exim_environment`](#-exim--transport--exim_environment)
+* [`fallback_hosts`](#-exim--transport--fallback_hosts)
+* [`from`](#-exim--transport--from)
+* [`helo_data`](#-exim--transport--helo_data)
+* [`headers_remove`](#-exim--transport--headers_remove)
+* [`headers_add`](#-exim--transport--headers_add)
+* [`hosts`](#-exim--transport--hosts)
+* [`hosts_require_auth`](#-exim--transport--hosts_require_auth)
+* [`hosts_require_tls`](#-exim--transport--hosts_require_tls)
+* [`hosts_try_auth`](#-exim--transport--hosts_try_auth)
+* [`hosts_avoid_pipelining`](#-exim--transport--hosts_avoid_pipelining)
+* [`path`](#-exim--transport--path)
+* [`port`](#-exim--transport--port)
+* [`return_fail_output`](#-exim--transport--return_fail_output)
+* [`return_output`](#-exim--transport--return_output)
+* [`timeout`](#-exim--transport--timeout)
+* [`timeout_defer`](#-exim--transport--timeout_defer)
+* [`tls_dh_min_bits`](#-exim--transport--tls_dh_min_bits)
+* [`tls_verify_certificates`](#-exim--transport--tls_verify_certificates)
+* [`interface`](#-exim--transport--interface)
+* [`dkim_domain`](#-exim--transport--dkim_domain)
+* [`dkim_selector`](#-exim--transport--dkim_selector)
+* [`dkim_private_key`](#-exim--transport--dkim_private_key)
+* [`dkim_canon`](#-exim--transport--dkim_canon)
+* [`dkim_strict`](#-exim--transport--dkim_strict)
+* [`once`](#-exim--transport--once)
+* [`once_repeat`](#-exim--transport--once_repeat)
+* [`once_file_size`](#-exim--transport--once_file_size)
+* [`headers`](#-exim--transport--headers)
+* [`return_message`](#-exim--transport--return_message)
+* [`debug_print`](#-exim--transport--debug_print)
+* [`delivery_date_add`](#-exim--transport--delivery_date_add)
+* [`envelope_to_add`](#-exim--transport--envelope_to_add)
+* [`freeze_exec_fail`](#-exim--transport--freeze_exec_fail)
+* [`initgroups`](#-exim--transport--initgroups)
+* [`log_output`](#-exim--transport--log_output)
+* [`maildir_format`](#-exim--transport--maildir_format)
+* [`rcpt_include_affixes`](#-exim--transport--rcpt_include_affixes)
+* [`return_path_add`](#-exim--transport--return_path_add)
+* [`temp_errors`](#-exim--transport--temp_errors)
+* [`batch_max`](#-exim--transport--batch_max)
+* [`command`](#-exim--transport--command)
+* [`directory`](#-exim--transport--directory)
+* [`directory_mode`](#-exim--transport--directory_mode)
+* [`file`](#-exim--transport--file)
+* [`group`](#-exim--transport--group)
+* [`home_directory`](#-exim--transport--home_directory)
+* [`maildir_tag`](#-exim--transport--maildir_tag)
+* [`message_prefix`](#-exim--transport--message_prefix)
+* [`message_suffix`](#-exim--transport--message_suffix)
+* [`message_size_limit`](#-exim--transport--message_size_limit)
+* [`mode`](#-exim--transport--mode)
+* [`socket`](#-exim--transport--socket)
+* [`subject`](#-exim--transport--subject)
+* [`text`](#-exim--transport--text)
+* [`to`](#-exim--transport--to)
+* [`transport_filter`](#-exim--transport--transport_filter)
+* [`user`](#-exim--transport--user)
+* [`serialize_hosts`](#-exim--transport--serialize_hosts)
 
-##### <a name="allow_localhost"></a>`allow_localhost`
+##### <a name="-exim--transport--allow_localhost"></a>`allow_localhost`
 
 Data type: `Boolean`
 
 Allow connections to localhost
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="comment"></a>`comment`
+##### <a name="-exim--transport--comment"></a>`comment`
 
 Data type: `Optional[Array[String]]`
 
 Comment a router, this will be placed as a comment just above
 the router
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="driver"></a>`driver`
+##### <a name="-exim--transport--driver"></a>`driver`
 
 Data type: `String[1]`
 
 Type of transport
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="protocol"></a>`protocol`
+##### <a name="-exim--transport--protocol"></a>`protocol`
 
 Data type: `Optional[String[1]]`
 
 Protocol of transport
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="quota"></a>`quota`
+##### <a name="-exim--transport--quota"></a>`quota`
 
 Data type: `Optional[String[1]]`
 
 Quota
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="quota_warn_threshold"></a>`quota_warn_threshold`
+##### <a name="-exim--transport--quota_warn_threshold"></a>`quota_warn_threshold`
 
 Data type: `Optional[String[1]]`
 
 Quota warning threshold
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="quota_warn_message"></a>`quota_warn_message`
+##### <a name="-exim--transport--quota_warn_message"></a>`quota_warn_message`
 
 Data type: `Optional[String[1]]`
 
 Quota warning message
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="quota_is_inclusive"></a>`quota_is_inclusive`
+##### <a name="-exim--transport--quota_is_inclusive"></a>`quota_is_inclusive`
 
 Data type: `Boolean`
 
 Whether quota is inclusive
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="maildir_use_size_file"></a>`maildir_use_size_file`
+##### <a name="-exim--transport--maildir_use_size_file"></a>`maildir_use_size_file`
 
 Data type: `Boolean`
 
 Use maildir size file for quota
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="connect_timeout"></a>`connect_timeout`
+##### <a name="-exim--transport--connect_timeout"></a>`connect_timeout`
 
 Data type: `Optional[String[1]]`
 
 Timeout when connecting to remote Servers
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="connection_max_messages"></a>`connection_max_messages`
+##### <a name="-exim--transport--connection_max_messages"></a>`connection_max_messages`
 
 Data type: `Optional[Integer]`
 
 Set the maximum number of messages that can be transfered in a single connection
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="exim_environment"></a>`exim_environment`
+##### <a name="-exim--transport--exim_environment"></a>`exim_environment`
 
 Data type: `Optional[Tuple]`
 
 This option is used to add additional variables to the environment in which the command runs
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="fallback_hosts"></a>`fallback_hosts`
+##### <a name="-exim--transport--fallback_hosts"></a>`fallback_hosts`
 
 Data type: `Optional[Array[String]]`
 
@@ -1960,41 +1956,41 @@ If Exim is unable to deliver to any of the hosts for a particular address, and t
 errors are not permanent rejections, the address is put on a separate transport
 queue with its host list replaced by the fallback hosts
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="from"></a>`from`
+##### <a name="-exim--transport--from"></a>`from`
 
 Data type: `Optional[String[1]]`
 
 sets the from address
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="helo_data"></a>`helo_data`
+##### <a name="-exim--transport--helo_data"></a>`helo_data`
 
 Data type: `Optional[String[1]]`
 
 sets the helo name exim uses when connecting to a remote server
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="headers_remove"></a>`headers_remove`
+##### <a name="-exim--transport--headers_remove"></a>`headers_remove`
 
 Data type: `Optional[Array[String]]`
 
 list of headers to remove
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="headers_add"></a>`headers_add`
+##### <a name="-exim--transport--headers_add"></a>`headers_add`
 
 Data type: `Optional[Array[String]]`
 
 list of headers to add
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="hosts"></a>`hosts`
+##### <a name="-exim--transport--hosts"></a>`hosts`
 
 Data type: `Optional[Array[String]]`
 
@@ -2003,60 +1999,69 @@ being processed does not have any hosts associated with it. The hosts
 specified by hosts are also used, whether or not the address has its
 own hosts, if hosts_override is set
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="hosts_require_auth"></a>`hosts_require_auth`
+##### <a name="-exim--transport--hosts_require_auth"></a>`hosts_require_auth`
 
 Data type: `Optional[Array[String]]`
 
 Specifies a list of servers for which authentication must succeed before Exim will try
 to transfer a message. If authentication fails for one of these servers, delivery is deferred
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="hosts_require_tls"></a>`hosts_require_tls`
+##### <a name="-exim--transport--hosts_require_tls"></a>`hosts_require_tls`
 
 Data type: `Optional[Array[String]]`
 
 List of hosts requiring tls, messages are only sent if tls can be established
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="hosts_try_auth"></a>`hosts_try_auth`
+##### <a name="-exim--transport--hosts_try_auth"></a>`hosts_try_auth`
 
 Data type: `Optional[Array[String]]`
 
 The host_try_auth option provides a list of hosts to which, provided they announce
 authentication support, Exim will attempt to authenticate as a client when it connects
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="path"></a>`path`
+##### <a name="-exim--transport--hosts_avoid_pipelining"></a>`hosts_avoid_pipelining`
+
+Data type: `Optional[Array[String]]`
+
+Exim will not use the ESMTP PIPELINING extension when delivering to any host that matches this list,
+even if the server host advertises PIPELINING support.
+
+Default value: `undef`
+
+##### <a name="-exim--transport--path"></a>`path`
 
 Data type: `Optional[String[1]]`
 
 This option specifies the string that is set up in the
 PATH environment variable of the subprocess
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="port"></a>`port`
+##### <a name="-exim--transport--port"></a>`port`
 
 Data type: `Optional[Integer]`
 
 The port exim connects to on the remote server
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="return_fail_output"></a>`return_fail_output`
+##### <a name="-exim--transport--return_fail_output"></a>`return_fail_output`
 
 Data type: `Boolean`
 
 If set to true, the command output is returned in the bounce message in case of failure
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="return_output"></a>`return_output`
+##### <a name="-exim--transport--return_output"></a>`return_output`
 
 Data type: `Boolean`
 
@@ -2064,26 +2069,26 @@ If this option is true, and the command produced any output, the delivery
 is deemed to have failed whatever the return code from the command, and
 the output is returned in the bounce message
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="timeout"></a>`timeout`
+##### <a name="-exim--transport--timeout"></a>`timeout`
 
 Data type: `Optional[String[1]]`
 
 If the command fails to complete within this time, it is killed
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="timeout_defer"></a>`timeout_defer`
+##### <a name="-exim--transport--timeout_defer"></a>`timeout_defer`
 
 Data type: `Boolean`
 
 Set this to true for timeouts to become temporary errors, causing the
 delivery to be deferred
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="tls_dh_min_bits"></a>`tls_dh_min_bits`
+##### <a name="-exim--transport--tls_dh_min_bits"></a>`tls_dh_min_bits`
 
 Data type: `Optional[Integer]`
 
@@ -2091,41 +2096,41 @@ set the minimum acceptable number of bits in the Diffie-Hellman prime
 offered by a server,
 default is 1024
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="tls_verify_certificates"></a>`tls_verify_certificates`
+##### <a name="-exim--transport--tls_verify_certificates"></a>`tls_verify_certificates`
 
 Data type: `Optional[String[1]]`
 
 Give a path to certificates agains which connections are verified
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="interface"></a>`interface`
+##### <a name="-exim--transport--interface"></a>`interface`
 
 Data type: `Optional[String[1]]`
 
 sets the outgoing ip for smtp transports
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="dkim_domain"></a>`dkim_domain`
+##### <a name="-exim--transport--dkim_domain"></a>`dkim_domain`
 
 Data type: `Optional[Array[String]]`
 
 The domain(s) you want to sign with
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="dkim_selector"></a>`dkim_selector`
+##### <a name="-exim--transport--dkim_selector"></a>`dkim_selector`
 
 Data type: `Optional[String[1]]`
 
 This sets the key selector string
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="dkim_private_key"></a>`dkim_private_key`
+##### <a name="-exim--transport--dkim_private_key"></a>`dkim_private_key`
 
 Data type: `Optional[String[1]]`
 
@@ -2139,9 +2144,9 @@ The result can either
  be signed. This case will not result in an error, even if dkim_strict
  is set
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="dkim_canon"></a>`dkim_canon`
+##### <a name="-exim--transport--dkim_canon"></a>`dkim_canon`
 
 Data type: `Optional[String[1]]`
 
@@ -2150,9 +2155,9 @@ The DKIM RFC currently supports two methods: "simple" and "relaxed"
 Note: the current implementation only supports using the same
 canonicalization method for both headers and body
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="dkim_strict"></a>`dkim_strict`
+##### <a name="-exim--transport--dkim_strict"></a>`dkim_strict`
 
 Data type: `Optional[Integer]`
 
@@ -2162,9 +2167,9 @@ When the expansion evaluates to either "1" or "true", Exim will defer
 Otherwise Exim will send the message unsigned
 You can use the $dkim_domain and $dkim_selector expansion variables here
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="once"></a>`once`
+##### <a name="-exim--transport--once"></a>`once`
 
 Data type: `Optional[String[1]]`
 
@@ -2172,18 +2177,18 @@ Use:autoreply;Type:string;Default:unset; This option names a file or DBM
 database in which a record of each To: recipient is kept when the message
 is specified by the transport
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="once_repeat"></a>`once_repeat`
+##### <a name="-exim--transport--once_repeat"></a>`once_repeat`
 
 Data type: `Optional[String[1]]`
 
 Use:autoreply;Type:time;Default:0s; specifies a maximum time between
 repeats
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="once_file_size"></a>`once_file_size`
+##### <a name="-exim--transport--once_file_size"></a>`once_file_size`
 
 Data type: `Optional[String[1]]`
 
@@ -2194,9 +2199,9 @@ way Exim implements the once option. Instead of using a DBM file to record
 every recipient it sends to, it uses a regular file, whose size will never
 get larger than the given value
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="headers"></a>`headers`
+##### <a name="-exim--transport--headers"></a>`headers`
 
 Data type: `Optional[String[1]]`
 
@@ -2205,9 +2210,9 @@ headers that are to be added to the message when the message is specified
 by the transport. Several can be given by using “\n” to separate them
 There is no check on the format
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="return_message"></a>`return_message`
+##### <a name="-exim--transport--return_message"></a>`return_message`
 
 Data type: `Optional[String[1]]`
 
@@ -2215,17 +2220,17 @@ Use:autoreply;Type:boolean;Default:false; If this is set, a copy of the
 original message is returned with the new message, subject to the maximum
 size set in the return_size_limit global configuration option
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="debug_print"></a>`debug_print`
+##### <a name="-exim--transport--debug_print"></a>`debug_print`
 
 Data type: `Optional[String[1]]`
 
 Used to print debug information
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="delivery_date_add"></a>`delivery_date_add`
+##### <a name="-exim--transport--delivery_date_add"></a>`delivery_date_add`
 
 Data type: `Boolean`
 
@@ -2235,9 +2240,9 @@ standard header, Exim has a configuration option (delivery_date_remove)
 which requests its removal from incoming messages, so that delivered
 messages can safely be resent to other recipients
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="envelope_to_add"></a>`envelope_to_add`
+##### <a name="-exim--transport--envelope_to_add"></a>`envelope_to_add`
 
 Data type: `Boolean`
 
@@ -2250,9 +2255,9 @@ a standard header, Exim has a configuration option (envelope_to_remove)
 which requests its removal from incoming messages, so that delivered
 messages can safely be resent to other recipients
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="freeze_exec_fail"></a>`freeze_exec_fail`
+##### <a name="-exim--transport--freeze_exec_fail"></a>`freeze_exec_fail`
 
 Data type: `Boolean`
 
@@ -2261,9 +2266,9 @@ any other failure while running the command. However, if freeze_exec_fail
 is set, failure to exec is treated specially, and causes the message to be
 frozen, whatever the setting of ignore_status
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="initgroups"></a>`initgroups`
+##### <a name="-exim--transport--initgroups"></a>`initgroups`
 
 Data type: `Boolean`
 
@@ -2272,27 +2277,27 @@ the transport, the initgroups() function is called when running the
 transport to ensure that any additional groups associated with the uid are
 set up
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="log_output"></a>`log_output`
+##### <a name="-exim--transport--log_output"></a>`log_output`
 
 Data type: `Boolean`
 
 This limits the number of addresses that can be handled in a single
 delivery. See the description of local delivery batching in chapter 25
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="maildir_format"></a>`maildir_format`
+##### <a name="-exim--transport--maildir_format"></a>`maildir_format`
 
 Data type: `Boolean`
 
 If this option is set with the directory option, the delivery is into a
 new file, in the “maildir” format that is used by other mail software
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="rcpt_include_affixes"></a>`rcpt_include_affixes`
+##### <a name="-exim--transport--rcpt_include_affixes"></a>`rcpt_include_affixes`
 
 Data type: `Boolean`
 
@@ -2300,9 +2305,9 @@ When this option is false (the default), and an address that has had any
 affixes (prefixes or suffixes) removed from the local part is delivered
 by any form of SMTP or LMTP, the affixes are not included
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="return_path_add"></a>`return_path_add`
+##### <a name="-exim--transport--return_path_add"></a>`return_path_add`
 
 Data type: `Boolean`
 
@@ -2311,36 +2316,36 @@ Although the return path is normally available in the prefix line of BSD
 mailboxes, this is commonly not displayed by MUAs, and so the user does not
 have easy access to it
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="temp_errors"></a>`temp_errors`
+##### <a name="-exim--transport--temp_errors"></a>`temp_errors`
 
 Data type: `Optional[Array[String]]`
 
 This option contains either a colon-separated list of numbers, or a
 single asterisk
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="batch_max"></a>`batch_max`
+##### <a name="-exim--transport--batch_max"></a>`batch_max`
 
 Data type: `Optional[Integer]`
 
 This limits the number of addresses that can be handled in a single
 delivery. See the description of local delivery batching in chapter 25
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="command"></a>`command`
+##### <a name="-exim--transport--command"></a>`command`
 
 Data type: `Optional[String[1]]`
 
 This option need not be set when pipe is being used to deliver to pipes
 obtained from address expansions
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="directory"></a>`directory`
+##### <a name="-exim--transport--directory"></a>`directory`
 
 Data type: `Optional[String[1]]`
 
@@ -2348,103 +2353,103 @@ When directory is set, the string is expanded, and the message is delivered
 into a new file or files in or below the given directory, instead of being
 appended to a single mailbox file
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="directory_mode"></a>`directory_mode`
+##### <a name="-exim--transport--directory_mode"></a>`directory_mode`
 
 Data type: `Optional[String[1]]`
 
 If appendfile creates any directories as a result of the create_directory
 option, their mode is specified by this option
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="file"></a>`file`
+##### <a name="-exim--transport--file"></a>`file`
 
 Data type: `Optional[String[1]]`
 
 The file option specifies a single file, to which the message is appended
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="group"></a>`group`
+##### <a name="-exim--transport--group"></a>`group`
 
 Data type: `Optional[String[1]]`
 
 This option specifies a gid for running the transport process
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="home_directory"></a>`home_directory`
+##### <a name="-exim--transport--home_directory"></a>`home_directory`
 
 Data type: `Optional[String[1]]`
 
 This option specifies a home directory setting for a local transport
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="maildir_tag"></a>`maildir_tag`
+##### <a name="-exim--transport--maildir_tag"></a>`maildir_tag`
 
 Data type: `Optional[String[1]]`
 
 This option applies only to deliveries in maildir format, and is described
 in section 26.5 below
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="message_prefix"></a>`message_prefix`
+##### <a name="-exim--transport--message_prefix"></a>`message_prefix`
 
 Data type: `Optional[String[1]]`
 
 The string specified here is expanded and output at the start of every
 message
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="message_suffix"></a>`message_suffix`
+##### <a name="-exim--transport--message_suffix"></a>`message_suffix`
 
 Data type: `Optional[String[1]]`
 
 The string specified here is expanded and output at the end of every
 message
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="message_size_limit"></a>`message_size_limit`
+##### <a name="-exim--transport--message_size_limit"></a>`message_size_limit`
 
 Data type: `Optional[String[1]]`
 
 The string specified here is expanded and determines the maximum size of the message
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="mode"></a>`mode`
+##### <a name="-exim--transport--mode"></a>`mode`
 
 Data type: `Optional[String[1]]`
 
 If the output file is created, it is given this mode
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="socket"></a>`socket`
+##### <a name="-exim--transport--socket"></a>`socket`
 
 Data type: `Optional[String[1]]`
 
 This option must be set if command is not set. The result of expansion must
 be the name of a Unix domain socket
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="subject"></a>`subject`
+##### <a name="-exim--transport--subject"></a>`subject`
 
 Data type: `Optional[String[1]]`
 
 This specifies the contents of the Subject: header when the message is
 specified by the transport
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="text"></a>`text`
+##### <a name="-exim--transport--text"></a>`text`
 
 Data type: `Optional[String[1]]`
 
@@ -2452,18 +2457,18 @@ This specifies a single string to be used as the body of the message when
 the message is specified by the transport. If both text and file are set,
 the text comes first
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="to"></a>`to`
+##### <a name="-exim--transport--to"></a>`to`
 
 Data type: `Optional[String[1]]`
 
 This specifies recipients of the message and the contents of the To: header
 when the message is specified by the transport
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="transport_filter"></a>`transport_filter`
+##### <a name="-exim--transport--transport_filter"></a>`transport_filter`
 
 Data type: `Optional[String[1]]`
 
@@ -2471,22 +2476,22 @@ This option sets up a filtering (in the Unix shell sense) process for
 messages at transport time. It should not be confused with mail filtering
 as set up by individual users or via a system filter
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="user"></a>`user`
+##### <a name="-exim--transport--user"></a>`user`
 
 Data type: `Optional[String[1]]`
 
 This option specifies the user under whose uid the delivery process is to
 be run
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="serialize_hosts"></a>`serialize_hosts`
+##### <a name="-exim--transport--serialize_hosts"></a>`serialize_hosts`
 
 Data type: `Optional[Array[String]]`
 
+Array of hosts to serialize
 
-
-Default value: ``undef``
+Default value: `undef`
 

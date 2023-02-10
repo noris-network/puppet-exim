@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v1.3.1](https://github.com/noris-network/puppet-exim/tree/v1.3.1) (2023-02-10)
+
+[Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.3.0...v1.3.1)
+
+### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+
+- implement ensure\_resources for rewrite [\#56](https://github.com/noris-network/puppet-exim/pull/56) ([moritzfriedrich](https://github.com/moritzfriedrich))
+
+## [v1.3.0](https://github.com/noris-network/puppet-exim/tree/v1.3.0) (2023-02-10)
+
+[Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.2.0...v1.3.0)
+
+### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+
+- add option hosts\_avoid\_pipelining [\#57](https://github.com/noris-network/puppet-exim/pull/57) ([moritzfriedrich](https://github.com/moritzfriedrich))
+
+## [v1.2.0](https://github.com/noris-network/puppet-exim/tree/v1.2.0) (2022-05-12)
+
+[Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.1.8...v1.2.0)
+
 ## [v1.1.8](https://github.com/noris-network/puppet-exim/tree/v1.1.8) (2022-05-11)
 
 [Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.1.7...v1.1.8)
