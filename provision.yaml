@@ -9,6 +9,7 @@ docker:
   - litmusimage/debian:9
   - litmusimage/ubuntu:18.04
   - litmusimage/ubuntu:20.04
+  - litmusimage/ubuntu:22.04
 vagrant:
   provisioner: vagrant
   images:
@@ -18,5 +19,6 @@ vagrant:
     - generic/debian9
     - generic/ubuntu1804
     - generic/ubuntu2004
+    - generic/ubuntu2204
   params:
     vagrant_provider: libvirt
