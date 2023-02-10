@@ -54,6 +54,8 @@ class exim::config inherits exim {
     lookup('exim::defaults::domainlists',Optional[Hash], 'deep', {}))
     ensure_resources('exim::authenticator',
     lookup('exim::defaults::authenticators',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::rewrite',
+    lookup('exim::defaults::rewrites',Optional[Hash], 'deep', {}))
   }
   if ($exim::ensure_resources == true) {
     ensure_resources('exim::acl',
@@ -72,5 +74,7 @@ class exim::config inherits exim {
     lookup('exim::domainlists',Optional[Hash], 'deep', {}))
     ensure_resources('exim::authenticator',
     lookup('exim::authenticators',Optional[Hash], 'deep', {}))
+    ensure_resources('exim::rewrite',
+    lookup('exim::rewrites',Optional[Hash], 'deep', {}))
   }
 }
