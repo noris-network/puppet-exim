@@ -6,19 +6,22 @@
 #   Id of this acl, this is needed for acl statements to reference
 #   this acl.
 #
-define exim::acl ($acl_id=undef,$statements=undef){
+# @param statements
+#   Array of valid ACL statements
+#
+define exim::acl (Optional[Integer] $acl_id = undef, Optional[String] $statements = undef) {
   include exim
 
   if $statements {
     concat::fragment { "acl-${title}":
-      target  => $::exim::config_path,
+      target  => $exim::config_path,
       content => template("${module_name}/acl/acl.erb"),
       order   => 1001,
     }
   }
   elsif $acl_id {
     concat::fragment { "acl-${acl_id}":
-      target  => $::exim::config_path,
+      target  => $exim::config_path,
       content => template("${module_name}/acl/acl.erb"),
       order   => $acl_id * 100 + 1000,
     }

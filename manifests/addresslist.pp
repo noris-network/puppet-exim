@@ -10,14 +10,13 @@
 define exim::addresslist (
 
   Array[String] $addresses,
-  ){
-
+) {
   include exim
 
   $list     = $addresses
   $listtype = 'addresslist'
   concat::fragment { "addresslist-${title}":
-    target  => $::exim::config_path,
+    target  => $exim::config_path,
     content => template("${module_name}/list.erb"),
     order   => '0003',
   }

@@ -9,11 +9,11 @@ class exim::install (
   if ($use_epel and $facts['os']['family'] == 'redhat') {
     include epel
   }
-  if ($::exim::heavy) {
-    $exim_package = $::exim::exim_heavy_package
+  if ($exim::heavy) {
+    $exim_package = $exim::exim_heavy_package
   }
   else {
-    $exim_package = $::exim::exim_light_package
+    $exim_package = $exim::exim_light_package
   }
   package { $exim_package:
     ensure => installed,

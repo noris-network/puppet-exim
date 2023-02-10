@@ -8,14 +8,13 @@
 #
 define exim::hostlist (
   Array[String] $hosts,
-  ){
-
+) {
   include exim
 
   $list     = regsubst($hosts, ':', '::', 'G')
   $listtype = 'hostlist'
   concat::fragment { "hostlist-${title}":
-    target  => $::exim::config_path,
+    target  => $exim::config_path,
     content => template("${module_name}/list.erb"),
     order   => '0003',
   }

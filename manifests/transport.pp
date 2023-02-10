@@ -298,6 +298,9 @@
 #   This option specifies the user under whose uid the delivery process is to
 #   be run
 #
+# @param serialize_hosts
+#   Array of hosts to serialize
+#
 define exim::transport (
   Boolean                 $allow_localhost           = false,
   Boolean                 $delivery_date_add         = false,
@@ -369,12 +372,11 @@ define exim::transport (
   Optional[String[1]]     $user                      = undef,
   Optional[Tuple]         $exim_environment          = undef,
   String[1]               $driver                    = undef,
-  ) {
-
+) {
   include exim
 
   concat::fragment { "transport-${title}":
-    target  => $::exim::config_path,
+    target  => $exim::config_path,
     content => template("${module_name}/transport/transport.erb"),
     order   => 3001,
   }
