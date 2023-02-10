@@ -34,15 +34,14 @@ define exim::acl::statement (
   Integer $order,
   String $action,
   Optional[Array] $conditions      = undef,
-  Optional[Boolean] $disable = false
-){
-
+  Boolean $disable = false
+) {
   include exim
 
   unless $disable {
     notice('using exim::acl::statement is deprecated please use the statements parameter of exim::acl')
     concat::fragment { "acl-${acl_id}-${order}":
-      target  => $::exim::config_path,
+      target  => $exim::config_path,
       content => template("${module_name}/acl/statement.erb"),
       order   => $acl_id * 100 + 1000 + $order,
     }

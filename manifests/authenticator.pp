@@ -52,12 +52,11 @@ define exim::authenticator (
   Optional[String] $server_debug_print = undef,
   Optional[String] $server_set_id    = undef,
   Optional[String] $server_prompts   = undef,
-  ){
-
+) {
   include exim
 
   concat::fragment { "authenticator-${title}":
-    target  => $::exim::config_path,
+    target  => $exim::config_path,
     content => template("${module_name}/authenticator/authenticator.erb"),
     order   => 5001,
   }

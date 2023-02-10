@@ -162,9 +162,6 @@
 # @param local_interfaces
 #   Specifies the interfaces exim will listen on.
 #
-# @param log_file_path
-#   Type: string
-#
 # @param log_lost_incoming_connection
 #   Configures the log_selector to log timeouting incomming connections
 #
@@ -453,6 +450,15 @@
 # @param exim_service
 #   Name of the service
 #
+# @param ensure_resources
+#   Boolean: Wether to explicitely ensure exim::$param lookups and resources
+#
+# @param service_enable
+#   Boolean: desired state of the system service enable/disable
+#
+# @param service_ensure
+#   Boolean: desired state of the system service running/stopped/...
+#
 # @example
 #  include ::exim
 #
@@ -582,34 +588,14 @@ class exim (
   Optional[String] $exim_heavy_package,
   Optional[String] $exim_service,
   Optional[Boolean] $ensure_resources,
+  Optional[Boolean] $service_enable,
+  Optional $service_ensure
 ) {
-
-  include ::exim::install
-  include ::exim::config
-  include ::exim::service
+  include exim::install
+  include exim::config
+  include exim::service
 
   Class['exim::install']
   -> Class['exim::config']
   ~> Class['exim::service']
-
-  if ($ensure_resources == true) {
-    ensure_resources('exim::acl',
-      lookup('exim::acls',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::acl::statement',
-      lookup('exim::acl::statements',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::router',
-      lookup('exim::routers',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::transport',
-      lookup('exim::transports',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::retry',
-      lookup('exim::retries',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::hostlist',
-      lookup('exim::hostlists',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::domainlist',
-      lookup('exim::domainlists',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::authenticator',
-      lookup('exim::authenticators',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::rewrite',
-      lookup('exim::rewrites',Optional[Hash], 'deep', {}))
-  }
 }

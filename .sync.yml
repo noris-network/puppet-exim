@@ -16,6 +16,8 @@ Gemfile:
       - gem: 'github_changelog_generator'
         version: '~> 1.15'
         condition: "Gem::Version.new(RUBY_VERSION.dup) >= Gem::Version.new('2.3.0')"
+      - gem: 'console'
+        version: '< 1.16.2'
 spec/default_facts.yml:
     extra_facts:
         'os':
@@ -23,7 +25,15 @@ spec/default_facts.yml:
         'networking':
           'domain': 'localnet'
 
+.gitlab-ci.yml:
+  custom:
+    use_litmus: false
+    litmus:
+      provision_list: [centos7, debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204]
+      puppet_collection: [puppet6, puppet7]
+
 .travis.yml:
+  use_litmus: true
   branches:
     - master
     - /^v\d/

@@ -144,6 +144,9 @@
 <% unless @hosts_require_tls.nil? -%>
   hosts_require_tls = <%= @hosts_require_tls.join(' : ') %>
 <% end -%>
+<% unless @hosts_avoid_pipelining.nil? -%>
+  hosts_avoid_pipelining = <%= @hosts_avoid_pipelining.join(' : ') %>
+<% end -%>
 <% unless @tls_verify_certificates.nil? -%>
   tls_verify_certificates = <%= @tls_verify_certificates %>
 <% end -%>

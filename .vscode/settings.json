@@ -1,0 +1,7 @@
+{
+    "gitlab.repositories": {
+        "/home/mleiner/projects/POP/puppet/modules/puppet-exim": {
+            "preferredRemoteName": "origin"
+        }
+    }
+}

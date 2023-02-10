@@ -1,7 +1,13 @@
 fixtures:
   repositories:
+    facts: 'https://github.com/puppetlabs/puppetlabs-facts.git'
+    puppet_agent: 'https://github.com/puppetlabs/puppetlabs-puppet_agent.git'
+    provision: 'https://github.com/puppetlabs/provision.git'
     concat:
-      repo: "git://github.com/puppetlabs/puppetlabs-concat"
+      repo: "https://github.com/puppetlabs/puppetlabs-concat"
       ref: "4.0.0"
     stdlib:
-      repo: "git://github.com/puppetlabs/puppetlabs-stdlib"
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    epel:
+      repo: "https://github.com/voxpupuli/puppet-epel"
+      ref: "v4.1.0"

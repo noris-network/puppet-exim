@@ -14,18 +14,17 @@
 define exim::domainlist (
   Array[String] $domains,
   Optional[String] $path = undef,
-  ){
-
+) {
   include exim
 
   $listtype = 'domainlist'
 
   if $path {
     $listfile = $domains
-    file {$path:
+    file { $path:
       content => template("${module_name}/listfile.erb"),
     }
-    $list = [ $path ]
+    $list = [$path]
   }
 
   else {
@@ -33,7 +32,7 @@ define exim::domainlist (
   }
 
   concat::fragment { "domainlist-${title}":
-    target  => $::exim::config_path,
+    target  => $exim::config_path,
     content => template("${module_name}/list.erb"),
     order   => '0002',
   }
