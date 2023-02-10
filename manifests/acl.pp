@@ -9,7 +9,7 @@
 # @param statements
 #   Array of valid ACL statements
 #
-define exim::acl (Optional[Integer] $acl_id = undef, Optional[Array] $statements = undef) {
+define exim::acl (Optional[Integer] $acl_id = undef, Optional $statements = undef) {
   include exim
 
   if $statements {
