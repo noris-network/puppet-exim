@@ -599,22 +599,4 @@ class exim (
   -> Class['exim::config']
   ~> Class['exim::service']
 
-  if ($ensure_resources == true) {
-    ensure_resources('exim::acl',
-    lookup('exim::acls',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::acl::statement',
-    lookup('exim::acl::statements',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::router',
-    lookup('exim::routers',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::transport',
-    lookup('exim::transports',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::retry',
-    lookup('exim::retries',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::hostlist',
-    lookup('exim::hostlists',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::domainlist',
-    lookup('exim::domainlists',Optional[Hash], 'deep', {}))
-    ensure_resources('exim::authenticator',
-    lookup('exim::authenticators',Optional[Hash], 'deep', {}))
-  }
 }
