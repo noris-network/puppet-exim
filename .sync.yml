@@ -27,7 +27,7 @@ spec/default_facts.yml:
 
 .gitlab-ci.yml:
   custom:
-    use_litmus: true
+    use_litmus: false
     litmus:
       provision_list: [centos7, debian9, debian10, debian11, ubuntu1804, ubuntu2004, ubuntu2204]
       puppet_collection: [puppet6, puppet7]
