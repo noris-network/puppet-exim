@@ -598,5 +598,4 @@ class exim (
   Class['exim::install']
   -> Class['exim::config']
   ~> Class['exim::service']
-
 }
