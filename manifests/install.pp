@@ -18,7 +18,7 @@ class exim::install (
   package { $exim_package:
     ensure => installed,
   }
-  if ($facts['os']['family'] == 'redhat') {
+  if ($use_epel and $facts['os']['family'] == 'redhat') {
     Class['Epel'] -> Package[$exim_package]
   }
 }
