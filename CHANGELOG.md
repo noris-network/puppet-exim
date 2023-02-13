@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
+## [v1.3.2](https://github.com/noris-network/puppet-exim/tree/v1.3.2) (2023-02-13)
+
+[Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.3.1...v1.3.2)
+
+### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+
+- extend condition for epel usage [\#58](https://github.com/noris-network/puppet-exim/pull/58) ([moritzfriedrich](https://github.com/moritzfriedrich))
+
 ## [v1.3.1](https://github.com/noris-network/puppet-exim/tree/v1.3.1) (2023-02-10)
 
 [Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.3.0...v1.3.1)
