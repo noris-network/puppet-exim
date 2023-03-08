@@ -269,6 +269,9 @@
 # @param message_size_limit
 #   The string specified here is expanded and determines the maximum size of the message
 #
+# @param message_linelength_limit
+#   This option sets the maximum line length, in bytes, that the transport will send.
+#
 # @param mode
 #   If the output file is created, it is given this mode
 #
@@ -350,6 +353,7 @@ define exim::transport (
   Optional[String[1]]     $message_prefix            = undef,
   Optional[String[1]]     $message_suffix            = undef,
   Optional[String[1]]     $message_size_limit        = undef,
+  Optional[Integer]       $message_linelength_limit  = undef,
   Optional[String[1]]     $mode                      = undef,
   Optional[String[1]]     $once                      = undef,
   Optional[String[1]]     $once_file_size            = undef,
