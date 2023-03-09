@@ -1842,6 +1842,7 @@ The following parameters are available in the `exim::transport` defined type:
 * [`message_prefix`](#-exim--transport--message_prefix)
 * [`message_suffix`](#-exim--transport--message_suffix)
 * [`message_size_limit`](#-exim--transport--message_size_limit)
+* [`message_linelength_limit`](#-exim--transport--message_linelength_limit)
 * [`mode`](#-exim--transport--mode)
 * [`socket`](#-exim--transport--socket)
 * [`subject`](#-exim--transport--subject)
@@ -2420,6 +2421,14 @@ Default value: `undef`
 Data type: `Optional[String[1]]`
 
 The string specified here is expanded and determines the maximum size of the message
+
+Default value: `undef`
+
+##### <a name="-exim--transport--message_linelength_limit"></a>`message_linelength_limit`
+
+Data type: `Optional[Integer]`
+
+This option sets the maximum line length, in bytes, that the transport will send.
 
 Default value: `undef`
 
