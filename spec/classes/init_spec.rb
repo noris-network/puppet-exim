@@ -34,7 +34,7 @@ describe 'exim', type: 'class' do
     it { is_expected.to contain_concat__fragment('main').with_content(%r{^ldap_default_servers\s+= ldap1 : ldap2$}) }
   end
 
-  bool_parameter = ['message_logs', 'gnutls_compat_mode', 'smtp_return_error_details']
+  bool_parameter = ['message_logs', 'gnutls_compat_mode', 'smtp_return_error_details', 'bounce_return_body', 'bounce_return_message']
   bool_parameter.each do |parameter|
     context parameter + ' set to false' do
       let(:params) { { parameter => false } }
@@ -51,7 +51,7 @@ describe 'exim', type: 'class' do
     end
   end
 
-  int_parameter = ['smtp_accept_max_nonmail', 'smtp_accept_max_per_connection']
+  int_parameter = ['smtp_accept_max_nonmail', 'smtp_accept_max_per_connection', 'bounce_return_linesize_limit', 'bounce_return_size_limit']
   int_parameter.each do |parameter|
     context parameter + ' set to 47' do
       let(:params) { { parameter => 47 } }
