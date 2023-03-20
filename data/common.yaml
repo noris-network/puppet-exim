@@ -34,6 +34,10 @@ exim::acl_smtp_predata: ~
 exim::allow_mx_to_ip: ~
 exim::auto_thaw: ~
 exim::av_scanner: ~
+exim::bounce_return_body: ~
+exim::bounce_return_linesize_limit: ~
+exim::bounce_return_message: ~
+exim::bounce_return_size_limit: ~
 exim::callout_domain_positive_expire: ~
 exim::check_spool_space: ~
 exim::chunking_advertise_hosts: ~
