@@ -2,9 +2,17 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org).
 
-## [v1.3.3](https://github.com/noris-network/puppet-exim/tree/v1.3.3) (2023-03-08)
+## [v1.3.5](https://github.com/noris-network/puppet-exim/tree/v1.3.5) (2023-03-20)
 
-[Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.3.2...v1.3.3)
+[Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.3.4...v1.3.5)
+
+### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
+
+- implement options for bounce mails [\#61](https://github.com/noris-network/puppet-exim/pull/61) ([moritzfriedrich](https://github.com/moritzfriedrich))
+
+## [v1.3.4](https://github.com/noris-network/puppet-exim/tree/v1.3.4) (2023-03-09)
+
+[Full Changelog](https://github.com/noris-network/puppet-exim/compare/v1.3.2...v1.3.4)
 
 ### UNCATEGORIZED PRS; LABEL THEM ON GITHUB
 
