@@ -22,6 +22,8 @@ keep_environment =
 <% end -%>
 <% unless @local_from_check.nil?                   -%>local_from_check                   = <%= @local_from_check %>
 <% end -%>
+<% unless @local_sender_retain.nil?                -%>local_sender_retain                = <%= @local_sender_retain %>
+<% end -%>
 <% unless @local_interfaces.nil?                   -%>local_interfaces                   = <; <%= @local_interfaces.join(" ; ") %>
 <% end -%>
 <% unless @daemon_smtp_ports.nil?                  -%>daemon_smtp_ports                  = <%= @daemon_smtp_ports.join(" : ") %>
@@ -118,7 +120,7 @@ log_selector               = <% unless @log_lost_incoming_connection.nil? -%><% 
 <% end -%>
 <% unless @host_lookup.nil?                        -%>host_lookup                        = <%= @host_lookup %>
 <% end -%>
-<% unless @untrusted_set_sender.nil?               -%>untrusted_set_sender               = <%= @untrusted_set_sender %>
+<% unless @untrusted_set_sender.nil?               -%>untrusted_set_sender               = <%= @untrusted_set_sender.join(" : ") %>
 <% end -%>
 <% unless @print_topbitchars.nil?                  -%>print_topbitchars                  = <%= @print_topbitchars %>
 <% end -%>
@@ -167,9 +169,15 @@ received_header_text       = Received: \
 received_header_text       = <%= @received_header_text %>
 <%- end -%>
 
+<% unless @exim_path.nil?                          -%>exim_path                          = <%= @exim_path %>
+<% end -%>
 <% unless @errors_reply_to.nil?                    -%>errors_reply_to                    = <%= @errors_reply_to %>
 <% end -%>
+<% unless @primary_hostname.nil?                   -%>primary_hostname                   = <%= @primary_hostname %>
+<% end -%>
 <% unless @qualify_domain.nil?                     -%>qualify_domain                     = <%= @qualify_domain %>
+<% end -%>
+<% unless @spool_directory.nil?                    -%>spool_directory                    = <%= @spool_directory %>
 <% end -%>
 
 <% unless @tls_advertise_hosts.nil? -%>
@@ -180,6 +188,12 @@ tls_certificate                    = <%= @tls_certificate %>
 tls_privatekey                     = <%= @tls_privatekey %>
 <% end -%>
 
+<% unless @prdr_enable.nil?                        -%>prdr_enable                        = <%= @prdr_enable %>
+<% end -%>
+<% unless @smtputf8_advertise_hosts.nil?           -%>smtputf8_advertise_hosts           = <%= @smtputf8_advertise_hosts %>
+<% end -%>
+<% unless @dns_dnssec_ok.nil?                      -%>dns_dnssec_ok                      = <%= @dns_dnssec_ok %>
+<% end -%>
 <% unless @gnutls_compat_mode.nil?                 -%>gnutls_compat_mode                 = <%= @gnutls_compat_mode %>
 <% end -%>
 <% unless @openssl_options.nil?                    -%>openssl_options                    = <%= @openssl_options %>
@@ -219,4 +233,8 @@ tls_privatekey                     = <%= @tls_privatekey %>
 <% unless @extract_addresses_remove_arguments.nil? -%>extract_addresses_remove_arguments = <%= @extract_addresses_remove_arguments %>
 <% end -%>
 <% unless @mysql_servers.nil?                       -%>hide mysql_servers                = <%= @mysql_servers.map{|i| i.gsub(':', '::')}.join(" : ") %>
+<% end -%>
+<% unless @gecos_name.nil?                          -%>gecos_name                        = <%= @gecos_name %>
+<% end -%>
+<% unless @gecos_pattern.nil?                       -%>gecos_pattern                     = <%= @gecos_pattern %>
 <% end -%>

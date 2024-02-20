@@ -56,6 +56,9 @@
 <% unless @mode.nil? -%>
   mode            = <%= @mode %>
 <% end -%>
+<% if @mode_fail_narrower == false -%>
+  mode_fail_narrower = false
+<% end -%>
 <% unless @directory_mode.nil? -%>
   directory_mode  = <%= @directory_mode %>
 <% end -%>
@@ -89,6 +92,12 @@
 <% end -%>
 <% unless @headers_add.nil? -%>
   headers_add     = <%= @headers_add.join("\\n") %>
+<% end -%>
+<% unless @check_string.nil? -%>
+  check_string = <%= @check_string %>
+<% end -%>
+<% unless @escape_string.nil? -%>
+  escape_string = <%= @escape_string %>
 <% end -%>
 <% unless @message_prefix.nil? -%>
   message_prefix  = <%= @message_prefix %>

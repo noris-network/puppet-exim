@@ -123,10 +123,21 @@
 #   Do no IPv6 processing
 #   Type: bool
 #
+# @param dns_dnssec_ok
+#   If this option is set to a non-negative number then Exim will initialise the
+#   DNS resolver library to either use or not use DNSSEC, overriding the system
+#   default. A value of 0 coerces DNSSEC off, a value of 1 coerces DNSSEC on.
+#   The Exim default is -1.
+#   Type: integer
+#
 # @param errors_reply_to
 #   This sets a mail-address to be used in the reply-to header of bounce-messages.
 #   Type: String
 #   Example: postmaster@example.com
+#
+# @param exim_path
+#   Path of the Exim binary.
+#   Type: string
 #
 # @param extract_addresses_remove_arguments
 #   When using exims -t option, rcpts from the Mail-Headers are used, and rcpts given
@@ -135,6 +146,17 @@
 #
 # @param freeze_tell
 #   If a mail gets frozen, send a notification to the address defined here.
+#
+# @param gecos_name
+#   If gecos_name and gecos_pattern are set then gecos_pattern is treated as a regular
+#   expression that is to be applied to the gecos field and if it matches, gecos_name
+#   is expanded and used as the user's name.  For example, $1 could be used to pick up
+#   the first sub-field that was matched by the gecos_pattern.
+#   Type: string
+#
+# @param gecos_pattern
+#   See gecos_name above.
+#   Type: string
 #
 # @param gnutls_compat_mode
 #   This controls if gnutls is used in compatiblity mode.
@@ -177,6 +199,10 @@
 #
 # @param local_interfaces
 #   Specifies the interfaces exim will listen on.
+#
+# @param local_sender_retain
+#   If local_from_check is false, setting local_sender_retain to true will keep any
+#   existing Sender header line.
 #
 # @param log_lost_incoming_connection
 #   Configures the log_selector to log timeouting incomming connections
@@ -350,10 +376,22 @@
 #   Do not run deliverys as these users
 #   Type: array
 #
+# @param prdr_enable
+#   Enable the Per-Recipient Data Response extension to SMTP.
+#   Type: boolean
+#
+# @param primary_hostname
+#   This specifies the name of the current host. It is used in the default
+#   EHLO or HELO command for outgoing SMTP messages (changeable via the
+#   helo_data option in the smtp transport), and as the default for qualify_domain.
+#   Default is empty which exim should fill with the FQDN for the server.
+#   Type: string
+#
 # @param qualify_domain
 #   configure the domain, which is automatically added to email addresses
 #   without a domain part. Default is empty, which exim treats as the
 #   primary hostname.
+#   Type: string
 #
 # @param queue_only_load
 #   Do not run imediate deliveries if load is above this threshhold.
@@ -416,12 +454,20 @@
 # @param smtp_return_error_details
 #   Return more detailed SMTP error messages.
 #
+# @param smtputf8_advertise_hosts
+#   Advertise SMTPUTF8 to these hosts.
+#   Type: string
+#
 # @param spamd_address
 #   Configure a spamd socket here.
 #
 # @param split_spool_directory
 #   Use split spool configuration
 #   Type: bool
+#
+# @param spool_directory
+#   Override compiled-in value.
+#   Type: string
 #
 # @param syslog_timestamp
 #   Don't send timestamps to syslog.
@@ -450,6 +496,7 @@
 #
 # @param untrusted_set_sender
 #   This option allows you to permit untrusted users to set other envelope sender addresses in a controlled way.
+#   Type: array
 #
 # @param tls_require_ciphers
 #   This option controls which ciphers can be used for incoming TLS connections.
@@ -505,9 +552,13 @@ class exim (
   Optional[Array[String]] $delay_warning,
   Optional[Integer] $deliver_queue_load_max,
   Optional[Boolean] $disable_ipv6,
+  Optional[Integer] $dns_dnssec_ok,
+  Optional[String] $exim_path,
   Optional[String] $errors_reply_to,
   Optional[Boolean] $extract_addresses_remove_arguments,
   Optional[String] $freeze_tell,
+  Optional[String] $gecos_name,
+  Optional[String] $gecos_pattern,
   Optional[Boolean] $gnutls_compat_mode,
   Optional[String] $openssl_options,
   Optional[Boolean] $heavy,
@@ -519,6 +570,7 @@ class exim (
   Optional[Array[String]] $ldap_default_servers,
   Optional[Boolean] $local_from_check,
   Optional[Array[String]] $local_interfaces,
+  Optional[Boolean] $local_sender_retain,
   Optional[Array[String]] $log_file_path,
   Optional[Boolean] $log_lost_incoming_connection,
   Optional[Boolean] $log_retry_defer,
@@ -574,9 +626,11 @@ class exim (
   Optional[String] $message_size_limit,
   Optional[Array[String]] $mysql_servers,
   Optional[Array[String]] $never_users,
-  Optional[Boolean] $untrusted_set_sender,
+  Optional[Array[String]] $untrusted_set_sender,
   Optional[Boolean] $print_topbitchars,
   Optional[String] $tls_require_ciphers,
+  Optional[Boolean] $prdr_enable,
+  Optional[String] $primary_hostname,
   Optional[String] $qualify_domain,
   Optional[Integer] $queue_only_load,
   Optional[Integer] $queue_run_max,
@@ -595,8 +649,10 @@ class exim (
   Optional[String] $smtp_receive_timeout,
   Optional[Array[String]] $smtp_reserve_hosts,
   Optional[Boolean] $smtp_return_error_details,
+  Optional[String] $smtputf8_advertise_hosts,
   Optional[String] $spamd_address,
   Optional[Boolean] $split_spool_directory,
+  Optional[String] $spool_directory,
   Optional[Boolean] $syslog_timestamp,
   Optional[String] $system_filter,
   Optional[String] $timeout_frozen_after,

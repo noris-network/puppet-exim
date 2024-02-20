@@ -275,6 +275,10 @@
 # @param mode
 #   If the output file is created, it is given this mode
 #
+# @param mode_fail_narrower
+#   Set to false to allow Exim to continue with the delivery attempt, using the existing
+#   mode of the file.
+#
 # @param socket
 #   This option must be set if command is not set. The result of expansion must
 #   be the name of a Unix domain socket
@@ -303,6 +307,16 @@
 #
 # @param serialize_hosts
 #   Array of hosts to serialize
+#
+# @param check_string
+#   As the transport writes the message, the start of each line is tested for matching check_string,
+#   and if it does, the initial matching characters are replaced by the contents of escape_string,
+#   provided both are set.
+#
+# @param escape_string
+#   As the transport writes the message, the start of each line is tested for matching check_string,
+#   and if it does, the initial matching characters are replaced by the contents of escape_string,
+#   provided both are set
 #
 define exim::transport (
   Boolean                 $allow_localhost           = false,
@@ -333,6 +347,7 @@ define exim::transport (
   Optional[Integer]       $dkim_strict               = undef,
   Optional[Integer]       $port                      = undef,
   Optional[Integer]       $tls_dh_min_bits           = undef,
+  Optional[String[1]]     $check_string              = undef,
   Optional[String[1]]     $command                   = undef,
   Optional[Array[String]] $comment                   = undef,
   Optional[String[1]]     $connect_timeout           = undef,
@@ -342,6 +357,7 @@ define exim::transport (
   Optional[String[1]]     $dkim_canon                = undef,
   Optional[String[1]]     $dkim_selector             = undef,
   Optional[String[1]]     $dkim_private_key          = undef,
+  Optional[String[1]]     $escape_string             = undef,
   Optional[String[1]]     $file                      = undef,
   Optional[String[1]]     $from                      = undef,
   Optional[String[1]]     $group                     = undef,
@@ -350,11 +366,12 @@ define exim::transport (
   Optional[String[1]]     $home_directory            = undef,
   Optional[String[1]]     $interface                 = undef,
   Optional[String[1]]     $maildir_tag               = undef,
-  Optional[String[1]]     $message_prefix            = undef,
-  Optional[String[1]]     $message_suffix            = undef,
+  Optional[String]        $message_prefix            = undef,
+  Optional[String]        $message_suffix            = undef,
   Optional[String[1]]     $message_size_limit        = undef,
   Optional[Integer]       $message_linelength_limit  = undef,
   Optional[String[1]]     $mode                      = undef,
+  Boolean                 $mode_fail_narrower        = true,
   Optional[String[1]]     $once                      = undef,
   Optional[String[1]]     $once_file_size            = undef,
   Optional[String[1]]     $once_repeat               = undef,

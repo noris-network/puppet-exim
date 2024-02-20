@@ -89,8 +89,14 @@
 <% unless @user.nil? -%>
   user         = <%= @user %>
 <% end -%>
+<% unless @group.nil? -%>
+  group        = <%= @group %>
+<% end -%>
 <% if @no_verify -%>
   no_verify
+<% end -%>
+<% if @check_local_user -%>
+  check_local_user
 <% end -%>
 <% if @no_address_test -%>
   no_address_test
@@ -118,5 +124,26 @@
 <% end -%>
 <% if @unseen -%>
   unseen
+<% end -%>
+<% if @no_expn -%>
+  no_expn
+<% end -%>
+<% if @check_ancestor -%>
+  check_ancestor
+<% end -%>
+<% if @forbid_smtp_code -%>
+  forbid_smtp_code
+<% end -%>
+<% unless @directory_transport.nil? -%>
+  directory_transport = <%= @directory_transport %>
+<% end -%>
+<% if @skip_syntax_errors -%>
+  skip_syntax_errors
+<% end -%>
+<% unless @syntax_errors_to.nil? -%>
+  syntax_errors_to = <%= @syntax_errors_to %>
+<% end -%>
+<% unless @syntax_errors_text.nil? -%>
+  syntax_errors_text = <%= @syntax_errors_text %>
 <% end -%>
 
