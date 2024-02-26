@@ -1,6 +1,6 @@
 {
   "name": "norisnetwork-exim",
-  "version": "1.3.5",
+  "version": "1.4.0",
   "author": "noris-network",
   "summary": "A module for configuring exim",
   "license": "LGPL-3.0",
@@ -27,14 +27,16 @@
       "operatingsystemrelease": [
         "9.0",
         "10.0",
-        "11.0"
+        "11.0",
+        "12.0"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "18.04",
-        "20.04"
+        "20.04",
+        "22.04"
       ]
     },
     {
@@ -60,7 +62,7 @@
     "exim",
     "mail"
   ],
-  "pdk-version": "2.6.1",
-  "template-url": "pdk-default#2.7.1",
-  "template-ref": "tags/2.7.1-0-g9a16c87"
+  "pdk-version": "3.0.1",
+  "template-url": "pdk-default#3.0.1",
+  "template-ref": "tags/3.0.1-0-gd13288a"
 }
