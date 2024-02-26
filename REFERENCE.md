@@ -73,9 +73,13 @@ The following parameters are available in the `exim` class:
 * [`delay_warning`](#-exim--delay_warning)
 * [`deliver_queue_load_max`](#-exim--deliver_queue_load_max)
 * [`disable_ipv6`](#-exim--disable_ipv6)
+* [`dns_dnssec_ok`](#-exim--dns_dnssec_ok)
 * [`errors_reply_to`](#-exim--errors_reply_to)
+* [`exim_path`](#-exim--exim_path)
 * [`extract_addresses_remove_arguments`](#-exim--extract_addresses_remove_arguments)
 * [`freeze_tell`](#-exim--freeze_tell)
+* [`gecos_name`](#-exim--gecos_name)
+* [`gecos_pattern`](#-exim--gecos_pattern)
 * [`gnutls_compat_mode`](#-exim--gnutls_compat_mode)
 * [`openssl_options`](#-exim--openssl_options)
 * [`heavy`](#-exim--heavy)
@@ -86,6 +90,7 @@ The following parameters are available in the `exim` class:
 * [`includes`](#-exim--includes)
 * [`local_from_check`](#-exim--local_from_check)
 * [`local_interfaces`](#-exim--local_interfaces)
+* [`local_sender_retain`](#-exim--local_sender_retain)
 * [`log_lost_incoming_connection`](#-exim--log_lost_incoming_connection)
 * [`log_retry_defer`](#-exim--log_retry_defer)
 * [`log_sender_on_delivery`](#-exim--log_sender_on_delivery)
@@ -141,6 +146,8 @@ The following parameters are available in the `exim` class:
 * [`message_size_limit`](#-exim--message_size_limit)
 * [`mysql_servers`](#-exim--mysql_servers)
 * [`never_users`](#-exim--never_users)
+* [`prdr_enable`](#-exim--prdr_enable)
+* [`primary_hostname`](#-exim--primary_hostname)
 * [`qualify_domain`](#-exim--qualify_domain)
 * [`queue_only_load`](#-exim--queue_only_load)
 * [`queue_run_max`](#-exim--queue_run_max)
@@ -159,8 +166,10 @@ The following parameters are available in the `exim` class:
 * [`smtp_receive_timeout`](#-exim--smtp_receive_timeout)
 * [`smtp_reserve_hosts`](#-exim--smtp_reserve_hosts)
 * [`smtp_return_error_details`](#-exim--smtp_return_error_details)
+* [`smtputf8_advertise_hosts`](#-exim--smtputf8_advertise_hosts)
 * [`spamd_address`](#-exim--spamd_address)
 * [`split_spool_directory`](#-exim--split_spool_directory)
+* [`spool_directory`](#-exim--spool_directory)
 * [`syslog_timestamp`](#-exim--syslog_timestamp)
 * [`system_filter`](#-exim--system_filter)
 * [`timeout_frozen_after`](#-exim--timeout_frozen_after)
@@ -380,6 +389,15 @@ Data type: `Optional[Boolean]`
 Do no IPv6 processing
 Type: bool
 
+##### <a name="-exim--dns_dnssec_ok"></a>`dns_dnssec_ok`
+
+Data type: `Optional[Integer]`
+
+If this option is set to a non-negative number then Exim will initialise the
+DNS resolver library to either use or not use DNSSEC, overriding the system
+default. A value of 0 coerces DNSSEC off, a value of 1 coerces DNSSEC on.
+The Exim default is -1.
+
 ##### <a name="-exim--errors_reply_to"></a>`errors_reply_to`
 
 Data type: `Optional[String]`
@@ -387,6 +405,12 @@ Data type: `Optional[String]`
 This sets a mail-address to be used in the reply-to header of bounce-messages.
 Type: String
 Example: postmaster@example.com
+
+##### <a name="-exim--exim_path"></a>`exim_path`
+
+Data type: `Optional[String]`
+
+Path of the Exim binary.
 
 ##### <a name="-exim--extract_addresses_remove_arguments"></a>`extract_addresses_remove_arguments`
 
@@ -401,6 +425,21 @@ of substracting them
 Data type: `Optional[String]`
 
 If a mail gets frozen, send a notification to the address defined here.
+
+##### <a name="-exim--gecos_name"></a>`gecos_name`
+
+Data type: `Optional[String]`
+
+If gecos_name and gecos_pattern are set then gecos_pattern is treated as a regular
+expression that is to be applied to the gecos field and if it matches, gecos_name
+is expanded and used as the user's name.  For example, $1 could be used to pick up
+the first sub-field that was matched by the gecos_pattern.
+
+##### <a name="-exim--gecos_pattern"></a>`gecos_pattern`
+
+Data type: `Optional[String]`
+
+See gecos_name above.
 
 ##### <a name="-exim--gnutls_compat_mode"></a>`gnutls_compat_mode`
 
@@ -473,6 +512,13 @@ Check and correct From: header from local mails to username@qualify-domain
 Data type: `Optional[Array[String]]`
 
 Specifies the interfaces exim will listen on.
+
+##### <a name="-exim--local_sender_retain"></a>`local_sender_retain`
+
+Data type: `Optional[Boolean]`
+
+If local_from_check is false, setting local_sender_retain to true will keep any
+existing Sender header line.
 
 ##### <a name="-exim--log_lost_incoming_connection"></a>`log_lost_incoming_connection`
 
@@ -811,6 +857,21 @@ Data type: `Optional[Array[String]]`
 Do not run deliverys as these users
 Type: array
 
+##### <a name="-exim--prdr_enable"></a>`prdr_enable`
+
+Data type: `Optional[Boolean]`
+
+Enable the Per-Recipient Data Response extension to SMTP.
+
+##### <a name="-exim--primary_hostname"></a>`primary_hostname`
+
+Data type: `Optional[String]`
+
+This specifies the name of the current host. It is used in the default
+EHLO or HELO command for outgoing SMTP messages (changeable via the
+helo_data option in the smtp transport), and as the default for qualify_domain.
+Default is empty which exim should fill with the FQDN for the server.
+
 ##### <a name="-exim--qualify_domain"></a>`qualify_domain`
 
 Data type: `Optional[String]`
@@ -931,6 +992,12 @@ Data type: `Optional[Boolean]`
 
 Return more detailed SMTP error messages.
 
+##### <a name="-exim--smtputf8_advertise_hosts"></a>`smtputf8_advertise_hosts`
+
+Data type: `Optional[String]`
+
+Advertise SMTPUTF8 to these hosts.
+
 ##### <a name="-exim--spamd_address"></a>`spamd_address`
 
 Data type: `Optional[String]`
@@ -943,6 +1010,12 @@ Data type: `Optional[Boolean]`
 
 Use split spool configuration
 Type: bool
+
+##### <a name="-exim--spool_directory"></a>`spool_directory`
+
+Data type: `Optional[String]`
+
+Override compiled-in value.
 
 ##### <a name="-exim--syslog_timestamp"></a>`syslog_timestamp`
 
@@ -995,7 +1068,7 @@ If this option ist set to true code values of 128 and above are also considered 
 
 ##### <a name="-exim--untrusted_set_sender"></a>`untrusted_set_sender`
 
-Data type: `Optional[Boolean]`
+Data type: `Optional[Array[String]]`
 
 This option allows you to permit untrusted users to set other envelope sender addresses in a controlled way.
 
